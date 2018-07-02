@@ -1,0 +1,28 @@
+#!groovy
+
+properties([
+    [
+        $class: 'GithubProjectProperty',
+        displayName: 'Divorce Case Data Formatter Service',
+        projectUrlStr: 'https://github.com/hmcts/div-case-data-formatter-service'
+    ],
+    pipelineTriggers([
+        [$class: 'GitHubPushTrigger']
+    ])
+])
+
+@Library("Infrastructure")
+
+def type = "java"
+def product = "div"
+def component = "cms"
+
+def channel = '#div-dev'
+
+withPipeline(type , product, component) {
+    after('checkout') {
+        echo '${product}-${component} checked out'
+    }
+
+    enableSlackNotifications(channel)
+}

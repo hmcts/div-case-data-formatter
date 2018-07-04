@@ -34,18 +34,6 @@ variable "capacity" {
     default = "1"
 }
 
-variable "idam_s2s_url_prefix" {
-  default = "rpe-service-auth-provider"
-}
-
-variable "auth_provider_service_client_microservice" {
-  default = "divorce_ccd_submission"
-}
-
-variable "auth_provider_service_client_tokentimetoliveinseconds" {
-  default = "900"
-}
-
 variable "subscription" {}
 
 variable "location" {

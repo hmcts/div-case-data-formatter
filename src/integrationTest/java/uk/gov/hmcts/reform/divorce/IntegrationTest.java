@@ -16,6 +16,9 @@ public abstract class IntegrationTest {
     @Value("${case.formatter.service.base.uri}")
     String serverUrl;
 
+    @Autowired
+    private IdamUtils idamTestSupportUtil;
+
     @Rule
     public SpringIntegrationMethodRule springMethodIntegration;
 
@@ -23,4 +26,11 @@ public abstract class IntegrationTest {
         this.springMethodIntegration = new SpringIntegrationMethodRule();
     }
 
+    synchronized String getUserToken() {
+        String username = "simulate-delivered" + UUID.randomUUID() + "@notifications.service.gov.uk";
+        String password = UUID.randomUUID().toString();
+
+        idamTestSupportUtil.createUserInIdam(username, password);
+        return idamTestSupportUtil.generateUserTokenWithNoRoles(username, password);
+    }
 }

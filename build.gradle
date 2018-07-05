@@ -223,7 +223,7 @@ pitest {
     targetClasses = ['**uk.gov.hmcts.reform.divorce..*']
     excludedClasses = ['uk.gov.hmcts.reform.divorce.caseformatterservice.config.*',
     'uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.*']
-    threads = 1
+    threads = 16
     outputFormats = ['XML', 'HTML']
     timestampedReports = true
     mutationThreshold = 90

@@ -1,9 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.management.monitoring.health;
 
-import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.jayway.jsonpath.JsonPath;
-import com.netflix.loadbalancer.Server;
-import com.netflix.loadbalancer.ServerList;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -11,28 +8,21 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.cloud.netflix.ribbon.StaticServerList;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -43,15 +33,8 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(
-        classes = {CaseFormatterServiceApplication.class, HealthCheckITest.LocalRibbonClientConfiguration.class})
-@PropertySource(value = "classpath:application.properties")
-@TestPropertySource(properties = {
-    "endpoints.health.time-to-live=0",
-    "feign.hystrix.enabled=true",
-    "eureka.client.enabled=false"
-    })
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@PropertySource(value = "classpath:application.yml")
+@DirtiesContext(classMode=DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class HealthCheckITest {
 
     private static final String HEALTH_UP_RESPONSE = "{ \"status\": \"UP\"}";
@@ -60,15 +43,11 @@ public class HealthCheckITest {
     @LocalServerPort
     private int port;
 
-    @Value("${idam.api.url}")
+    @Value("${idam.api.url}${idam.api.health.context-path}")
     private String idamApiHealthUrl;
 
     @Autowired
     private RestTemplate restTemplate;
-
-    @ClassRule
-    public static WireMockClassRule ccdServer = new WireMockClassRule(4452);
-
 
     private String healthUrl;
     private MockRestServiceServer mockRestServiceServer;
@@ -85,6 +64,7 @@ public class HealthCheckITest {
     @Before
     public void setUp() {
         healthUrl = "http://localhost:" + String.valueOf(port) + "/health";
+
         originalRequestFactory = restTemplate.getRequestFactory();
         mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
     }
@@ -106,20 +86,8 @@ public class HealthCheckITest {
         assertThat(JsonPath.read(body, "$.details.idamApiHealthCheck.status").toString(),
             equalTo("UP"));
         assertThat(JsonPath.read(body, "$.details.diskSpace.status").toString(), equalTo("UP"));
-    }
 
-    @Test
-    public void givenAllDependenciesAreDown_whenCheckHealth_thenReturnStatusDown() throws Exception {
-        mockEndpointAndResponse(idamApiHealthUrl, false);
-
-        HttpResponse response = getHealth();
-        String body = EntityUtils.toString(response.getEntity());
-
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(503));
-        assertThat(JsonPath.read(body, "$.status").toString(), equalTo("DOWN"));
-        assertThat(JsonPath.read(body, "$.details.idamApiHealthCheck.status").toString(),
-            equalTo("DOWN"));
-        assertThat(JsonPath.read(body, "$.details.diskSpace.status").toString(), equalTo("UP"));
+        mockRestServiceServer.verify();
     }
 
     @Test
@@ -134,6 +102,8 @@ public class HealthCheckITest {
         assertThat(JsonPath.read(body, "$.details.idamApiHealthCheck.status").toString(),
             equalTo("DOWN"));
         assertThat(JsonPath.read(body, "$.details.diskSpace.status").toString(), equalTo("UP"));
+
+        mockRestServiceServer.verify();
     }
 
     private void mockEndpointAndResponse(String requestUrl, boolean serviceUp) {
@@ -141,13 +111,5 @@ public class HealthCheckITest {
                 .andRespond(withStatus(serviceUp ? HttpStatus.OK : HttpStatus.SERVICE_UNAVAILABLE)
                         .body(serviceUp ? HEALTH_UP_RESPONSE : HEALTH_DOWN_RESPONSE)
                         .contentType(MediaType.APPLICATION_JSON_UTF8));
-    }
-
-    @TestConfiguration
-    public static class LocalRibbonClientConfiguration {
-        @Bean
-        public ServerList<Server> ribbonServerList(@Value("${ccd.server.port}") int serverPort) {
-            return new StaticServerList<>(new Server("localhost", serverPort));
-        }
     }
 }

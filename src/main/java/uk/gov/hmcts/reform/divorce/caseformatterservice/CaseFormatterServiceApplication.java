@@ -11,4 +11,5 @@ public class CaseFormatterServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(CaseFormatterServiceApplication.class, args);
     }
+
 }

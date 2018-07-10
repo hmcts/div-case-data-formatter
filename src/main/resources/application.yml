@@ -18,6 +18,13 @@ idam:
     health:
         context-path: /health
 
+document:
+    management:
+        store:
+            url: ${DOCUMENT_MANAGEMENT_STORE_URL:http://localhost:5006}
+
+cohort: onlineSubmissionPrivateBeta
+
 http:
   connect:
     timeout: 60000

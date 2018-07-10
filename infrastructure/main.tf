@@ -15,6 +15,7 @@ module "div-cfs" {
   appinsights_instrumentation_key = "${var.appinsights_instrumentation_key}"
   is_frontend                     = false
   capacity                        = "${var.capacity}"
+  common_tags                     = "${var.common_tags}"
 
   app_settings = {
     REFORM_SERVICE_NAME                                   = "${var.component}"

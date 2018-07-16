@@ -13,6 +13,10 @@ import java.util.UUID;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 public abstract class IntegrationTest {
+    private String userToken;
+    private static final String emailAddress = "caseformatterservicetest@notifications.service.gov.uk";
+    private static final String password = "passowrd";
+
     @Value("${case.formatter.service.base.uri}")
     String serverUrl;
 
@@ -27,10 +31,11 @@ public abstract class IntegrationTest {
     }
 
     synchronized String getUserToken() {
-        String username = "simulate-delivered" + UUID.randomUUID() + "@notifications.service.gov.uk";
-        String password = UUID.randomUUID().toString();
+        if (userToken == null) {
+            idamTestSupportUtil.createUserInIdam(emailAddress, password);
+            userToken = idamTestSupportUtil.generateUserTokenWithNoRoles(emailAddress, password);
+        }
 
-        idamTestSupportUtil.createUserInIdam(username, password);
-        return idamTestSupportUtil.generateUserTokenWithNoRoles(username, password);
+        return userToken;
     }
 }

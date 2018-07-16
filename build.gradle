@@ -232,7 +232,7 @@ pmd {
 pitest {
     targetClasses = ['**uk.gov.hmcts.reform.divorce..*']
     excludedClasses = ['uk.gov.hmcts.reform.divorce.caseformatterservice.config.*',
-    'uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.*']
+                       'uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.*']
     threads = 16
     outputFormats = ['XML', 'HTML']
     timestampedReports = true
@@ -242,7 +242,7 @@ pitest {
 def sonarExclusions = [
     '**uk/gov/hmcts/reform/divorce/caseformatterservice/domain/**/*',
     '**uk/gov/hmcts/reform/divorce/caseformatterservice/**/config/**/*',
-    '**uk/gov/hmcts/reform/divorce/caseformatterservice/CaseformatterServiceApplication.java'
+    '**uk/gov/hmcts/reform/divorce/caseformatterservice/CaseFormatterServiceApplication.java'
 ]
 
 sonarqube {

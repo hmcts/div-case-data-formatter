@@ -20,19 +20,23 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorc
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-@Mapper(componentModel = "spring", uses = DocumentCollectionCcdFormatMapper.class, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
+    unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class DivorceCaseToCCDMapper {
 
     private static final String BLANK_SPACE = " ";
     private static final String LINE_SEPARATOR = "\n";
+    private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
-    private ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
-    private PaymentContext paymentContext = new PaymentContext();
+    private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
+    private final PaymentContext paymentContext = new PaymentContext();
 
     @Value("${cohort}")
     private String cohort;
@@ -42,11 +46,11 @@ public abstract class DivorceCaseToCCDMapper {
 
     @Mapping(source = "helpWithFeesReferenceNumber", target = "d8HelpWithFeesReferenceNumber")
     @Mapping(source = "divorceWho", target = "d8DivorceWho")
-    @Mapping(source = "marriageDate", dateFormat = "yyyy-MM-dd", target = "d8MarriageDate")
+    @Mapping(source = "marriageDate", dateFormat = SIMPLE_DATE_FORMAT, target = "d8MarriageDate")
     @Mapping(source = "reasonForDivorceDesertionDay", target = "d8ReasonForDivorceDesertionDay")
     @Mapping(source = "reasonForDivorceDesertionMonth", target = "d8ReasonForDivorceDesertionMonth")
     @Mapping(source = "reasonForDivorceDesertionYear", target = "d8ReasonForDivorceDesertionYear")
-    @Mapping(source = "reasonForDivorceDesertionDate", dateFormat = "yyyy-MM-dd",
+    @Mapping(source = "reasonForDivorceDesertionDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "d8ReasonForDivorceDesertionDate")
     @Mapping(source = "countryName", target = "d8CountryName")
     @Mapping(source = "placeOfMarriage", target = "d8MarriagePlaceOfMarriage")
@@ -63,6 +67,8 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "petitionerEmail", target = "d8PetitionerEmail")
     @Mapping(source = "petitionerPhoneNumber", target = "d8PetitionerPhoneNumber")
     @Mapping(source = "livingArrangementsLiveTogether", target = "d8LivingArrangementsLiveTogether")
+    @Mapping(source = "livingArrangementsLastLivedTogetherAddress.postcode",
+        target = "d8LivingArrangementsLastLivedTogethAddr.postCode")
     @Mapping(source = "reasonForDivorce", target = "d8ReasonForDivorce")
     @Mapping(source = "reasonForDivorceAdultery3rdPartyFirstName", target = "d8ReasonForDivorceAdultery3rdPartyFName")
     @Mapping(source = "reasonForDivorceAdultery3rdPartyLastName", target = "d8ReasonForDivorceAdultery3rdPartyLName")
@@ -83,13 +89,13 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceSeperationDay", target = "d8ReasonForDivorceSeperationDay")
     @Mapping(source = "reasonForDivorceSeperationMonth", target = "d8ReasonForDivorceSeperationMonth")
     @Mapping(source = "reasonForDivorceSeperationYear", target = "d8ReasonForDivorceSeperationYear")
-    @Mapping(source = "reasonForDivorceSeperationDate", dateFormat = "yyyy-MM-dd",
+    @Mapping(source = "reasonForDivorceSeperationDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "d8ReasonForDivorceSeperationDate")
     @Mapping(source = "respondentCorrespondenceUseHomeAddress", target = "d8RespondentCorrespondenceUseHomeAddress")
     @Mapping(source = "connections", target = "d8Connections")
     @Mapping(source = "connectionSummary", target = "d8ConnectionSummary")
     @Mapping(source = "courts", target = "d8DivorceUnit")
-//    @Mapping(source = "marriageCertificateFiles", target = "d8DocumentsUploaded")
+    @Mapping(source = "marriageCertificateFiles", target = "d8DocumentsUploaded")
     @Mapping(target = "createdDate",
         expression =
             "java(java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd\")))")
@@ -100,7 +106,7 @@ public abstract class DivorceCaseToCCDMapper {
         if (Objects.isNull(value)) {
             return null;
         }
-        return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase();
+        return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
     }
 
     @AfterMapping
@@ -257,7 +263,7 @@ public abstract class DivorceCaseToCCDMapper {
                 translateToStringYesNo(getYesNoAnswer(divorceSession.getHelpWithFeesNeedHelp())));
     }
 
-    private static String getYesNoAnswer(YesNoAnswer yesNoAnswer) {
+    private String getYesNoAnswer(YesNoAnswer yesNoAnswer) {
         return yesNoAnswer == null ? null : yesNoAnswer.getAnswer();
     }
 
@@ -574,7 +580,7 @@ public abstract class DivorceCaseToCCDMapper {
             if (Objects.nonNull(divorceSession.getPayment().getPaymentDate())) {
                 divorceSession.getPayment().setPaymentDate(LocalDate.parse(
                     divorceSession.getPayment().getPaymentDate(), DateTimeFormatter.ofPattern("ddMMyyyy"))
-                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                    .format(DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT)));
             }
 
             result.setPayments(paymentContext.getListOfPayments(divorceSession));

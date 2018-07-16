@@ -11,19 +11,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class NoExistingPaymentStrategyUTest {
-    private NoExistingPaymentStrategy noExistingPaymentStrategy = new NoExistingPaymentStrategy();
+    private final NoExistingPaymentStrategy noExistingPaymentStrategy = new NoExistingPaymentStrategy();
 
     @Test
     public void testNoExistingPaymentsAddsJustNewPayment() {
-        Payment newPayment = new Payment();
+        final Payment newPayment = new Payment();
         newPayment.setPaymentReference("111222333");
 
-        List<PaymentCollection> existingPaymentsList = null;
+        final List<PaymentCollection> existingPaymentsList = null;
 
-        List<PaymentCollection> expectedPaymentsList = Collections.singletonList(PaymentCollection.builder()
+        final List<PaymentCollection> expectedPaymentsList = Collections.singletonList(PaymentCollection.builder()
             .value(newPayment).build());
 
-        List<PaymentCollection> returnedPaymentsList =
+        final List<PaymentCollection> returnedPaymentsList =
             noExistingPaymentStrategy.getCurrentPaymentsList(newPayment, existingPaymentsList);
 
         assertThat(returnedPaymentsList, equalTo(expectedPaymentsList));

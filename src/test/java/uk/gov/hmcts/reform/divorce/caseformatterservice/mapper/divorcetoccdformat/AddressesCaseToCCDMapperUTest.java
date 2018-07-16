@@ -9,7 +9,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapperTestUtil;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -30,13 +30,12 @@ public class AddressesCaseToCCDMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) DivorceCaseToCCDMapperTestUtil
-            .jsonToObject("fixtures/ccdmapping/addresscase.json", AddressesCaseToCCDMapperUTest.class,
-                CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
+            .jsonToObject("fixtures/divorcetoccdmapping/ccd/addresscase.json", CoreCaseData.class);
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
-        DivorceSession divorceSession = (DivorceSession) DivorceCaseToCCDMapperTestUtil
-            .jsonToObject("fixtures/ccdmapping/addresses.json", AddressesCaseToCCDMapperUTest.class,
-                DivorceSession.class);
+
+        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
+            .jsonToObject("fixtures/divorcetoccdmapping/divorce/addresses.json", DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

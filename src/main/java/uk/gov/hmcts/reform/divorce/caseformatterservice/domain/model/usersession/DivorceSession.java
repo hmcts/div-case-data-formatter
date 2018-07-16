@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersessio
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import jdk.nashorn.internal.ir.IfNode;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -39,13 +38,16 @@ public class DivorceSession {
     @ApiModelProperty(value = "Is same sex couple?", allowableValues = "Yes, No")
     private String marriageIsSameSexCouple;
     @ApiModelProperty(
-        value = "The day component of the marriage date in 'dd' format. This field is not currently used.")
+        value = "The day component of the marriage date in 'dd' transformToCCDFormat. "
+            + "This field is not currently used.")
     private String marriageDateDay;
     @ApiModelProperty(
-        value = "The month component of the marriage date in 'MM' format. This field is not currently used")
+        value = "The month component of the marriage date in 'MM' transformToCCDFormat. "
+            + "This field is not currently used")
     private String marriageDateMonth;
     @ApiModelProperty(
-        value = "The year component of the marriage date in 'yyyy' format. This field is not currently used")
+        value = "The year component of the marriage date in 'yyyy' transformToCCDFormat. "
+            + "This field is not currently used")
     private String marriageDateYear;
     @ApiModelProperty(
         value = "The marriage date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
@@ -204,11 +206,11 @@ public class DivorceSession {
     private String reasonForDivorceClaiming5YearSeparation;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceClaimingAdultery;
-    @ApiModelProperty(value = "Separation date day in dd format.")
+    @ApiModelProperty(value = "Separation date day in dd transformToCCDFormat.")
     private String reasonForDivorceSeperationDay;
-    @ApiModelProperty(value = "Separation date month in MM format.")
+    @ApiModelProperty(value = "Separation date month in MM transformToCCDFormat.")
     private String reasonForDivorceSeperationMonth;
-    @ApiModelProperty(value = "Separation date year in yyyy format.")
+    @ApiModelProperty(value = "Separation date year in yyyy transformToCCDFormat.")
     private String reasonForDivorceSeperationYear;
     @ApiModelProperty(
         value = "The separation date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
@@ -221,11 +223,11 @@ public class DivorceSession {
     private String reasonForDivorceSeperationDateInFuture;
     @ApiModelProperty(value = "Is separation date before marriage date?", allowableValues = "Yes, No")
     private String reasonForDivorceSeperationDateBeforeMarriageDate;
-    @ApiModelProperty(value = "Desertion date day in dd format.")
+    @ApiModelProperty(value = "Desertion date day in dd transformToCCDFormat.")
     private String reasonForDivorceDesertionDay;
-    @ApiModelProperty(value = "Desertion date month in MM format.")
+    @ApiModelProperty(value = "Desertion date month in MM transformToCCDFormat.")
     private String reasonForDivorceDesertionMonth;
-    @ApiModelProperty(value = "Desertion date year in yyyy format.")
+    @ApiModelProperty(value = "Desertion date year in yyyy transformToCCDFormat.")
     private String reasonForDivorceDesertionYear;
     @ApiModelProperty(value = "Is desertion date before marriage?", allowableValues = "Yes, No")
     private String reasonForDivorceDesertionBeforeMarriage;

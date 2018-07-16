@@ -2,15 +2,14 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivor
 
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.Arrays.asList;
 
 public class ReasonForDivorceContext {
 
     private static final List<ReasonForDivorceStrategy> reasonForDivorceStrategies =
-        asList(
+        Arrays.asList(
             new AdulteryStrategy(),
             new DesertionStrategy(),
             new SeparationFiveYearsStrategy(),

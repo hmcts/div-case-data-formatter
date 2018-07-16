@@ -9,11 +9,11 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class AdulteryStrategyUTest {
     private static final String ADULTERY = "adultery";
 
-    private AdulteryStrategy adulteryStrategy = new AdulteryStrategy();
+    private final AdulteryStrategy adulteryStrategy = new AdulteryStrategy();
 
     @Test
     public void testAdulteryWithoutKnowStatementOfCase() {
-        DivorceSession divorceSession = new DivorceSession();
+        final DivorceSession divorceSession = new DivorceSession();
         divorceSession.setReasonForDivorce(ADULTERY);
         divorceSession.setReasonForDivorceAdulteryKnowWhere("No");
         divorceSession.setReasonForDivorceAdulteryKnowWhen("No");
@@ -21,14 +21,14 @@ public class AdulteryStrategyUTest {
         divorceSession.setReasonForDivorceAdulteryWhenDetails("Some time ago.");
         divorceSession.setReasonForDivorceAdulteryDetails("It hurts inside.");
 
-        String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
+        final String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
 
         assertThat(derivedStatementOfCase, equalTo("It hurts inside."));
     }
 
     @Test
     public void testAdulteryWithKnowWhereStatementOfCase() {
-        DivorceSession divorceSession = new DivorceSession();
+        final DivorceSession divorceSession = new DivorceSession();
         divorceSession.setReasonForDivorce(ADULTERY);
         divorceSession.setReasonForDivorceAdulteryKnowWhere("Yes");
         divorceSession.setReasonForDivorceAdulteryKnowWhen("No");
@@ -36,14 +36,14 @@ public class AdulteryStrategyUTest {
         divorceSession.setReasonForDivorceAdulteryWhenDetails("Some time ago.");
         divorceSession.setReasonForDivorceAdulteryDetails("It hurts inside.");
 
-        String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
+        final String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
 
         assertThat(derivedStatementOfCase, equalTo("On a washing machine.\nIt hurts inside."));
     }
 
     @Test
     public void testAdulteryWithKnowWhenStatementOfCase() {
-        DivorceSession divorceSession = new DivorceSession();
+        final DivorceSession divorceSession = new DivorceSession();
         divorceSession.setReasonForDivorce(ADULTERY);
         divorceSession.setReasonForDivorceAdulteryKnowWhere("No");
         divorceSession.setReasonForDivorceAdulteryKnowWhen("Yes");
@@ -51,14 +51,14 @@ public class AdulteryStrategyUTest {
         divorceSession.setReasonForDivorceAdulteryWhenDetails("Some time ago.");
         divorceSession.setReasonForDivorceAdulteryDetails("It hurts inside.");
 
-        String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
+        final String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
 
         assertThat(derivedStatementOfCase, equalTo("Some time ago.\nIt hurts inside."));
     }
 
     @Test
     public void testAdulteryWithKnowBothStatementOfCase() {
-        DivorceSession divorceSession = new DivorceSession();
+        final DivorceSession divorceSession = new DivorceSession();
         divorceSession.setReasonForDivorce(ADULTERY);
         divorceSession.setReasonForDivorceAdulteryKnowWhere("Yes");
         divorceSession.setReasonForDivorceAdulteryKnowWhen("Yes");
@@ -66,7 +66,7 @@ public class AdulteryStrategyUTest {
         divorceSession.setReasonForDivorceAdulteryWhenDetails("Some time ago.");
         divorceSession.setReasonForDivorceAdulteryDetails("It hurts inside.");
 
-        String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
+        final String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
 
         assertThat(derivedStatementOfCase, equalTo("On a washing machine.\nSome time ago.\nIt hurts inside."));
     }

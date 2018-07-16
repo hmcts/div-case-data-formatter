@@ -8,25 +8,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Locale;
 import java.util.Map;
 
 @RunWith(SerenityParameterizedRunner.class)
-public class DivorceToCCDFormatTest extends IntegrationTest {
-    private static final String PAYLOAD_CONTEXT_PATH = "fixtures/divorcetoccdmapping/divorce/";
-    private static final String EXPECTED_PAYLOAD_CONTEXT_PATH = "fixtures/divorcetoccdmapping/ccd/";
+public class CCDToDivorceFormatTest extends IntegrationTest {
+    private static final String PAYLOAD_CONTEXT_PATH = "fixtures/ccdtodivorcemapping/ccd/";
+    private static final String EXPECTED_PAYLOAD_CONTEXT_PATH = "fixtures/ccdtodivorcemapping/divorce/";
 
-    @Value("${case.formatter.service.transform.toccdformat}")
+    @Value("${case.formatter.service.transform.todivorceformat}")
     private String contextPath;
 
     private final String input;
     private final String expected;
 
-    public DivorceToCCDFormatTest(String input, String expected) {
+    public CCDToDivorceFormatTest(String input, String expected) {
         this.input = input;
         this.expected = expected;
     }
@@ -34,35 +31,27 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
     @TestData
     public static Collection<Object[]> testData() {
         return Arrays.asList(new Object[][]{
-            {"additional-payment.json", "additionalpayment.json"},
-            {"addresses.json", "addresscase.json"},
-            {"d8-document.json", "d8document.json"},
-            {"how-name-changed.json", "hownamechanged.json"},
-            {"jurisdiction-6-12.json", "jurisdiction612.json"},
-            {"jurisdiction-all.json", "jurisdictionall.json"},
-            {"overwrite-payment.json", "overwritepayment.json"},
-            {"payment-id-only.json", "paymentidonly.json"},
-            {"payment.json", "paymentcase.json"},
-            {"reason-adultery.json", "reasonadultery.json"},
-            {"reason-desertion.json", "reasondesertion.json"},
-            {"reason-separation.json", "reasonseparation.json"},
-            {"reason-unreasonable-behaviour.json", "reasonunreasonablebehaviour.json"},
-            {"same-sex.json", "samesex.json"}
+            {"additionalpayment.json", "additional-payment.json"},
+            {"addresscase.json", "addresses.json"},
+            {"hownamechanged.json", "how-name-changed.json"},
+            {"jurisdiction612.json", "jurisdiction-6-12.json"},
+            {"jurisdictionall.json", "jurisdiction-all.json"},
+            {"paymentcase.json", "payment.json"},
+            {"reasonadultery.json", "reason-adultery.json"},
+            {"reasondesertion.json", "reason-desertion.json"},
+            {"reasonseparation.json", "reason-separation.json"},
+            {"reasonunreasonablebehaviour.json", "reason-unreasonable-behaviour.json"},
+            {"samesex.json", "same-sex.json"}
         });
     }
 
     @Test
-    public void whenTransformToCCDFormat_thenReturnExpected() throws Exception {
+    public void whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
         final Response response = RestUtil.postToRestService(getAPIPath(),
-            getHeaders(getUserToken()),
+            getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_CONTEXT_PATH + input));
 
         final Map<String, Object> expectedOutput = getExpected(expected);
-
-        final String dateString =
-            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH));
-        expectedOutput.put("createdDate", dateString);
-        expectedOutput.put("D8PetitionerEmail", EMAIL_ADDRESS);
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 

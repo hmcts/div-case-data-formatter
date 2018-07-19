@@ -16,7 +16,7 @@ public class DivorceToCCDFormatErrorHandlingTest extends IntegrationTest {
     private static final String  UNAUTHORISED_JWT_EXCEPTION = "status 403 reading "
         + "IdamUserService#retrieveUserDetails(String); content:\n";
 
-    @Value("${case.formatter.service.transform.toccdformat}")
+    @Value("${case.formatter.service.transform.toccdformat.context-path}")
     private String contextPath;
 
     @Test

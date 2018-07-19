@@ -27,23 +27,23 @@ public class CaseFormatterController {
     @Autowired
     private CaseFormatterService caseFormatterService;
 
-    @PostMapping(path = "/toCCDFormat")
+    @PostMapping(path = "/to-ccd-format")
     @ApiOperation(value = "Given a case in Divorce format, will transform it into CCD format")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into CCD format", response = CoreCaseData.class),
         }
     )
     public ResponseEntity<CoreCaseData> transformToCCDFormat(
-        @RequestBody @ApiParam(value = "FE Session Data", required = true) DivorceSession data,
+        @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession data,
         @RequestHeader("Authorization")
         @ApiParam(value = "JWT authorisation token issued by IDAM", required = true) final String jwt) {
         return ResponseEntity.ok(caseFormatterService.transformToCCDFormat(data, jwt));
     }
 
-    @PostMapping(path = "/toDivorceFormat")
-    @ApiOperation(value = "Given a case in CCD format, will transform it into CCD format")
+    @PostMapping(path = "/to-divorce-format")
+    @ApiOperation(value = "Given a case in CCD format, will transform it into Divorce session format")
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "Case transformed into CCD format", response = DivorceSession.class),
+        @ApiResponse(code = 200, message = "Case transformed into Divorce Session format", response = DivorceSession.class),
         }
     )
     public ResponseEntity<DivorceSession> transformToDivorceFormat(

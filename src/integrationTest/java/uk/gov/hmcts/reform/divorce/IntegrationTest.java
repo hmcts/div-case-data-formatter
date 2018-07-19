@@ -61,9 +61,22 @@ public abstract class IntegrationTest {
         return headers;
     }
 
+    @SuppressWarnings("unchecked")
+    Map<String, Object> getExpected(String fileName) throws Exception {
+        return (Map<String, Object>)ObjectMapperUtil.jsonStringToObject(
+            ResourceLoader.loadJson(getExpectedContextPath() + fileName), Map.class);
+    }
+
+    @SuppressWarnings("unchecked")
+    Map<String, Object> getActual(String json) throws Exception {
+        return (Map<String, Object>)ObjectMapperUtil.jsonStringToObject(json, Map.class);
+    }
+
     String getAPIPath() {
         return serverUrl + getContextPath();
     }
 
     abstract String getContextPath();
+
+    abstract String getExpectedContextPath();
 }

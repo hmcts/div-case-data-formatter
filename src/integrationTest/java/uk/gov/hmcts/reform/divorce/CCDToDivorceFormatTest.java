@@ -17,7 +17,7 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
     private static final String PAYLOAD_CONTEXT_PATH = "fixtures/ccdtodivorcemapping/ccd/";
     private static final String EXPECTED_PAYLOAD_CONTEXT_PATH = "fixtures/ccdtodivorcemapping/divorce/";
 
-    @Value("${case.formatter.service.transform.todivorceformat}")
+    @Value("${case.formatter.service.transform.todivorceformat.context-path}")
     private String contextPath;
 
     private final String input;
@@ -58,19 +58,13 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
         Assert.assertEquals(actualOutput, expectedOutput);
     }
 
-    @SuppressWarnings("unchecked")
-    private Map<String, Object> getExpected(String fileName) throws Exception {
-        return (Map<String, Object>)ObjectMapperUtil.jsonStringToObject(
-            ResourceLoader.loadJson(EXPECTED_PAYLOAD_CONTEXT_PATH + fileName), Map.class);
-    }
-
-    @SuppressWarnings("unchecked")
-    private Map<String, Object> getActual(String json) throws Exception {
-        return (Map<String, Object>)ObjectMapperUtil.jsonStringToObject(json, Map.class);
-    }
-
     @Override
     String getContextPath() {
         return contextPath;
+    }
+
+    @Override
+    String getExpectedContextPath() {
+        return EXPECTED_PAYLOAD_CONTEXT_PATH;
     }
 }

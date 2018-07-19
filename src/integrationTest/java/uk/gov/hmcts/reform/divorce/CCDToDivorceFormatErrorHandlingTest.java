@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 
 public class CCDToDivorceFormatErrorHandlingTest extends IntegrationTest {
-    @Value("${case.formatter.service.transform.todivorceformat}")
+    @Value("${case.formatter.service.transform.todivorceformat.context-path}")
     private String contextPath;
 
     @Test

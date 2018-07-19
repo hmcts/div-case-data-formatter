@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @PropertySource(value = "classpath:application.yml")
 @AutoConfigureMockMvc
 public class TransformToDivorceFormatITest {
-    private static final String API_URL = "/caseformatter/version/1/toDivorceFormat";
+    private static final String API_URL = "/caseformatter/version/1/to-divorce-format";
     private static final String PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/addresscase.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/divorce/addresses.json";
 

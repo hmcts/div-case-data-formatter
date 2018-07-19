@@ -46,7 +46,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     })
 @AutoConfigureMockMvc
 public class TransformToCCDFormatITest {
-    private static final String API_URL = "/caseformatter/version/1/toCCDFormat";
+    private static final String API_URL = "/caseformatter/version/1/toccdformat";
     private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/addresses.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/ccd/addresscase.json";
     private static final String IDAM_USER_DETAILS_CONTEXT_PATH = "/details";

@@ -19,4 +19,9 @@ public class CCDToDivorceFormatErrorHandlingTest extends IntegrationTest {
     String getContextPath() {
         return contextPath;
     }
+
+    @Override
+    String getExpectedContextPath() {
+        return null;
+    }
 }

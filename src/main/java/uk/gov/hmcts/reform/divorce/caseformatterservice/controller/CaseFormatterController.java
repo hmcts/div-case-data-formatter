@@ -43,7 +43,8 @@ public class CaseFormatterController {
     @PostMapping(path = "/to-divorce-format")
     @ApiOperation(value = "Given a case in CCD format, will transform it into Divorce session format")
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "Case transformed into Divorce Session format", response = DivorceSession.class),
+        @ApiResponse(code = 200, message = "Case transformed into Divorce Session format",
+            response = DivorceSession.class),
         }
     )
     public ResponseEntity<DivorceSession> transformToDivorceFormat(

@@ -49,7 +49,7 @@ bootJar {
     }
 }
 
-mainClassName = 'uk.gov.hmcts.reform.divorce.caseormatterservice.CaseFormatterServiceApplication'
+mainClassName = 'uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication'
 
 compileJava {
     options.compilerArgs << '-parameters' << '-Xlint:deprecation'

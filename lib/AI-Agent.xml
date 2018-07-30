@@ -6,7 +6,10 @@
             <HTTP enabled="true"/>
         </BuiltIn>
         <Class name="uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl.CaseFormatterServiceImpl">
-            <Method name="format" reportCaughtExceptions="true" reportExecutionTime="true"/>
+            <Method name="transformToCCDFormat" reportCaughtExceptions="true" reportExecutionTime="true"/>
+        </Class>
+        <Class name="uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl.CaseFormatterServiceImpl">
+            <Method name="transformToDivorceSession" reportCaughtExceptions="true" reportExecutionTime="true"/>
         </Class>
     </Instrumentation>
 </ApplicationInsightsAgent>

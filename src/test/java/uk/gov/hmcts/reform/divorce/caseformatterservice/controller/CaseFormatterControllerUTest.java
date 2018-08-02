@@ -8,8 +8,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -55,5 +60,24 @@ public class CaseFormatterControllerUTest {
         assertEquals(expectedDivorceSession, actualResponse.getBody());
 
         verify(caseFormatterService).transformToDivorceSession(coreCaseData);
+    }
+
+    @Test
+    public void whenAddDocuments_thenProceedAsExpected() {
+        final DocumentUpdateRequest documentUpdateRequest = new DocumentUpdateRequest();
+        final CoreCaseData coreCaseData = new CoreCaseData();
+        final List<GeneratedDocumentInfo> documents = Collections.emptyList();
+
+        documentUpdateRequest.setCaseData(coreCaseData);
+        documentUpdateRequest.setDocuments(documents);
+
+        when(caseFormatterService.addDocuments(coreCaseData, documents)).thenReturn(coreCaseData);
+
+        ResponseEntity<CoreCaseData> actualResponse = classUnderTest.addDocuments(documentUpdateRequest);
+
+        assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
+        assertEquals(coreCaseData, actualResponse.getBody());
+
+        verify(caseFormatterService).addDocuments(coreCaseData, documents);
     }
 }

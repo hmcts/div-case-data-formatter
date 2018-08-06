@@ -16,7 +16,14 @@ idam:
     url: ${IDAM_API_BASEURL:http://localhost:4503}
     port: 4503
     health:
-        context-path: /health
+      context-path: /health
+
+document:
+  management:
+    store:
+      url: ${DOCUMENT_MANAGEMENT_STORE_URL:http://localhost:5006}
+
+cohort: onlineSubmissionPrivateBeta
 
 http:
   connect:

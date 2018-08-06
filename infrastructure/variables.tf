@@ -3,22 +3,22 @@ variable "product" {
 }
 
 variable "component" {
-  type = "string"
+    type = "string"
 }
 
 variable "env" {
-  type = "string"
+    type = "string"
 }
 
 variable "client_id" {
-  description = "(Required) The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies. This is usually sourced from environment variables and not normally required to be specified."
+    description = "(Required) The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies. This is usually sourced from environment variables and not normally required to be specified."
 }
 
 variable "tenant_id" {}
 
 variable "jenkins_AAD_objectId" {
-  type        = "string"
-  description = "(Required) The Azure AD object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies."
+    type        = "string"
+    description = "(Required) The Azure AD object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies."
 }
 
 variable "appinsights_instrumentation_key" {
@@ -37,8 +37,8 @@ variable "capacity" {
 variable "subscription" {}
 
 variable "location" {
-  type    = "string"
-  default = "UK South"
+    type    = "string"
+    default = "UK South"
 }
 
 variable "ilbIp" {}

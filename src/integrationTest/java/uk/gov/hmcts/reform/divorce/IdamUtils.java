@@ -31,7 +31,7 @@ class IdamUtils {
 
     String generateUserTokenWithNoRoles(String username, String password) {
         String userLoginDetails = String.join(":", username + "@test.com", password);
-        final String authHeader = "Basic " + new String(Base64.getEncoder().encode((userLoginDetails).getBytes()));
+        final String authHeader = "Basic " + new String(Base64.getEncoder().encode(userLoginDetails.getBytes()));
 
         final String token = RestAssured.given()
                 .header("Authorization", authHeader)

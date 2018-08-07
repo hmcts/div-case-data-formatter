@@ -45,18 +45,21 @@ public class DocumentCollectionCCDFormatMapperUTest {
 
     @Test
     public void shouldMapUploadedFileToCollectionMember() {
-        Date createdOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 28));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        final Date createdOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 28));
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
-        UploadedFile uploadedFile = UploadedFile.builder()
+        final UploadedFile uploadedFile = UploadedFile.builder()
             .fileName(FILE_NAME)
             .createdOn(createdOn)
             .fileUrl(FILE_URL)
             .build();
 
-        CollectionMember<Document> collectionMember = mapper.map(uploadedFile);
+        final CollectionMember<Document> collectionMember = mapper.map(uploadedFile);
 
-        Document document = collectionMember.getValue();
+        final Document document = collectionMember.getValue();
+
+        final DocumentLink expectedDocumentLink = new DocumentLink();
+        expectedDocumentLink.setDocumentUrl(FILE_URL);
 
         assertNull(collectionMember.getId());
         assertEquals(FILE_NAME, document.getDocumentFileName());
@@ -64,7 +67,7 @@ public class DocumentCollectionCCDFormatMapperUTest {
         assertEquals("", document.getDocumentComment());
         assertEquals("", document.getDocumentEmailContent());
         assertEquals("other", document.getDocumentType());
-        assertEquals(DocumentLink.builder().documentUrl(FILE_URL).build(), document.getDocumentLink());
+        assertEquals(expectedDocumentLink, document.getDocumentLink());
     }
 
     @Test
@@ -83,11 +86,14 @@ public class DocumentCollectionCCDFormatMapperUTest {
 
         Document document = collectionMember.getValue();
 
+        final DocumentLink expectedDocumentLink = new DocumentLink();
+        expectedDocumentLink.setDocumentUrl(FILE_URL);
+
         assertEquals(FILE_NAME, document.getDocumentFileName());
         assertEquals("", document.getDocumentComment());
         assertEquals("", document.getDocumentEmailContent());
         assertEquals("other", document.getDocumentType());
-        assertEquals(DocumentLink.builder().documentUrl(FILE_URL).build(), document.getDocumentLink());
+        assertEquals(expectedDocumentLink, document.getDocumentLink());
     }
 
     @Test

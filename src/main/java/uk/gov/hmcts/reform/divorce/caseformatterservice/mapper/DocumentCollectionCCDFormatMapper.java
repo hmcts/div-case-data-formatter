@@ -30,7 +30,8 @@ public abstract class DocumentCollectionCCDFormatMapper {
 
         String fileUrl = documentUrlRewrite.getDocumentUrl(uploadedFile.getFileUrl());
 
-        result.getValue().setDocumentLink(DocumentLink.builder()
-            .documentUrl(fileUrl).build());
+        DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(fileUrl);
+        result.getValue().setDocumentLink(documentLink);
     }
 }

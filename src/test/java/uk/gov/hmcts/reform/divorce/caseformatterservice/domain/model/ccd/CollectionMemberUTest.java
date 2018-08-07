@@ -27,10 +27,13 @@ public class CollectionMemberUTest {
         jsonNullDocumentFieldsRemoved =
             ObjectMapperTestUtil.loadJson("fixtures/model/ccd/CollectionMemberNoNullFields.json");
 
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl("http://localhost/document");
+
         Document document = new Document();
         document.setDocumentType("marriageCert");
         document.setDocumentFileName("test-file-name");
-        document.setDocumentLink(DocumentLink.builder().documentUrl("http://localhost/document").build());
+        document.setDocumentLink(documentLink);
         document.setDocumentEmailContent("test-email-content");
         document.setDocumentComment("test-comment");
         document.setDocumentDateAdded("2017-01-01");

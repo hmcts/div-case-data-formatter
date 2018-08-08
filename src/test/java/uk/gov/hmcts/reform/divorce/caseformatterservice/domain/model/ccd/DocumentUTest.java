@@ -27,10 +27,13 @@ public class DocumentUTest {
         jsonWithNullFieldsIgnored =
             ObjectMapperTestUtil.loadJson("fixtures/model/ccd/DocumentNullFieldsIgnored.json");
 
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl("http://localhost/document");
+
         document = new Document();
         document.setDocumentType("marriageCert");
         document.setDocumentFileName("test-file-name");
-        document.setDocumentLink(DocumentLink.builder().documentUrl("http://localhost/document").build());
+        document.setDocumentLink(documentLink);
         document.setDocumentEmailContent("test-email-content");
         document.setDocumentComment("test-comment");
         document.setDocumentDateAdded("2017-01-01");

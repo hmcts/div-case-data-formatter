@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 
@@ -50,5 +51,18 @@ public class CaseFormatterController {
     public ResponseEntity<DivorceSession> transformToDivorceFormat(
         @RequestBody @ApiParam(value = "CCD Data", required = true) CoreCaseData data) {
         return ResponseEntity.ok(caseFormatterService.transformToDivorceSession(data));
+    }
+
+    @PostMapping(path = "/add-documents")
+    @ApiOperation(value = "Given a case in CCD format and documents to add this will update the case with documents")
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Case transformed into Divorce Session format",
+            response = DivorceSession.class),
+        }
+    )
+    public ResponseEntity<CoreCaseData> addDocuments(
+        @RequestBody @ApiParam(value = "CCD Data", required = true) DocumentUpdateRequest documentUpdateRequest) {
+        return ResponseEntity.ok(caseFormatterService.addDocuments(documentUpdateRequest.getCaseData(),
+            documentUpdateRequest.getDocuments()));
     }
 }

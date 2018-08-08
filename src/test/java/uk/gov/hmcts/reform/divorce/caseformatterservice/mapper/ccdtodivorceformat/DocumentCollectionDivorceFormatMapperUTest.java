@@ -35,7 +35,9 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         final Document document = new Document();
-        document.setDocumentLink(DocumentLink.builder().documentUrl(FILE_URL).build());
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(FILE_URL);
+        document.setDocumentLink(documentLink);
         document.setDocumentFileName(FILE_NAME);
         document.setDocumentDateAdded(dateDocumentAdded);
 

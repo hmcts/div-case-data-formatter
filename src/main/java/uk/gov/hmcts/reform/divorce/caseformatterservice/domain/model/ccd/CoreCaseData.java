@@ -420,6 +420,6 @@ public class CoreCaseData {
     private Gender d8InferredRespondentGender;
 
     @JsonProperty("respondentLetterHolderId")
-    private Gender respondentLetterHolderId;
+    private String respondentLetterHolderId;
 }
 

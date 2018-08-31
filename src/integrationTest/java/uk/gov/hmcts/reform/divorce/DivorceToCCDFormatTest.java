@@ -63,7 +63,6 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
             LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH));
         expectedOutput.put("createdDate", dateString);
         expectedOutput.put("D8PetitionerEmail", EMAIL_ADDRESS);
-        expectedOutput.put("respondentLetterHolderId", null);
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 

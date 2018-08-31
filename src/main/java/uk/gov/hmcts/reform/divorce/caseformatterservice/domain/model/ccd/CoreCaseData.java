@@ -419,7 +419,7 @@ public class CoreCaseData {
     @JsonProperty("D8InferredRespondentGender")
     private Gender d8InferredRespondentGender;
 
-    @JsonProperty("respondentLetterHolderId")
-    private String respondentLetterHolderId;
+    @JsonProperty("AosLetterHolderId")
+    private String aosLetterHolderId;
 }
 

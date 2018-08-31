@@ -21,6 +21,7 @@
     "D8PetitionerFirstName": "John",
     "D8PetitionerLastName": "Smith",
     "D8DerivedPetitionerCurrentFullName": "John Smith",
+    "AosLetterHolderId":null,
     "D8PetitionerNameChangedHow": [
         "marriageCertificate",
         "deedPoll",

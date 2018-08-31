@@ -28,7 +28,6 @@ public class AddDocumentsTest extends IntegrationTest {
             ResourceLoader.loadJson(PAYLOAD_PATH));
 
         final Map<String, Object> expectedOutput = getExpected("addDocumentsOutput.json");
-        expectedOutput.put("respondentLetterHolderId", null);
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 

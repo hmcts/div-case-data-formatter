@@ -142,6 +142,7 @@
     "D8JurisdictionHabituallyResLast6Months": null,
     "D8ResidualJurisdictionEligible": null,
     "Payments": null,
+    "AosLetterHolderId":null,
     "D8DocumentsUploaded": [
         {
             "id": null,

@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
@@ -8,6 +9,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Pay
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 public class CoreCaseData {
 

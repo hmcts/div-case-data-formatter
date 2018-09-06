@@ -38,4 +38,20 @@ public class NullAddressesCaseToDivorceMapperUTest {
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));
     }
+
+    @Test
+    public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenarioWithDerivedNotNull()
+        throws URISyntaxException, IOException {
+
+        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
+            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/addressnullderivednotnullcase.json",
+                CoreCaseData.class);
+
+        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
+            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/addresses-null.json", DivorceSession.class);
+
+        DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));
+    }
 }

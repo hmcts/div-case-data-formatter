@@ -635,7 +635,8 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapDerivedLivingArrangementsLastLivedAddr(CoreCaseData caseData,
                                                              @MappingTarget DivorceSession divorceSession) {
-        if (StringUtils.isNotBlank(caseData.getD8DerivedLivingArrangementsLastLivedAddr())) {
+        if (StringUtils.isNotBlank(caseData.getD8DerivedLivingArrangementsLastLivedAddr())
+            && caseData.getD8LivingArrangementsLastLivedTogethAddr() != null) {
             divorceSession.getLivingArrangementsLastLivedTogetherAddress().setAddressField(
                 Arrays.asList(caseData.getD8DerivedLivingArrangementsLastLivedAddr().split(LINE_BREAK)));
 
@@ -658,7 +659,8 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapRespondentSolicitorAddress(CoreCaseData caseData,
                                                  @MappingTarget DivorceSession divorceSession) {
-        if (StringUtils.isNotBlank(caseData.getD8DerivedRespondentSolicitorAddr())) {
+        if (StringUtils.isNotBlank(caseData.getD8DerivedRespondentSolicitorAddr())
+            && caseData.getD8RespondentSolicitorAddress() != null) {
             divorceSession.getRespondentSolicitorAddress().setAddressField(
                 Arrays.asList(caseData.getD8DerivedRespondentSolicitorAddr().split(LINE_BREAK)));
 

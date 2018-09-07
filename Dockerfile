@@ -1,11 +1,15 @@
-FROM openjdk:8-jre-alpine
+FROM hmcts/cnp-java-base:openjdk-jre-8-alpine-1.1
 
-COPY build/install/div-case-formatter-service /opt/app/
+ENV APP div-case-formatter-service.jar
+ENV APPLICATION_TOTAL_MEMORY 512M
+ENV APPLICATION_SIZE_ON_DISK_IN_MB 53
+
+COPY build/libs/$APP /opt/app/
 
 WORKDIR /opt/app
 
 HEALTHCHECK --interval=100s --timeout=100s --retries=10 CMD http_proxy="" wget -q http://localhost:4011/health || exit 1
 
-EXPOSE 4009
+EXPOSE 4011
 
-ENTRYPOINT ["/opt/app/bin/div-case-formatter-service"]
+CMD ["sh", "-c", "java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap ${JAVA_OPTS} -jar /opt/app/$APP"

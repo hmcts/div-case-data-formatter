@@ -1,5 +1,5 @@
 {
-    "createdDate": "2018-07-16",
+    "createdDate": "2018-09-10",
     "D8ScreenHasMarriageBroken": "YES",
     "D8ScreenHasRespondentAddress": "YES",
     "D8ScreenHasMarriageCert": "YES",
@@ -118,7 +118,7 @@
         {
             "id": null,
             "value": {
-                "DocumentType": "petition",
+                "DocumentType": "other",
                 "DocumentLink": {
                     "document_url": "http://dm-store-aat.service.core-compute-aat.internal/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
                 },

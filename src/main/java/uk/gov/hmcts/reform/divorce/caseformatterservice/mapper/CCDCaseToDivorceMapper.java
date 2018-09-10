@@ -117,7 +117,7 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapCourtDetails(CoreCaseData caseData,
                                    @MappingTarget DivorceSession divorceSession) {
-        if(StringUtils.isNotBlank(divorceSession.getCourts())) {
+        if (StringUtils.isNotBlank(divorceSession.getCourts())) {
             divorceSession.setCourtDetails(courtDetails.get(divorceSession.getCourts()));
         }
     }

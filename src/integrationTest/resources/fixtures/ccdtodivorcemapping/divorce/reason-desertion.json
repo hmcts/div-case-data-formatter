@@ -202,6 +202,16 @@
     "respondentKnowsHomeAddress": null,
     "sessionKey": null,
     "courts": "southWest",
+    "courtDetails": {
+        "divorceCentre": "South West Regional Divorce Centre",
+        "courtCity": "Southampton",
+        "poBox": "PO Box 1792",
+        "postCode": "SO15 9GG",
+        "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
+        "email": "sw-region-divorce@hmcts.gsi.gov.uk",
+        "phoneNumber": "0300 303 0642",
+        "siteId": "AA03"
+    },
     "respondentSolicitorName": null,
     "respondentSolicitorCompany": null,
     "respondentSolicitorAddress": null,

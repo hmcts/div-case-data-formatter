@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
-import org.apache.commons.collections4.CollectionUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
@@ -275,6 +275,8 @@ public class DivorceSession {
     private String sessionKey;
     @ApiModelProperty(value = "Regional divorce unit.")
     private String courts;
+    @ApiModelProperty(value = "Regional divorce unit details")
+    private Map<String, String> courtDetails;
     @ApiModelProperty(value = "Name of solicitor used by respondent.")
     private String respondentSolicitorName;
     @ApiModelProperty(value = "Company of solicitor used by respondent.")
@@ -293,11 +295,4 @@ public class DivorceSession {
     @JsonProperty("d8")
     @Setter(AccessLevel.NONE)
     private List<UploadedFile> d8Documents;
-
-    public void setD8Documents(List<UploadedFile> d8Documents) {
-        if (CollectionUtils.isNotEmpty(d8Documents)) {
-            d8Documents.forEach(doc -> doc.setFileType("petition"));
-            this.d8Documents = d8Documents;
-        }
-    }
 }

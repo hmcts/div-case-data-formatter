@@ -207,6 +207,16 @@
     "respondentKnowsHomeAddress": null,
     "sessionKey": null,
     "courts": "eastMidlands",
+    "courtDetails": {
+        "divorceCentre": "East Midlands Regional Divorce Centre",
+        "courtCity": "Nottingham",
+        "poBox": "PO Box 10447",
+        "postCode": "NG2 9QN",
+        "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
+        "email": "eastmidlandsdivorce@hmcts.gsi.gov.uk",
+        "phoneNumber": "0300 303 0642",
+        "siteId": "AA01"
+    },
     "respondentSolicitorName": null,
     "respondentSolicitorCompany": null,
     "respondentSolicitorAddress": null,

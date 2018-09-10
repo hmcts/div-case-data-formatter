@@ -12,6 +12,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Pay
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
@@ -273,6 +274,8 @@ public class DivorceSession {
     private String respondentKnowsHomeAddress;
     @ApiModelProperty(hidden = true)
     private String sessionKey;
+    @ApiModelProperty(value = "Regional divorce unit details")
+    private Map<String, Map<String, String>> court;
     @ApiModelProperty(value = "Regional divorce unit.")
     private String courts;
     @ApiModelProperty(value = "Name of solicitor used by respondent.")

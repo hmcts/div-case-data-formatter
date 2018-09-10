@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -15,6 +16,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionDivorceFormatMapper.class,
@@ -24,6 +26,9 @@ public abstract class CCDCaseToDivorceMapper {
 
     private static final String LINE_BREAK = "\n";
     private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
+
+    @Value("#{${court.details}}")
+    private Map<String, Map<String, String>> courtDetails;
 
     @Mapping(source = "d8HelpWithFeesReferenceNumber", target = "helpWithFeesReferenceNumber")
     @Mapping(source = "d8DivorceWho", target = "divorceWho")
@@ -107,6 +112,14 @@ public abstract class CCDCaseToDivorceMapper {
         divorceSession.setMarriageDateDay(String.valueOf(marriageDate.getDayOfMonth()));
         divorceSession.setMarriageDateMonth(String.valueOf(marriageDate.getMonthValue()));
         divorceSession.setMarriageDateYear(String.valueOf(marriageDate.getYear()));
+    }
+
+    @AfterMapping
+    protected void mapCourtDetails(CoreCaseData caseData,
+                                   @MappingTarget DivorceSession divorceSession) {
+        if(StringUtils.isNotBlank(divorceSession.getCourts())) {
+            divorceSession.setCourtDetails(courtDetails.get(divorceSession.getCourts()));
+        }
     }
 
     @AfterMapping

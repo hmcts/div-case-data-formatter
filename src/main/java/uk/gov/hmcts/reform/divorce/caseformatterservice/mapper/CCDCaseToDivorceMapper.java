@@ -96,6 +96,13 @@ public abstract class CCDCaseToDivorceMapper {
         return YesNoAnswer.fromInput(value).getAnswer();
     }
 
+    private YesNoAnswer translateToYesNo(final String value) {
+        if (Objects.isNull(value)) {
+            return null;
+        }
+        return YesNoAnswer.fromInput(value);
+    }
+
     private String translateToBooleanString(final String value) {
         if (Objects.isNull(value)) {
             return null;
@@ -106,12 +113,14 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapMarriageDate(CoreCaseData caseData,
                                    @MappingTarget DivorceSession divorceSession) {
-        LocalDate marriageDate =
-            LocalDate.parse(caseData.getD8MarriageDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT));
+        if (caseData.getD8MarriageDate() != null) {
+            LocalDate marriageDate =
+                LocalDate.parse(caseData.getD8MarriageDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT));
 
-        divorceSession.setMarriageDateDay(String.valueOf(marriageDate.getDayOfMonth()));
-        divorceSession.setMarriageDateMonth(String.valueOf(marriageDate.getMonthValue()));
-        divorceSession.setMarriageDateYear(String.valueOf(marriageDate.getYear()));
+            divorceSession.setMarriageDateDay(String.valueOf(marriageDate.getDayOfMonth()));
+            divorceSession.setMarriageDateMonth(String.valueOf(marriageDate.getMonthValue()));
+            divorceSession.setMarriageDateYear(String.valueOf(marriageDate.getYear()));
+        }
     }
 
     @AfterMapping
@@ -324,8 +333,9 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapHelpWithFeesNeedHelp(CoreCaseData caseData,
                                            @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setHelpWithFeesNeedHelp(YesNoAnswer.fromInput(caseData.getD8HelpWithFeesNeedHelp()));
+        divorceSession.setHelpWithFeesNeedHelp(translateToYesNo(caseData.getD8HelpWithFeesNeedHelp()));
     }
+
 
     @AfterMapping
     protected void mapHelpWithFeesAppliedForFees(CoreCaseData caseData,

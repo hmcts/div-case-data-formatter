@@ -48,7 +48,7 @@ public class NullAddressesCaseToDivorceMapperUTest {
                 CoreCaseData.class);
 
         DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/addresses-null.json", DivorceSession.class);
+            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/addresses-derived-not-null.json", DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

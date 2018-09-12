@@ -137,14 +137,14 @@ public abstract class CCDCaseToDivorceMapper {
             LocalDate date = LocalDate.parse(
                 caseData.getD8ReasonForDivorceSeperationDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT));
 
-            if(caseData.getD8MarriageDate() != null) {
+            if (caseData.getD8MarriageDate() != null) {
                 divorceSession.setReasonForDivorceSeperationDateBeforeMarriageDate(String.valueOf(date.isBefore(
                     LocalDate.parse(
                         caseData.getD8MarriageDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT))
                 )));
             }
 
-            if(caseData.getCreatedDate() != null) {
+            if (caseData.getCreatedDate() != null) {
                 divorceSession.setReasonForDivorceSeperationDateInFuture(String.valueOf(date.isAfter(
                     LocalDate.parse(
                         caseData.getCreatedDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT))
@@ -164,7 +164,7 @@ public abstract class CCDCaseToDivorceMapper {
             LocalDate date = LocalDate.parse(
                 caseData.getD8ReasonForDivorceDesertionDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT));
 
-            if(caseData.getCreatedDate() != null) {
+            if (caseData.getCreatedDate() != null) {
                 divorceSession.setReasonForDivorceDesertionDateInFuture(String.valueOf(date.isAfter(
                     LocalDate.parse(
                         caseData.getCreatedDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT))
@@ -534,7 +534,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapPetitionerHomeAddress(CoreCaseData caseData,
                                             @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedPetitionerHomeAddress())) {
-            if(divorceSession.getPetitionerHomeAddress() == null) {
+            if (divorceSession.getPetitionerHomeAddress() == null) {
                 divorceSession.setPetitionerHomeAddress(new Address());
             }
 
@@ -543,7 +543,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getPetitionerHomeAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8PetitionerHomeAddress() != null && StringUtils.isNotBlank(caseData.getD8PetitionerHomeAddress().getPostCode())) {
+            if (caseData.getD8PetitionerHomeAddress() != null
+                && StringUtils.isNotBlank(caseData.getD8PetitionerHomeAddress().getPostCode())) {
                 divorceSession.getPetitionerHomeAddress().setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getPetitionerHomeAddress().setValidPostcode(true);
             } else {
@@ -558,7 +559,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapPetitionerCorrespondenceAddress(CoreCaseData caseData,
                                                       @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedPetitionerCorrespondenceAddress())) {
-            if(divorceSession.getPetitionerCorrespondenceAddress() == null) {
+            if (divorceSession.getPetitionerCorrespondenceAddress() == null) {
                 divorceSession.setPetitionerCorrespondenceAddress(new Address());
             }
 
@@ -567,7 +568,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getPetitionerCorrespondenceAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8PetitionerCorrespondenceAddress() != null && StringUtils.isNotBlank(caseData.getD8PetitionerCorrespondenceAddress().getPostCode())) {
+            if (caseData.getD8PetitionerCorrespondenceAddress() != null
+                && StringUtils.isNotBlank(caseData.getD8PetitionerCorrespondenceAddress().getPostCode())) {
                 divorceSession.getPetitionerCorrespondenceAddress().setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getPetitionerCorrespondenceAddress().setValidPostcode(true);
             } else {
@@ -582,7 +584,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapRespondentHomeAddress(CoreCaseData caseData,
                                             @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedRespondentHomeAddress())) {
-            if(divorceSession.getRespondentHomeAddress() == null) {
+            if (divorceSession.getRespondentHomeAddress() == null) {
                 divorceSession.setRespondentHomeAddress(new Address());
             }
 
@@ -591,7 +593,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getRespondentHomeAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8RespondentHomeAddress() != null && StringUtils.isNotBlank(caseData.getD8RespondentHomeAddress().getPostCode())) {
+            if (caseData.getD8RespondentHomeAddress() != null
+                && StringUtils.isNotBlank(caseData.getD8RespondentHomeAddress().getPostCode())) {
                 divorceSession.getRespondentHomeAddress().setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getRespondentHomeAddress().setValidPostcode(true);
             } else {
@@ -606,7 +609,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapRespondentCorrespondenceAddress(CoreCaseData caseData,
                                                       @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedRespondentCorrespondenceAddr())) {
-            if(divorceSession.getRespondentCorrespondenceAddress() == null) {
+            if (divorceSession.getRespondentCorrespondenceAddress() == null) {
                 divorceSession.setRespondentCorrespondenceAddress(new Address());
             }
 
@@ -615,7 +618,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getRespondentCorrespondenceAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8RespondentCorrespondenceAddress() !=  null && StringUtils.isNotBlank(caseData.getD8RespondentCorrespondenceAddress().getPostCode())) {
+            if (caseData.getD8RespondentCorrespondenceAddress() !=  null
+                && StringUtils.isNotBlank(caseData.getD8RespondentCorrespondenceAddress().getPostCode())) {
                 divorceSession.getRespondentCorrespondenceAddress().setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getRespondentCorrespondenceAddress().setValidPostcode(true);
             } else {
@@ -631,7 +635,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapReasonForDivorceAdultery3rdAddress(CoreCaseData caseData,
                                                          @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedReasonForDivorceAdultery3rdAddr())) {
-            if(divorceSession.getReasonForDivorceAdultery3rdAddress() == null) {
+            if (divorceSession.getReasonForDivorceAdultery3rdAddress() == null) {
                 divorceSession.setReasonForDivorceAdultery3rdAddress(new Address());
             }
 
@@ -640,7 +644,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getReasonForDivorceAdultery3rdAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8ReasonForDivorceAdultery3rdAddress() != null && StringUtils.isNotBlank(caseData.getD8ReasonForDivorceAdultery3rdAddress().getPostCode())) {
+            if (caseData.getD8ReasonForDivorceAdultery3rdAddress() != null
+                && StringUtils.isNotBlank(caseData.getD8ReasonForDivorceAdultery3rdAddress().getPostCode())) {
                 divorceSession.getReasonForDivorceAdultery3rdAddress().setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getReasonForDivorceAdultery3rdAddress().setValidPostcode(true);
             } else {
@@ -684,7 +689,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapDerivedLivingArrangementsLastLivedAddr(CoreCaseData caseData,
                                                              @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedLivingArrangementsLastLivedAddr())) {
-            if(divorceSession.getLivingArrangementsLastLivedTogetherAddress() == null) {
+            if (divorceSession.getLivingArrangementsLastLivedTogetherAddress() == null) {
                 divorceSession.setLivingArrangementsLastLivedTogetherAddress(new Address());
             }
 
@@ -693,7 +698,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getLivingArrangementsLastLivedTogetherAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8LivingArrangementsLastLivedTogethAddr() != null && StringUtils.isNotBlank(caseData.getD8LivingArrangementsLastLivedTogethAddr().getPostCode())) {
+            if (caseData.getD8LivingArrangementsLastLivedTogethAddr() != null
+                && StringUtils.isNotBlank(caseData.getD8LivingArrangementsLastLivedTogethAddr().getPostCode())) {
                 divorceSession.getLivingArrangementsLastLivedTogetherAddress()
                     .setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getLivingArrangementsLastLivedTogetherAddress().setValidPostcode(true);
@@ -711,7 +717,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapRespondentSolicitorAddress(CoreCaseData caseData,
                                                  @MappingTarget DivorceSession divorceSession) {
         if (StringUtils.isNotBlank(caseData.getD8DerivedRespondentSolicitorAddr())) {
-            if(divorceSession.getRespondentSolicitorAddress() == null) {
+            if (divorceSession.getRespondentSolicitorAddress() == null) {
                 divorceSession.setRespondentSolicitorAddress(new Address());
             }
 
@@ -720,7 +726,8 @@ public abstract class CCDCaseToDivorceMapper {
 
             divorceSession.getRespondentSolicitorAddress().setAddressConfirmed(true);
 
-            if (caseData.getD8RespondentSolicitorAddress() != null && StringUtils.isNotBlank(caseData.getD8RespondentSolicitorAddress().getPostCode())) {
+            if (caseData.getD8RespondentSolicitorAddress() != null
+                && StringUtils.isNotBlank(caseData.getD8RespondentSolicitorAddress().getPostCode())) {
                 divorceSession.getRespondentSolicitorAddress().setAddressType(AddressType.POST_CODE.getType());
                 divorceSession.getRespondentSolicitorAddress().setValidPostcode(true);
             } else {

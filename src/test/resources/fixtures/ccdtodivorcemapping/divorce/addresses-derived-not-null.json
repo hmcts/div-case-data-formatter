@@ -6,8 +6,8 @@
     "screenHasPrinter":"Yes",
     "helpWithFeesNeedHelp":"YES",
     "helpWithFeesAppliedForFees":"Yes",
-    "helpWithFeesReferenceNumber":"HWF-123-456",
-    "divorceWho":"husband",
+    "helpWithFeesReferenceNumber":"HWF-123-123",
+    "divorceWho":"wife",
     "marriageIsSameSexCouple":"No",
     "marriageDateDay":"2",
     "marriageDateMonth":"2",
@@ -21,28 +21,29 @@
     "placeOfMarriage":null,
     "jurisdictionPath":null,
     "jurisdictionConnection":[
-        "A",
-        "C"
+        "B",
+        "E",
+        "F"
     ],
     "connections":{
-        "A":"The Petitioner and the Respondent are habitually resident in England and Wales",
-        "B":null,
-        "C":"The Respondent is habitually resident in England and Wales",
+        "A":null,
+        "B":"The Petitioner and the Respondent were last habitually resident, insofar as one of them still resides there",
+        "C":null,
         "D":null,
-        "E":null,
-        "F":null,
+        "E":"The Petitioner is domiciled and habitually resident in England and Wales and has resided there for at least six months immediately prior to the petition",
+        "F":"The Petitioner and Respondent are both domiciled in England and Wales",
         "G":null
     },
     "jurisdictionPetitionerResidence":"Yes",
-    "jurisdictionRespondentResidence":"Yes",
-    "jurisdictionConfidentLegal":"Yes",
+    "jurisdictionRespondentResidence":"No",
+    "jurisdictionConfidentLegal":"No",
     "jurisdictionConnectionFirst":null,
-    "jurisdictionLastTwelveMonths":null,
-    "jurisdictionPetitionerDomicile":null,
-    "jurisdictionRespondentDomicile":null,
-    "jurisdictionLastHabitualResident":null,
+    "jurisdictionLastTwelveMonths":"No",
+    "jurisdictionPetitionerDomicile":"Yes",
+    "jurisdictionRespondentDomicile":"Yes",
+    "jurisdictionLastHabitualResident":"Yes",
     "residualJurisdictionEligible":null,
-    "connectionSummary":null,
+    "connectionSummary":"Yes",
     "petitionerContactDetailsConfidential":"share",
     "petitionerFirstName":"John",
     "petitionerLastName":"Smith",
@@ -52,21 +53,108 @@
     "marriageRespondentName":"Jenny Benny",
     "petitionerNameDifferentToMarriageCertificate":"Yes",
     "petitionerNameChangedHow":[
-        "marriageCertificate"
+        "marriageCertificate",
+        "deedPoll",
+        "other"
     ],
-    "petitionerNameChangedHowOtherDetails":null,
+    "petitionerNameChangedHowOtherDetails":"How I changed name",
     "petitionerEmail":"simulate-delivered@notifications.service.gov.uk",
     "petitionerPhoneNumber":"01234567890",
-    "petitionerHomeAddress":null,
-    "petitionerCorrespondenceUseHomeAddress":"No",
-    "petitionerCorrespondenceAddress":null,
-    "livingArrangementsLiveTogether":"No",
-    "livingArrangementsLastLivedTogether":"No",
-    "livingArrangementsLastLivedTogetherAddress":null,
-    "respondentLivesAtLastAddress":"No",
-    "respondentHomeAddress":null,
-    "respondentCorrespondenceUseHomeAddress":"Solicitor",
-    "respondentCorrespondenceAddress":null,
+    "petitionerHomeAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
+    "petitionerCorrespondenceUseHomeAddress":"Yes",
+    "petitionerCorrespondenceAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
+    "livingArrangementsLiveTogether":"Yes",
+    "livingArrangementsLastLivedTogether":null,
+    "livingArrangementsLastLivedTogetherAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
+    "respondentLivesAtLastAddress":null,
+    "respondentHomeAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
+    "respondentCorrespondenceUseHomeAddress":"No",
+    "respondentCorrespondenceAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
     "reasonForDivorce":"unreasonable-behaviour",
     "reasonForDivorceHasMarriageDate":"true",
     "reasonForDivorceShowAdultery":"true",
@@ -82,7 +170,24 @@
     "reasonForDivorceAdulteryWishToName":null,
     "reasonForDivorceAdultery3rdPartyFirstName":null,
     "reasonForDivorceAdultery3rdPartyLastName":null,
-    "reasonForDivorceAdultery3rdAddress":null,
+    "reasonForDivorceAdultery3rdAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
     "reasonForDivorceAdulteryKnowWhere":null,
     "reasonForDivorceAdulteryKnowWhen":null,
     "reasonForDivorceAdulteryDetails":null,
@@ -104,7 +209,7 @@
     "claimsCostsFrom":[
         "respondent"
     ],
-    "claimsCostsAppliedForFees":"true",
+    "claimsCostsAppliedForFees":"false",
     "reasonForDivorceClaiming5YearSeparation":"false",
     "reasonForDivorceClaimingAdultery":"false",
     "reasonForDivorceSeperationDay":null,
@@ -181,9 +286,26 @@
         }
     },
     "courts":"eastMidlands",
-    "respondentSolicitorName":"Justin",
-    "respondentSolicitorCompany":"Case",
-    "respondentSolicitorAddress":null,
+    "respondentSolicitorName":null,
+    "respondentSolicitorCompany":null,
+    "respondentSolicitorAddress":{
+        "addressType":"abroad",
+        "postcode":null,
+        "street1":null,
+        "street2":null,
+        "town":null,
+        "postcodeManual":null,
+        "addressConfirmed":true,
+        "addressAbroad":"82 Landor Road\nLondon\nSW9 9PE",
+        "validPostcode":false,
+        "postcodeError":false,
+        "url":null,
+        "address":[
+            "82 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
     "confirmPrayer":null,
     "payment":null,
     "marriageCertificateFiles":[
@@ -193,7 +315,7 @@
             "lastModifiedBy":0,
             "modifiedOn":null,
             "fileName":"govuklogo.png",
-            "fileUrl":"https://api-gateway.test.dm.reform.hmcts.net/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
+            "fileUrl":"http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "mimeType":null,
             "status":null
         },
@@ -203,7 +325,7 @@
             "lastModifiedBy":0,
             "modifiedOn":null,
             "fileName":"d8-eng.pdf",
-            "fileUrl":"https://api-gateway.test.dm.reform.hmcts.net/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+            "fileUrl":"http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "mimeType":null,
             "status":null
         }
@@ -211,4 +333,3 @@
     "existingPayments":null,
     "d8":null
 }
-

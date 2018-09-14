@@ -97,13 +97,6 @@ public abstract class CCDCaseToDivorceMapper {
         return YesNoAnswer.fromInput(value).getAnswer();
     }
 
-    private YesNoAnswer translateToYesNo(final String value) {
-        if (Objects.isNull(value)) {
-            return null;
-        }
-        return YesNoAnswer.fromInput(value);
-    }
-
     private String translateToBooleanString(final String value) {
         if (Objects.isNull(value)) {
             return null;
@@ -340,7 +333,7 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapHelpWithFeesNeedHelp(CoreCaseData caseData,
                                            @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setHelpWithFeesNeedHelp(translateToYesNo(caseData.getD8HelpWithFeesNeedHelp()));
+        divorceSession.setHelpWithFeesNeedHelp(translateToYesNoString(caseData.getD8HelpWithFeesNeedHelp()));
     }
 
 

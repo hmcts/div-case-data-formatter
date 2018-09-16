@@ -41,15 +41,15 @@ public class DivorceSession {
     @ApiModelProperty(
         value = "The day component of the marriage date in 'dd' transformToCCDFormat. "
             + "This field is not currently used.")
-    private String marriageDateDay;
+    private Integer marriageDateDay;
     @ApiModelProperty(
         value = "The month component of the marriage date in 'MM' transformToCCDFormat. "
             + "This field is not currently used")
-    private String marriageDateMonth;
+    private Integer marriageDateMonth;
     @ApiModelProperty(
         value = "The year component of the marriage date in 'yyyy' transformToCCDFormat. "
             + "This field is not currently used")
-    private String marriageDateYear;
+    private Integer marriageDateYear;
     @ApiModelProperty(
         value = "The marriage date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
@@ -208,11 +208,11 @@ public class DivorceSession {
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceClaimingAdultery;
     @ApiModelProperty(value = "Separation date day in dd transformToCCDFormat.")
-    private String reasonForDivorceSeperationDay;
+    private Integer reasonForDivorceSeperationDay;
     @ApiModelProperty(value = "Separation date month in MM transformToCCDFormat.")
-    private String reasonForDivorceSeperationMonth;
+    private Integer reasonForDivorceSeperationMonth;
     @ApiModelProperty(value = "Separation date year in yyyy transformToCCDFormat.")
-    private String reasonForDivorceSeperationYear;
+    private Integer reasonForDivorceSeperationYear;
     @ApiModelProperty(
         value = "The separation date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
@@ -225,11 +225,11 @@ public class DivorceSession {
     @ApiModelProperty(value = "Is separation date before marriage date?", allowableValues = "Yes, No")
     private String reasonForDivorceSeperationDateBeforeMarriageDate;
     @ApiModelProperty(value = "Desertion date day in dd transformToCCDFormat.")
-    private String reasonForDivorceDesertionDay;
+    private Integer reasonForDivorceDesertionDay;
     @ApiModelProperty(value = "Desertion date month in MM transformToCCDFormat.")
-    private String reasonForDivorceDesertionMonth;
+    private Integer reasonForDivorceDesertionMonth;
     @ApiModelProperty(value = "Desertion date year in yyyy transformToCCDFormat.")
-    private String reasonForDivorceDesertionYear;
+    private Integer reasonForDivorceDesertionYear;
     @ApiModelProperty(value = "Is desertion date before marriage?", allowableValues = "Yes, No")
     private String reasonForDivorceDesertionBeforeMarriage;
     @ApiModelProperty(value = "Is desertion date in the future?", allowableValues = "Yes, No")

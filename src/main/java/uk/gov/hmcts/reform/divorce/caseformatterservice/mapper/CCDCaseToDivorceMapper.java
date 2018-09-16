@@ -111,9 +111,9 @@ public abstract class CCDCaseToDivorceMapper {
             LocalDate marriageDate =
                 LocalDate.parse(caseData.getD8MarriageDate(), DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT));
 
-            divorceSession.setMarriageDateDay(String.valueOf(marriageDate.getDayOfMonth()));
-            divorceSession.setMarriageDateMonth(String.valueOf(marriageDate.getMonthValue()));
-            divorceSession.setMarriageDateYear(String.valueOf(marriageDate.getYear()));
+            divorceSession.setMarriageDateDay(marriageDate.getDayOfMonth());
+            divorceSession.setMarriageDateMonth(marriageDate.getMonthValue());
+            divorceSession.setMarriageDateYear(marriageDate.getYear());
         }
     }
 
@@ -144,9 +144,9 @@ public abstract class CCDCaseToDivorceMapper {
                 )));
             }
 
-            divorceSession.setReasonForDivorceSeperationDay(String.valueOf(date.getDayOfMonth()));
-            divorceSession.setReasonForDivorceSeperationMonth(String.valueOf(date.getMonthValue()));
-            divorceSession.setReasonForDivorceSeperationYear(String.valueOf(date.getYear()));
+            divorceSession.setReasonForDivorceSeperationDay(date.getDayOfMonth());
+            divorceSession.setReasonForDivorceSeperationMonth(date.getMonthValue());
+            divorceSession.setReasonForDivorceSeperationYear(date.getYear());
         }
     }
 
@@ -164,9 +164,9 @@ public abstract class CCDCaseToDivorceMapper {
                 )));
             }
 
-            divorceSession.setReasonForDivorceDesertionDay(String.valueOf(date.getDayOfMonth()));
-            divorceSession.setReasonForDivorceDesertionMonth(String.valueOf(date.getMonthValue()));
-            divorceSession.setReasonForDivorceDesertionYear(String.valueOf(date.getYear()));
+            divorceSession.setReasonForDivorceDesertionDay(date.getDayOfMonth());
+            divorceSession.setReasonForDivorceDesertionMonth(date.getMonthValue());
+            divorceSession.setReasonForDivorceDesertionYear(date.getYear());
         }
     }
 

@@ -1,6 +1,6 @@
 {
     "D8legalProcess" : null,
-    "D8caseReference" : null,
+    "D8caseReference" : "caseReference",
     "createdDate" : null,
     "D8ScreenHasMarriageBroken" : "YES",
     "D8ScreenHasRespondentAddress" : "YES",

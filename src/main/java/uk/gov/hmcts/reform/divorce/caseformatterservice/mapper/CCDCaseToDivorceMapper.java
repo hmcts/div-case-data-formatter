@@ -32,6 +32,7 @@ public abstract class CCDCaseToDivorceMapper {
     private Map<String, Map<String, String>> courtDetails;
 
     @Mapping(source = "d8HelpWithFeesReferenceNumber", target = "helpWithFeesReferenceNumber")
+    @Mapping(source = "d8caseReference", target = "caseReference")
     @Mapping(source = "d8DivorceWho", target = "divorceWho")
     @Mapping(source = "d8MarriageDate", dateFormat = SIMPLE_DATE_FORMAT, target = "marriageDate")
     @Mapping(source = "d8ReasonForDivorceDesertionDay", target = "reasonForDivorceDesertionDay")

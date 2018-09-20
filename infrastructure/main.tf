@@ -3,6 +3,9 @@ locals {
     local_env                 = "${(var.env == "preview" || var.env == "spreview") ? (var.env == "preview" ) ? "aat" : "saat" : var.env}"
 
     dm_store_url              = "http://dm-store-${local.local_env}.service.core-compute-${local.local_env}.internal"
+    
+    asp_name = "${var.env == "prod" ? "div-cfs-prod" : "${var.product}-${var.env}"}"
+    asp_rg = "${var.env == "prod" ? "div-cfs-prod" : "${var.product}-shared-infrastructure-${var.env}"}"
 }
 
 module "div-cfs" {
@@ -16,6 +19,8 @@ module "div-cfs" {
     is_frontend                     = false
     capacity                        = "${var.capacity}"
     common_tags                     = "${var.common_tags}"
+    asp_name                        = "${local.asp_name}"
+    asp_rg                          = "${local.asp_rg}"
 
     app_settings = {
         REFORM_SERVICE_NAME                                   = "${var.component}"

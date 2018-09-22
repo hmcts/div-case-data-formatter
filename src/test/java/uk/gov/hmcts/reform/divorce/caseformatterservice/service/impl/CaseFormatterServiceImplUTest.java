@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
@@ -15,6 +16,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupd
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.IdamUserService;
@@ -24,6 +26,7 @@ import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -47,6 +50,9 @@ public class CaseFormatterServiceImplUTest {
 
     @Mock
     private DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
+
+    @Mock
+    private DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
 
     @InjectMocks
     private CaseFormatterServiceImpl classUnderTest;
@@ -187,6 +193,18 @@ public class CaseFormatterServiceImplUTest {
             Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2));
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void whenGetAosCaseData_thenProceedAsExpected() {
+        DivorceSession divorceSession = mock(DivorceSession.class);
+        AosCaseData aosCaseData = mock(AosCaseData.class);
+
+        when(divorceCaseToAosCaseMapper.divorceCaseDataToAosCaseData(divorceSession)).thenReturn(aosCaseData);
+
+        assertEquals(aosCaseData, classUnderTest.getAosCaseData(divorceSession));
+
+        verify(divorceCaseToAosCaseMapper).divorceCaseDataToAosCaseData(divorceSession);
     }
 
     private GeneratedDocumentInfo createGeneratedDocument(String url, String documentType, String fileName) {

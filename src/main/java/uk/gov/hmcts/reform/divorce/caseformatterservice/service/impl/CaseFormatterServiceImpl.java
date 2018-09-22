@@ -4,12 +4,14 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
@@ -33,6 +35,9 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Autowired
     private DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
+
+    @Autowired
+    private DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {
@@ -70,5 +75,10 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         }
 
         return coreCaseData;
+    }
+
+    @Override
+    public AosCaseData getAosCaseData(DivorceSession divorceSession) {
+        return divorceCaseToAosCaseMapper.divorceCaseDataToAosCaseData(divorceSession);
     }
 }

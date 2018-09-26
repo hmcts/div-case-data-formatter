@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.service;
 
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -13,4 +14,6 @@ public interface CaseFormatterService {
     DivorceSession transformToDivorceSession(CoreCaseData coreCaseData);
 
     CoreCaseData addDocuments(CoreCaseData coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);
+
+    AosCaseData getAosCaseData(DivorceSession divorceSession);
 }

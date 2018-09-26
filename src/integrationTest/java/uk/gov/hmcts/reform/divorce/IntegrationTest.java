@@ -23,7 +23,7 @@ public abstract class IntegrationTest {
     private String userToken;
 
     @Value("${case.formatter.service.base.uri}")
-    String serverUrl;
+    private String serverUrl;
 
     @Autowired
     private IdamUtils idamTestSupportUtil;

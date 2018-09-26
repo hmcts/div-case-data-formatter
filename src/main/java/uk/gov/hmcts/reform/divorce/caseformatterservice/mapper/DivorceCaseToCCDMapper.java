@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderService;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment.PaymentContext;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
@@ -261,10 +260,6 @@ public abstract class DivorceCaseToCCDMapper {
     protected void mapHelpWithFeesNeedHelp(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8HelpWithFeesNeedHelp(
                 translateToStringYesNo(divorceSession.getHelpWithFeesNeedHelp()));
-    }
-
-    private String getYesNoAnswer(YesNoAnswer yesNoAnswer) {
-        return yesNoAnswer == null ? null : yesNoAnswer.getAnswer();
     }
 
     @AfterMapping

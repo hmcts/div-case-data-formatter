@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -65,4 +66,16 @@ public class CaseFormatterController {
         return ResponseEntity.ok(caseFormatterService.addDocuments(documentUpdateRequest.getCaseData(),
             documentUpdateRequest.getDocuments()));
     }
+
+    @PostMapping(path = "/to-aos-submit-format")
+    @ApiOperation(value = "Given a case in Divorce format, will extract the AOS data and convert it to CCD format")
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Case transformed into AOS format", response = AosCaseData.class),
+        }
+    )
+    public ResponseEntity<AosCaseData> getAosCaseData(
+        @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession data) {
+        return ResponseEntity.ok(caseFormatterService.getAosCaseData(data));
+    }
+
 }

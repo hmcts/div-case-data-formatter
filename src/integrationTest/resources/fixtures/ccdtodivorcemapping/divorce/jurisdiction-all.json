@@ -1,13 +1,10 @@
 {
     "expires": 0,
-    "caseReference" : null,
     "screenHasMarriageBroken": "Yes",
     "screenHasRespondentAddress": "Yes",
     "screenHasMarriageCert": "Yes",
     "screenHasPrinter": "Yes",
     "helpWithFeesNeedHelp": "No",
-    "helpWithFeesAppliedForFees": null,
-    "helpWithFeesReferenceNumber": null,
     "divorceWho": "wife",
     "marriageIsSameSexCouple": "Yes",
     "marriageDateDay": 2,
@@ -15,12 +12,6 @@
     "marriageDateYear": 2001,
     "marriageDate": "2001-02-02T00:00:00.000+0000",
     "marriageCanDivorce": "true",
-    "marriedInUk": null,
-    "certificateInEnglish": null,
-    "certifiedTranslation": null,
-    "countryName": null,
-    "placeOfMarriage": null,
-    "jurisdictionPath": null,
     "jurisdictionConnection": [
         "A",
         "B",
@@ -41,9 +32,6 @@
     },
     "jurisdictionPetitionerResidence": "No",
     "jurisdictionRespondentResidence": "No",
-    "jurisdictionConfidentLegal": null,
-    "jurisdictionConnectionFirst": null,
-    "jurisdictionLastTwelveMonths": null,
     "jurisdictionPetitionerDomicile": "No",
     "jurisdictionRespondentDomicile": "No",
     "jurisdictionLastHabitualResident": "No",
@@ -60,7 +48,6 @@
     "petitionerNameChangedHow": [
         "marriageCertificate"
     ],
-    "petitionerNameChangedHowOtherDetails": null,
     "petitionerEmail": "simulate-delivered@notifications.service.gov.uk",
     "petitionerPhoneNumber": "01234567890",
     "petitionerHomeAddress": {
@@ -101,9 +88,6 @@
         ]
     },
     "livingArrangementsLiveTogether": "Yes",
-    "livingArrangementsLastLivedTogether": null,
-    "livingArrangementsLastLivedTogetherAddress": null,
-    "respondentLivesAtLastAddress": null,
     "respondentHomeAddress": {
         "addressType": "postcode",
         "postcode": "SW9 9PE",
@@ -153,16 +137,6 @@
     "reasonForDivorceBehaviourDetails": [
         "My wife is having an affair this week."
     ],
-    "reasonForDivorceAdulteryWishToName": null,
-    "reasonForDivorceAdultery3rdPartyFirstName": null,
-    "reasonForDivorceAdultery3rdPartyLastName": null,
-    "reasonForDivorceAdultery3rdAddress": null,
-    "reasonForDivorceAdulteryKnowWhere": null,
-    "reasonForDivorceAdulteryKnowWhen": null,
-    "reasonForDivorceAdulteryDetails": null,
-    "reasonForDivorceAdulteryWhenDetails": null,
-    "reasonForDivorceAdulteryWhereDetails": null,
-    "reasonForDivorceDesertionAlright": null,
     "legalProceedings": "Yes",
     "legalProceedingsRelated": [
         "children"
@@ -181,36 +155,6 @@
     "claimsCostsAppliedForFees": "false",
     "reasonForDivorceClaiming5YearSeparation": "false",
     "reasonForDivorceClaimingAdultery": "false",
-    "reasonForDivorceSeperationDay": null,
-    "reasonForDivorceSeperationMonth": null,
-    "reasonForDivorceSeperationYear": null,
-    "reasonForDivorceSeperationDate": null,
-    "reasonForDivorceSeperationDateIsSameOrAfterLimitDate": null,
-    "reasonForDivorceSeperationDateInFuture": null,
-    "reasonForDivorceSeperationDateBeforeMarriageDate": null,
-    "reasonForDivorceDesertionDay": null,
-    "reasonForDivorceDesertionMonth": null,
-    "reasonForDivorceDesertionYear": null,
-    "reasonForDivorceDesertionBeforeMarriage": null,
-    "reasonForDivorceDesertionDateInFuture": null,
-    "reasonForDivorceDesertionDate": null,
-    "reasonForDivorceDesertionAgreed": null,
-    "reasonForDivorceDesertionDetails": null,
-    "marriageIsFuture": null,
-    "marriageMoreThan100": null,
-    "respondentHome": null,
-    "reasonForDivorceHasMarriage": null,
-    "reasonForDivorceAdultery3rd": null,
-    "reasonForDivorceSeperation": null,
-    "reasonForDivorceSeperationIsSameOrAfterLimit": null,
-    "reasonForDivorceSeperationInFuture": null,
-    "reasonForDivorceSeperationBeforeMarriage": null,
-    "reasonForDivorceDesertionInFuture": null,
-    "reasonForDivorceDesertion": null,
-    "respondentNameAsOnMarriageCertificate": null,
-    "respondentCorrespondenceSendToSolicitor": null,
-    "respondentKnowsHomeAddress": null,
-    "sessionKey": null,
     "court":{
         "eastMidlands":{
             "divorceCentre":"East Midlands Regional Divorce Centre",
@@ -255,11 +199,6 @@
         }
     },
     "courts": "eastMidlands",
-    "respondentSolicitorName": null,
-    "respondentSolicitorCompany": null,
-    "respondentSolicitorAddress": null,
-    "confirmPrayer": null,
-    "payment": null,
     "marriageCertificateFiles": [
         {
             "createdBy": 0,
@@ -281,7 +220,5 @@
             "mimeType": null,
             "status": null
         }
-    ],
-    "existingPayments": null,
-    "d8": null
+    ]
 }

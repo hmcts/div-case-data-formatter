@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 public class DivorceSession {
     @ApiModelProperty(value = "Session expiry timestamp.", hidden = true)
@@ -298,6 +300,45 @@ public class DivorceSession {
     @JsonProperty("d8")
     @Setter(AccessLevel.NONE)
     private List<UploadedFile> d8Documents;
+
+    //Aos Fields Mappings Start
+    @ApiModelProperty(value = "Respondent confirmed petition read.")
+    private String respConfirmReadPetition;
+    @ApiModelProperty(value = "Respondent agreed to claimed jurisdiction?")
+    private String respJurisdictionAgree;
+    @ApiModelProperty(value = "Respondent agreed or disagree with the reason for divorce?")
+    private String respAdmitOrConsentToFact;
+    @ApiModelProperty(value = "Does respondent defend the divorce?")
+    private String respDefendsDivorce;
+    @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction")
+    private String respJurisdictionDisagreeReason;
+    @ApiModelProperty(value = "Respondent country of residence")
+    private String respJurisdictionRespCountryOfResidence;
+    @ApiModelProperty(value = "Do legal proceedings exist (respondent)?")
+    private String respLegalProceedingsExist;
+    @ApiModelProperty(value = "Legal proceedings details (respondent)")
+    private String respLegalProceedingsDescription;
+    @ApiModelProperty(value = "Does respondent agree to costs?")
+    private String respAgreeToCosts;
+    @ApiModelProperty(value = "Respondent's costs amount")
+    private String respCostsAmount;
+    @ApiModelProperty(value = "Respondent's costs reason")
+    private String respCostsReason;
+    @ApiModelProperty(value = "Respondent's email address")
+    private String respEmailAddress;
+    @ApiModelProperty(value = "Respondent's telephone number")
+    private String respPhoneNumber;
+    @ApiModelProperty(value = "Respondent agreed to statement of truth?")
+    private String respStatementOfTruth;
+    @ApiModelProperty(value = "Respondent consented to email communications?")
+    private String respConsentToEmail;
+    @ApiModelProperty(value = "Respondent requires consideration of final situation?")
+    private String respConsiderFinancialSituation;
+    @ApiModelProperty(value = "Respondent relying on hardship defense?")
+    private String respHardshipDefenseResponse;
+    @ApiModelProperty(value = "Hardship defence details")
+    private String respHardshipDescription;
+    //Aos Fields Mappings End
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

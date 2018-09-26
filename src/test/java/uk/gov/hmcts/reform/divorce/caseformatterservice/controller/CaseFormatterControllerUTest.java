@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
@@ -17,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -79,5 +81,20 @@ public class CaseFormatterControllerUTest {
         assertEquals(coreCaseData, actualResponse.getBody());
 
         verify(caseFormatterService).addDocuments(coreCaseData, documents);
+    }
+
+    @Test
+    public void whenGetAosCaseData_thenProceedAsExpected() {
+        DivorceSession divorceSession = mock(DivorceSession.class);
+        AosCaseData aosCaseData = mock(AosCaseData.class);
+
+        when(caseFormatterService.getAosCaseData(divorceSession)).thenReturn(aosCaseData);
+
+        ResponseEntity<AosCaseData> actual = classUnderTest.getAosCaseData(divorceSession);
+
+        assertEquals(HttpStatus.OK, actual.getStatusCode());
+        assertEquals(aosCaseData, actual.getBody());
+
+        verify(caseFormatterService).getAosCaseData(divorceSession);
     }
 }

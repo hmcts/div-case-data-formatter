@@ -1,0 +1,20 @@
+{
+    "RespConfirmReadPetition" : "YES",
+    "RespAdmitOrConsentToFact" : "YES",
+    "RespDefendsDivorce" : "YES",
+    "RespJurisdictionAgree" : "NO",
+    "RespJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
+    "RespJurisdictionRespCountryOfResidence" : "UK",
+    "RespLegalProceedingsExist" : "YES",
+    "RespLegalProceedingsDescription" : "Some Description",
+    "RespAgreeToCosts" : "NO",
+    "RespCostsAmount" : "1232321",
+    "RespCostsReason" : "Some Reason",
+    "RespPhoneNumber" : "12344555",
+    "RespStatementOfTruth" : "YES",
+    "RespConsentToEmail" : "NO",
+    "RespConsiderFinancialSituation" : "YES",
+    "RespHardshipDefenseResponse" : "NO",
+    "RespHardshipDescription" : "Some Hardship Description goes here",
+    "RespContactMethodIsDigital" : "YES"
+}

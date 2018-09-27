@@ -8,6 +8,9 @@ import lombok.ToString;
 @ToString
 public class FeeItem {
 
+    @JsonProperty("id")
+    private String id;
+
     @JsonProperty("value")
     private FeeValue value;
 

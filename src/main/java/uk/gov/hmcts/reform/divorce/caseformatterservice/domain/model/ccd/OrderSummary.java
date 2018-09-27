@@ -22,25 +22,4 @@ public class OrderSummary {
 
     @JsonProperty("Fees")
     private List<FeeItem> fees;
-
-    public void add(FeeResponse... fees) {
-        NumberFormat formatter = new DecimalFormat("#0");
-        List<FeeItem> feesItems = new ArrayList<>();
-        FeeValue value = new FeeValue();
-        FeeItem feeItem = new FeeItem();
-        for (FeeResponse fee : fees) {
-            if (fee != null) {
-                value.setFeeAmount(String.valueOf(formatter.format(fee.getAmount() * 100)));
-                value.setFeeCode(fee.getFeeCode());
-                value.setFeeDescription(fee.getDescription());
-                value.setFeeVersion(String.valueOf(fee.getVersion()));
-                feeItem.setValue(value);
-                feesItems.add(feeItem);
-            }
-        }
-        this.setFees(feesItems);
-        double sum = Arrays.asList(fees).stream().mapToDouble(FeeResponse::getAmount).sum() * 100;
-        this.setPaymentTotal(String.valueOf(formatter.format(sum)));
-    }
-
 }

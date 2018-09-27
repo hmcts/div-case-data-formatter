@@ -112,7 +112,7 @@
             "PaymentTotal": "55000",
             "PaymentReference": null
         },
-        "D8InferredPetitionerGender": "male"
+        "D8InferredPetitionerGender": "male",
         "D8DocumentsGenerated":[
             {
                 "id":null,

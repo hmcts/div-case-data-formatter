@@ -170,5 +170,6 @@
     "D8ReasonForDivorceDesertion" : null,
     "D8Cohort" : "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender" : "male",
-    "D8InferredRespondentGender" : "female"
+    "D8InferredRespondentGender" : "female",
+    "PetitionerConsent" : "YES"
 }

@@ -212,5 +212,6 @@
     ],
     "claimsCostsAppliedForFees":true,
     "reasonForDivorceClaiming5YearSeparation":false,
-    "reasonForDivorceClaimingAdultery":false
+    "reasonForDivorceClaimingAdultery":false,
+    "petitionerConsent" : "Yes"
 }

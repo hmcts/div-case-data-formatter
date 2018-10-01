@@ -218,5 +218,6 @@
                 "PaymentSiteId": "AA00"
             }
         }
-    ]
+    ],
+    "petitionerConsent" : "Yes"
 }

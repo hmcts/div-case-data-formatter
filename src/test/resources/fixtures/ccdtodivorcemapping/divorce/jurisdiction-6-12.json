@@ -216,5 +216,6 @@
     "jurisdictionConfidentLegal":"No",
     "jurisdictionLastSixMonths":"Yes",
     "jurisdictionLastHabitualResident":"Yes",
-    "connectionSummary":"Yes"
+    "connectionSummary":"Yes",
+    "petitionerConsent" : "Yes"
 }

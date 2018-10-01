@@ -223,5 +223,6 @@
     "jurisdictionRespondentDomicile": "No",
     "jurisdictionLastHabitualResident": "No",
     "residualJurisdictionEligible": "Yes",
-    "connectionSummary": "Manual"
+    "connectionSummary": "Manual",
+    "petitionerConsent" : "Yes"
 }

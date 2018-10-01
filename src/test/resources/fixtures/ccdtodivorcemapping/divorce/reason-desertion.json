@@ -205,5 +205,6 @@
     "reasonForDivorceDesertionAgreed":"Yes",
     "reasonForDivorceDesertionDetails":"He told me that he is going to his mother. ",
     "claimsCosts":"No",
-    "claimsCostsAppliedForFees":true
+    "claimsCostsAppliedForFees":true,
+    "petitionerConsent" : "Yes"
 }

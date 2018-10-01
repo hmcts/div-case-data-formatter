@@ -220,5 +220,6 @@
     "jurisdictionLastSixMonths": "Yes",
     "jurisdictionLastHabitualResident": "Yes",
     "connectionSummary": "Yes",
-    "petitionerNameChangedHowOtherDetails": "How I changed name"
+    "petitionerNameChangedHowOtherDetails": "How I changed name",
+    "petitionerConsent" : "Yes"
 }

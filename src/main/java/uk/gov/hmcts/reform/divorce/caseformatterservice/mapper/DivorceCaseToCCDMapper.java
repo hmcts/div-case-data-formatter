@@ -604,4 +604,9 @@ public abstract class DivorceCaseToCCDMapper {
                 inferredGenderService.getRespondentGender(divorceSession.getDivorceWho()));
         }
     }
+
+    @AfterMapping
+    protected void mapPetitionerConsent(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        result.setPetitionerConsent(translateToStringYesNo(divorceSession.getPetitionerConsent()));
+    }
 }

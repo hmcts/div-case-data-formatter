@@ -220,5 +220,6 @@
     "RespConsiderFinancialSituation" : "YES",
     "RespHardshipDefenseResponse" : "NO",
     "RespHardshipDescription" : "Some Hardship Description goes here",
-    "RespContactMethodIsDigital" : "YES"
+    "RespContactMethodIsDigital" : "YES",
+    "PetitionerConsent" : "YES"
 }

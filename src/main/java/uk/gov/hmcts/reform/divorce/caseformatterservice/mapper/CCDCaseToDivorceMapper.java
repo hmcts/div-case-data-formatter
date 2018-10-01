@@ -755,4 +755,10 @@ public abstract class CCDCaseToDivorceMapper {
             divorceSession.setExistingPayments(caseData.getPayments());
         }
     }
+
+    @AfterMapping
+    protected void mapPetitionerConsent(CoreCaseData caseData,
+                                       @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setPetitionerConsent(translateToYesNoString(caseData.getPetitionerConsent()));
+    }
 }

@@ -607,6 +607,6 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapPetitionerConsent(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setPetitionerConsent(translateToStringYesNo(divorceSession.getPetitionerConsent()));
+        result.setD8PetitionerConsent(translateToStringYesNo(divorceSession.getPetitionerConsent()));
     }
 }

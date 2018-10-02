@@ -489,7 +489,7 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("SeparationLivedTogetherAsCoupleAgainDetails")
     private String separationLivedTogetherAsCoupleAgainDetails;
 
-    @JsonProperty("PetitionerConsent")
-    private String petitionerConsent;
+    @JsonProperty("D8PetitionerConsent")
+    private String d8PetitionerConsent;
 }
 

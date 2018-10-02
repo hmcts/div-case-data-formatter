@@ -194,6 +194,6 @@
         "D8Cohort":null,
         "D8InferredPetitionerGender":null,
         "D8InferredRespondentGender":null,
-        "PetitionerConsent":null
+        "D8PetitionerConsent":null
     }
 }

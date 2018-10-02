@@ -165,5 +165,5 @@
     "D8DerivedReasonForDivorceAdultery3rdAddr" : null,
     "D8Cohort" : "onlineSubmissionPrivateBeta",
     "D8InferredRespondentGender" : "male",
-    "PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES"
 }

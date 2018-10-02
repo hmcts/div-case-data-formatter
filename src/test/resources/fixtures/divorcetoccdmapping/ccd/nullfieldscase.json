@@ -149,5 +149,5 @@
     "D8ReasonForDivorceDesertion" : null,
     "D8DerivedReasonForDivorceAdultery3rdAddr" : null,
     "D8Cohort" : "onlineSubmissionPrivateBeta",
-    "PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES"
   }

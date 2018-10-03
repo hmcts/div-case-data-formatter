@@ -259,6 +259,7 @@
             "postcode":"A AAA"
         }
     },
+    "petitionerConsent" : "Yes",
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",
     "respDefendsDivorce" : "YES",

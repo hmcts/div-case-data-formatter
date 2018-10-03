@@ -203,5 +203,6 @@
     },
     "jurisdictionPetitionerResidence":"Yes",
     "jurisdictionRespondentResidence":"Yes",
-    "jurisdictionConfidentLegal":"Yes"
+    "jurisdictionConfidentLegal":"Yes",
+    "petitionerConsent" : "Yes"
 }

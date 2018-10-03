@@ -223,5 +223,6 @@
     "reasonForDivorceAdulteryKnowWhen":"Yes",
     "reasonForDivorceAdulteryDetails":"It hurts inside.",
     "reasonForDivorceAdulteryWhenDetails":"Some time ago.",
-    "reasonForDivorceAdulteryWhereDetails":"On a washing machine."
+    "reasonForDivorceAdulteryWhereDetails":"On a washing machine.",
+    "petitionerConsent" : "Yes"
 }

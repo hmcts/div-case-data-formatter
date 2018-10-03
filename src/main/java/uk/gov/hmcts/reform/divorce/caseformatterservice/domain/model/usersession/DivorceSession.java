@@ -300,6 +300,8 @@ public class DivorceSession {
     @JsonProperty("d8")
     @Setter(AccessLevel.NONE)
     private List<UploadedFile> d8Documents;
+    @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
+    private String petitionerConsent;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")

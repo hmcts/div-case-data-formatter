@@ -2,6 +2,10 @@ variable "product" {
     type = "string"
 }
 
+variable "raw-product" {
+   default = "div"
+}
+
 variable "component" {
     type = "string"
 }

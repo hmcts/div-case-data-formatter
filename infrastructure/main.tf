@@ -4,8 +4,8 @@ locals {
 
     dm_store_url              = "http://dm-store-${local.local_env}.service.core-compute-${local.local_env}.internal"
     
-    asp_name = "${var.env == "prod" ? "div-cfs-prod" : "${var.product}-${var.env}"}"
-    asp_rg = "${var.env == "prod" ? "div-cfs-prod" : "${var.product}-${var.env}"}"
+    asp_name = "${var.env == "prod" ? "div-cfs-prod" : "${var.raw-product}-${var.env}"}"
+    asp_rg = "${var.env == "prod" ? "div-cfs-prod" : "${var.raw-product}-${var.env}"}"
 }
 
 module "div-cfs" {

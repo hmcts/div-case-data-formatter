@@ -26,13 +26,13 @@ public class Address {
     @ApiModelProperty(value = "Postcode manual.")
     private String postcodeManual;
     @ApiModelProperty(value = "Is the address confirmed?")
-    private boolean addressConfirmed;
+    private String addressConfirmed;
     @ApiModelProperty(value = "Address abroad.")
     private String addressAbroad;
     @ApiModelProperty(value = "Is the postcode valid?")
     private boolean validPostcode;
     @ApiModelProperty(value = "Is there an error in the postcode?")
-    private boolean postcodeError;
+    private String postcodeError;
     @ApiModelProperty(value = "URL.")
     private String url;
 }

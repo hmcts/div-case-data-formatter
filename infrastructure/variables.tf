@@ -2,7 +2,7 @@ variable "product" {
     type = "string"
 }
 
-variable "raw-product" {
+variable "raw_product" {
    default = "div"
 }
 

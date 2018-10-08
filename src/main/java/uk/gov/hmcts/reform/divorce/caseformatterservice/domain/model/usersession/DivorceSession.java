@@ -342,6 +342,41 @@ public class DivorceSession {
     private String respHardshipDescription;
     //Aos Fields Mappings End
 
+    //DnCase Fields Mapping Start
+    @ApiModelProperty(value = "Dn Petition Change details")
+    private String changesDetails;
+    @ApiModelProperty(value = "Dn Change Confirmation Petition Yes")
+    private String statementOfTruthChanges;
+    @ApiModelProperty(value = "Dn Change Confirmation Petition No")
+    private String statementOfTruthNoChanges;
+    @ApiModelProperty(value = "Dn Divorce Cost Option Yes/No")
+    private String claimCosts;
+    @ApiModelProperty(value = "Dn Document Uploaded")
+    private String files;
+    @ApiModelProperty(value = "Dn Statement of Truth")
+    private String statementOfTruth;
+    @ApiModelProperty(value = "Dn Adultery life is Intolerable")
+    private String intolerable;
+    @ApiModelProperty(value = "Dn Adultery date find out")
+    private String adulteryFirstFoundDate;
+    @ApiModelProperty(value = "Dn Live apart since event")
+    private String livedApartSinceAdultery;
+    @ApiModelProperty(value = "Dn Adultery time lived together")
+    private String datesLivedTogether;
+    @ApiModelProperty(value = "Dn Behaviour still happening")
+    private String behaviourContinuedSinceApplication;
+    @ApiModelProperty(value = "Dn Behaviour most recent incident")
+    private String lastIncidentDate;
+    @ApiModelProperty(value = "Dn Behaviour lived appart since event")
+    private String livedApartSinceLastIncidentDate;
+    @ApiModelProperty(value = "Dn Behaviour time lived together details")
+    private String approximateDatesOfLivingTogetherField;
+    @ApiModelProperty(value = "Dn Desertion live apart since event")
+    private String livedApartSinceDesertion;
+    @ApiModelProperty(value = "Dn Separation time lived together")
+    private String livedApartSinceSeparation;
+    //DnCase Fields Mapping End
+
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {
             d8Documents.forEach(doc -> doc.setFileType("petition"));

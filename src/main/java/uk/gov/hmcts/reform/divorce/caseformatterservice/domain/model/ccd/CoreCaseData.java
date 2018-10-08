@@ -492,7 +492,7 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8PetitionerConsent")
     private String d8PetitionerConsent;
 
-    @JsonProperty("issueDate")
-    private String issueDate;
+    @JsonProperty("D8IssueDate")
+    private String d8IssueDate;
 }
 

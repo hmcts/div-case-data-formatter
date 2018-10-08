@@ -13,6 +13,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
@@ -29,6 +31,8 @@ public class DivorceCaseToDnCaseMapperUTest {
 
         DnCaseData expectedDnCaseData = (DnCaseData) ObjectMapperTestUtil
             .jsonToObject("fixtures/divorcetoccdmapping/ccd/dn.json", DnCaseData.class);
+        expectedDnCaseData.setDnApplicationSubmittedDate(
+            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
         DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
             .jsonToObject("fixtures/divorcetoccdmapping/divorce/dn.json", DivorceSession.class);

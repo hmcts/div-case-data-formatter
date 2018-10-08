@@ -8,6 +8,9 @@ import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnCaseMapper {
@@ -29,5 +32,22 @@ public abstract class DivorceCaseToDnCaseMapper {
     @Mapping(source = "livedApartSinceSeparation", target = "separationLivedApartSinceEventDN")
     @Mapping(source = "approximateDatesOfLivingTogetherField", target = "separationTimeLivedTogetherDetailsDN")
     public abstract DnCaseData divorceCaseDataToDnCaseData(DivorceSession divorceSession);
+
+    @AfterMapping
+    protected void mapDnApplicationSubmittedDate(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+        result.setDnApplicationSubmittedDate(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    }
+
+    @AfterMapping
+    protected void mapConfirmPetitionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+        if (
+            divorceSession.getStatementOfTruth().equalsIgnoreCase("YES")
+                || divorceSession.getStatementOfTruthNoChanges().equalsIgnoreCase("NO")
+            ) {
+            result.setConfirmPetitionDN("YES");
+        } else {
+            result.setConfirmPetitionDN("NO");
+        }
+    }
 
 }

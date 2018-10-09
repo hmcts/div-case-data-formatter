@@ -40,13 +40,9 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapConfirmPetitionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
-        if (
-            divorceSession.getStatementOfTruth().equalsIgnoreCase("YES")
-                || divorceSession.getStatementOfTruthNoChanges().equalsIgnoreCase("NO")
-            ) {
+        if (divorceSession.getStatementOfTruthChanges().equalsIgnoreCase("YES")
+            || divorceSession.getStatementOfTruthNoChanges().equalsIgnoreCase("YES")) {
             result.setConfirmPetitionDN("YES");
-        } else {
-            result.setConfirmPetitionDN("NO");
         }
     }
 

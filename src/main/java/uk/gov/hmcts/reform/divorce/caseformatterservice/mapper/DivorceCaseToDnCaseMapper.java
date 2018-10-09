@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnCaseMapper {
 
-    //@Mapping(source = "DocumentsUploadedDN", target = "DocumentsUploadedDN")
+    @Mapping(source = "files", target = "documentsUploadedDN")
     @Mapping(source = "changesDetails", target = "petitionChangedDetailsDN")
     @Mapping(source = "claimCosts", target = "divorceCostsOptionDN")
     @Mapping(source = "statementOfTruth", target = "statementOfTruthDN")

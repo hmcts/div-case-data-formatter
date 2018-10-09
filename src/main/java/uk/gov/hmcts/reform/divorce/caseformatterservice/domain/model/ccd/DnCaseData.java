@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
@@ -66,4 +68,8 @@ public class DnCaseData {
 
     @JsonProperty("SeparationTimeLivedTogetherDetailsDN")
     private String separationTimeLivedTogetherDetailsDN;
+
+    @JsonProperty("DocumentsUploadedDN")
+    private List<CollectionMember<Document>> documentsUploadedDN;
+
 }

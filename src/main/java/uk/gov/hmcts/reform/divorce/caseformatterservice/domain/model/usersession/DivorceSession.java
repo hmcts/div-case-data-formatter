@@ -351,8 +351,6 @@ public class DivorceSession {
     private String statementOfTruthNoChanges;
     @ApiModelProperty(value = "Dn Divorce Cost Option Yes/No")
     private String claimCosts;
-    @ApiModelProperty(value = "Dn Document Uploaded")
-    private String files;
     @ApiModelProperty(value = "Dn Statement of Truth")
     private String statementOfTruth;
     @ApiModelProperty(value = "Dn Adultery life is Intolerable")
@@ -375,6 +373,9 @@ public class DivorceSession {
     private String livedApartSinceDesertion;
     @ApiModelProperty(value = "Dn Separation time lived together")
     private String livedApartSinceSeparation;
+    @ApiModelProperty(value = "Dn uploaded documents URL details.")
+    @JsonProperty("files")
+    private List<UploadedFile> files;
     //DnCase Fields Mapping End
 
     public void setD8Documents(List<UploadedFile> d8Documents) {

@@ -9,8 +9,7 @@ import lombok.EqualsAndHashCode;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class AosCaseData extends DnCaseData {
+public class AosCaseData {
     @JsonProperty("RespConfirmReadPetition")
     private String respConfirmReadPetition;
 

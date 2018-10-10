@@ -55,7 +55,7 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
-        Assert.assertEquals(actualOutput, expectedOutput);
+        Assert.assertEquals(expectedOutput, actualOutput);
     }
 
     @Override

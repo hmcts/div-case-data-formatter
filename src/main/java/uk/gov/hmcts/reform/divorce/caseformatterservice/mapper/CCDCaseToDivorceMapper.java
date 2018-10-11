@@ -544,7 +544,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getPetitionerHomeAddress().setValidPostcode(true);
                 divorceSession.getPetitionerHomeAddress().setPostcodeError("false");
             } else {
-                divorceSession.getPetitionerHomeAddress().setAddressType(AddressType.ABROAD.getType());
+                divorceSession.getPetitionerHomeAddress().setAddressType(AddressType.MANUAL.getType());
                 divorceSession.getPetitionerHomeAddress().setAddressAbroad(
                     caseData.getD8DerivedPetitionerHomeAddress());
             }
@@ -570,7 +570,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getPetitionerCorrespondenceAddress().setValidPostcode(true);
                 divorceSession.getPetitionerCorrespondenceAddress().setPostcodeError("false");
             } else {
-                divorceSession.getPetitionerCorrespondenceAddress().setAddressType(AddressType.ABROAD.getType());
+                divorceSession.getPetitionerCorrespondenceAddress().setAddressType(AddressType.MANUAL.getType());
                 divorceSession.getPetitionerCorrespondenceAddress().setAddressAbroad(
                     caseData.getD8DerivedPetitionerCorrespondenceAddress());
             }
@@ -596,7 +596,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getRespondentHomeAddress().setValidPostcode(true);
                 divorceSession.getRespondentHomeAddress().setPostcodeError("false");
             } else {
-                divorceSession.getRespondentHomeAddress().setAddressType(AddressType.ABROAD.getType());
+                divorceSession.getRespondentHomeAddress().setAddressType(AddressType.MANUAL.getType());
                 divorceSession.getRespondentHomeAddress().setAddressAbroad(
                     caseData.getD8DerivedRespondentHomeAddress());
             }
@@ -622,7 +622,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getRespondentCorrespondenceAddress().setValidPostcode(true);
                 divorceSession.getRespondentCorrespondenceAddress().setPostcodeError("false");
             } else {
-                divorceSession.getRespondentCorrespondenceAddress().setAddressType(AddressType.ABROAD.getType());
+                divorceSession.getRespondentCorrespondenceAddress().setAddressType(AddressType.MANUAL.getType());
                 divorceSession.getRespondentCorrespondenceAddress().setAddressAbroad(
                     caseData.getD8DerivedRespondentCorrespondenceAddr());
             }
@@ -649,7 +649,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getReasonForDivorceAdultery3rdAddress().setValidPostcode(true);
                 divorceSession.getReasonForDivorceAdultery3rdAddress().setPostcodeError("false");
             } else {
-                divorceSession.getReasonForDivorceAdultery3rdAddress().setAddressType(AddressType.ABROAD.getType());
+                divorceSession.getReasonForDivorceAdultery3rdAddress().setAddressType(AddressType.MANUAL.getType());
                 divorceSession.getReasonForDivorceAdultery3rdAddress().setAddressAbroad(
                     caseData.getD8DerivedReasonForDivorceAdultery3rdAddr());
             }
@@ -706,7 +706,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getLivingArrangementsLastLivedTogetherAddress().setPostcodeError("false");
             } else {
                 divorceSession.getLivingArrangementsLastLivedTogetherAddress().setAddressType(
-                    AddressType.ABROAD.getType());
+                    AddressType.MANUAL.getType());
                 divorceSession.getLivingArrangementsLastLivedTogetherAddress().setAddressAbroad(
                     caseData.getD8DerivedLivingArrangementsLastLivedAddr());
 
@@ -733,7 +733,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.getRespondentSolicitorAddress().setValidPostcode(true);
                 divorceSession.getRespondentSolicitorAddress().setPostcodeError("false");
             } else {
-                divorceSession.getRespondentSolicitorAddress().setAddressType(AddressType.ABROAD.getType());
+                divorceSession.getRespondentSolicitorAddress().setAddressType(AddressType.MANUAL.getType());
                 divorceSession.getRespondentSolicitorAddress().setAddressAbroad(
                     caseData.getD8DerivedRespondentSolicitorAddr());
             }

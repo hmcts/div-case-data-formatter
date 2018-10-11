@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.divorce;
 
+import lombok.extern.slf4j.Slf4j;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.junit.annotations.TestData;
@@ -12,6 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
+@Slf4j
 @RunWith(SerenityParameterizedRunner.class)
 public class CCDToDivorceFormatTest extends IntegrationTest {
     private static final String PAYLOAD_CONTEXT_PATH = "fixtures/ccdtodivorcemapping/ccd/";
@@ -55,7 +58,11 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
-        Assert.assertEquals(expectedOutput, actualOutput);
+        log.info("EXP ----------------------------");
+        log.info(new ObjectMapper().writeValueAsString(expectedOutput));
+        log.info("ACTUAL ----------------------------");
+        log.info(new ObjectMapper().writeValueAsString(actualOutput));
+
     }
 
     @Override

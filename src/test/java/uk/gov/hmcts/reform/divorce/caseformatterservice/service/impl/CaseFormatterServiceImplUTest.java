@@ -10,6 +10,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
@@ -18,6 +19,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.IdamUserService;
 
@@ -53,6 +55,9 @@ public class CaseFormatterServiceImplUTest {
 
     @Mock
     private DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
+
+    @Mock
+    private DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
 
     @InjectMocks
     private CaseFormatterServiceImpl classUnderTest;
@@ -205,6 +210,18 @@ public class CaseFormatterServiceImplUTest {
         assertEquals(aosCaseData, classUnderTest.getAosCaseData(divorceSession));
 
         verify(divorceCaseToAosCaseMapper).divorceCaseDataToAosCaseData(divorceSession);
+    }
+
+    @Test
+    public void whenGetDnCaseData_thenProceedAsExpected() {
+        DivorceSession divorceSession = mock(DivorceSession.class);
+        DnCaseData dnCaseData = mock(DnCaseData.class);
+
+        when(divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession)).thenReturn(dnCaseData);
+
+        assertEquals(dnCaseData, classUnderTest.getDnCaseData(divorceSession));
+
+        verify(divorceCaseToDnCaseMapper).divorceCaseDataToDnCaseData(divorceSession);
     }
 
     private GeneratedDocumentInfo createGeneratedDocument(String url, String documentType, String fileName) {

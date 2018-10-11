@@ -61,7 +61,7 @@
     "petitionerEmail":"simulate-delivered@notifications.service.gov.uk",
     "petitionerPhoneNumber":"01234567890",
     "petitionerHomeAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,
@@ -80,7 +80,7 @@
     },
     "petitionerCorrespondenceUseHomeAddress":"Yes",
     "petitionerCorrespondenceAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,
@@ -100,7 +100,7 @@
     "livingArrangementsLiveTogether":"Yes",
     "livingArrangementsLastLivedTogether":null,
     "livingArrangementsLastLivedTogetherAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,
@@ -119,7 +119,7 @@
     },
     "respondentLivesAtLastAddress":null,
     "respondentHomeAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,
@@ -138,7 +138,7 @@
     },
     "respondentCorrespondenceUseHomeAddress":"No",
     "respondentCorrespondenceAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,
@@ -171,7 +171,7 @@
     "reasonForDivorceAdultery3rdPartyFirstName":null,
     "reasonForDivorceAdultery3rdPartyLastName":null,
     "reasonForDivorceAdultery3rdAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,
@@ -289,7 +289,7 @@
     "respondentSolicitorName":null,
     "respondentSolicitorCompany":null,
     "respondentSolicitorAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "postcode":null,
         "street1":null,
         "street2":null,

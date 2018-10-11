@@ -211,7 +211,7 @@
 
     },
     "reasonForDivorceAdultery3rdAddress":{
-        "addressType":"abroad",
+        "addressType":"manual",
         "address":[
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"

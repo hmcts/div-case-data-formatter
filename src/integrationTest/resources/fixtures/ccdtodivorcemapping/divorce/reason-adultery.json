@@ -131,7 +131,7 @@
     "reasonForDivorceAdultery3rdPartyFirstName": "Jennifer",
     "reasonForDivorceAdultery3rdPartyLastName": "Lawrence",
     "reasonForDivorceAdultery3rdAddress": {
-        "addressType": "abroad",
+        "addressType": "manual",
         "postcode": null,
         "street1": null,
         "street2": null,

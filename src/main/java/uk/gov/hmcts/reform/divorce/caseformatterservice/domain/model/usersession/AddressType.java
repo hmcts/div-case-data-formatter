@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum AddressType {
     POST_CODE("postcode"),
-    ABROAD("abroad");
+    ABROAD("manual");
 
     private String type;
 }

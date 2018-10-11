@@ -25,7 +25,7 @@
     "D8PetitionerNameChangedHowOtherDetails" : null,
     "D8PetitionerContactDetailsConfidential" : "share",
     "D8PetitionerHomeAddress" : {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"
@@ -36,7 +36,7 @@
     },
     "D8DerivedPetitionerHomeAddress" : "Headquarters 1120 N Street Sacramento 916-654-5266\t\r\nP.O. Box 942873 Sacramento, CA 94273-0001\r\n",
     "D8PetitionerCorrespondenceAddress" : {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"
@@ -53,7 +53,7 @@
     "D8DerivedRespondentCurrentName" : "Jane Jamed",
     "D8DerivedRespondentSolicitorDetails" : "Justin\nCase\nHeadquarters 1120 N Street Sacramento 916-654-5266\t\r\nP.O. Box 942873 Sacramento, CA 94273-0001\r\n",
     "D8RespondentHomeAddress" : {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"
@@ -64,7 +64,7 @@
     },
     "D8DerivedRespondentHomeAddress" : "Headquarters 1120 N Street Sacramento 916-654-5266\t\r\nP.O. Box 942873 Sacramento, CA 94273-0001\r\n",
     "D8RespondentCorrespondenceAddress" : {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"
@@ -78,7 +78,7 @@
     "D8RespondentSolicitorCompany" : "Case",
     "D8RespondentCorrespondenceSendToSol" : null,
     "D8RespondentSolicitorAddress" : {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"
@@ -95,7 +95,7 @@
     "D8LivingArrangementsLastLivedTogether" : "NO",
     "D8LivingArrangementsLiveTogether" : "NO",
     "D8LivingArrangementsLastLivedTogethAddr": {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"
@@ -125,7 +125,7 @@
     "D8ReasonForDivorceAdulteryWhenDetails" : null,
     "D8ReasonForDivorceAdulteryIsNamed" : "NO",
     "D8ReasonForDivorceAdultery3rdAddress" : {
-        "addressType": "abroad",
+        "addressType": "manual",
         "address": [
             "Headquarters 1120 N Street Sacramento 916-654-5266\t",
             "P.O. Box 942873 Sacramento, CA 94273-0001"

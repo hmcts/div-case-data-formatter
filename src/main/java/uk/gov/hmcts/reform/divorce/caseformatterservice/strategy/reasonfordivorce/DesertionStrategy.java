@@ -4,6 +4,9 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
+import java.util.Date;
+import java.util.Optional;
+
 import static org.apache.commons.lang3.StringUtils.join;
 
 @Component
@@ -17,7 +20,8 @@ public class DesertionStrategy implements ReasonForDivorceStrategy {
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
-        String prettyDesertionDate = DateFormatUtils.format(divorceSession.getReasonForDivorceDesertionDate(),
+        String prettyDesertionDate = DateFormatUtils.format(
+            Optional.ofNullable(divorceSession.getReasonForDivorceDesertionDate()).orElse(new Date(0)),
             "dd MMMM yyyy");
 
         String derivedStatementOfCase = String.format(DESERTION_STRING, divorceSession.getDivorceWho(),

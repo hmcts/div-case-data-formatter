@@ -5,6 +5,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -29,5 +30,16 @@ public class DesertionStrategyUTest {
 
         assertThat(derivedStatementOfCase, equalTo(
             "I have been deserted by my husband on the 01 February 2015.\nHe told me that he is going to his mother."));
+    }
+
+    @Test
+    public void testDesertionWithNullValuesShouldNotThrowException() {
+        final DivorceSession divorceSession = new DivorceSession();
+        divorceSession.setReasonForDivorce(DESERTION);
+
+        final String derivedStatementOfCase = desertionStrategy.deriveStatementOfCase(divorceSession);
+
+        assertThat(derivedStatementOfCase, equalTo(
+            "I have been deserted by my null on the 01 January 1970.\n"));
     }
 }

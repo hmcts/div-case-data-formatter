@@ -3,6 +3,8 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivor
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
+import java.util.Optional;
+
 import static org.apache.commons.lang3.StringUtils.join;
 
 @Component
@@ -11,16 +13,21 @@ public class AdulteryStrategy implements ReasonForDivorceStrategy {
     private static final String ADULTERY = "adultery";
     private static final String LINE_SEPARATOR = "\n";
     private static final String YES = "Yes";
+    private static final String EMPTY_STRING = "";
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
         String derivedStatementOfCase = "";
 
-        if (divorceSession.getReasonForDivorceAdulteryKnowWhere().equals(YES)) {
+        if (Optional.ofNullable(
+            divorceSession.getReasonForDivorceAdulteryKnowWhere()).orElse(EMPTY_STRING).equals(YES)
+        ) {
             derivedStatementOfCase = join(divorceSession.getReasonForDivorceAdulteryWhereDetails(), LINE_SEPARATOR);
         }
 
-        if (divorceSession.getReasonForDivorceAdulteryKnowWhen().equals(YES)) {
+        if (Optional.ofNullable(
+            divorceSession.getReasonForDivorceAdulteryKnowWhen()).orElse(EMPTY_STRING).equals(YES)
+        ) {
             derivedStatementOfCase = join(derivedStatementOfCase,
                 divorceSession.getReasonForDivorceAdulteryWhenDetails(), LINE_SEPARATOR);
         }

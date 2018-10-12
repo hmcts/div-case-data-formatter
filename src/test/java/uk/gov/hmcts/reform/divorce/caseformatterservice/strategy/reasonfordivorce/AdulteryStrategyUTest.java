@@ -70,4 +70,14 @@ public class AdulteryStrategyUTest {
 
         assertThat(derivedStatementOfCase, equalTo("On a washing machine.\nSome time ago.\nIt hurts inside."));
     }
+
+    @Test
+    public void testAdulteryWithNullValuesShouldNotThrowException() {
+        final DivorceSession divorceSession = new DivorceSession();
+        divorceSession.setReasonForDivorce(ADULTERY);
+
+        final String derivedStatementOfCase = adulteryStrategy.deriveStatementOfCase(divorceSession);
+
+        assertThat(derivedStatementOfCase, equalTo(""));
+    }
 }

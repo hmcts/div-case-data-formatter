@@ -28,4 +28,15 @@ public class SeparationTwoYearsStrategyUTest {
         assertThat(derivedStatementOfCase,
             equalTo("I have been separated from my husband for 2 years or more from the 01 January 2015."));
     }
+
+    @Test
+    public void testSeparationTwoYearsWithNullValuesShouldNotThrowException() {
+        final DivorceSession divorceSession = new DivorceSession();
+        divorceSession.setReasonForDivorce(SEPARATION_TWO_YEARS);
+
+        final String derivedStatementOfCase = separationTwoYearsStrategy.deriveStatementOfCase(divorceSession);
+
+        assertThat(derivedStatementOfCase, equalTo(
+            "I have been separated from my null for 2 years or more from the 01 January 1970."));
+    }
 }

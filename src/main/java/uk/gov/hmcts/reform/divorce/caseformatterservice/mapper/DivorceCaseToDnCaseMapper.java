@@ -11,9 +11,13 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static java.util.Optional.ofNullable;
+
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnCaseMapper {
+
+    public static final String YES = "YES";
 
     @Mapping(source = "files", target = "documentsUploadedDN")
     @Mapping(source = "changesDetails", target = "petitionChangedDetailsDN")
@@ -40,9 +44,9 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapConfirmPetitionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
-        if (divorceSession.getStatementOfTruthChanges().equalsIgnoreCase("YES")
-            || divorceSession.getStatementOfTruthNoChanges().equalsIgnoreCase("YES")) {
-            result.setConfirmPetitionDN("YES");
+        if (ofNullable(divorceSession.getStatementOfTruthChanges()).orElse("").equalsIgnoreCase(YES)
+            || ofNullable(divorceSession.getStatementOfTruthNoChanges()).orElse("").equalsIgnoreCase(YES)) {
+            result.setConfirmPetitionDN(YES);
         }
     }
 

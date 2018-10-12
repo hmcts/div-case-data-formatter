@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
@@ -76,6 +77,17 @@ public class CaseFormatterController {
     public ResponseEntity<AosCaseData> getAosCaseData(
         @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession data) {
         return ResponseEntity.ok(caseFormatterService.getAosCaseData(data));
+    }
+
+    @PostMapping(path = "/to-dn-submit-format")
+    @ApiOperation(value = "Given a case in Divorce format, will extract the DN data and convert it to CCD format")
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Case transformed into DN format", response = DnCaseData.class),
+        }
+    )
+    public ResponseEntity<DnCaseData> getDnCaseData(
+        @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession divorceSession) {
+        return ResponseEntity.ok(caseFormatterService.getDnCaseData(divorceSession));
     }
 
 }

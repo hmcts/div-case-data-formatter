@@ -1,8 +1,8 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.util.DateUtil;
 
 @Component
 public class SeparationTwoYearsStrategy implements ReasonForDivorceStrategy {
@@ -13,8 +13,9 @@ public class SeparationTwoYearsStrategy implements ReasonForDivorceStrategy {
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
-        String prettySeparationDate = DateFormatUtils.format(divorceSession.getReasonForDivorceSeperationDate(),
-            "dd MMMM yyyy");
+        String prettySeparationDate = DateUtil.format(
+            divorceSession.getReasonForDivorceSeperationDate(), "dd MMMM yyyy"
+        );
 
         return String.format(SEPARATION_STRING, divorceSession.getDivorceWho(), prettySeparationDate);
     }

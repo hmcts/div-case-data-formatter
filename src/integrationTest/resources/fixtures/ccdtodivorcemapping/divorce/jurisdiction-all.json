@@ -57,10 +57,10 @@
         "street2": null,
         "town": null,
         "postcodeManual": null,
-        "addressConfirmed": true,
+        "addressConfirmed": "true",
         "addressAbroad": null,
         "validPostcode": true,
-        "postcodeError": false,
+        "postcodeError": "false",
         "url": null,
         "address": [
             "82 Landor Road",
@@ -76,10 +76,10 @@
         "street2": null,
         "town": null,
         "postcodeManual": null,
-        "addressConfirmed": true,
+        "addressConfirmed": "true",
         "addressAbroad": null,
         "validPostcode": true,
-        "postcodeError": false,
+        "postcodeError": "false",
         "url": null,
         "address": [
             "82 Landor Road",
@@ -95,10 +95,10 @@
         "street2": null,
         "town": null,
         "postcodeManual": null,
-        "addressConfirmed": true,
+        "addressConfirmed": "true",
         "addressAbroad": null,
         "validPostcode": true,
-        "postcodeError": false,
+        "postcodeError": "false",
         "url": null,
         "address": [
             "82 Landor Road",
@@ -114,10 +114,10 @@
         "street2": null,
         "town": null,
         "postcodeManual": null,
-        "addressConfirmed": true,
+        "addressConfirmed": "true",
         "addressAbroad": null,
         "validPostcode": true,
-        "postcodeError": false,
+        "postcodeError": "false",
         "url": null,
         "address": [
             "82 Landor Road",
@@ -221,5 +221,6 @@
             "status": null
         }
     ],
-    "petitionerConsent" : "Yes"
+    "petitionerConsent" : "Yes",
+    "issueDate": "2006-02-02T00:00:00.000+0000"
 }

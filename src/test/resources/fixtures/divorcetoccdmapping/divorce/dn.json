@@ -259,25 +259,59 @@
             "postcode":"A AAA"
         }
     },
-    "reasonForDivorceAdultery3rdAddress":{
-        "addressType":"postcode",
-        "postcode":"A AAA",
-        "address":[
-            "90 Landor Road",
-            "London",
-            "SW9 9PE"
-        ],
-        "addressConfirmed":"true",
-        "validPostcode":true,
-        "postcodeError":"false",
-        "formattedAddress":{
-            "whereabouts":[
-                "90 Landor Road",
-                "London",
-                "SW9 9PE"
-            ],
-            "postcode":"SW9 9PE"
+    "petitionerConsent" : "Yes",
+    "respConfirmReadPetition" : "YES",
+    "respAdmitOrConsentToFact" : "YES",
+    "respDefendsDivorce" : "YES",
+    "respJurisdictionAgree" : "NO",
+    "respJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
+    "respJurisdictionRespCountryOfResidence" : "UK",
+    "respLegalProceedingsExist" : "YES",
+    "respLegalProceedingsDescription" : "Some Description",
+    "respAgreeToCosts" : "NO",
+    "respCostsAmount" : "1232321",
+    "respCostsReason" : "Some Reason",
+    "respEmailAddress" : "est@somemail.com",
+    "respPhoneNumber" : "12344555",
+    "respStatementOfTruth" : "YES",
+    "respConsentToEmail" : "NO",
+    "respConsiderFinancialSituation" : "YES",
+    "respHardshipDefenseResponse" : "NO",
+    "respHardshipDescription" : "Some Hardship Description goes here",
+    "changesDetails" : "Some details about this dn changes",
+    "statementOfTruthChanges" : "YES",
+    "claimCosts" : "YES",
+    "statementOfTruth" : "YES",
+    "intolerable" : "YES",
+    "adulteryFirstFoundDate" : "2018-10-04",
+    "livedApartSinceAdultery" : "NO",
+    "datesLivedTogether" : "3 months",
+    "behaviourContinuedSinceApplication" : "NO",
+    "lastIncidentDate" : "2018-10-03",
+    "livedApartSinceLastIncidentDate" : "NO",
+    "approximateDatesOfLivingTogetherField" : "Since we've met in a bar",
+    "livedApartSinceDesertion" : "NO",
+    "livedApartSinceSeparation" : "NO",
+    "files" : [
+        {
+            "createdBy" : 12661,
+            "createdOn" : "2017-12-11",
+            "lastModifiedBy" : 12661,
+            "modifiedOn" : "2017-12-11",
+            "fileName" : "govuklogo.png",
+            "fileUrl" : "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
+            "mimeType" : "image/png",
+            "status" : "OK"
+        },
+        {
+            "createdBy" : 12661,
+            "createdOn" : "2017-12-11",
+            "lastModifiedBy" : 12661,
+            "modifiedOn" : "2017-12-11",
+            "fileName" : "d8-eng.pdf",
+            "fileUrl" : "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861655",
+            "mimeType" : "application/pdf",
+            "status" : "OK"
         }
-    },
-    "petitionerConsent" : "Yes"
+    ]
 }

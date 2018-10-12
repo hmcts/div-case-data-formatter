@@ -302,6 +302,11 @@ public class DivorceSession {
     private List<UploadedFile> d8Documents;
     @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
     private String petitionerConsent;
+    @ApiModelProperty(
+        value = "Issue date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
+            + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
+            + "\"yyyy-MM-dd\").")
+    private Date issueDate;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
@@ -341,6 +346,42 @@ public class DivorceSession {
     @ApiModelProperty(value = "Hardship defence details")
     private String respHardshipDescription;
     //Aos Fields Mappings End
+
+    //DnCase Fields Mapping Start
+    @ApiModelProperty(value = "Dn Petition Change details")
+    private String changesDetails;
+    @ApiModelProperty(value = "Dn Change Confirmation Petition Yes")
+    private String statementOfTruthChanges;
+    @ApiModelProperty(value = "Dn Change Confirmation Petition No")
+    private String statementOfTruthNoChanges;
+    @ApiModelProperty(value = "Dn Divorce Cost Option Yes/No")
+    private String claimCosts;
+    @ApiModelProperty(value = "Dn Statement of Truth")
+    private String statementOfTruth;
+    @ApiModelProperty(value = "Dn Adultery life is Intolerable")
+    private String intolerable;
+    @ApiModelProperty(value = "Dn Adultery date find out")
+    private String adulteryFirstFoundDate;
+    @ApiModelProperty(value = "Dn Live apart since event")
+    private String livedApartSinceAdultery;
+    @ApiModelProperty(value = "Dn Adultery time lived together")
+    private String datesLivedTogether;
+    @ApiModelProperty(value = "Dn Behaviour still happening")
+    private String behaviourContinuedSinceApplication;
+    @ApiModelProperty(value = "Dn Behaviour most recent incident")
+    private String lastIncidentDate;
+    @ApiModelProperty(value = "Dn Behaviour lived appart since event")
+    private String livedApartSinceLastIncidentDate;
+    @ApiModelProperty(value = "Dn Behaviour time lived together details")
+    private String approximateDatesOfLivingTogetherField;
+    @ApiModelProperty(value = "Dn Desertion live apart since event")
+    private String livedApartSinceDesertion;
+    @ApiModelProperty(value = "Dn Separation time lived together")
+    private String livedApartSinceSeparation;
+    @ApiModelProperty(value = "Dn uploaded documents URL details.")
+    @JsonProperty("files")
+    private List<UploadedFile> files;
+    //DnCase Fields Mapping End
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

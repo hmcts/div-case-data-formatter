@@ -7,12 +7,14 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.IdamUserService;
@@ -38,6 +40,9 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Autowired
     private DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
+
+    @Autowired
+    private DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {
@@ -81,4 +86,10 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     public AosCaseData getAosCaseData(DivorceSession divorceSession) {
         return divorceCaseToAosCaseMapper.divorceCaseDataToAosCaseData(divorceSession);
     }
+
+    @Override
+    public DnCaseData getDnCaseData(DivorceSession divorceSession) {
+        return divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession);
+    }
+
 }

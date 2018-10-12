@@ -3,7 +3,7 @@ variable "product" {
 }
 
 variable "raw_product" {
-    default = "div"
+   default = "div"
 }
 
 variable "component" {

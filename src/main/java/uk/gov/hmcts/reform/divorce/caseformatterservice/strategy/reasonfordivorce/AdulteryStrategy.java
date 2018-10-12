@@ -16,11 +16,11 @@ public class AdulteryStrategy implements ReasonForDivorceStrategy {
     public String deriveStatementOfCase(DivorceSession divorceSession) {
         String derivedStatementOfCase = "";
 
-        if (divorceSession.getReasonForDivorceAdulteryKnowWhere().equals(YES)) {
+        if (YES.equals(divorceSession.getReasonForDivorceAdulteryKnowWhere())) {
             derivedStatementOfCase = join(divorceSession.getReasonForDivorceAdulteryWhereDetails(), LINE_SEPARATOR);
         }
 
-        if (divorceSession.getReasonForDivorceAdulteryKnowWhen().equals(YES)) {
+        if (YES.equals(divorceSession.getReasonForDivorceAdulteryKnowWhen())) {
             derivedStatementOfCase = join(derivedStatementOfCase,
                 divorceSession.getReasonForDivorceAdulteryWhenDetails(), LINE_SEPARATOR);
         }

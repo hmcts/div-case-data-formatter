@@ -234,6 +234,24 @@
             "SW9 9PE"
         ]
     },
+    "reasonForDivorceAdultery3rdAddress": {
+        "addressType": "postcode",
+        "postcode": "A AAA",
+        "street1": null,
+        "street2": null,
+        "town": null,
+        "postcodeManual": null,
+        "addressConfirmed": "true",
+        "addressAbroad": null,
+        "validPostcode": true,
+        "postcodeError": "false",
+        "url": null,
+        "address": [
+            "90 Landor Road",
+            "London",
+            "SW9 9PE"
+        ]
+    },
     "marriageCertificateFiles": [
         {
             "createdBy": 0,

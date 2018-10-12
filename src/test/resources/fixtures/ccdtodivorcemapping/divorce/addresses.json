@@ -259,5 +259,25 @@
             "postcode":"A AAA"
         }
     },
+    "reasonForDivorceAdultery3rdAddress":{
+        "addressType":"postcode",
+        "postcode":"A AAA",
+        "address":[
+            "90 Landor Road",
+            "London",
+            "SW9 9PE"
+        ],
+        "addressConfirmed":"true",
+        "validPostcode":true,
+        "postcodeError":"false",
+        "formattedAddress":{
+            "whereabouts":[
+                "90 Landor Road",
+                "London",
+                "SW9 9PE"
+            ],
+            "postcode":"SW9 9PE"
+        }
+    },
     "petitionerConsent" : "Yes"
 }

@@ -90,7 +90,10 @@
     "D8ReasonForDivorceAdulteryWhereDetails" : null,
     "D8ReasonForDivorceAdulteryWhenDetails" : null,
     "D8ReasonForDivorceAdulteryIsNamed" : "NO",
-    "D8ReasonForDivorceAdultery3rdAddress" : null,
+    "D8ReasonForDivorceAdultery3rdAddress" : {
+        "County" : null,
+        "PostCode" : "A AAA"
+    },
     "D8FinancialOrder" : "YES",
     "D8FinancialOrderFor" : [ "petitioner", "children" ],
     "D8HelpWithFeesNeedHelp" : "YES",
@@ -191,10 +194,6 @@
     "D8ReasonForDivorceSeperationBeforeMarria" : null,
     "D8ReasonForDivorceDesertion" : null,
     "D8DerivedReasonForDivorceAdultery3rdAddr" : "90 Landor Road\nLondon\nSW9 9PE",
-    "D8ReasonForDivorceAdultery3rdAddress" : {
-        "County" : null,
-        "PostCode" : "A AAA"
-    },
     "D8Cohort" : "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",

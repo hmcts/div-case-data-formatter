@@ -3,8 +3,6 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivor
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
-import java.util.Optional;
-
 import static org.apache.commons.lang3.StringUtils.join;
 
 @Component

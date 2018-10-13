@@ -494,5 +494,8 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("IssueDate")
     private String issueDate;
+
+    @JsonProperty("dueDate")
+    private String dueDate;
 }
 

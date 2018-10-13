@@ -308,6 +308,13 @@ public class DivorceSession {
             + "\"yyyy-MM-dd\").")
     private Date issueDate;
 
+    @ApiModelProperty(
+        value = "Due date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
+            + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
+            + "\"yyyy-MM-dd\").")
+
+    private Date dueDate;
+
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
     private String respConfirmReadPetition;

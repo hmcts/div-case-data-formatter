@@ -67,4 +67,7 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("RespContactMethodIsDigital")
     private String respContactMethodIsDigital;
+
+    @JsonProperty("PermittedDecreeNisiReason")
+    private String permittedDecreeNisiReason;
 }

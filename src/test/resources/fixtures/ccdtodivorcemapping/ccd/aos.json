@@ -221,5 +221,6 @@
     "RespHardshipDefenseResponse" : "NO",
     "RespHardshipDescription" : "Some Hardship Description goes here",
     "RespContactMethodIsDigital" : "YES",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "PermittedDecreeNisiReason" : "0"
 }

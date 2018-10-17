@@ -15,6 +15,8 @@ import java.time.format.DateTimeFormatter;
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnCaseMapper {
 
+    public static final String YES = "YES";
+
     @Mapping(source = "files", target = "documentsUploadedDN")
     @Mapping(source = "changesDetails", target = "petitionChangedDetailsDN")
     @Mapping(source = "claimCosts", target = "divorceCostsOptionDN")
@@ -40,9 +42,10 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapConfirmPetitionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
-        if (divorceSession.getStatementOfTruthChanges().equalsIgnoreCase("YES")
-            || divorceSession.getStatementOfTruthNoChanges().equalsIgnoreCase("YES")) {
-            result.setConfirmPetitionDN("YES");
+
+        if (YES.equalsIgnoreCase(divorceSession.getStatementOfTruthChanges())
+            || YES.equalsIgnoreCase(divorceSession.getStatementOfTruthNoChanges())) {
+            result.setConfirmPetitionDN(YES);
         }
     }
 

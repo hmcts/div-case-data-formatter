@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -114,11 +115,13 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapReasonForDivorceBehaviourDetails(DivorceSession divorceSession,
                                                        @MappingTarget CoreCaseData result) {
-        result.setD8ReasonForDivorceBehaviourDetails(
-            CollectionUtils.emptyIfNull(divorceSession.getReasonForDivorceBehaviourDetails())
-                .stream()
-                .findFirst()
-                .orElse(null));
+        if (Objects.nonNull(divorceSession.getReasonForDivorceBehaviourDetails())) {
+            result.setD8ReasonForDivorceBehaviourDetails(
+                divorceSession.getReasonForDivorceBehaviourDetails()
+                    .stream()
+                    .collect(Collectors.joining("\n"))
+            );
+        }
     }
 
     @AfterMapping

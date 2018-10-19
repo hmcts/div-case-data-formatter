@@ -352,6 +352,8 @@ public class DivorceSession {
     private String respHardshipDefenseResponse;
     @ApiModelProperty(value = "Hardship defence details")
     private String respHardshipDescription;
+    @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
+    private String permittedDecreeNisiReason;
     //Aos Fields Mappings End
 
     //DnCase Fields Mapping Start

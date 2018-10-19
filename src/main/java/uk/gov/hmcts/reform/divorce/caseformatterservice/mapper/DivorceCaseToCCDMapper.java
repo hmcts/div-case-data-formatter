@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -100,6 +101,8 @@ public abstract class DivorceCaseToCCDMapper {
         expression =
             "java(java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd\")))")
     @Mapping(source = "d8Documents", target = "d8Documents")
+    @Mapping(source = "respondentSolicitorName", target = "d8RespondentSolicitorName")
+    @Mapping(source = "respondentSolicitorCompany", target = "d8RespondentSolicitorCompany")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     private String translateToStringYesNo(final String value) {
@@ -112,11 +115,13 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapReasonForDivorceBehaviourDetails(DivorceSession divorceSession,
                                                        @MappingTarget CoreCaseData result) {
-        result.setD8ReasonForDivorceBehaviourDetails(
-            CollectionUtils.emptyIfNull(divorceSession.getReasonForDivorceBehaviourDetails())
-                .stream()
-                .findFirst()
-                .orElse(null));
+        if (Objects.nonNull(divorceSession.getReasonForDivorceBehaviourDetails())) {
+            result.setD8ReasonForDivorceBehaviourDetails(
+                divorceSession.getReasonForDivorceBehaviourDetails()
+                    .stream()
+                    .collect(Collectors.joining("\n"))
+            );
+        }
     }
 
     @AfterMapping
@@ -434,7 +439,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapPetitionerHomeAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getPetitionerHomeAddress())) {
+        if (Objects.nonNull(divorceSession.getPetitionerHomeAddress())
+            && Objects.nonNull(divorceSession.getPetitionerHomeAddress().getAddressField())) {
             result.setD8DerivedPetitionerHomeAddress(
                 join(LINE_SEPARATOR, divorceSession.getPetitionerHomeAddress().getAddressField()));
         }
@@ -443,7 +449,8 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapPetitionerCorrespondenceAddress(DivorceSession divorceSession,
                                                       @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getPetitionerCorrespondenceAddress())) {
+        if (Objects.nonNull(divorceSession.getPetitionerCorrespondenceAddress())
+            && Objects.nonNull(divorceSession.getPetitionerCorrespondenceAddress().getAddressField())) {
             result.setD8DerivedPetitionerCorrespondenceAddress(
                 join(LINE_SEPARATOR, divorceSession.getPetitionerCorrespondenceAddress().getAddressField()));
         }
@@ -461,7 +468,8 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapRespondentCorrespondenceAddress(DivorceSession divorceSession,
                                                       @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getRespondentCorrespondenceAddress())) {
+        if (Objects.nonNull(divorceSession.getRespondentCorrespondenceAddress())
+            && Objects.nonNull(divorceSession.getRespondentCorrespondenceAddress().getAddressField())) {
             result.setD8DerivedRespondentCorrespondenceAddr(
                 join(LINE_SEPARATOR, divorceSession.getRespondentCorrespondenceAddress().getAddressField()));
         }
@@ -513,7 +521,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentSolicitorAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getRespondentSolicitorAddress())) {
+        if (Objects.nonNull(divorceSession.getRespondentSolicitorAddress())
+            && Objects.nonNull(divorceSession.getRespondentSolicitorAddress().getAddressField())) {
             result.setD8DerivedRespondentSolicitorAddr(
                 join(LINE_SEPARATOR, divorceSession.getRespondentSolicitorAddress().getAddressField()));
         }
@@ -522,8 +531,11 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapDerivedRespondentSolicitorDetails(DivorceSession divorceSession,
                                                         @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getRespondentSolicitorName())) {
-            String solicitorAddress = join(LINE_SEPARATOR,
+        if (Objects.nonNull(divorceSession.getRespondentSolicitorName())
+            && Objects.nonNull(divorceSession.getRespondentSolicitorAddress())
+            && Objects.nonNull(divorceSession.getRespondentSolicitorAddress().getAddressField())) {
+
+            String solicitorAddress = solicitorAddress = join(LINE_SEPARATOR,
                 divorceSession.getRespondentSolicitorAddress().getAddressField());
 
             String solictorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),
@@ -543,7 +555,8 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapDerivedLivingArrangementsLastLivedAddr(DivorceSession divorceSession,
                                                              @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getLivingArrangementsLastLivedTogetherAddress())) {
+        if (Objects.nonNull(divorceSession.getLivingArrangementsLastLivedTogetherAddress())
+            && Objects.nonNull(divorceSession.getLivingArrangementsLastLivedTogetherAddress().getAddressField())) {
             result.setD8DerivedLivingArrangementsLastLivedAddr(join(LINE_SEPARATOR,
                 divorceSession.getLivingArrangementsLastLivedTogetherAddress().getAddressField()));
         }
@@ -564,7 +577,8 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapDerivedReasonForDivorceAdultery3rdAddr(DivorceSession divorceSession,
                                                              @MappingTarget CoreCaseData result) {
-        if (Objects.nonNull(divorceSession.getReasonForDivorceAdultery3rdAddress())) {
+        if (Objects.nonNull(divorceSession.getReasonForDivorceAdultery3rdAddress())
+            && Objects.nonNull(divorceSession.getReasonForDivorceAdultery3rdAddress().getAddressField())) {
             result.setD8DerivedReasonForDivorceAdultery3rdAddr(
                 join(LINE_SEPARATOR, divorceSession.getReasonForDivorceAdultery3rdAddress().getAddressField()));
         }

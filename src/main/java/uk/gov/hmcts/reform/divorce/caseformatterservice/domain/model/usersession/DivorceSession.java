@@ -312,8 +312,10 @@ public class DivorceSession {
         value = "Due date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
             + "\"yyyy-MM-dd\").")
-
     private Date dueDate;
+    @ApiModelProperty(value = "Petitioner has obtained a written consent from the respondent?",
+        allowableValues = "Yes, No")
+    private String reasonForDivorceRespondentConsent;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")

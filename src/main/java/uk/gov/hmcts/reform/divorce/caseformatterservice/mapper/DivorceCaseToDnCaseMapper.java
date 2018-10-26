@@ -16,6 +16,8 @@ import java.time.format.DateTimeFormatter;
 public abstract class DivorceCaseToDnCaseMapper {
 
     private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
+  
+    public static final String YES = "YES";
 
     @Mapping(source = "files", target = "documentsUploadedDN")
     @Mapping(source = "changesDetails", target = "petitionChangedDetailsDN")
@@ -42,9 +44,10 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapConfirmPetitionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
-        if (divorceSession.getStatementOfTruthChanges().equalsIgnoreCase("YES")
-            || divorceSession.getStatementOfTruthNoChanges().equalsIgnoreCase("YES")) {
-            result.setConfirmPetitionDN("YES");
+
+        if (YES.equalsIgnoreCase(divorceSession.getStatementOfTruthChanges())
+            || YES.equalsIgnoreCase(divorceSession.getStatementOfTruthNoChanges())) {
+            result.setConfirmPetitionDN(YES);
         }
     }
 

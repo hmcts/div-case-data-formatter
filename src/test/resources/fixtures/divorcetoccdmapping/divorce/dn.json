@@ -260,6 +260,7 @@
         }
     },
     "petitionerConsent" : "Yes",
+    "permittedDecreeNisiReason" : "0",
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",
     "respDefendsDivorce" : "YES",

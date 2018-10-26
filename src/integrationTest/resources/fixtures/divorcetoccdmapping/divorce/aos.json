@@ -277,5 +277,6 @@
     "respConsentToEmail" : "NO",
     "respConsiderFinancialSituation" : "YES",
     "respHardshipDefenseResponse" : "NO",
-    "respHardshipDescription" : "Some Hardship Description goes here"
+    "respHardshipDescription" : "Some Hardship Description goes here",
+    "permittedDecreeNisiReason" : "0"
 }

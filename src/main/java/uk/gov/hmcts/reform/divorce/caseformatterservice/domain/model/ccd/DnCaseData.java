@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -37,7 +38,7 @@ public class DnCaseData {
     private String adulteryLifeIntolerable;
 
     @JsonProperty("AdulteryDateFoundOut")
-    private String adulteryDateFoundOut;
+    private Date adulteryDateFoundOut;
 
     @JsonProperty("AdulteryLivedApartSinceEventDN")
     private String adulteryLivedApartSinceEventDN;

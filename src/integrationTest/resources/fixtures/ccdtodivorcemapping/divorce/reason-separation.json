@@ -219,7 +219,7 @@
         }
     ],
     "petitionerConsent" : "Yes",
-    "createdDate": "2015-03-01T00:00:00.000Z",
+    "createdDate": "2015-03-01T00:00:00.000+0000",
     "issueDate": "2006-02-02T00:00:00.000+0000",
     "dueDate": "2006-02-10T00:00:00.000+0000",
     "reasonForDivorceRespondentConsent" : "Yes"

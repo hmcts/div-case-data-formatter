@@ -8,7 +8,6 @@
     "helpWithFeesAppliedForFees":"Yes",
     "helpWithFeesReferenceNumber":"HWF-123-456",
     "divorceWho":"husband",
-    "createdDate": "2015-03-01T00:00:00.000Z",
     "marriageIsSameSexCouple":"No",
     "marriageDateDay":2,
     "marriageDateMonth":2,
@@ -215,5 +214,6 @@
     "reasonForDivorceClaiming5YearSeparation":false,
     "reasonForDivorceClaimingAdultery":false,
     "petitionerConsent" : "Yes",
+    "createdDate": "2015-03-01T00:00:00.000Z",
     "reasonForDivorceRespondentConsent" : "Yes"
 }

@@ -8,7 +8,6 @@
     "helpWithFeesAppliedForFees":"Yes",
     "helpWithFeesReferenceNumber":"HWF-123-456",
     "divorceWho":"husband",
-    "createdDate": "2015-03-01T00:00:00.000Z",
     "marriageIsSameSexCouple":"No",
     "marriageDateDay":2,
     "marriageDateMonth":2,
@@ -207,5 +206,6 @@
     "reasonForDivorceDesertionDetails":"He told me that he is going to his mother. ",
     "claimsCosts":"No",
     "claimsCostsAppliedForFees":true,
-    "petitionerConsent" : "Yes"
+    "petitionerConsent" : "Yes",
+    "createdDate": "2015-03-01T00:00:00.000Z"
 }

@@ -89,6 +89,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8RespondentSolicitorName", target = "respondentSolicitorName")
     @Mapping(source = "d8RespondentSolicitorCompany", target = "respondentSolicitorCompany")
     @Mapping(source = "d8RespondentSolicitorAddress.postCode", target = "respondentSolicitorAddress.postcode")
+    @Mapping(source = "createdDate", dateFormat = SIMPLE_DATE_FORMAT, target = "createdDate")
     @Mapping(source = "issueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "issueDate")
     @Mapping(source = "dueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "dueDate")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);

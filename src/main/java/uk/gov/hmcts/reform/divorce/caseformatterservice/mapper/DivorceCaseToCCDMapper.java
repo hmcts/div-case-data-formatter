@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.AfterMapping;

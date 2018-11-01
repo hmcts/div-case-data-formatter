@@ -374,8 +374,11 @@ public class DivorceSession {
     private String statementOfTruth;
     @ApiModelProperty(value = "Dn Adultery life is Intolerable")
     private String intolerable;
-    @ApiModelProperty(value = "Dn Adultery date find out")
-    private String adulteryFirstFoundDate;
+    @ApiModelProperty(
+        value = "AdulteryFirstFoundDate date in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
+            + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
+            + "\"yyyy-MM-dd\").")
+    private Date adulteryFirstFoundDate;
     @ApiModelProperty(value = "Dn Live apart since event")
     private String livedApartSinceAdultery;
     @ApiModelProperty(value = "Dn Adultery time lived together")

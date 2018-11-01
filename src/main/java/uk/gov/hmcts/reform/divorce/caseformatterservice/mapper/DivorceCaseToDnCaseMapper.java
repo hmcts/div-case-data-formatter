@@ -15,6 +15,8 @@ import java.time.format.DateTimeFormatter;
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnCaseMapper {
 
+    private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
+  
     public static final String YES = "YES";
 
     @Mapping(source = "files", target = "documentsUploadedDN")
@@ -22,7 +24,7 @@ public abstract class DivorceCaseToDnCaseMapper {
     @Mapping(source = "claimCosts", target = "divorceCostsOptionDN")
     @Mapping(source = "statementOfTruth", target = "statementOfTruthDN")
     @Mapping(source = "intolerable", target = "adulteryLifeIntolerable")
-    @Mapping(source = "adulteryFirstFoundDate", target = "adulteryDateFoundOut")
+    @Mapping(source = "adulteryFirstFoundDate", dateFormat = SIMPLE_DATE_FORMAT, target = "adulteryDateFoundOut")
     @Mapping(source = "livedApartSinceAdultery", target = "adulteryLivedApartSinceEventDN")
     @Mapping(source = "datesLivedTogether", target = "adulteryTimeLivedTogetherDetailsDN")
     @Mapping(source = "behaviourContinuedSinceApplication", target = "behaviourStillHappeningDN")

@@ -189,5 +189,7 @@
     "D8PetitionerConsent" : "YES",
     "IssueDate": "2006-02-02",
     "dueDate":"2006-02-10",
-    "D8ReasonForDivorce2YearSepConsentGiven" : "Yes"
+    "D8ReasonForDivorce2YearSepConsentGiven" : "Yes",
+    "D8MentalSeparationDate": "2015-03-01",
+    "D8PhysicalSeparationDate": "2015-04-01"
   }

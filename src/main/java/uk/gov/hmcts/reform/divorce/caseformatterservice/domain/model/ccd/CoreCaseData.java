@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 
+import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -500,5 +501,11 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8ReasonForDivorce2YearSepConsentGiven")
     private String reasonForDivorceRespondentConsent;
+
+    @JsonProperty("D8MentalSeparationDate")
+    private Date reasonForDivorceDecisionDate;
+
+    @JsonProperty("D8PhysicalSeparationDate")
+    private Date reasonForDivorceLivingApartDate;
 }
 

@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -502,9 +503,11 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ReasonForDivorce2YearSepConsentGiven")
     private String reasonForDivorceRespondentConsent;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("D8MentalSeparationDate")
     private Date reasonForDivorceDecisionDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("D8PhysicalSeparationDate")
     private Date reasonForDivorceLivingApartDate;
 }

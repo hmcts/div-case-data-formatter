@@ -115,7 +115,7 @@ public abstract class DivorceCaseToCCDMapper {
                                                        @MappingTarget CoreCaseData result) {
         if (Objects.nonNull(divorceSession.getReasonForDivorceBehaviourDetails())) {
             result.setD8ReasonForDivorceBehaviourDetails(
-                join("\n", divorceSession.getReasonForDivorceBehaviourDetails())
+                join(LINE_SEPARATOR, divorceSession.getReasonForDivorceBehaviourDetails())
             );
         }
     }

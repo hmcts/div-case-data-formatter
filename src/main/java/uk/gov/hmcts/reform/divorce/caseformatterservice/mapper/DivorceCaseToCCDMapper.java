@@ -20,7 +20,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -116,7 +115,7 @@ public abstract class DivorceCaseToCCDMapper {
                                                        @MappingTarget CoreCaseData result) {
         if (Objects.nonNull(divorceSession.getReasonForDivorceBehaviourDetails())) {
             result.setD8ReasonForDivorceBehaviourDetails(
-                String.join("\n", divorceSession.getReasonForDivorceBehaviourDetails())
+                join("\n", divorceSession.getReasonForDivorceBehaviourDetails())
             );
         }
     }

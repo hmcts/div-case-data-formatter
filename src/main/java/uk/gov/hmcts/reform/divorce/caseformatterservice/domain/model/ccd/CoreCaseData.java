@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,7 +7,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 
-import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -503,12 +501,10 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ReasonForDivorce2YearSepConsentGiven")
     private String reasonForDivorceRespondentConsent;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("D8MentalSeparationDate")
-    private Date reasonForDivorceDecisionDate;
+    private String reasonForDivorceDecisionDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("D8PhysicalSeparationDate")
-    private Date reasonForDivorceLivingApartDate;
+    private String reasonForDivorceLivingApartDate;
 }
 

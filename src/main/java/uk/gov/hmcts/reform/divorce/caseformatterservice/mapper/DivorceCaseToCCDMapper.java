@@ -101,6 +101,10 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "d8Documents", target = "d8Documents")
     @Mapping(source = "respondentSolicitorName", target = "d8RespondentSolicitorName")
     @Mapping(source = "respondentSolicitorCompany", target = "d8RespondentSolicitorCompany")
+    @Mapping(source = "reasonForDivorceDecisionDate", dateFormat = SIMPLE_DATE_FORMAT,
+        target = "reasonForDivorceDecisionDate")
+    @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
+        target = "reasonForDivorceLivingApartDate")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     private String translateToStringYesNo(final String value) {
@@ -531,7 +535,7 @@ public abstract class DivorceCaseToCCDMapper {
             && Objects.nonNull(divorceSession.getRespondentSolicitorAddress())
             && Objects.nonNull(divorceSession.getRespondentSolicitorAddress().getAddressField())) {
 
-            String solicitorAddress = solicitorAddress = join(LINE_SEPARATOR,
+            String solicitorAddress = join(LINE_SEPARATOR,
                 divorceSession.getRespondentSolicitorAddress().getAddressField());
 
             String solictorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),

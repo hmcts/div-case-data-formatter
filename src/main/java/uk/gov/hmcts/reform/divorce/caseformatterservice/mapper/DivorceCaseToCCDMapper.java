@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.AfterMapping;
+import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderService;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.service.SeparationDateService;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment.PaymentContext;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
 
@@ -20,7 +22,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -42,6 +43,9 @@ public abstract class DivorceCaseToCCDMapper {
 
     @Autowired
     private InferredGenderService inferredGenderService;
+
+    @Autowired
+    private SeparationDateService separationDateService;
 
     @Mapping(source = "helpWithFeesReferenceNumber", target = "d8HelpWithFeesReferenceNumber")
     @Mapping(source = "divorceWho", target = "d8DivorceWho")
@@ -102,6 +106,10 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "d8Documents", target = "d8Documents")
     @Mapping(source = "respondentSolicitorName", target = "d8RespondentSolicitorName")
     @Mapping(source = "respondentSolicitorCompany", target = "d8RespondentSolicitorCompany")
+    @Mapping(source = "reasonForDivorceDecisionDate", dateFormat = SIMPLE_DATE_FORMAT,
+        target = "reasonForDivorceDecisionDate")
+    @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
+        target = "reasonForDivorceLivingApartDate")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     private String translateToStringYesNo(final String value) {
@@ -111,14 +119,17 @@ public abstract class DivorceCaseToCCDMapper {
         return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
     }
 
+    @BeforeMapping
+    protected void updateSeparationDate(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        separationDateService.updateSeparationDate(divorceSession);
+    }
+
     @AfterMapping
     protected void mapReasonForDivorceBehaviourDetails(DivorceSession divorceSession,
                                                        @MappingTarget CoreCaseData result) {
         if (Objects.nonNull(divorceSession.getReasonForDivorceBehaviourDetails())) {
             result.setD8ReasonForDivorceBehaviourDetails(
-                divorceSession.getReasonForDivorceBehaviourDetails()
-                    .stream()
-                    .collect(Collectors.joining("\n"))
+                join(LINE_SEPARATOR, divorceSession.getReasonForDivorceBehaviourDetails())
             );
         }
     }
@@ -534,7 +545,7 @@ public abstract class DivorceCaseToCCDMapper {
             && Objects.nonNull(divorceSession.getRespondentSolicitorAddress())
             && Objects.nonNull(divorceSession.getRespondentSolicitorAddress().getAddressField())) {
 
-            String solicitorAddress = solicitorAddress = join(LINE_SEPARATOR,
+            String solicitorAddress = join(LINE_SEPARATOR,
                 divorceSession.getRespondentSolicitorAddress().getAddressField());
 
             String solictorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),

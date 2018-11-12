@@ -69,8 +69,8 @@
     ],
     "D8LegalProceedingsDetails": "The legal proceeding details",
     "D8ReasonForDivorce": "separation-2-years",
-    "D8DerivedStatementOfCase": "I have been separated from my husband for 2 years or more from the 01 January 2015.",
-    "D8ReasonForDivorceSeperationDate": "2015-01-01",
+    "D8DerivedStatementOfCase": "I have been separated from my husband for 2 years or more from the 01 March 2015.",
+    "D8ReasonForDivorceSeperationDate": "2015-03-01",
     "D8ReasonForDivorceAdulteryIsNamed": "NO",
     "D8FinancialOrder": "YES",
     "D8FinancialOrderFor": [
@@ -151,5 +151,7 @@
     "D8InferredPetitionerGender": "female",
     "D8InferredRespondentGender": "male",
     "D8PetitionerConsent" : "YES",
-    "D8ReasonForDivorce2YearSepConsentGiven" : "Yes"
+    "D8ReasonForDivorce2YearSepConsentGiven" : "Yes",
+    "D8MentalSeparationDate": "2015-03-01",
+    "D8PhysicalSeparationDate": "2015-02-01"
 }

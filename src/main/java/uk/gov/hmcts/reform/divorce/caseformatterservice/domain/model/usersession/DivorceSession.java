@@ -397,8 +397,11 @@ public class DivorceSession {
     private String datesLivedTogether;
     @ApiModelProperty(value = "Dn Behaviour still happening")
     private String behaviourContinuedSinceApplication;
-    @ApiModelProperty(value = "Dn Behaviour most recent incident")
-    private String lastIncidentDate;
+    @ApiModelProperty(
+        value = "Dn Behaviour most recent incident date in one of the following formats "
+            + "(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", "
+            + "\"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
+    private Date lastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour lived appart since event")
     private String livedApartSinceLastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour time lived together details")

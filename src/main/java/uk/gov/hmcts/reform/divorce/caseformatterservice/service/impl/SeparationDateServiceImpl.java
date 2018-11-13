@@ -14,8 +14,8 @@ public class SeparationDateServiceImpl implements SeparationDateService {
         Date separationDate = divorceSession.getReasonForDivorceDecisionDate();
 
         if (separationDate == null
-            || (divorceSession.getReasonForDivorceLivingApartDate() != null
-            && separationDate.before(divorceSession.getReasonForDivorceLivingApartDate()))) {
+            || divorceSession.getReasonForDivorceLivingApartDate() != null
+            && separationDate.before(divorceSession.getReasonForDivorceLivingApartDate())) {
             separationDate = divorceSession.getReasonForDivorceLivingApartDate();
         }
 

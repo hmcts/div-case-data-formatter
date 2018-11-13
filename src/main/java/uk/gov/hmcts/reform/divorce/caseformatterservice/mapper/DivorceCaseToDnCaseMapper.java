@@ -28,7 +28,7 @@ public abstract class DivorceCaseToDnCaseMapper {
     @Mapping(source = "livedApartSinceAdultery", target = "adulteryLivedApartSinceEventDN")
     @Mapping(source = "datesLivedTogether", target = "adulteryTimeLivedTogetherDetailsDN")
     @Mapping(source = "behaviourContinuedSinceApplication", target = "behaviourStillHappeningDN")
-    @Mapping(source = "lastIncidentDate", target = "behaviourMostRecentIncidentDateDN")
+    @Mapping(source = "lastIncidentDate", dateFormat = SIMPLE_DATE_FORMAT, target = "behaviourMostRecentIncidentDateDN")
     @Mapping(source = "livedApartSinceLastIncidentDate", target = "behaviourLivedApartSinceEventDN")
     @Mapping(source = "approximateDatesOfLivingTogetherField", target = "behaviourTimeLivedTogetherDetailsDN")
     @Mapping(source = "livedApartSinceDesertion", target = "desertionLivedApartSinceEventDN")

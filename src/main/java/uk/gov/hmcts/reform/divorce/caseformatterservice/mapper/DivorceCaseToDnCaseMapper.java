@@ -22,6 +22,7 @@ public abstract class DivorceCaseToDnCaseMapper {
     @Mapping(source = "files", target = "documentsUploadedDN")
     @Mapping(source = "changesDetails", target = "petitionChangedDetailsDN")
     @Mapping(source = "claimCosts", target = "divorceCostsOptionDN")
+    @Mapping(source = "costsDifferentDetails", target = "costsDifferentDetails")
     @Mapping(source = "statementOfTruth", target = "statementOfTruthDN")
     @Mapping(source = "intolerable", target = "adulteryLifeIntolerable")
     @Mapping(source = "adulteryFirstFoundDate", dateFormat = SIMPLE_DATE_FORMAT, target = "adulteryDateFoundOut")

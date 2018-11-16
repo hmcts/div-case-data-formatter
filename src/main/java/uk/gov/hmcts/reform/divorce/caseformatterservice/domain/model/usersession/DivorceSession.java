@@ -380,8 +380,10 @@ public class DivorceSession {
     private String statementOfTruthChanges;
     @ApiModelProperty(value = "Dn Change Confirmation Petition No")
     private String statementOfTruthNoChanges;
-    @ApiModelProperty(value = "Dn Divorce Cost Option Yes/No")
+    @ApiModelProperty(value = "Dn Divorce Cost Option originalAmount/differentAmount/endClaim")
     private String claimCosts;
+    @ApiModelProperty(value = "Details when Divorce Cost Option is differentAmount")
+    private String costsDifferentDetails;
     @ApiModelProperty(value = "Dn Statement of Truth")
     private String statementOfTruth;
     @ApiModelProperty(value = "Dn Adultery life is Intolerable")

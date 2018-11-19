@@ -1,0 +1,16 @@
+#!groovy
+
+properties([
+        [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/div-case-formatter-service'],
+        pipelineTriggers([[$class: 'GitHubPushTrigger']])
+])
+
+@Library("Infrastructure")
+
+def type = "java"
+def product = "div"
+def component = "cfs"
+
+withNightlyPipeline(type, product, component) {
+    enableMutationTest()
+}

@@ -1,4 +1,4 @@
-# Divorce Case Maintenance Service
+# Divorce Case Formatter Service
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -62,6 +62,15 @@ To run all checks (including unit tests) please execute following command:
 
 ```bash
     ./gradlew check
+```
+
+### Mutation tests
+
+To run all mutation tests execute the following command:
+
+```
+./gradlew pitest
+
 ```
 
 ## Versioning

@@ -36,26 +36,25 @@ public class GetAosCaseDataITest {
     @Test
     public void givenCaseDataIsNull_whenGetAosCaseData_thenReturnBadRequest() throws Exception {
         webClient.perform(post(API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isBadRequest());
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
     @Test
     public void givenValidDetails_whenGetAosCaseData_thenReturnExpected() throws Exception {
         final AosCaseData expectedAosCaseData =
-            (AosCaseData) ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, AosCaseData.class);
+                (AosCaseData) ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, AosCaseData.class);
 
         MvcResult result = webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andReturn();
+                .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
 
         final AosCaseData actualAosCaseData =
-            (AosCaseData) ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
-                AosCaseData.class);
+                ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(), AosCaseData.class);
 
         assertThat(actualAosCaseData, samePropertyValuesAs(expectedAosCaseData));
     }

@@ -46,7 +46,7 @@ public class AddDocumentsSolicitorITest {
             .andReturn();
 
         final CoreCaseData actualCaseData =
-            (CoreCaseData)ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
+            ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
                 CoreCaseData.class);
 
         assertThat(expectedCaseData, samePropertyValuesAs(actualCaseData));

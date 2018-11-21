@@ -27,7 +27,7 @@ public class ObjectMapperTestUtil {
         return new ObjectMapper().writeValueAsString(object);
     }
 
-    public static Object jsonStringToObject(final String jsonString, Class<?> type) throws IOException {
+    public static <T> T jsonStringToObject(final String jsonString, Class<T> type) throws IOException {
         return new ObjectMapper().readValue(jsonString, type);
     }
 }

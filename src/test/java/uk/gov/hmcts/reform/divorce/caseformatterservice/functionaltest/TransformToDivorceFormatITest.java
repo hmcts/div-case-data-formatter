@@ -54,7 +54,7 @@ public class TransformToDivorceFormatITest {
             .andReturn();
 
         final DivorceSession actualDivorceSession =
-            (DivorceSession)ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
+            ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
                 DivorceSession.class);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));

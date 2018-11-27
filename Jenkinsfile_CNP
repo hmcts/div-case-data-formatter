@@ -20,7 +20,7 @@ def component = "cfs"
 def channel = '#div-dev'
 
 withPipeline(type , product, component) {
-    if (env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) {
+    if ((env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) || 'hmctsdemo'.equalsIgnoreCase(env.BRANCH_NAME) ) {
         enableDockerBuild()
         enableDeployToAKS()
     }

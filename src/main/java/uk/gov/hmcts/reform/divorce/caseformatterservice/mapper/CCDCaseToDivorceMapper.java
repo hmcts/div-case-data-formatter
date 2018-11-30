@@ -29,7 +29,7 @@ public abstract class CCDCaseToDivorceMapper {
     private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     @Value("#{${court.details}}")
-    private Map<String, Map<String, String>> courtDetails;
+    private Map<String, Map<String, Object>> courtDetails;
 
     @Mapping(source = "d8HelpWithFeesReferenceNumber", target = "helpWithFeesReferenceNumber")
     @Mapping(source = "d8caseReference", target = "caseReference")

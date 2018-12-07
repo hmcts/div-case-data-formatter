@@ -35,6 +35,8 @@ public class DivorceSession {
     private String helpWithFeesNeedHelp;
     @ApiModelProperty(value = "Has petitioner applied for Help With Fees?", allowableValues = "Yes, No")
     private String helpWithFeesAppliedForFees;
+    @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
+    private String applyForDecreeNisi;
     @ApiModelProperty(
         value = "Help with fees reference. Must conform to regex ([Hh][Ww][Ff]-?)?[0-9a-zA-Z]{3}-?[0-9a-zA-Z]{3}$")
     private String helpWithFeesReferenceNumber;

@@ -344,6 +344,13 @@ public abstract class CCDCaseToDivorceMapper {
         divorceSession.setHelpWithFeesNeedHelp(translateToYesNoString(caseData.getD8HelpWithFeesNeedHelp()));
     }
 
+    @AfterMapping
+    protected void mapApplyForDecreeNisi(CoreCaseData caseData,
+                                           @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setApplyForDecreeNisi(translateToYesNoString(caseData.getApplyForDecreeNisi()));
+    }
+
+
 
     @AfterMapping
     protected void mapHelpWithFeesAppliedForFees(CoreCaseData caseData,

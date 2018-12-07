@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -10,6 +11,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Objects;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -52,4 +55,17 @@ public abstract class DivorceCaseToDnCaseMapper {
         }
     }
 
+
+    @AfterMapping
+    protected void mapAgreeToApplyDn(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+
+        result.setApplyForDecreeNisi(translateToStringYesNo(divorceSession.getApplyForDecreeNisi()));
+    }
+
+    private String translateToStringYesNo(final String value) {
+        if (Objects.isNull(value)) {
+            return null;
+        }
+        return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
+    }
 }

@@ -39,6 +39,9 @@ public class DnCaseData {
     @JsonProperty("AdulteryDateFoundOut")
     private String adulteryDateFoundOut;
 
+    @JsonProperty("DNApplyForDecreeNisi")
+    private String applyForDecreeNisi;
+
     @JsonProperty("AdulteryLivedApartSinceEventDN")
     private String adulteryLivedApartSinceEventDN;
 

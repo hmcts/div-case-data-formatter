@@ -240,7 +240,7 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8HelpWithFeesNeedHelp")
     private String d8HelpWithFeesNeedHelp;
 
-    @JsonProperty("applyForDecreeNisi")
+    @JsonProperty("DNApplyForDecreeNisi")
     private String applyForDecreeNisi;
 
     @JsonProperty("D8HelpWithFeesAppliedForFees")

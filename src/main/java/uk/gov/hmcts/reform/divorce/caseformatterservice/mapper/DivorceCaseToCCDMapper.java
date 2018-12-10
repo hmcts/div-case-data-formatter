@@ -284,6 +284,11 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
+    protected void mapApplyForDecreeNisi(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        result.setApplyForDecreeNisi(translateToStringYesNo(divorceSession.getApplyForDecreeNisi()));
+    }
+
+    @AfterMapping
     protected void mapDivorceCostsClaim(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8DivorceCostsClaim(translateToStringYesNo(divorceSession.getClaimsCosts()));
     }

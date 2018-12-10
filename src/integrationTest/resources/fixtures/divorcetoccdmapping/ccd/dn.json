@@ -4,6 +4,7 @@
     "DivorceCostsOptionDN" : "YES",
     "statementOfTruthDN" : "YES",
     "AdulteryLifeIntolerable" : "YES",
+    "DNApplyForDecreeNisi" : "YES",
     "AdulteryDateFoundOut" : "2018-10-04",
     "AdulteryLivedApartSinceEventDN" : "NO",
     "AdulteryTimeLivedTogetherDetailsDN" : "3 months",

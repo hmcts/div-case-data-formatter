@@ -256,7 +256,7 @@ public class DivorceSession {
     @ApiModelProperty(hidden = true) // this field is not mapped
     private String respondentHome;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
-    private String reasonForDivorceHasMarriage;
+    private String reasonForDipetitionerContactDetailsConfidentialvorceHasMarriage;
     @ApiModelProperty(hidden = true) // this field is not mapped
     private String reasonForDivorceAdultery3rd;
     @ApiModelProperty(hidden = true) // this field is not mapped
@@ -333,6 +333,9 @@ public class DivorceSession {
             + "(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", "
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date reasonForDivorceLivingApartDate;
+
+    @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
+    private String respondentContactDetailsConfidential;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")

@@ -256,7 +256,7 @@ public class DivorceSession {
     @ApiModelProperty(hidden = true) // this field is not mapped
     private String respondentHome;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
-    private String reasonForDipetitionerContactDetailsConfidentialvorceHasMarriage;
+    private String reasonForDivorceHasMarriage;
     @ApiModelProperty(hidden = true) // this field is not mapped
     private String reasonForDivorceAdultery3rd;
     @ApiModelProperty(hidden = true) // this field is not mapped

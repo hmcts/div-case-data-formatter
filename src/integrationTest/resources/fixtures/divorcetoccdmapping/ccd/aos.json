@@ -17,6 +17,5 @@
     "RespHardshipDefenseResponse" : "NO",
     "RespHardshipDescription" : "Some Hardship Description goes here",
     "RespContactMethodIsDigital" : "YES",
-    "PermittedDecreeNisiReason" : "0",
-    "RespondentContactDetailsConfidential": "share"
+    "PermittedDecreeNisiReason" : "0"
 }

@@ -96,6 +96,8 @@ public abstract class CCDCaseToDivorceMapper {
         target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
+    @Mapping(source = "separationTimeTogetherPermitted", target = "separationTimeTogetherPermitted")
+    @Mapping(source = "livedTogetherMoreTimeThanPermitted", target = "livedTogetherMoreTimeThanPermitted")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToYesNoString(final String value) {
@@ -781,5 +783,11 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapD8PetitionerConsent(CoreCaseData caseData,
                                        @MappingTarget DivorceSession divorceSession) {
         divorceSession.setPetitionerConsent(translateToYesNoString(caseData.getD8PetitionerConsent()));
+    }
+
+    @AfterMapping
+    protected void mapLivedTogetherMoreTimeThanPermitted(CoreCaseData caseData,
+                                                         @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setLivedTogetherMoreTimeThanPermitted(translateToYesNoString(caseData.getLivedTogetherMoreTimeThanPermitted()));
     }
 }

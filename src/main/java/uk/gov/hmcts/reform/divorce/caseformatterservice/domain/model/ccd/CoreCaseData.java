@@ -506,5 +506,11 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8PhysicalSeparationDate")
     private String reasonForDivorceLivingApartDate;
+
+    @JsonProperty("D8SeparationTimeTogetherPermitted")
+    private String separationTimeTogetherPermitted;
+
+    @JsonProperty("D8LivedTogetherMoreTimeThanPermitted")
+    private String livedTogetherMoreTimeThanPermitted;
 }
 

@@ -337,7 +337,8 @@ public class DivorceSession {
     @ApiModelProperty(value = "Maximum separation time together permitted?")
     private String separationTimeTogetherPermitted;
 
-    @ApiModelProperty(value = "Has petitioner & respondent lived more than the time together permitted?", allowableValues = "Yes, No")
+    @ApiModelProperty(value = "Has petitioner & respondent lived more than"
+        + " the time together permitted?", allowableValues = "Yes, No")
     private String livedTogetherMoreTimeThanPermitted;
 
     //Aos Fields Mappings Start

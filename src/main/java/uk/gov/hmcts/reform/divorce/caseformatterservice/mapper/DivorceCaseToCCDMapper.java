@@ -644,7 +644,10 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
-    protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setLivedTogetherMoreTimeThanPermitted(translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted()));
+    protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
+                                                         @MappingTarget CoreCaseData result) {
+        result.setLivedTogetherMoreTimeThanPermitted(
+            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+        );
     }
 }

@@ -17,26 +17,28 @@ public class ExistingPaymentReferenceStrategyUTest {
 
     @Test
     public void testExistingPaymentReferenceAndPaymentReferenceWillReplacePayment() {
-        final PaymentCollection newPayment = createPayment("111222333", "success");
-        final PaymentCollection existingPayment = createPayment("999888777", "success");
-        final PaymentCollection toBeReplacedPayment = createPayment("111222333", "created");
+        final PaymentCollection newPayment = createPayment("111222333", "success", "123456789");
+        final PaymentCollection existingPayment = createPayment("999888777", "success", "12345");
+        final PaymentCollection toBeReplacedPayment = createPayment("111222333", "created", "123");
 
         final List<PaymentCollection> existingPaymentsList = new ArrayList<>();
         existingPaymentsList.add(existingPayment);
         existingPaymentsList.add(toBeReplacedPayment);
 
-        final List<PaymentCollection> expectedPaymentsList = Arrays.asList(existingPayment, newPayment);
+        final PaymentCollection updatedNewPayment = createPayment("111222333", "success", "123");
+
+        final List<PaymentCollection> expectedPaymentsList = Arrays.asList(existingPayment, updatedNewPayment);
         final List<PaymentCollection> returnedPaymentsList = existingPaymentReferenceStrategy
             .getCurrentPaymentsList(newPayment.getValue(), existingPaymentsList);
 
         assertThat(returnedPaymentsList, equalTo(expectedPaymentsList));
     }
 
-    private PaymentCollection createPayment(String reference, String status) {
+    private PaymentCollection createPayment(String reference, String status, String collectionId) {
         final Payment payment = new Payment();
         payment.setPaymentReference(reference);
         payment.setPaymentStatus(status);
 
-        return PaymentCollection.builder().value(payment).build();
+        return PaymentCollection.builder().id(collectionId).value(payment).build();
     }
 }

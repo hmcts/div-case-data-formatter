@@ -5,9 +5,9 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Pay
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -27,7 +27,7 @@ public class ExistingPaymentReferenceStrategyUTest {
 
         final PaymentCollection updatedNewPayment = createPayment("111222333", "success", "123");
 
-        final List<PaymentCollection> expectedPaymentsList = Arrays.asList(existingPayment, updatedNewPayment);
+        final List<PaymentCollection> expectedPaymentsList = asList(existingPayment, updatedNewPayment);
         final List<PaymentCollection> returnedPaymentsList = existingPaymentReferenceStrategy
             .getCurrentPaymentsList(newPayment.getValue(), existingPaymentsList);
 

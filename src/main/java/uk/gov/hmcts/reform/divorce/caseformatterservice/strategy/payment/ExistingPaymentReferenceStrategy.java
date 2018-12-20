@@ -18,16 +18,7 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
         List<PaymentCollection> updatedPayments = new ArrayList<>();
 
         existingPayments.stream()
-            .forEach(payment -> {
-                if (payment.getValue().getPaymentReference().equals(newPayment.getPaymentReference())) {
-                    updatedPayments.add(PaymentCollection.builder()
-                        .id(payment.getId())
-                        .value(newPayment)
-                        .build());
-                } else {
-                    updatedPayments.add(payment);
-                }
-            });
+            .forEach(payment -> updatedPayments.add(getUpdatedPayment(payment, newPayment)));
 
         return updatedPayments;
     }
@@ -37,5 +28,13 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
         return Objects.nonNull(existingPayments) && existingPayments.stream()
             .anyMatch(
                 payment -> payment.getValue().getPaymentReference().equals(newPayment.getPaymentReference()));
+    }
+
+    private PaymentCollection getUpdatedPayment(PaymentCollection existingPayment, Payment newPayment) {
+        if (existingPayment.getValue().getPaymentReference().equals(newPayment.getPaymentReference())) {
+            return existingPayment.toBuilder().value(newPayment).build();
+        }
+
+        return existingPayment;
     }
 }

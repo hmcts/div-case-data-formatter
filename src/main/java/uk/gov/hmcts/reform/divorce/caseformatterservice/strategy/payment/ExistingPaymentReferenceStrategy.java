@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -15,12 +14,9 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
     @Override
     public List<PaymentCollection> getCurrentPaymentsList(Payment newPayment,
                                                           List<PaymentCollection> existingPayments) {
-        List<PaymentCollection> updatedPayments = new ArrayList<>();
-
-        existingPayments.stream()
-            .forEach(payment -> updatedPayments.add(getUpdatedPayment(payment, newPayment)));
-
-        return updatedPayments;
+        return existingPayments.stream()
+            .map(payment -> mapExistingPayment(payment, newPayment))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -30,7 +26,7 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
                 payment -> payment.getValue().getPaymentReference().equals(newPayment.getPaymentReference()));
     }
 
-    private PaymentCollection getUpdatedPayment(PaymentCollection existingPayment, Payment newPayment) {
+    private PaymentCollection mapExistingPayment(PaymentCollection existingPayment, Payment newPayment) {
         if (existingPayment.getValue().getPaymentReference().equals(newPayment.getPaymentReference())) {
             return existingPayment.toBuilder().value(newPayment).build();
         }

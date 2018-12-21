@@ -341,8 +341,8 @@ public class DivorceSession {
     private String respJurisdictionAgree;
     @ApiModelProperty(value = "Respondent agreed or disagree with the reason for divorce?")
     private String respAdmitOrConsentToFact;
-    @ApiModelProperty(value = "Does respondent defend the divorce?")
-    private String respDefendsDivorce;
+    @ApiModelProperty(value = "Will respondent defend the divorce?")
+    private String respWillDefendDivorce;
     @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction")
     private String respJurisdictionDisagreeReason;
     @ApiModelProperty(value = "Respondent country of residence")

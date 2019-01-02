@@ -326,5 +326,6 @@
             "mimeType" : "application/pdf",
             "status" : "OK"
         }
-    ]
+    ],
+    "uploadAnyOtherDocuments" : "Yes"
 }

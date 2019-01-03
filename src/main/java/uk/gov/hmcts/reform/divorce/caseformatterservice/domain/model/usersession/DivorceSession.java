@@ -334,6 +334,13 @@ public class DivorceSession {
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date reasonForDivorceLivingApartDate;
 
+    @ApiModelProperty(value = "Maximum separation time together permitted?")
+    private String separationTimeTogetherPermitted;
+
+    @ApiModelProperty(value = "Has petitioner & respondent lived more than"
+        + " the time together permitted?", allowableValues = "Yes, No")
+    private String livedTogetherMoreTimeThanPermitted;
+
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
     private String respConfirmReadPetition;

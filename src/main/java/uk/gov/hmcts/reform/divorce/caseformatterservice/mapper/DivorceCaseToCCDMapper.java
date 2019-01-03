@@ -640,4 +640,12 @@ public abstract class DivorceCaseToCCDMapper {
     protected void mapPetitionerConsent(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8PetitionerConsent(translateToStringYesNo(divorceSession.getPetitionerConsent()));
     }
+
+    @AfterMapping
+    protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
+                                                         @MappingTarget CoreCaseData result) {
+        result.setLivedTogetherMoreTimeThanPermitted(
+            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+        );
+    }
 }

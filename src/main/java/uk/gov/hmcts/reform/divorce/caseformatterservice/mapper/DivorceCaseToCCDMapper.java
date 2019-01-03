@@ -110,8 +110,6 @@ public abstract class DivorceCaseToCCDMapper {
         target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
-    @Mapping(source = "separationTimeTogetherPermitted", target = "separationTimeTogetherPermitted")
-    @Mapping(source = "livedTogetherMoreTimeThanPermitted", target = "livedTogetherMoreTimeThanPermitted")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     private String translateToStringYesNo(final String value) {

@@ -75,4 +75,7 @@ public class DnCaseData {
     @JsonProperty("DocumentsUploadedDN")
     private List<CollectionMember<Document>> documentsUploadedDN;
 
+    @JsonProperty("DocumentsUploadedQuestionDN")
+    private String documentsUploadedQuestionDN;
+
 }

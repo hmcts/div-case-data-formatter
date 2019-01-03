@@ -424,6 +424,8 @@ public class DivorceSession {
     @ApiModelProperty(value = "Dn uploaded documents URL details.")
     @JsonProperty("files")
     private List<UploadedFile> files;
+    @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
+    private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
 
     public void setD8Documents(List<UploadedFile> d8Documents) {

@@ -274,7 +274,7 @@
     "permittedDecreeNisiReason" : "0",
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",
-    "respDefendsDivorce" : "YES",
+    "respWillDefendDivorce" : "YES",
     "respJurisdictionAgree" : "NO",
     "respJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
     "respJurisdictionRespCountryOfResidence" : "UK",
@@ -326,5 +326,6 @@
             "mimeType" : "application/pdf",
             "status" : "OK"
         }
-    ]
+    ],
+    "uploadAnyOtherDocuments" : "Yes"
 }

@@ -6,6 +6,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Pay
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Component
 public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
@@ -13,12 +14,9 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
     @Override
     public List<PaymentCollection> getCurrentPaymentsList(Payment newPayment,
                                                           List<PaymentCollection> existingPayments) {
-        existingPayments.removeIf(
-            payment -> payment.getValue().getPaymentReference().equals(newPayment.getPaymentReference()));
-
-        existingPayments.add(PaymentCollection.builder().value(newPayment).build());
-
-        return existingPayments;
+        return existingPayments.stream()
+            .map(payment -> mapExistingPayment(payment, newPayment))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -28,4 +26,11 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
                 payment -> payment.getValue().getPaymentReference().equals(newPayment.getPaymentReference()));
     }
 
+    private PaymentCollection mapExistingPayment(PaymentCollection existingPayment, Payment newPayment) {
+        if (existingPayment.getValue().getPaymentReference().equals(newPayment.getPaymentReference())) {
+            return existingPayment.toBuilder().value(newPayment).build();
+        }
+
+        return existingPayment;
+    }
 }

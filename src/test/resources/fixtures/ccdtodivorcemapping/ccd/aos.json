@@ -204,7 +204,7 @@
     "D8InferredRespondentGender" : "male",
     "RespConfirmReadPetition" : "YES",
     "RespAdmitOrConsentToFact" : "YES",
-    "RespDefendsDivorce" : "YES",
+    "RespWillDefendDivorce" : "YES",
     "RespJurisdictionAgree" : "NO",
     "RespJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
     "RespJurisdictionRespCountryOfResidence" : "UK",

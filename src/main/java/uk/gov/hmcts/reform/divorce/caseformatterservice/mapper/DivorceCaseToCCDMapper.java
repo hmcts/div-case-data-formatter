@@ -651,4 +651,12 @@ public abstract class DivorceCaseToCCDMapper {
             result.setRespondentContactDetailsConfidential(SHARE_DETAILS);
         }
     }
+
+    @AfterMapping
+    protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
+                                                         @MappingTarget CoreCaseData result) {
+        result.setLivedTogetherMoreTimeThanPermitted(
+            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+        );
+    }
 }

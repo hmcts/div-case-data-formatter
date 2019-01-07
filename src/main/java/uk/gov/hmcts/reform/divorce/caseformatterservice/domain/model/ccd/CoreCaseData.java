@@ -509,5 +509,11 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("RespondentContactDetailsConfidential")
     private String respondentContactDetailsConfidential;
+  
+    @JsonProperty("D8SeparationTimeTogetherPermitted")
+    private String separationTimeTogetherPermitted;
+
+    @JsonProperty("D8LivedTogetherMoreTimeThanPermitted")
+    private String livedTogetherMoreTimeThanPermitted;
 }
 

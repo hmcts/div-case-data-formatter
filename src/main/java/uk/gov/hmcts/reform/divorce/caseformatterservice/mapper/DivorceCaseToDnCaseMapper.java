@@ -62,6 +62,12 @@ public abstract class DivorceCaseToDnCaseMapper {
         result.setApplyForDecreeNisi(translateToStringYesNo(divorceSession.getApplyForDecreeNisi()));
     }
 
+    @AfterMapping
+    protected void mapDocumentsUploadedQuestionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+
+        result.setDocumentsUploadedQuestionDN(translateToStringYesNo(divorceSession.getUploadAnyOtherDocuments()));
+    }
+
     private String translateToStringYesNo(final String value) {
         if (Objects.isNull(value)) {
             return null;

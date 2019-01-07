@@ -336,6 +336,13 @@ public class DivorceSession {
 
     @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
     private String respondentContactDetailsConfidential;
+  
+    @ApiModelProperty(value = "Maximum separation time together permitted?")
+    private String separationTimeTogetherPermitted;
+
+    @ApiModelProperty(value = "Has petitioner & respondent lived more than"
+        + " the time together permitted?", allowableValues = "Yes, No")
+    private String livedTogetherMoreTimeThanPermitted;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
@@ -344,8 +351,8 @@ public class DivorceSession {
     private String respJurisdictionAgree;
     @ApiModelProperty(value = "Respondent agreed or disagree with the reason for divorce?")
     private String respAdmitOrConsentToFact;
-    @ApiModelProperty(value = "Does respondent defend the divorce?")
-    private String respDefendsDivorce;
+    @ApiModelProperty(value = "Will respondent defend the divorce?", allowableValues = "Yes, No, NoNoAdmission")
+    private String respWillDefendDivorce;
     @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction")
     private String respJurisdictionDisagreeReason;
     @ApiModelProperty(value = "Respondent country of residence")
@@ -420,6 +427,8 @@ public class DivorceSession {
     @ApiModelProperty(value = "Dn uploaded documents URL details.")
     @JsonProperty("files")
     private List<UploadedFile> files;
+    @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
+    private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
 
     public void setD8Documents(List<UploadedFile> d8Documents) {

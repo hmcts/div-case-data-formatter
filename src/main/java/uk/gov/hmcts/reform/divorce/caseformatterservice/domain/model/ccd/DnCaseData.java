@@ -15,6 +15,9 @@ public class DnCaseData {
     @JsonProperty("DNApplicationSubmittedDate")
     private String dnApplicationSubmittedDate;
 
+    @JsonProperty("PetitionChangedYesNoDN")
+    private String petitionChangedYesNoDN;
+
     @JsonProperty("PetitionChangedDetailsDN")
     private String petitionChangedDetailsDN;
 

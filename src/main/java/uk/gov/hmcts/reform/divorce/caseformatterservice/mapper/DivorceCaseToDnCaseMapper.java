@@ -19,7 +19,7 @@ import java.util.Objects;
 public abstract class DivorceCaseToDnCaseMapper {
 
     private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
-  
+
     public static final String YES = "YES";
 
     @Mapping(source = "files", target = "documentsUploadedDN")
@@ -66,6 +66,12 @@ public abstract class DivorceCaseToDnCaseMapper {
     protected void mapDocumentsUploadedQuestionDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
 
         result.setDocumentsUploadedQuestionDN(translateToStringYesNo(divorceSession.getUploadAnyOtherDocuments()));
+    }
+
+    @AfterMapping
+    protected void mapPetitionChangedYesNoDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+
+        result.setPetitionChangedYesNoDN(translateToStringYesNo(divorceSession.getHasBeenChanges()));
     }
 
     private String translateToStringYesNo(final String value) {

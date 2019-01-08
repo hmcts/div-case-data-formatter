@@ -383,6 +383,8 @@ public class DivorceSession {
     //Aos Fields Mappings End
 
     //DnCase Fields Mapping Start
+    @ApiModelProperty(value = "Dn Petition needs changes")
+    private String hasBeenChanges;
     @ApiModelProperty(value = "Dn Petition Change details")
     private String changesDetails;
     @ApiModelProperty(value = "Dn Change Confirmation Petition Yes")

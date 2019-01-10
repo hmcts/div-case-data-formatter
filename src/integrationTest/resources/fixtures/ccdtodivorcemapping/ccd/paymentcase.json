@@ -169,6 +169,5 @@
     "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
     "IssueDate": "2006-02-02",
-    "dueDate":"2006-02-10",
-    "RespondentContactDetailsConfidential": "share"
+    "dueDate":"2006-02-10"
 }

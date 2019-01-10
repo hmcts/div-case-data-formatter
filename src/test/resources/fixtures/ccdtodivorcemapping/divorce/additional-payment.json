@@ -225,6 +225,5 @@
             "PaymentSiteId" : "AA00"
         }
     }],
-    "petitionerConsent" : "Yes",
-    "respondentContactDetailsConfidential": "keep"
+    "petitionerConsent" : "Yes"
 }

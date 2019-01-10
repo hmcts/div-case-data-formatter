@@ -230,6 +230,5 @@
         "PaymentFeeId" : "X0165",
         "PaymentSiteId" : "AA00"
     },
-    "petitionerConsent" : "Yes",
-    "respondentContactDetailsConfidential": "share"
+    "petitionerConsent" : "Yes"
 }

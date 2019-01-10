@@ -165,6 +165,5 @@
     "D8Cohort": "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender": "female",
     "D8InferredRespondentGender": "male",
-    "D8PetitionerConsent" : "YES",
-    "RespondentContactDetailsConfidential": "share"
+    "D8PetitionerConsent" : "YES"
 }

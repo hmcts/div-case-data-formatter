@@ -248,9 +248,15 @@ def sonarExclusions = [
     '**uk/gov/hmcts/reform/divorce/caseformatterservice/CaseFormatterServiceApplication.java'
 ]
 
+def sonarCpdExclusions = [
+    '**uk/gov/hmcts/reform/divorce/caseformatterservice/mapper/CCDCaseToDivorceMapper.java',
+    '**uk/gov/hmcts/reform/divorce/caseformatterservice/mapper/DivorceCaseToCCDMapper.java'
+]
+
 sonarqube {
     properties {
         property "sonar.exclusions", sonarExclusions.join(", ")
+        property "sonar.cpd.exclusions", sonarCpdExclusions.join(", ")
         property "sonar.jacoco.itReportPath", "${project.buildDir}/jacoco/apiTest.exec"
         property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
         property "sonar.projectKey", "DivorceCaseFormatterService"

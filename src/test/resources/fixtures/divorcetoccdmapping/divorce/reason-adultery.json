@@ -156,7 +156,9 @@
     "children"
   ],
   "claimsCosts": "Yes",
-  "reasonForDivorceAdulteryIsNamed": "Yes",
+  "reasonForDivorceAdulteryIsNamed": "YES",
+  "isAnyAdulteryInformationSecondHand": "Yes",
+  "adulterySecondHandInformationDetails": "foo",
   "claimsCostsFrom": [
     "respondent",
     "correspondent"

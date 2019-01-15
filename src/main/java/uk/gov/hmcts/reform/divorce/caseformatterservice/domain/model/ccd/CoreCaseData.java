@@ -330,6 +330,12 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ReasonForDivorceClaimingAdultery")
     private String d8ReasonForDivorceClaimingAdultery;
 
+    @JsonProperty("D8ReasonForDivorceAdulteryAnyInfo2ndHand")
+    private String d8ReasonForDivorceAdulteryAnyInfo2ndHand;
+
+    @JsonProperty("D8ReasonForDivorceAdultery2ndHandDetails")
+    private String d8ReasonForDivorceAdultery2ndHandDetails;
+
     @JsonProperty("D8ReasonForDivorceSeperationIsSameOrAftr")
     private String d8ReasonForDivorceSeperationIsSameOrAftr;
 

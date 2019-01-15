@@ -65,6 +65,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8ReasonForDivorceAdulteryWhereDetails", target = "reasonForDivorceAdulteryWhereDetails")
     @Mapping(source = "d8ReasonForDivorceAdultery3rdAddress.postCode",
         target = "reasonForDivorceAdultery3rdAddress.postcode")
+    @Mapping(source = "d8ReasonForDivorceAdulteryAnyInfo2ndHand", target = "isAnyAdulteryInformationSecondHand")
+    @Mapping(source = "d8ReasonForDivorceAdultery2ndHandDetails", target = "adulterySecondHandInformationDetails")
     @Mapping(source = "d8LegalProceedingsDetails", target = "legalProceedingsDetails")
     @Mapping(source = "d8ResidualJurisdictionEligible", target = "residualJurisdictionEligible")
     @Mapping(source = "d8ReasonForDivorceDesertionDetails", target = "reasonForDivorceDesertionDetails")

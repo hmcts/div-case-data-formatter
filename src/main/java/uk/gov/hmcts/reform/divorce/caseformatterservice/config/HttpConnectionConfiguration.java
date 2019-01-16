@@ -1,8 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.config;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.collect.ImmutableList;
 import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.HttpResponseInterceptor;
@@ -13,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -30,8 +29,6 @@ import static java.util.Arrays.asList;
 @Configuration
 public class HttpConnectionConfiguration {
 
-    @Autowired
-
     @Value("${http.connect.timeout}")
     private int httpConnectTimeout;
 
@@ -45,14 +42,7 @@ public class HttpConnectionConfiguration {
     private int healthHttpConnectRequestTimeout;
 
     @Bean
-    public ObjectMapper objectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);;
-        return objectMapper;
-    }
-
-    @Bean
+    @Primary
     public MappingJackson2HttpMessageConverter jackson2HttpCoverter(@Autowired ObjectMapper objectMapper) {
         MappingJackson2HttpMessageConverter jackson2HttpConverter
             = new MappingJackson2HttpMessageConverter(objectMapper);

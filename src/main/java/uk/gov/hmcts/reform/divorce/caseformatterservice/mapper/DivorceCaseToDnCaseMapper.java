@@ -14,11 +14,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnCaseMapper {
-
-    private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String YES = "YES";
 
@@ -43,7 +43,7 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapDnApplicationSubmittedDate(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
-        result.setDnApplicationSubmittedDate(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        result.setDnApplicationSubmittedDate(LocalDate.now().format(DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT)));
     }
 
     @AfterMapping

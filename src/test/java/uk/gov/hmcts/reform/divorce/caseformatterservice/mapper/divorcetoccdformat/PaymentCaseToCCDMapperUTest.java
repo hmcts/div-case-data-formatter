@@ -29,13 +29,13 @@ public class PaymentCaseToCCDMapperUTest {
     @Test
     public void shouldMapAllAndTransformAllFieldsForPaymentsMappingScenario() throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/paymentcase.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/paymentcase.json", CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/payment.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/payment.json", DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 
@@ -45,13 +45,15 @@ public class PaymentCaseToCCDMapperUTest {
     @Test
     public void shouldAddANewPaymentToExistingPaymentsMappingScenario() throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/additionalpayment.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/additionalpayment.json",
+                    CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/additional-payment.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/additional-payment.json",
+                    DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 
@@ -62,13 +64,14 @@ public class PaymentCaseToCCDMapperUTest {
     public void shouldReplaceExistingPaymentWithNewPaymentWhenTransactionIdIsSameMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/overwritepayment.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/overwritepayment.json", CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/overwrite-payment.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/overwrite-payment.json",
+                    DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 
@@ -78,13 +81,14 @@ public class PaymentCaseToCCDMapperUTest {
     @Test
     public void shouldAddPaymentWhenOnlyTransactionIdIsPopulated() throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/paymentidonly.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/paymentidonly.json", CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/payment-id-only.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/payment-id-only.json",
+                    DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

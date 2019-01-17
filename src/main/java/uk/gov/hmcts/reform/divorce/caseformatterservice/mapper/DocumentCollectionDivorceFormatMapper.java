@@ -7,11 +7,13 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Collect
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings("squid:S1610")
 public abstract class DocumentCollectionDivorceFormatMapper {
     @Mapping(source = "value.documentFileName", target = "fileName")
-    @Mapping(source = "value.documentDateAdded", dateFormat = "yyyy-MM-dd", target = "createdOn")
+    @Mapping(source = "value.documentDateAdded", dateFormat = SIMPLE_DATE_FORMAT, target = "createdOn")
     @Mapping(source = "value.documentLink.documentUrl", target = "fileUrl")
     public abstract UploadedFile map(CollectionMember<Document> documentCollectionMember);
 }

@@ -28,11 +28,13 @@ public class NullHelpFeesCaseToDivorceMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForNullHelpFeesFieldMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/helpfeesnullcase.json", CoreCaseData.class);
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/helpfeesnullcase.json",
+                    CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/help-fees-null.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/help-fees-null.json",
+                    DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

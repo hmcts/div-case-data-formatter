@@ -22,10 +22,10 @@ public class CollectionMemberUTest {
 
     @Before
     public void setUp() throws Exception {
-        json = ObjectMapperTestUtil.loadJson("fixtures/model/ccd/CollectionMember.json");
+        json = ObjectMapperTestUtil.retrieveFileContents("fixtures/model/ccd/CollectionMember.json");
 
         jsonNullDocumentFieldsRemoved =
-            ObjectMapperTestUtil.loadJson("fixtures/model/ccd/CollectionMemberNoNullFields.json");
+            ObjectMapperTestUtil.retrieveFileContents("fixtures/model/ccd/CollectionMemberNoNullFields.json");
 
         final DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl("http://localhost/document");

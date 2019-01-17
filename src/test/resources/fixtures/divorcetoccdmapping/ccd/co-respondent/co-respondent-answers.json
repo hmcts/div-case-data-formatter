@@ -1,0 +1,16 @@
+{
+  "ReceivedAosFromCoResp": "Yes",
+  "ReceivedAosFromCoRespDate": "2018-12-11",
+  "ReceivedAnswerFromCoResp": "Yes",
+  "ReceivedAnswerFromCoRespDate": "2018-12-12",
+  "CoRespConfirmReadPetition": "No",
+  "CoRespStatementOfTruth": "Yes",
+  "CoRespAdmitToAdultery": "Yes",
+  "CoRespDefendsDivorce": "No",
+  "CoRespAgreeToCosts": "Yes",
+  "CoRespCostsReason": "It's the right thing to do...",
+  "CoRespEmailAddress": "co-respondent@divorce.co.uk",
+  "CoRespPhoneNumber": "+4404839202839",
+  "CoRespConsentToEmail": "Yes",
+  "CoRespContactMethodIsDigital": "No"
+}

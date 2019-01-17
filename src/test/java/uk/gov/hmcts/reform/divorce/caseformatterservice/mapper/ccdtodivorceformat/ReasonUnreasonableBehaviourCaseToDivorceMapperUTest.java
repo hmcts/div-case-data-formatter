@@ -28,11 +28,11 @@ public class ReasonUnreasonableBehaviourCaseToDivorceMapperUTest extends ObjectM
     public void shouldMapAllAndTransformAllFieldsForReasonUnreasonableBehaviourScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData caseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/reasonunreasonablebehaviour.json",
+        CoreCaseData caseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/reasonunreasonablebehaviour.json",
                 CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil.jsonToObject(
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
             "fixtures/ccdtodivorcemapping/divorce/reason-unreasonable-behaviour.json",
             DivorceSession.class);
 

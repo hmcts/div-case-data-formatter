@@ -25,6 +25,7 @@ import java.util.Objects;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -33,7 +34,6 @@ public abstract class DivorceCaseToCCDMapper {
 
     private static final String BLANK_SPACE = " ";
     private static final String LINE_SEPARATOR = "\n";
-    private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
     private final PaymentContext paymentContext = new PaymentContext();

@@ -70,4 +70,51 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("PermittedDecreeNisiReason")
     private String permittedDecreeNisiReason;
+
+    //Co-respondent answers
+
+    @JsonProperty("CoRespConfirmReadPetition")
+    private String coRespConfirmReadPetition;
+
+    @JsonProperty("CoRespAdmitToAdultery")
+    private String coRespAdmitToAdultery;
+
+    @JsonProperty("CoRespAgreeToCosts")
+    private String coRespAgreeToCosts;
+
+    @JsonProperty("CoRespConsentToEmail")
+    private String coRespConsentToEmail;
+
+    @JsonProperty("CoRespContactMethodIsDigital")
+    private String coRespContactMethodIsDigital;
+
+    @JsonProperty("CoRespCostsReason")
+    private String coRespCostsReason;
+
+    @JsonProperty("CoRespDefendsDivorce")
+    private String coRespDefendsDivorce;
+
+    @JsonProperty("CoRespEmailAddress")
+    private String coRespEmailAddress;
+
+    @JsonProperty("CoRespPhoneNumber")
+    private String coRespPhoneNumber;
+
+    @JsonProperty("CoRespStatementOfTruth")
+    private String coRespStatementOfTruth;
+
+    @JsonProperty("ReceivedAnswerFromCoResp")
+    private String receivedAnswerFromCoResp;
+
+    @JsonProperty("ReceivedAnswerFromCoRespDate")
+    private String receivedAnswerFromCoRespDate;
+
+    @JsonProperty("ReceivedAosFromCoResp")
+    private String receivedAosFromCoResp;
+
+    @JsonProperty("ReceivedAosFromCoRespDate")
+    private String receivedAosFromCoRespDate;
+
+    //End of co-respondent answers
+
 }

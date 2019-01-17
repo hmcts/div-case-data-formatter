@@ -35,7 +35,7 @@ public class UploadedFileTest {
 
     @Before
     public void setUp() throws Exception {
-        json = ObjectMapperTestUtil.loadJson("fixtures/model/divorce/UploadedFile.json");
+        json = ObjectMapperTestUtil.retrieveFileContents("fixtures/model/divorce/UploadedFile.json");
     }
 
     @Test

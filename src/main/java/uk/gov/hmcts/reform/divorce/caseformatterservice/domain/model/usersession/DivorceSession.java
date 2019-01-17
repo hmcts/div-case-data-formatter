@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
 import java.util.Date;
 import java.util.List;
@@ -380,6 +381,8 @@ public class DivorceSession {
     private String respHardshipDescription;
     @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
     private String permittedDecreeNisiReason;
+    @ApiModelProperty(value = "Answers from co respondent")
+    private CoRespondentAnswers coRespondentAnswers;
     //Aos Fields Mappings End
 
     //DnCase Fields Mapping Start
@@ -415,7 +418,7 @@ public class DivorceSession {
             + "(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", "
             + "\"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date lastIncidentDate;
-    @ApiModelProperty(value = "Dn Behaviour lived appart since event")
+    @ApiModelProperty(value = "Dn Behaviour lived apart since event")
     private String livedApartSinceLastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour time lived together details")
     private String approximateDatesOfLivingTogetherField;

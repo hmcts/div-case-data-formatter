@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.convertObjectToJson;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContents;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContentsAsObject;
 
 @RunWith(SpringRunner.class)
@@ -58,11 +59,9 @@ public class CoRespondentAnswersCCDToDivorceMapperTest {
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(inputCCDData);
 
-        DivorceSession expectedDivorceSession = retrieveFileContentsAsObject(
-                JSON_EXAMPLES_ROOT_FOLDER + divorceJsonFilePath,
-                DivorceSession.class);
+        String expectedDivorceSession = retrieveFileContents(JSON_EXAMPLES_ROOT_FOLDER + divorceJsonFilePath);
 
-        JSONAssert.assertEquals(convertObjectToJson(expectedDivorceSession),
+        JSONAssert.assertEquals(expectedDivorceSession,
                 convertObjectToJson(actualDivorceSession),
                 false);
     }

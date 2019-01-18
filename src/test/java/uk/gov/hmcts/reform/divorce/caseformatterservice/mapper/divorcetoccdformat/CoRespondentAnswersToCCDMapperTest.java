@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.convertObjectToJson;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContents;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContentsAsObject;
 
 @RunWith(SpringRunner.class)
@@ -59,10 +60,9 @@ public class CoRespondentAnswersToCCDMapperTest {
 
         AosCaseData actualAosCaseData = mapper.divorceCaseDataToAosCaseData(divorceSession);
 
-        AosCaseData expectedCCD = retrieveFileContentsAsObject(JSON_EXAMPLES_ROOT_FOLDER + ccdJsonFilePath,
-                AosCaseData.class);
+        String expectedAosCaseData = retrieveFileContents(JSON_EXAMPLES_ROOT_FOLDER + ccdJsonFilePath);
 
-        JSONAssert.assertEquals(convertObjectToJson(expectedCCD),
+        JSONAssert.assertEquals(expectedAosCaseData,
                 convertObjectToJson(actualAosCaseData),
                 false);
     }

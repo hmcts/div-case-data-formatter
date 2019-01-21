@@ -3,24 +3,19 @@
     "contactInfo": {
       "emailAddress": "co-respondent@divorce.co.uk",
       "consentToReceivingEmails": "Yes",
-      "contactMethodIsDigital": "No",
       "phoneNumber": "+4404839202839"
     },
     "aos": {
-      "received": "Yes",
-      "dateReceived": "2018-12-11"
+      "received": "Yes"
     },
     "answer": {
-      "received": "Yes",
-      "dateReceived": "2018-12-12"
+      "received": "Yes"
     },
     "confirmReadPetition": "No",
-    "statementOfTruth": "Yes",
-    "admitOrConsentToFact": "Yes",
+    "admitAdultery": "Yes",
     "defendsDivorce": "No",
     "costs": {
-      "agreeToCosts": "Yes",
-      "reason": "It's the right thing to do..."
+      "agreeToCosts": "Yes"
     }
   }
 }

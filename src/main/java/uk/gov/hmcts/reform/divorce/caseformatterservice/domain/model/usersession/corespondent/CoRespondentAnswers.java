@@ -13,7 +13,7 @@ public class CoRespondentAnswers {
 
     private String confirmReadPetition;
     private String statementOfTruth;
-    private String admitOrConsentToFact;
+    private String admitAdultery;
     private String defendsDivorce;
 
     private Costs costs;

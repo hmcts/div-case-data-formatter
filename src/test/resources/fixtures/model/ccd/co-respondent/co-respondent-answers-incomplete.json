@@ -2,7 +2,7 @@
   "ReceivedAosFromCoResp": "Yes",
   "ReceivedAnswerFromCoResp": "Yes",
   "CoRespConfirmReadPetition": "No",
-  "CoRespAdmitToAdultery": "Yes",
+  "CoRespAdmitAdultery": "Yes",
   "CoRespDefendsDivorce": "No",
   "CoRespAgreeToCosts": "Yes",
   "CoRespEmailAddress": "co-respondent@divorce.co.uk",

@@ -103,7 +103,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
             target = "reasonForDivorceLivingApartDate")
     @Mapping(source = "coRespConfirmReadPetition", target = "coRespondentAnswers.confirmReadPetition")
-    @Mapping(source = "coRespAdmitToAdultery", target = "coRespondentAnswers.admitOrConsentToFact")
+    @Mapping(source = "coRespAdmitAdultery", target = "coRespondentAnswers.admitAdultery")
     @Mapping(source = "coRespConsentToEmail", target = "coRespondentAnswers.contactInfo.consentToReceivingEmails")
     @Mapping(source = "coRespContactMethodIsDigital", target = "coRespondentAnswers.contactInfo.contactMethodIsDigital")
     @Mapping(source = "coRespAgreeToCosts", target = "coRespondentAnswers.costs.agreeToCosts")
@@ -118,6 +118,9 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "receivedAosFromCoResp", target = "coRespondentAnswers.aos.received")
     @Mapping(source = "receivedAosFromCoRespDate", target = "coRespondentAnswers.aos.dateReceived",
             dateFormat = SIMPLE_DATE_FORMAT)
+    @Mapping(source = "dueDateCoResp", target = "coRespondentAnswers.aos.dueDate",
+            dateFormat = SIMPLE_DATE_FORMAT)
+    @Mapping(source = "coRespLetterHolderId", target = "coRespondentAnswers.aos.letterHolderId")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToYesNoString(final String value) {
@@ -816,7 +819,9 @@ public abstract class CCDCaseToDivorceMapper {
 
         AOS aos = coRespondentAnswers.getAos();
         if (aos.getReceived() == null
-                && aos.getDateReceived() == null) {
+                && aos.getLetterHolderId() == null
+                && aos.getDateReceived() == null
+                && aos.getDueDate() == null) {
 
             coRespondentAnswers.setAos(null);
 
@@ -843,7 +848,7 @@ public abstract class CCDCaseToDivorceMapper {
                 && coRespondentAnswers.getAnswer() == null
                 && coRespondentAnswers.getConfirmReadPetition() == null
                 && coRespondentAnswers.getStatementOfTruth() == null
-                && coRespondentAnswers.getAdmitOrConsentToFact() == null
+                && coRespondentAnswers.getAdmitAdultery() == null
                 && coRespondentAnswers.getDefendsDivorce() == null
                 && coRespondentAnswers.getCosts() == null) {
 

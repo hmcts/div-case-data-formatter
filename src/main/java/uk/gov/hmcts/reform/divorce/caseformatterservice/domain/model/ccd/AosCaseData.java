@@ -76,8 +76,8 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("CoRespConfirmReadPetition")
     private String coRespConfirmReadPetition;
 
-    @JsonProperty("CoRespAdmitToAdultery")
-    private String coRespAdmitToAdultery;
+    @JsonProperty("CoRespAdmitAdultery")
+    private String coRespAdmitAdultery;
 
     @JsonProperty("CoRespAgreeToCosts")
     private String coRespAgreeToCosts;
@@ -112,8 +112,14 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("ReceivedAosFromCoResp")
     private String receivedAosFromCoResp;
 
+    @JsonProperty("CoRespLetterHolderId")
+    private String coRespLetterHolderId;
+
     @JsonProperty("ReceivedAosFromCoRespDate")
     private String receivedAosFromCoRespDate;
+
+    @JsonProperty("dueDateCoResp")
+    private String dueDateCoResp;
 
     //End of co-respondent answers
 

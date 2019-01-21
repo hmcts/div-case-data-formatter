@@ -14,7 +14,7 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCom
 public abstract class DivorceCaseToAosCaseMapper {
 
     @Mapping(source = "coRespondentAnswers.confirmReadPetition", target = "coRespConfirmReadPetition")
-    @Mapping(source = "coRespondentAnswers.admitOrConsentToFact", target = "coRespAdmitToAdultery")
+    @Mapping(source = "coRespondentAnswers.admitAdultery", target = "coRespAdmitAdultery")
     @Mapping(source = "coRespondentAnswers.contactInfo.consentToReceivingEmails", target = "coRespConsentToEmail")
     @Mapping(source = "coRespondentAnswers.contactInfo.contactMethodIsDigital", target = "coRespContactMethodIsDigital")
     @Mapping(source = "coRespondentAnswers.costs.agreeToCosts", target = "coRespAgreeToCosts")
@@ -29,6 +29,9 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "coRespondentAnswers.aos.received", target = "receivedAosFromCoResp")
     @Mapping(source = "coRespondentAnswers.aos.dateReceived", target = "receivedAosFromCoRespDate",
             dateFormat = SIMPLE_DATE_FORMAT)
+    @Mapping(source = "coRespondentAnswers.aos.dueDate", target = "dueDateCoResp",
+            dateFormat = SIMPLE_DATE_FORMAT)
+    @Mapping(source = "coRespondentAnswers.aos.letterHolderId", target = "coRespLetterHolderId")
     public abstract AosCaseData divorceCaseDataToAosCaseData(DivorceSession divorceSession);
 
     @AfterMapping

@@ -14,7 +14,12 @@ public class AOS {
 
     private String received;
 
+    private String letterHolderId;
+
     @JsonFormat(pattern = SIMPLE_DATE_FORMAT)
     private Date dateReceived;
+
+    @JsonFormat(pattern = SIMPLE_DATE_FORMAT)
+    private Date dueDate;
 
 }

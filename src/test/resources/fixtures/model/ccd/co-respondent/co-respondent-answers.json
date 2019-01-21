@@ -5,12 +5,14 @@
   "ReceivedAnswerFromCoRespDate": "2018-12-12",
   "CoRespConfirmReadPetition": "No",
   "CoRespStatementOfTruth": "Yes",
-  "CoRespAdmitToAdultery": "Yes",
+  "CoRespAdmitAdultery": "Yes",
   "CoRespDefendsDivorce": "No",
   "CoRespAgreeToCosts": "Yes",
   "CoRespCostsReason": "It's the right thing to do...",
   "CoRespEmailAddress": "co-respondent@divorce.co.uk",
   "CoRespPhoneNumber": "+4404839202839",
   "CoRespConsentToEmail": "Yes",
-  "CoRespContactMethodIsDigital": "No"
+  "CoRespLetterHolderId": "LetterHolder123",
+  "CoRespContactMethodIsDigital": "No",
+  "dueDateCoResp": "2018-12-20"
 }

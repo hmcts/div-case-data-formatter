@@ -23,7 +23,7 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapp
 @SpringBootTest(classes = CaseFormatterServiceApplication.class)
 public class CoRespondentAnswersCCDToDivorceMapperTest {
 
-    private static final String JSON_EXAMPLES_ROOT_FOLDER = "fixtures/ccdtodivorcemapping/";
+    private static final String JSON_EXAMPLES_ROOT_FOLDER = "fixtures/model/";
 
     @Autowired
     private CCDCaseToDivorceMapper mapper;

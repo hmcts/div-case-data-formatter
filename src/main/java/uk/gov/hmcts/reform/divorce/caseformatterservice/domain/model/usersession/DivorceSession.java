@@ -187,10 +187,11 @@ public class DivorceSession {
     private String reasonForDivorceAdulteryWhenDetails;
     @ApiModelProperty(value = "Where did adultery take place?")
     private String reasonForDivorceAdulteryWhereDetails;
-    @ApiModelProperty(value = "Did any of the information about adultery come from another person?", allowableValues ="Yes, No")
-    private String isAnyAdulteryInformationSecondHand;
+    @ApiModelProperty(value = "Did any of the information about adultery come from another person?",
+        allowableValues = "Yes, No")
+    private String reasonForDivorceAdulterySecondHandInfo;
     @ApiModelProperty(value = "Details of the information about adultery that has come from another person")
-    private String adulterySecondHandInformationDetails;
+    private String reasonForDivorceAdulterySecondHandInfoDetails;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceDesertionAlright;
     @ApiModelProperty(
@@ -419,7 +420,7 @@ public class DivorceSession {
             + "(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", "
             + "\"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date lastIncidentDate;
-    @ApiModelProperty(value = "Dn Behaviour lived appart since event")
+    @ApiModelProperty(value = "Dn Behaviour lived apart since event")
     private String livedApartSinceLastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour time lived together details")
     private String approximateDatesOfLivingTogetherField;

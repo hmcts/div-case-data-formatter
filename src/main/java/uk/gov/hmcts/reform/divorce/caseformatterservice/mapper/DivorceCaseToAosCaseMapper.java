@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
-import org.apache.commons.lang3.BooleanUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,9 +8,6 @@ import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
-
-import java.util.Locale;
-import java.util.Objects;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNo;

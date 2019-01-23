@@ -804,6 +804,26 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapCoRespondentAnswers(CoreCaseData caseData,
                                           @MappingTarget DivorceSession divorceSession) {
+        //Convert Yes or No answers
+        divorceSession.getCoRespondentAnswers().setConfirmReadPetition(
+                translateToYesNoString(caseData.getCoRespConfirmReadPetition()));
+        divorceSession.getCoRespondentAnswers().setAdmitAdultery(
+                translateToYesNoString(caseData.getCoRespAdmitAdultery()));
+        divorceSession.getCoRespondentAnswers().getContactInfo().setConsentToReceivingEmails(
+                translateToYesNoString(caseData.getCoRespConsentToEmail()));
+        divorceSession.getCoRespondentAnswers().getContactInfo().setContactMethodIsDigital(
+                translateToYesNoString(caseData.getCoRespContactMethodIsDigital()));
+        divorceSession.getCoRespondentAnswers().getCosts().setAgreeToCosts(
+                translateToYesNoString(caseData.getCoRespAgreeToCosts()));
+        divorceSession.getCoRespondentAnswers().setDefendsDivorce(
+                translateToYesNoString(caseData.getCoRespDefendsDivorce()));
+        divorceSession.getCoRespondentAnswers().setStatementOfTruth(
+                translateToYesNoString(caseData.getCoRespStatementOfTruth()));
+        divorceSession.getCoRespondentAnswers().getAnswer().setReceived(
+                translateToYesNoString(caseData.getReceivedAnswerFromCoResp()));
+        divorceSession.getCoRespondentAnswers().getAos().setReceived(
+                translateToYesNoString(caseData.getReceivedAosFromCoResp()));
+
         //Remove empty objects
         CoRespondentAnswers coRespondentAnswers = divorceSession.getCoRespondentAnswers();
 

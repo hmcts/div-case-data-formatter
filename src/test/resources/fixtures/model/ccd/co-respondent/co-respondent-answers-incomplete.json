@@ -1,11 +1,11 @@
 {
-  "ReceivedAosFromCoResp": "Yes",
-  "ReceivedAnswerFromCoResp": "Yes",
-  "CoRespConfirmReadPetition": "No",
-  "CoRespAdmitAdultery": "Yes",
-  "CoRespDefendsDivorce": "No",
-  "CoRespAgreeToCosts": "Yes",
+  "ReceivedAosFromCoResp": "YES",
+  "ReceivedAnswerFromCoResp": "YES",
+  "CoRespConfirmReadPetition": "NO",
+  "CoRespAdmitAdultery": "YES",
+  "CoRespDefendsDivorce": "NO",
+  "CoRespAgreeToCosts": "YES",
   "CoRespEmailAddress": "co-respondent@divorce.co.uk",
   "CoRespPhoneNumber": "+4404839202839",
-  "CoRespConsentToEmail": "Yes"
+  "CoRespConsentToEmail": "YES"
 }

@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.util.Strings;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
@@ -113,7 +114,7 @@ public abstract class DivorceCaseToCCDMapper {
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     private String translateToStringYesNo(final String value) {
-        if (Objects.isNull(value)) {
+        if (Strings.isBlank(value)) {
             return null;
         }
         return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);

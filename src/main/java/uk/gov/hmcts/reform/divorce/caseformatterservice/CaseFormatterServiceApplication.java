@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "uk.gov.hmcts.reform")
 @EnableFeignClients(basePackages = {"uk.gov.hmcts.reform.divorce"})
 public class CaseFormatterServiceApplication {
 

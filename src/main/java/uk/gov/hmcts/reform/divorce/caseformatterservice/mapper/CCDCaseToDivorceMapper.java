@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.util.Strings;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,7 +19,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Objects;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionDivorceFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -99,14 +99,14 @@ public abstract class CCDCaseToDivorceMapper {
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToYesNoString(final String value) {
-        if (Objects.isNull(value)) {
+        if (Strings.isBlank(value)) {
             return null;
         }
         return YesNoAnswer.fromInput(value).getAnswer();
     }
 
     private String translateToBooleanString(final String value) {
-        if (Objects.isNull(value)) {
+        if (Strings.isBlank(value)) {
             return null;
         }
         return String.valueOf("YES".equalsIgnoreCase(value));

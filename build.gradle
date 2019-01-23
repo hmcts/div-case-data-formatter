@@ -119,7 +119,7 @@ def versions = [
     junit: '4.12',
     lombok: '1.16.16',
     puppyCrawl: '7.6',
-    reformsJavaLogging: '3.0.1',
+    reformsJavaLogging: '4.0.1',
     restAssured: '3.0.3',
     serenity: '1.5.2',
     serenityCucumber: '1.1.3',

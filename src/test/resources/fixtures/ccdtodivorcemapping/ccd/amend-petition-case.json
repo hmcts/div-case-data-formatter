@@ -206,8 +206,6 @@
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
-    "IssueDate": "2006-02-02",
-    "dueDate":"2006-02-10",
     "previousReasonsForDivorce": ["reason-one", "reason-two"],
     "previousCaseId": "caseReferenceOld"
   }

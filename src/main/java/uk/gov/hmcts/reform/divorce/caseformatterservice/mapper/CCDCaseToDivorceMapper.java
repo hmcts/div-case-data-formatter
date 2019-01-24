@@ -101,7 +101,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "reasonForDivorceDecisionDate", dateFormat = SIMPLE_DATE_FORMAT,
             target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
-            target = "reasonForDivorceLivingApartDate")
+        target = "reasonForDivorceLivingApartDate")
     @Mapping(source = "coRespConfirmReadPetition", target = "coRespondentAnswers.confirmReadPetition")
     @Mapping(source = "coRespAdmitAdultery", target = "coRespondentAnswers.admitAdultery")
     @Mapping(source = "coRespConsentToEmail", target = "coRespondentAnswers.contactInfo.consentToReceivingEmails")
@@ -114,13 +114,15 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "coRespStatementOfTruth", target = "coRespondentAnswers.statementOfTruth")
     @Mapping(source = "receivedAnswerFromCoResp", target = "coRespondentAnswers.answer.received")
     @Mapping(source = "receivedAnswerFromCoRespDate", target = "coRespondentAnswers.answer.dateReceived",
-            dateFormat = SIMPLE_DATE_FORMAT)
+        dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "receivedAosFromCoResp", target = "coRespondentAnswers.aos.received")
     @Mapping(source = "receivedAosFromCoRespDate", target = "coRespondentAnswers.aos.dateReceived",
-            dateFormat = SIMPLE_DATE_FORMAT)
+        dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "dueDateCoResp", target = "coRespondentAnswers.aos.dueDate",
-            dateFormat = SIMPLE_DATE_FORMAT)
+        dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "coRespLetterHolderId", target = "coRespondentAnswers.aos.letterHolderId")
+    @Mapping(source = "previousCaseId", target = "previousCaseId")
+    @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToYesNoString(final String value) {

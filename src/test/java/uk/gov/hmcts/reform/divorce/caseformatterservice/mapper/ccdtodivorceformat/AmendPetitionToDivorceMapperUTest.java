@@ -28,11 +28,15 @@ public class AmendPetitionToDivorceMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForAmendPetitionMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/amend-petition-case.json", CoreCaseData.class);
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .convertJsonToObject(ObjectMapperTestUtil
+                    .retrieveFileContents("fixtures/ccdtodivorcemapping/ccd/amend-petition-case.json"),
+                CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/amend-petition-divorce.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .convertJsonToObject(ObjectMapperTestUtil
+                    .retrieveFileContents("fixtures/ccdtodivorcemapping/divorce/amend-petition-divorce.json"),
+                DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

@@ -110,7 +110,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
-
+    
     @BeforeMapping
     protected void updateSeparationDate(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         separationDateService.updateSeparationDate(divorceSession);

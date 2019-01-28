@@ -30,12 +30,12 @@ public class AddressesCaseToCCDMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/addresscase.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/addresscase.json", CoreCaseData.class);
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/addresses.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/addresses.json", DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 
@@ -46,13 +46,13 @@ public class AddressesCaseToCCDMapperUTest {
     public void givenNullRespondentHomeAddress_whenTransformDivorceDataToCCD_thenReturnEmptyAddress()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/empty-respondent-home-addresscase.json",
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/empty-respondent-home-addresscase.json",
                 CoreCaseData.class);
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/respondent-home-addresses-empty.json",
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/respondent-home-addresses-empty.json",
                 DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);

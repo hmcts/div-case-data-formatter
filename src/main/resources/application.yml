@@ -11,6 +11,12 @@ spring:
 server:
   port: 4011
 
+jackson:
+    deserialization:
+        ACCEPT_SINGLE_VALUE_AS_ARRAY: true
+    serialization:
+        FAIL_ON_EMPTY_BEANS: false
+
 idam:
   api:
     url: ${IDAM_API_BASEURL:http://localhost:4503}
@@ -77,7 +83,7 @@ court:
                 \"openingHours\": \"Telephone Enquiries from: 8.30am to 5pm\",
                 \"email\": \"divorce@justice.gov.uk\",
                 \"phoneNumber\": \"0300 303 0642\",
-                \"siteId\": \"CTSC\"
+                \"siteId\": \"AA01\"
               }
            }"
 
@@ -86,6 +92,14 @@ http:
     timeout: 60000
     request:
       timeout: 60000
+
+health:
+    check:
+        http:
+            connect:
+                timeout: 5000
+                request:
+                    timeout: 5000
 
 documentation:
   swagger:

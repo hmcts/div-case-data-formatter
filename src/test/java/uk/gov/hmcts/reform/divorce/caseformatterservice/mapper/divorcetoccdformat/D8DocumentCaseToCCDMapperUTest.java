@@ -29,12 +29,13 @@ public class D8DocumentCaseToCCDMapperUTest {
     @Test
     public void shouldMapAllAndTransformAllFieldsForD8DocumentGenerated() throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/d8document.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/d8document.json", CoreCaseData.class);
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/d8-document.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/d8-document.json",
+                    DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

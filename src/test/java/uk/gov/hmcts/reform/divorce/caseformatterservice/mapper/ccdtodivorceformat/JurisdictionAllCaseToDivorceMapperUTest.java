@@ -27,10 +27,10 @@ public class JurisdictionAllCaseToDivorceMapperUTest {
     @Test
     public void shouldMapAllAndTransformAllFieldsForJurisdictionAllScenario() throws URISyntaxException, IOException {
 
-        CoreCaseData caseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/jurisdictionall.json", CoreCaseData.class);
+        CoreCaseData caseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/jurisdictionall.json", CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil.jsonToObject(
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
             "fixtures/ccdtodivorcemapping/divorce/jurisdiction-all.json", DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(caseData);

@@ -22,10 +22,10 @@ public class DocumentUTest {
 
     @Before
     public void setUp() throws Exception {
-        json = ObjectMapperTestUtil.loadJson("fixtures/model/ccd/Document.json");
+        json = ObjectMapperTestUtil.retrieveFileContents("fixtures/model/ccd/Document.json");
 
         jsonWithNullFieldsIgnored =
-            ObjectMapperTestUtil.loadJson("fixtures/model/ccd/DocumentNullFieldsIgnored.json");
+            ObjectMapperTestUtil.retrieveFileContents("fixtures/model/ccd/DocumentNullFieldsIgnored.json");
 
         final DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl("http://localhost/document");

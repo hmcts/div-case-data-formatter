@@ -28,11 +28,12 @@ public class NullAddressesCaseToDivorceMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/addressnullcase.json", CoreCaseData.class);
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/addressnullcase.json", CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/addresses-null.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/addresses-null.json",
+                    DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 
@@ -43,12 +44,13 @@ public class NullAddressesCaseToDivorceMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenarioWithDerivedNotNull()
         throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/addressnullderivednotnullcase.json",
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/addressnullderivednotnullcase.json",
                 CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/addresses-derived-not-null.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/addresses-derived-not-null.json",
+                    DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

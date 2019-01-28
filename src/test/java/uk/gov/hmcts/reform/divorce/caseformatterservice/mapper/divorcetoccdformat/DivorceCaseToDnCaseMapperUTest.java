@@ -29,13 +29,13 @@ public class DivorceCaseToDnCaseMapperUTest {
     @Test
     public void shouldMapTheFieldsProperly() throws URISyntaxException, IOException {
 
-        DnCaseData expectedDnCaseData = (DnCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/dn.json", DnCaseData.class);
+        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn.json", DnCaseData.class);
         expectedDnCaseData.setDnApplicationSubmittedDate(
             LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/dn.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn.json", DivorceSession.class);
 
         DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
 

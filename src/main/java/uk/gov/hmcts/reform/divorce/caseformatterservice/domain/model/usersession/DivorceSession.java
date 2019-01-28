@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
 import java.util.Date;
 import java.util.List;
@@ -385,6 +386,8 @@ public class DivorceSession {
     private String respHardshipDescription;
     @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
     private String permittedDecreeNisiReason;
+    @ApiModelProperty(value = "Answers from co respondent")
+    private CoRespondentAnswers coRespondentAnswers;
     //Aos Fields Mappings End
 
     //DnCase Fields Mapping Start

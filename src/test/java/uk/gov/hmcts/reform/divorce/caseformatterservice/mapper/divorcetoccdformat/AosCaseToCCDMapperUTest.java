@@ -27,11 +27,11 @@ public class AosCaseToCCDMapperUTest {
     @Test
     public void shouldMapTheFieldsProperly() throws URISyntaxException, IOException {
 
-        AosCaseData expectedAosCaseData = (AosCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/aos.json", AosCaseData.class);
+        AosCaseData expectedAosCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/aos.json", AosCaseData.class);
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/aos.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/aos.json", DivorceSession.class);
 
         AosCaseData actualAosCaseData = mapper.divorceCaseDataToAosCaseData(divorceSession);
 

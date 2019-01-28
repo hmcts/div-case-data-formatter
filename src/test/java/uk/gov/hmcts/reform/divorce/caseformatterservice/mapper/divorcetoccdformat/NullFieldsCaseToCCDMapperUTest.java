@@ -30,12 +30,12 @@ public class NullFieldsCaseToCCDMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForDifferentNullScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/nullfieldscase.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/nullfieldscase.json", CoreCaseData.class);
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/divorce/nullfields.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/nullfields.json", DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

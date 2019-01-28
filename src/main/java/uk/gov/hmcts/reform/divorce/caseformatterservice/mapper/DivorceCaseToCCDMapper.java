@@ -1,8 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
-import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.util.Strings;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
@@ -21,11 +19,12 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorc
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Objects;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNo;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -34,7 +33,6 @@ public abstract class DivorceCaseToCCDMapper {
 
     private static final String BLANK_SPACE = " ";
     private static final String LINE_SEPARATOR = "\n";
-    private static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
     private final PaymentContext paymentContext = new PaymentContext();
@@ -112,14 +110,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
-
-    private String translateToStringYesNo(final String value) {
-        if (Strings.isBlank(value)) {
-            return null;
-        }
-        return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
-    }
-
+    
     @BeforeMapping
     protected void updateSeparationDate(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         separationDateService.updateSeparationDate(divorceSession);
@@ -292,12 +283,6 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapDivorceCostsClaim(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8DivorceCostsClaim(translateToStringYesNo(divorceSession.getClaimsCosts()));
-    }
-
-    @AfterMapping
-    protected void mapDivorceIsNamed(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ReasonForDivorceAdulteryIsNamed(
-            translateToStringYesNo(divorceSession.getReasonForDivorceAdulteryIsNamed()));
     }
 
     @AfterMapping

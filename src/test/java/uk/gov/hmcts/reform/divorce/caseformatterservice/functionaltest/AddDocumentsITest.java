@@ -44,17 +44,17 @@ public class AddDocumentsITest {
     @Test
     public void givenValidDetails_whenAddDocuments_thenReturnExpected() throws Exception {
         final CoreCaseData expectedCaseData =
-            (CoreCaseData)ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
 
         MvcResult result = webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andReturn();
 
         final CoreCaseData actualCaseData =
-            ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
                 CoreCaseData.class);
 
         assertThat(expectedCaseData, samePropertyValuesAs(actualCaseData));

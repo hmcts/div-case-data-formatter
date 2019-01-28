@@ -78,7 +78,7 @@ public class TransformToCCDFormatITest {
     @Test
     public void givenJWTTokenIsNull_whenTransformToCCDFormat_thenReturnBadRequest() throws Exception {
         webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isBadRequest());
@@ -90,7 +90,7 @@ public class TransformToCCDFormatITest {
         stubUserDetailsEndpoint(HttpStatus.FORBIDDEN, new EqualToPattern(USER_TOKEN), message);
 
         webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
             .header(HttpHeaders.AUTHORIZATION, USER_TOKEN)
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
@@ -104,18 +104,18 @@ public class TransformToCCDFormatITest {
         stubUserDetailsEndpoint(HttpStatus.OK, new EqualToPattern(USER_TOKEN), message);
 
         final CoreCaseData expectedCaseData =
-            (CoreCaseData)ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
 
         expectedCaseData.setCreatedDate(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         expectedCaseData.setD8PetitionerEmail(EMAIL_ADDRESS);
 
         webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
             .header(HttpHeaders.AUTHORIZATION, USER_TOKEN)
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(content().json(ObjectMapperTestUtil.convertObjectToJsonString(expectedCaseData)));
+            .andExpect(content().json(ObjectMapperTestUtil.convertObjectToJson(expectedCaseData)));
     }
 
     private void stubUserDetailsEndpoint(HttpStatus status, StringValuePattern authHeader, String message) {

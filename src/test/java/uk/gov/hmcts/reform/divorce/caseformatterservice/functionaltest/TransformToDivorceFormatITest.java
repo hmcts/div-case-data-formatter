@@ -44,17 +44,17 @@ public class TransformToDivorceFormatITest {
     @Test
     public void givenValidDetails_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
         final DivorceSession expectedDivorceSession =
-            (DivorceSession)ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
 
         MvcResult result = webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andReturn();
 
         final DivorceSession actualDivorceSession =
-            ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
                 DivorceSession.class);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));

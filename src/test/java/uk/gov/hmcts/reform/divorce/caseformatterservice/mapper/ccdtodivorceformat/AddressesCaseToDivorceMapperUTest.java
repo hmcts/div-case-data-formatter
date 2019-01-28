@@ -28,11 +28,11 @@ public class AddressesCaseToDivorceMapperUTest {
     public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/addresscase.json", CoreCaseData.class);
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/addresscase.json", CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/addresses.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/addresses.json", DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

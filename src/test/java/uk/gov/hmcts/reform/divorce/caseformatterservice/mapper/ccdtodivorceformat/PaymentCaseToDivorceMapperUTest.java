@@ -27,11 +27,11 @@ public class PaymentCaseToDivorceMapperUTest {
     @Test
     public void shouldMapAllAndTransformAllFieldsForPaymentsMappingScenario() throws URISyntaxException, IOException {
 
-        CoreCaseData caseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/paymentcase.json", CoreCaseData.class);
+        CoreCaseData caseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/paymentcase.json", CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/payment.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/payment.json", DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(caseData);
 
@@ -41,11 +41,13 @@ public class PaymentCaseToDivorceMapperUTest {
     @Test
     public void shouldAddANewPaymentToExistingPaymentsMappingScenario() throws URISyntaxException, IOException {
 
-        CoreCaseData caseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/additionalpayment.json", CoreCaseData.class);
+        CoreCaseData caseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/additionalpayment.json",
+                    CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/additional-payment.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/additional-payment.json",
+                    DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(caseData);
 

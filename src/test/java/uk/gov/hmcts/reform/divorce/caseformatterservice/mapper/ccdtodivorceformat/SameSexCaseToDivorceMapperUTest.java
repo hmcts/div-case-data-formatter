@@ -27,11 +27,11 @@ public class SameSexCaseToDivorceMapperUTest {
     @Test
     public void shouldMapAllAndTransformAllFieldsForSameSexScenario() throws URISyntaxException, IOException {
 
-        CoreCaseData caseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/samesex.json", CoreCaseData.class);
+        CoreCaseData caseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/samesex.json", CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/same-sex.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/same-sex.json", DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(caseData);
 

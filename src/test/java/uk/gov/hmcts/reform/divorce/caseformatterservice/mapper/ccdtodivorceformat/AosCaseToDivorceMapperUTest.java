@@ -27,11 +27,11 @@ public class AosCaseToDivorceMapperUTest {
     @Test
     public void shouldMapTheFieldsProperly() throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/ccd/aos.json", CoreCaseData.class);
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/aos.json", CoreCaseData.class);
 
-        DivorceSession expectedDivorceSession = (DivorceSession) ObjectMapperTestUtil
-            .jsonToObject("fixtures/ccdtodivorcemapping/divorce/aos.json", DivorceSession.class);
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/aos.json", DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

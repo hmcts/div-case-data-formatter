@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.4.RELEASE'
+        springBootVersion = '2.1.2.RELEASE'
     }
     repositories {
         mavenLocal()
@@ -23,7 +23,7 @@ plugins {
     id 'jacoco'
     id 'org.owasp.dependencycheck' version '3.2.1'
     id 'org.sonarqube' version '2.5'
-    id 'org.springframework.boot' version '2.0.4.RELEASE'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
     id 'pmd'
     id 'info.solidsoft.pitest' version '1.3.0'
 }
@@ -141,7 +141,17 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
 
-    compile group: 'org.springframework', name: 'spring-context-support'
+    compile group: 'org.springframework', name: 'spring-context-support', version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc',  version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web',  version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop' , version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans' , version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression' , version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core' , version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jcl' , version: '5.1.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context' , version: '5.1.4.RELEASE'
+
+
     compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign')
         {
             exclude group: 'io.reactivex', module: 'io.reactivex'

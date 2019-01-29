@@ -8,5 +8,6 @@
         "County" : null,
         "Country" : null
     },
-    "D8Cohort" : "onlineSubmissionPrivateBeta"
+    "D8Cohort" : "onlineSubmissionPrivateBeta",
+    "RespondentContactDetailsConfidential": "share"
 }

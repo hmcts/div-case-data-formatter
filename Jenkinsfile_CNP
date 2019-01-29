@@ -22,7 +22,7 @@ def channel = '#div-dev'
 withPipeline(type , product, component) {
     if (env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) {
         enableDockerBuild()
-        enableDeployToAKS()
+        installCharts()
     }
 
     after('checkout') {

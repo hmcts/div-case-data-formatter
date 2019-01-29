@@ -49,6 +49,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8CountryName", target = "countryName")
     @Mapping(source = "d8MarriagePlaceOfMarriage", target = "placeOfMarriage")
     @Mapping(source = "d8PetitionerContactDetailsConfidential", target = "petitionerContactDetailsConfidential")
+    @Mapping(source = "respondentContactDetailsConfidential", target = "respondentContactDetailsConfidential")
     @Mapping(source = "d8PetitionerHomeAddress.postCode", target = "petitionerHomeAddress.postcode")
     @Mapping(source = "d8PetitionerCorrespondenceAddress.postCode", target = "petitionerCorrespondenceAddress.postcode")
     @Mapping(source = "d8RespondentHomeAddress.postCode", target = "respondentHomeAddress.postcode")

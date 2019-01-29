@@ -71,8 +71,6 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8ReasonForDivorceAdulteryWhereDetails", target = "reasonForDivorceAdulteryWhereDetails")
     @Mapping(source = "d8ReasonForDivorceAdultery3rdAddress.postCode",
         target = "reasonForDivorceAdultery3rdAddress.postcode")
-    @Mapping(source = "d8ReasonForDivorceAdulteryAnyInfo2ndHand",
-        target = "reasonForDivorceAdulterySecondHandInfo")
     @Mapping(source = "d8ReasonForDivorceAdultery2ndHandDetails",
         target = "reasonForDivorceAdulterySecondHandInfoDetails")
     @Mapping(source = "d8LegalProceedingsDetails", target = "legalProceedingsDetails")
@@ -893,6 +891,14 @@ public abstract class CCDCaseToDivorceMapper {
                                                          @MappingTarget DivorceSession divorceSession) {
         divorceSession.setLivedTogetherMoreTimeThanPermitted(
                 translateToYesNoString(caseData.getLivedTogetherMoreTimeThanPermitted())
+        );
+    }
+
+    @AfterMapping
+    protected void mapReasonForDivorceAdulterySecondHandInfo(CoreCaseData caseData,
+                                                         @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setReasonForDivorceAdulterySecondHandInfo(
+            translateToYesNoString(caseData.getD8ReasonForDivorceAdulteryAnyInfo2ndHand())
         );
     }
 }

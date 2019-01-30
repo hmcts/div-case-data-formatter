@@ -135,7 +135,8 @@ def versions = [
     mapstruct: '1.2.0.Final',
     jsonPathAssert: '2.2.0',
     jacksonDatabind: '2.9.8',
-    orgSpringframework: '5.1.4.RELEASE'
+    orgSpringframework: '5.1.4.RELEASE',
+    guava: '27.0.1-jre'
 ]
 
 dependencies {
@@ -152,6 +153,9 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jcl' , version: versions.orgSpringframework
     compile group: 'org.springframework', name: 'spring-context' , version: versions.orgSpringframework
 
+    compile (group: 'com.google.guava', name:'guava', version: versions.guava) {
+        force = true
+    }
 
     compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign')
         {

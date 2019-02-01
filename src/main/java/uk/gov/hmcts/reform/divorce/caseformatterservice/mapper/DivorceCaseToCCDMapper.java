@@ -36,8 +36,6 @@ public abstract class DivorceCaseToCCDMapper {
 
     private static final String SHARE_DETAILS = "share";
 
-    private static final String SHARE_DETAILS = "share";
-
     private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
     private final PaymentContext paymentContext = new PaymentContext();
 

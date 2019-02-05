@@ -155,5 +155,6 @@
     "D8MentalSeparationDate": "2015-03-01",
     "D8PhysicalSeparationDate": "2015-02-01",
     "D8SeparationTimeTogetherPermitted":"3 months, 2 weeks and 5 months",
-    "D8LivedTogetherMoreTimeThanPermitted":"YES"
+    "D8LivedTogetherMoreTimeThanPermitted":"YES",
+    "D8LivedApartSinceSeparation":"YES"
 }

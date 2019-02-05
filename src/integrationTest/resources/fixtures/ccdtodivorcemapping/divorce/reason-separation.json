@@ -237,5 +237,6 @@
     "reasonForDivorceLivingApartDate": "2015-02-01T00:00:00.000+0000",
     "separationTimeTogetherPermitted": "3 months, 2 weeks and 5 months",
     "livedTogetherMoreTimeThanPermitted": "Yes",
+    "livedApartEntireTime": "Yes",
     "reasonForDivorceRespondentConsent" : "Yes"
 }

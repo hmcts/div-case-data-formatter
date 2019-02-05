@@ -341,6 +341,9 @@ public class DivorceSession {
     @ApiModelProperty(value = "Has petitioner & respondent lived more than"
         + " the time together permitted?", allowableValues = "Yes, No")
     private String livedTogetherMoreTimeThanPermitted;
+    @ApiModelProperty(value = "Has petitioner & respondent lived apart"
+        + " for the entire time since separated?", allowableValues = "Yes, No")
+    private String livedApartEntireTime;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")

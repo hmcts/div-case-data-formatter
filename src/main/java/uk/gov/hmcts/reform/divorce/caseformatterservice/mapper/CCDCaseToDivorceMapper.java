@@ -891,4 +891,12 @@ public abstract class CCDCaseToDivorceMapper {
                 translateToYesNoString(caseData.getLivedTogetherMoreTimeThanPermitted())
         );
     }
+
+    @AfterMapping
+    protected void mapLivedApartEntireTime(CoreCaseData caseData,
+                                                         @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setLivedApartEntireTime(
+            translateToYesNoString(caseData.getLivedApartEntireTime())
+        );
+    }
 }

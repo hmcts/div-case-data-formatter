@@ -515,7 +515,5 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8LivedApartSinceSeparation")
     private String livedApartEntireTime;
-
-
 }
 

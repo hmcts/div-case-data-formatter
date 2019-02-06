@@ -309,6 +309,10 @@ public class DivorceSession {
         + "time petitioner and respondent can have lived together.")
     private String referenceDate;
 
+    private Integer livingTogetherMonths;
+
+    private String mostRecentSeparationDate;
+
     private Date createdDate;
 
     @ApiModelProperty(

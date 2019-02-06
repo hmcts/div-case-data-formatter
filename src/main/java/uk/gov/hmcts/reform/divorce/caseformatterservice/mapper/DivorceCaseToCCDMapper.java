@@ -642,4 +642,18 @@ public abstract class DivorceCaseToCCDMapper {
             translateToStringYesNo(divorceSession.getLivedApartEntireTime())
         );
     }
+
+
+    @AfterMapping
+    protected void mapSeparationReferenceDate(DivorceSession divorceSession,
+                                           @MappingTarget CoreCaseData result) {
+        if (divorceSession.getLivingTogetherMonths() != null) {
+            if (divorceSession.getLivingTogetherMonths() >= 6) {
+                result.setReferenceDate(divorceSession.getReferenceDate());
+            } else {
+                result.setReferenceDate(divorceSession.getMostRecentSeparationDate());
+            }
+        }
+
+    }
 }

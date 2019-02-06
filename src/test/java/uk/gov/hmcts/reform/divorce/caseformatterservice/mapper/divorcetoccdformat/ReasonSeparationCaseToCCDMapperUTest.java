@@ -41,4 +41,23 @@ public class ReasonSeparationCaseToCCDMapperUTest {
 
         assertThat(actualCoreCaseData, samePropertyValuesAs(expectedCoreCaseData));
     }
+
+    @Test
+    public void shouldMapAllAndTransformAllFieldsForReasonSeparationLivedLessThan6MonthTogetherScenario()
+        throws URISyntaxException, IOException {
+
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/" +
+                "reasonseparation-LessThan6MonthLivedTogether.json", CoreCaseData.class);
+
+        expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
+
+        DivorceSession divorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
+            "fixtures/divorcetoccdmapping/divorce/reason-separation-LessThan6MonthLivedTogether.json",
+            DivorceSession.class);
+
+        CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
+
+        assertThat(actualCoreCaseData, samePropertyValuesAs(expectedCoreCaseData));
+    }
 }

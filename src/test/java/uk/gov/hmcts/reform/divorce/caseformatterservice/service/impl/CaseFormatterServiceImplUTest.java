@@ -224,6 +224,32 @@ public class CaseFormatterServiceImplUTest {
         verify(divorceCaseToDnCaseMapper).divorceCaseDataToDnCaseData(divorceSession);
     }
 
+    @Test
+    public void givenLivingTogethe_rwhenTransformToCCDFormat_thenProceedAsExpected() {
+        final String userToken = "someToken";
+        final String bearerUserToken = "Bearer someToken";
+        final DivorceSession divorceSession = new DivorceSession();
+
+        final String emailAddress = "someEmailAddress";
+        final DivorceSession divorceSessionWithEmailAddress = new DivorceSession();
+        divorceSessionWithEmailAddress.setPetitionerEmail(emailAddress);
+        divorceSessionWithEmailAddress.setLivingTogetherMonths(10);
+        divorceSessionWithEmailAddress.setReferenceDate("01 December 2013");
+        divorceSessionWithEmailAddress.setMostRecentSeparationDate("01 July2013");
+
+        final CoreCaseData expectedCaseData = new CoreCaseData();
+
+        when(idamUserService.retrieveUserDetails(bearerUserToken))
+            .thenReturn(UserDetails.builder().email(emailAddress).build());
+        when(divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSessionWithEmailAddress))
+            .thenReturn(expectedCaseData);
+
+        final CoreCaseData actualCaseData = classUnderTest.transformToCCDFormat(divorceSession, userToken);
+
+        assertEquals(expectedCaseData, actualCaseData);
+
+    }
+
     private GeneratedDocumentInfo createGeneratedDocument(String url, String documentType, String fileName) {
         return GeneratedDocumentInfo.builder()
             .url(url)

@@ -47,8 +47,8 @@ public class ReasonSeparationCaseToCCDMapperUTest {
         throws URISyntaxException, IOException {
 
         CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/" +
-                "reasonseparation-LessThan6MonthLivedTogether.json", CoreCaseData.class);
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/"
+                + "reasonseparation-LessThan6MonthLivedTogether.json", CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 

@@ -305,8 +305,8 @@ public class DivorceSession {
     private List<UploadedFile> d8Documents;
     @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
     private String petitionerConsent;
-    @ApiModelProperty(value = " Reference date used for 6-month rule calculation of " +
-        "time petitioner and respondent can have lived together.")
+    @ApiModelProperty(value = " Reference date used for 6-month rule calculation of "
+        + "time petitioner and respondent can have lived together.")
     private String referenceDate;
 
     private Date createdDate;

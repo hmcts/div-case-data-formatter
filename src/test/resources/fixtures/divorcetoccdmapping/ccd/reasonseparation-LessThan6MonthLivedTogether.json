@@ -1,7 +1,7 @@
 {
     "D8legalProcess" : null,
     "D8caseReference" : null,
-    "createdDate" : "2015-03-01",
+    "createdDate" : null,
     "D8ScreenHasMarriageBroken" : "YES",
     "D8ScreenHasRespondentAddress" : "YES",
     "D8ScreenHasMarriageCert" : "YES",
@@ -66,13 +66,13 @@
     "D8LegalProceedingsRelated" : [ "children" ],
     "D8LegalProceedingsDetails" : "The legal proceeding details",
     "D8ReasonForDivorce" : "separation-2-years",
-    "D8DerivedStatementOfCase" : "I have been separated from my husband for 2 years or more from the 01 January 2015.",
+    "D8DerivedStatementOfCase" : "I have been separated from my husband for 2 years or more from the 01 March 2015.",
     "D8RejectStatementOfCase" : null,
     "D8ReasonForDivorceBehaviourDetails" : null,
     "D8ReasonForDivorceDesertionDate" : null,
     "D8ReasonForDivorceDesertionAgreed" : null,
     "D8ReasonForDivorceDesertionDetails" : null,
-    "D8ReasonForDivorceSeperationDate" : "2015-01-01",
+    "D8ReasonForDivorceSeperationDate" : "2015-03-01",
     "D8ReasonForDivorceAdultery3rdPartyFName" : null,
     "D8ReasonForDivorceAdultery3rdPartyLName" : null,
     "D8ReasonForDivorceAdulteryDetails" : null,
@@ -193,5 +193,6 @@
     "D8SeparationTimeTogetherPermitted":"3 months, 2 weeks and 5 months",
     "D8LivedTogetherMoreTimeThanPermitted":"YES",
     "D8LivedApartSinceSeparation":"YES",
-    "D8SeparationReferenceDate": "06 August 2013"
+    "D8SeparationReferenceDate": "01 December 2013"
+
 }

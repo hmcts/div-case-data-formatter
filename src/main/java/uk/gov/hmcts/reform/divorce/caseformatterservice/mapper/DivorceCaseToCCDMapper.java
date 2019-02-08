@@ -34,6 +34,8 @@ public abstract class DivorceCaseToCCDMapper {
     private static final String BLANK_SPACE = " ";
     private static final String LINE_SEPARATOR = "\n";
 
+    private static final String SHARE_DETAILS = "share";
+
     private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
     private final PaymentContext paymentContext = new PaymentContext();
 
@@ -57,6 +59,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "countryName", target = "d8CountryName")
     @Mapping(source = "placeOfMarriage", target = "d8MarriagePlaceOfMarriage")
     @Mapping(source = "petitionerContactDetailsConfidential", target = "d8PetitionerContactDetailsConfidential")
+    @Mapping(source = "respondentContactDetailsConfidential", target = "respondentContactDetailsConfidential")
     @Mapping(source = "petitionerHomeAddress.postcode", target = "d8PetitionerHomeAddress.postCode")
     @Mapping(source = "petitionerCorrespondenceAddress.postcode", target = "d8PetitionerCorrespondenceAddress.postCode")
     @Mapping(source = "respondentHomeAddress.postcode", target = "d8RespondentHomeAddress.postCode")
@@ -630,6 +633,14 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
+    protected void mapRespondentContactDetailsConfidential(DivorceSession divorceSession,
+                                                            @MappingTarget CoreCaseData result) {
+        if (Objects.isNull(divorceSession.getRespondentContactDetailsConfidential())) {
+            result.setRespondentContactDetailsConfidential(SHARE_DETAILS);
+        }
+    }
+
+    @AfterMapping
     protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setLivedTogetherMoreTimeThanPermitted(
@@ -643,5 +654,27 @@ public abstract class DivorceCaseToCCDMapper {
         result.setD8ReasonForDivorceAdulteryAnyInfo2ndHand(
             translateToStringYesNo(divorceSession.getReasonForDivorceAdulterySecondHandInfo())
         );
+    }
+
+    @AfterMapping
+    protected void mapLivedApartEntireTime(DivorceSession divorceSession,
+                                                         @MappingTarget CoreCaseData result) {
+        result.setLivedApartEntireTime(
+            translateToStringYesNo(divorceSession.getLivedApartEntireTime())
+        );
+    }
+
+
+    @AfterMapping
+    protected void mapSeparationReferenceDate(DivorceSession divorceSession,
+                                           @MappingTarget CoreCaseData result) {
+        if (divorceSession.getLivingTogetherMonths() != null) {
+            if (divorceSession.getLivingTogetherMonths() >= 6) {
+                result.setReferenceDate(divorceSession.getReferenceDate());
+            } else {
+                result.setReferenceDate(divorceSession.getMostRecentSeparationDate());
+            }
+        }
+
     }
 }

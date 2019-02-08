@@ -310,6 +310,14 @@ public class DivorceSession {
     private List<UploadedFile> d8Documents;
     @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
     private String petitionerConsent;
+    @ApiModelProperty(value = " Reference date used for 6-month rule calculation of "
+        + "time petitioner and respondent can have lived together.")
+    private String referenceDate;
+
+    private Integer livingTogetherMonths;
+
+    private String mostRecentSeparationDate;
+
     private Date createdDate;
 
     @ApiModelProperty(
@@ -340,12 +348,18 @@ public class DivorceSession {
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date reasonForDivorceLivingApartDate;
 
+    @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
+    private String respondentContactDetailsConfidential;
+  
     @ApiModelProperty(value = "Maximum separation time together permitted?")
     private String separationTimeTogetherPermitted;
 
     @ApiModelProperty(value = "Has petitioner & respondent lived more than"
         + " the time together permitted?", allowableValues = "Yes, No")
     private String livedTogetherMoreTimeThanPermitted;
+    @ApiModelProperty(value = "Has petitioner & respondent lived apart"
+        + " for the entire time since separated?", allowableValues = "Yes, No")
+    private String livedApartEntireTime;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")

@@ -200,7 +200,7 @@
             "poBox": "PO Box 10447",
             "postCode": "NG2 9QN",
             "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-            "email": "divorce@justice.gov.uk",
+            "email": "divorcecase@justice.gov.uk",
             "phoneNumber": "0300 303 0642",
             "siteId": "AA01"
         }
@@ -230,5 +230,7 @@
     "reasonForDivorceDecisionDate": "2015-03-01T00:00:00.000+0000",
     "reasonForDivorceLivingApartDate": "2015-02-01T00:00:00.000+0000",
     "separationTimeTogetherPermitted": "3 months, 2 weeks and 5 months",
-    "livedTogetherMoreTimeThanPermitted": "Yes"
+    "livedTogetherMoreTimeThanPermitted": "Yes",
+    "livedApartEntireTime": "Yes",
+    "referenceDate": "06 August 2013"
 }

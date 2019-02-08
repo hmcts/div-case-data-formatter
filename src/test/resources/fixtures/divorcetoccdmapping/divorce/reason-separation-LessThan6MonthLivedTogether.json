@@ -6,13 +6,15 @@
     "httpOnly": true,
     "path": "/"
   },
-  "expires": 1507919358482,
+  "expires": 1507916960537,
   "screenHasMarriageBroken": "Yes",
   "screenHasRespondentAddress": "Yes",
   "screenHasMarriageCert": "Yes",
   "screenHasPrinter": "Yes",
   "helpWithFeesNeedHelp": "Yes",
-  "divorceWho": "wife",
+  "helpWithFeesAppliedForFees": "Yes",
+  "helpWithFeesReferenceNumber": "HWF-123-456",
+  "divorceWho": "husband",
   "marriageIsSameSexCouple": "No",
   "marriageDateDay": 2,
   "marriageDateMonth": 2,
@@ -21,16 +23,23 @@
   "marriageCanDivorce": true,
   "marriageDateIsFuture": false,
   "marriageDateMoreThan100": false,
-  "marriageWhereMarried": "wales",
+  "marriageWhereMarried": "england",
   "jurisdictionPath": [
     "JurisdictionHabitualResidence",
-    "JurisdictionLastTwelveMonths",
-    "JurisdictionNDomicile",
-    "JurisdictionInterstitial",
-    "JurisdictionLastSixMonths",
-    "JurisdictionLastHabitualResidence",
-    "JurisdictionConnectionSummary"
+    "JurisdictionInterstitial"
   ],
+  "jurisdictionConnection": [
+    "A",
+    "C"
+  ],
+  "connections": {
+    "A": "The Petitioner and the Respondent are habitually resident in England and Wales",
+    "C": "The Respondent is habitually resident in England and Wales"
+  },
+  "jurisdictionPetitionerResidence": "Yes",
+  "jurisdictionRespondentResidence": "Yes",
+  "jurisdictionConfidentLegal": "Yes",
+  "jurisdictionConnectionFirst": "A",
   "petitionerContactDetailsConfidential": "share",
   "petitionerFirstName": "John",
   "petitionerLastName": "Smith",
@@ -40,9 +49,7 @@
   "marriageRespondentName": "Jenny Benny",
   "petitionerNameDifferentToMarriageCertificate": "Yes",
   "petitionerNameChangedHow": [
-    "marriageCertificate",
-    "deedPoll",
-    "other"
+    "marriageCertificate"
   ],
   "petitionerEmail": "simulate-delivered@notifications.service.gov.uk",
   "petitionerPhoneNumber": "01234567890",
@@ -129,7 +136,7 @@
       "postcode": "SW9 9PE"
     }
   },
-  "reasonForDivorce": "unreasonable-behaviour",
+  "reasonForDivorce": "separation-2-years",
   "reasonForDivorceHasMarriageDate": true,
   "reasonForDivorceShowAdultery": true,
   "reasonForDivorceShowUnreasonableBehaviour": true,
@@ -138,9 +145,6 @@
   "reasonForDivorceShowDesertion": true,
   "reasonForDivorceLimitReasons": false,
   "reasonForDivorceEnableAdultery": true,
-  "reasonForDivorceBehaviourDetails": [
-    "My wife is having an affair this week."
-  ],
   "legalProceedings": "Yes",
   "legalProceedingsRelated": [
     "children"
@@ -151,14 +155,6 @@
     "petitioner",
     "children"
   ],
-  "claimsCosts": "Yes",
-  "reasonForDivorceAdulteryIsNamed": "No",
-  "claimsCostsFrom": [
-    "respondent"
-  ],
-  "claimsCostsAppliedForFees": false,
-  "reasonForDivorceClaiming5YearSeparation": false,
-  "reasonForDivorceClaimingAdultery": false,
   "marriageCertificateFiles": [
     {
       "createdBy" : 12661,
@@ -208,43 +204,36 @@
       "openingHours": "Telephone Enquiries from: 8am to 4pm",
       "email": "sw-region-divorce@hmcts.gsi.gov.uk",
       "phoneNumber": "023 8038 4200"
-    },
-    "serviceCentre": {
-      "serviceCentreName": "Courts and Tribunals Service Centre",
-      "divorceCentre": "East Midlands Regional Divorce Centre",
-      "courtCity": "Nottingham",
-      "poBox": "PO Box 10447",
-      "postCode": "NG2 9QN",
-      "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-      "email": "divorcecase@justice.gov.uk",
-      "phoneNumber": "0300 303 0642",
-      "siteId": "AA01"
     }
   },
-  "courts": "eastMidlands",
-  "helpWithFeesAppliedForFees": "Yes",
-  "helpWithFeesReferenceNumber": "HWF-123-123",
-  "jurisdictionConnection": [
-    "B",
-    "E",
-    "F"
-  ],
-  "connections": {
-    "B": "The Petitioner and the Respondent were last habitually resident, insofar as one of them still resides there",
-    "E": "The Petitioner is domiciled and habitually resident in England and Wales and has resided there for at least six months immediately prior to the petition",
-    "F": "The Petitioner and Respondent are both domiciled in England and Wales"
+  "courts": "westMidlands",
+  "postcodeLookup": {
+    "postcodeError": "false"
   },
-  "jurisdictionPetitionerResidence": "Yes",
-  "jurisdictionRespondentResidence": "No",
-  "jurisdictionLastTwelveMonths": "No",
-  "jurisdictionPetitionerDomicile": "Yes",
-  "jurisdictionRespondentDomicile": "Yes",
-  "jurisdictionConfidentLegal": "No",
-  "jurisdictionConnectionFirst": "F",
-  "jurisdictionLastSixMonths": "Yes",
-  "jurisdictionLastHabitualResident": "Yes",
-  "connectionSummary": "Yes",
-  "petitionerNameChangedHowOtherDetails": "How I changed name",
+  "reasonForDivorceSeperationDay": 1,
+  "reasonForDivorceSeperationMonth": 1,
+  "reasonForDivorceSeperationYear": 2015,
+  "reasonForDivorceSeperationDate": "2015-01-01T00:00:00.000Z",
+  "reasonForDivorceSeperationDateIsSameOrAfterLimitDate": false,
+  "reasonForDivorceSeperationDateInFuture": false,
+  "reasonForDivorceSeperationDateBeforeMarriageDate": false,
+  "claimsCosts": "Yes",
+  "reasonForDivorceAdulteryIsNamed": "No",
+  "claimsCostsFrom": [
+    "respondent"
+  ],
+  "claimsCostsAppliedForFees": true,
+  "reasonForDivorceClaiming5YearSeparation": false,
+  "reasonForDivorceClaimingAdultery": false,
   "petitionerConsent" : "Yes",
-  "sessionKey": "60c3072df9691b43910bb28faeb3405628e4ef7cf1da3c251ccd4e3526224d58:f74dc875e360230f37b6e7445cefec21:30a72f91826a94a26103bc3e4e99da3297dfdb33e086978bc4fc32dbcc86e2bfdb0fe797b6db316ca0bc7bbc9ae5766b1e7a36c1d9695633ce32075a89c4b45c"
+  "reasonForDivorceRespondentConsent" : "Yes",
+  "reasonForDivorceDecisionDate": "2015-03-01T00:00:00.000+0000",
+  "reasonForDivorceLivingApartDate": "2015-02-01T00:00:00.000+0000",
+  "separationTimeTogetherPermitted": "3 months, 2 weeks and 5 months",
+  "livedTogetherMoreTimeThanPermitted": "Yes",
+  "livedApartEntireTime": "Yes",
+  "referenceDate": "06 August 2013",
+  "livingTogetherMonths": 2,
+  "mostRecentSeparationDate": "01 December 2013",
+  "sessionKey": "744e590518fd5a8114fe6c280df7ef9488b9b29c839ea08eef567cda752369b3:f0e0d0b7c03d6d0ffaf0e302f1c385d0:1f29a3d9dd276937ebdc06fff8fa8424c9bac0a15ab881feb518fb5e31d6fc09a37615ba5f728e99676810c40510ab80e9719aa1d595bb45a18709f47e9d9102"
 }

@@ -88,6 +88,8 @@
         "County": null,
         "Country": null
     },
+    "D8ReasonForDivorceAdulteryAnyInfo2ndHand" : "YES",
+    "D8ReasonForDivorceAdultery2ndHandDetails" : "foo",
     "D8FinancialOrder": "YES",
     "D8FinancialOrderFor": [
         "petitioner",

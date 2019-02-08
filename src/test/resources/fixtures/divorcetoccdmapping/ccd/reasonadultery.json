@@ -92,6 +92,8 @@
         "addressAbroad": "Headquarters 1120 N Street Sacramento 916-654-5266\t\r\nP.O. Box 942873 Sacramento, CA 94273-0001\r\n",
         "url": "/about-divorce/reason-for-divorce/adultery/co-respondent-address"
     },
+    "D8ReasonForDivorceAdulteryAnyInfo2ndHand" : "YES",
+    "D8ReasonForDivorceAdultery2ndHandDetails" : "foo",
     "D8DerivedReasonForDivorceAdultery3rdAddr" : "Headquarters 1120 N Street Sacramento 916-654-5266\t\nP.O. Box 942873 Sacramento, CA 94273-0001",
     "D8FinancialOrder" : "YES",
     "D8FinancialOrderFor" : [ "petitioner", "children" ],

@@ -85,20 +85,6 @@ public class TransformToCCDFormatITest {
     }
 
     @Test
-    public void givenInvalidUserToken_whenTransformToCCDFormat_thenReturnForbiddenError() throws Exception {
-        final String message = "some message";
-        stubUserDetailsEndpoint(HttpStatus.FORBIDDEN, new EqualToPattern(USER_TOKEN), message);
-
-        webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
-            .header(HttpHeaders.AUTHORIZATION, USER_TOKEN)
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isForbidden())
-            .andExpect(content().string(containsString(message)));
-    }
-
-    @Test
     public void givenValidDetails_whenTransformToCCDFormat_thenReturnExpected() throws Exception {
         final String message = getUserDetails();
         stubUserDetailsEndpoint(HttpStatus.OK, new EqualToPattern(USER_TOKEN), message);
@@ -107,7 +93,6 @@ public class TransformToCCDFormatITest {
             ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
 
         expectedCaseData.setCreatedDate(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        expectedCaseData.setD8PetitionerEmail(EMAIL_ADDRESS);
 
         webClient.perform(post(API_URL)
             .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))

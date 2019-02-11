@@ -46,9 +46,6 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {
-        UserDetails userDetails = idamUserService.retrieveUserDetails(AuthUtil.getBearToken(authorisation));
-        divorceSession.setPetitionerEmail(userDetails.getEmail());
-
         return divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSession);
     }
 

@@ -17,7 +17,6 @@ import java.util.Map;
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 public abstract class IntegrationTest {
     private static final String USER_NAME = "caseformatterservicetest";
-    static final String EMAIL_ADDRESS = USER_NAME + "@test.com";
     private static final String password = "passowrd";
 
     private String userToken;

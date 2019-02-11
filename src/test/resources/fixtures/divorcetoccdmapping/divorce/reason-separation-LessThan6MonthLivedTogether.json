@@ -6,7 +6,7 @@
     "httpOnly": true,
     "path": "/"
   },
-  "expires": 1507916719323,
+  "expires": 1507916960537,
   "screenHasMarriageBroken": "Yes",
   "screenHasRespondentAddress": "Yes",
   "screenHasMarriageCert": "Yes",
@@ -136,7 +136,7 @@
       "postcode": "SW9 9PE"
     }
   },
-  "reasonForDivorce": "adultery",
+  "reasonForDivorce": "separation-2-years",
   "reasonForDivorceHasMarriageDate": true,
   "reasonForDivorceShowAdultery": true,
   "reasonForDivorceShowUnreasonableBehaviour": true,
@@ -155,17 +155,6 @@
     "petitioner",
     "children"
   ],
-  "claimsCosts": "Yes",
-  "reasonForDivorceAdulteryIsNamed": "YES",
-  "reasonForDivorceAdulterySecondHandInfo": "Yes",
-  "reasonForDivorceAdulterySecondHandInfoDetails": "foo",
-  "claimsCostsFrom": [
-    "respondent",
-    "correspondent"
-  ],
-  "claimsCostsAppliedForFees": true,
-  "reasonForDivorceClaiming5YearSeparation": false,
-  "reasonForDivorceClaimingAdultery": true,
   "marriageCertificateFiles": [
     {
       "createdBy" : 12661,
@@ -218,25 +207,33 @@
     }
   },
   "courts": "westMidlands",
-  "reasonForDivorceAdulteryWishToName": "Yes",
-  "reasonForDivorceAdultery3rdPartyFirstName": "Jennifer",
-  "reasonForDivorceAdultery3rdPartyLastName": "Lawrence",
-  "postcodeLookup": {},
-  "reasonForDivorceAdultery3rdAddress": {
-    "addressType": "manual",
-    "address": [
-      "Headquarters 1120 N Street Sacramento 916-654-5266\t",
-      "P.O. Box 942873 Sacramento, CA 94273-0001"
-    ],
-    "addressConfirmed": "true",
-    "addressAbroad": "Headquarters 1120 N Street Sacramento 916-654-5266\t\r\nP.O. Box 942873 Sacramento, CA 94273-0001\r\n",
-    "url": "/about-divorce/reason-for-divorce/adultery/co-respondent-address"
+  "postcodeLookup": {
+    "postcodeError": "false"
   },
-  "reasonForDivorceAdulteryKnowWhere": "Yes",
-  "reasonForDivorceAdulteryKnowWhen": "Yes",
-  "reasonForDivorceAdulteryDetails": "It hurts inside.",
-  "reasonForDivorceAdulteryWhenDetails": "Some time ago.",
-  "reasonForDivorceAdulteryWhereDetails": "On a washing machine.",
+  "reasonForDivorceSeperationDay": 1,
+  "reasonForDivorceSeperationMonth": 1,
+  "reasonForDivorceSeperationYear": 2015,
+  "reasonForDivorceSeperationDate": "2015-01-01T00:00:00.000Z",
+  "reasonForDivorceSeperationDateIsSameOrAfterLimitDate": false,
+  "reasonForDivorceSeperationDateInFuture": false,
+  "reasonForDivorceSeperationDateBeforeMarriageDate": false,
+  "claimsCosts": "Yes",
+  "reasonForDivorceAdulteryIsNamed": "No",
+  "claimsCostsFrom": [
+    "respondent"
+  ],
+  "claimsCostsAppliedForFees": true,
+  "reasonForDivorceClaiming5YearSeparation": false,
+  "reasonForDivorceClaimingAdultery": false,
   "petitionerConsent" : "Yes",
+  "reasonForDivorceRespondentConsent" : "Yes",
+  "reasonForDivorceDecisionDate": "2015-03-01T00:00:00.000+0000",
+  "reasonForDivorceLivingApartDate": "2015-02-01T00:00:00.000+0000",
+  "separationTimeTogetherPermitted": "3 months, 2 weeks and 5 months",
+  "livedTogetherMoreTimeThanPermitted": "Yes",
+  "livedApartEntireTime": "Yes",
+  "referenceDate": "06 August 2013",
+  "livingTogetherMonths": 2,
+  "mostRecentSeparationDate": "01 December 2013",
   "sessionKey": "744e590518fd5a8114fe6c280df7ef9488b9b29c839ea08eef567cda752369b3:f0e0d0b7c03d6d0ffaf0e302f1c385d0:1f29a3d9dd276937ebdc06fff8fa8424c9bac0a15ab881feb518fb5e31d6fc09a37615ba5f728e99676810c40510ab80e9719aa1d595bb45a18709f47e9d9102"
 }

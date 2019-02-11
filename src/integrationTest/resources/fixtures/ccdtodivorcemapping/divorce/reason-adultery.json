@@ -152,6 +152,8 @@
     "reasonForDivorceAdulteryDetails": "It hurts inside.",
     "reasonForDivorceAdulteryWhenDetails": "Some time ago.",
     "reasonForDivorceAdulteryWhereDetails": "On a washing machine.",
+    "reasonForDivorceAdulterySecondHandInfo": "Yes",
+    "reasonForDivorceAdulterySecondHandInfoDetails": "foo",
     "legalProceedings": "Yes",
     "legalProceedingsRelated": [
         "children"

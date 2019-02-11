@@ -49,6 +49,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8CountryName", target = "countryName")
     @Mapping(source = "d8MarriagePlaceOfMarriage", target = "placeOfMarriage")
     @Mapping(source = "d8PetitionerContactDetailsConfidential", target = "petitionerContactDetailsConfidential")
+    @Mapping(source = "respondentContactDetailsConfidential", target = "respondentContactDetailsConfidential")
     @Mapping(source = "d8PetitionerHomeAddress.postCode", target = "petitionerHomeAddress.postcode")
     @Mapping(source = "d8PetitionerCorrespondenceAddress.postCode", target = "petitionerCorrespondenceAddress.postcode")
     @Mapping(source = "d8RespondentHomeAddress.postCode", target = "respondentHomeAddress.postcode")
@@ -70,7 +71,9 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8ReasonForDivorceAdulteryWhenDetails", target = "reasonForDivorceAdulteryWhenDetails")
     @Mapping(source = "d8ReasonForDivorceAdulteryWhereDetails", target = "reasonForDivorceAdulteryWhereDetails")
     @Mapping(source = "d8ReasonForDivorceAdultery3rdAddress.postCode",
-            target = "reasonForDivorceAdultery3rdAddress.postcode")
+        target = "reasonForDivorceAdultery3rdAddress.postcode")
+    @Mapping(source = "d8ReasonForDivorceAdultery2ndHandDetails",
+        target = "reasonForDivorceAdulterySecondHandInfoDetails")
     @Mapping(source = "d8LegalProceedingsDetails", target = "legalProceedingsDetails")
     @Mapping(source = "d8ResidualJurisdictionEligible", target = "residualJurisdictionEligible")
     @Mapping(source = "d8ReasonForDivorceDesertionDetails", target = "reasonForDivorceDesertionDetails")
@@ -891,6 +894,14 @@ public abstract class CCDCaseToDivorceMapper {
                                                          @MappingTarget DivorceSession divorceSession) {
         divorceSession.setLivedTogetherMoreTimeThanPermitted(
                 translateToYesNoString(caseData.getLivedTogetherMoreTimeThanPermitted())
+        );
+    }
+
+    @AfterMapping
+    protected void mapReasonForDivorceAdulterySecondHandInfo(CoreCaseData caseData,
+                                                         @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setReasonForDivorceAdulterySecondHandInfo(
+            translateToYesNoString(caseData.getD8ReasonForDivorceAdulteryAnyInfo2ndHand())
         );
     }
 

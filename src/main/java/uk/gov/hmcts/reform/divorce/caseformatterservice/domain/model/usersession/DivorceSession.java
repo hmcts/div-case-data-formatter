@@ -188,6 +188,11 @@ public class DivorceSession {
     private String reasonForDivorceAdulteryWhenDetails;
     @ApiModelProperty(value = "Where did adultery take place?")
     private String reasonForDivorceAdulteryWhereDetails;
+    @ApiModelProperty(value = "Did any of the information about adultery come from another person?",
+        allowableValues = "Yes, No")
+    private String reasonForDivorceAdulterySecondHandInfo;
+    @ApiModelProperty(value = "Details of the information about adultery that has come from another person")
+    private String reasonForDivorceAdulterySecondHandInfoDetails;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceDesertionAlright;
     @ApiModelProperty(
@@ -305,6 +310,14 @@ public class DivorceSession {
     private List<UploadedFile> d8Documents;
     @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
     private String petitionerConsent;
+    @ApiModelProperty(value = " Reference date used for 6-month rule calculation of "
+        + "time petitioner and respondent can have lived together.")
+    private String referenceDate;
+
+    private Integer livingTogetherMonths;
+
+    private String mostRecentSeparationDate;
+
     private Date createdDate;
 
     @ApiModelProperty(
@@ -335,6 +348,9 @@ public class DivorceSession {
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date reasonForDivorceLivingApartDate;
 
+    @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
+    private String respondentContactDetailsConfidential;
+  
     @ApiModelProperty(value = "Maximum separation time together permitted?")
     private String separationTimeTogetherPermitted;
 

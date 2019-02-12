@@ -65,26 +65,18 @@ public class CaseFormatterServiceImplUTest {
     @Test
     public void whenTransformToCCDFormat_thenProceedAsExpected() {
         final String userToken = "someToken";
-        final String bearerUserToken = "Bearer someToken";
         final DivorceSession divorceSession = new DivorceSession();
-
-        final String emailAddress = "someEmailAddress";
-        final DivorceSession divorceSessionWithEmailAddress = new DivorceSession();
-        divorceSessionWithEmailAddress.setPetitionerEmail(emailAddress);
 
         final CoreCaseData expectedCaseData = new CoreCaseData();
 
-        when(idamUserService.retrieveUserDetails(bearerUserToken))
-            .thenReturn(UserDetails.builder().email(emailAddress).build());
-        when(divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSessionWithEmailAddress))
+        when(divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSession))
             .thenReturn(expectedCaseData);
 
         final CoreCaseData actualCaseData = classUnderTest.transformToCCDFormat(divorceSession, userToken);
 
         assertEquals(expectedCaseData, actualCaseData);
 
-        verify(idamUserService).retrieveUserDetails(bearerUserToken);
-        verify(divorceCaseToCCDMapper).divorceCaseDataToCourtCaseData(divorceSessionWithEmailAddress);
+        verify(divorceCaseToCCDMapper).divorceCaseDataToCourtCaseData(divorceSession);
     }
 
     @Test

@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
@@ -18,7 +17,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCa
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.IdamUserService;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.util.AuthUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,9 +44,6 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {
-        UserDetails userDetails = idamUserService.retrieveUserDetails(AuthUtil.getBearToken(authorisation));
-        divorceSession.setPetitionerEmail(userDetails.getEmail());
-
         return divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSession);
     }
 

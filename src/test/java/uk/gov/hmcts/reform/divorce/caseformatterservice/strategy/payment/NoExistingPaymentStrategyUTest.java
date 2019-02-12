@@ -15,8 +15,7 @@ public class NoExistingPaymentStrategyUTest {
 
     @Test
     public void testNoExistingPaymentsAddsJustNewPayment() {
-        final Payment newPayment = new Payment();
-        newPayment.setPaymentReference("111222333");
+        final Payment newPayment = Payment.builder().paymentReference("111222333").build();
 
         final List<PaymentCollection> existingPaymentsList = null;
 

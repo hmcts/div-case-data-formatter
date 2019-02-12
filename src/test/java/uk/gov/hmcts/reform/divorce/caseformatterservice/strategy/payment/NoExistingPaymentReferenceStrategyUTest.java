@@ -33,9 +33,10 @@ public class NoExistingPaymentReferenceStrategyUTest {
     }
 
     private PaymentCollection createPayment(String reference, String status) {
-        final Payment payment = new Payment();
-        payment.setPaymentReference(reference);
-        payment.setPaymentStatus(status);
+        final Payment payment = Payment.builder()
+            .paymentReference(reference)
+            .paymentStatus(status)
+            .build();
 
         return PaymentCollection.builder().value(payment).build();
     }

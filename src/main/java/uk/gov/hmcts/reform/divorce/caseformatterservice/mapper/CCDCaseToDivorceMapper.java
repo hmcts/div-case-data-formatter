@@ -94,7 +94,6 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8ConnectionSummary", target = "connectionSummary")
     @Mapping(source = "d8DivorceUnit", target = "courts")
     @Mapping(source = "d8DocumentsUploaded", target = "marriageCertificateFiles")
-    @Mapping(source = "d8Documents", target = "d8Documents")
     @Mapping(source = "d8RespondentSolicitorName", target = "respondentSolicitorName")
     @Mapping(source = "d8RespondentSolicitorCompany", target = "respondentSolicitorCompany")
     @Mapping(source = "d8RespondentSolicitorAddress.postCode", target = "respondentSolicitorAddress.postcode")

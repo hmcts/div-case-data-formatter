@@ -273,6 +273,7 @@
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",
     "respWillDefendDivorce" : "YES",
+    "respDefendsDivorce" : "YES",
     "respJurisdictionAgree" : "NO",
     "respJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
     "respJurisdictionRespCountryOfResidence" : "UK",

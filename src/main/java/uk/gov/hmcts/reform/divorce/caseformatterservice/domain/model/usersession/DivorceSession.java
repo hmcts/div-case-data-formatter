@@ -451,6 +451,10 @@ public class DivorceSession {
     @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
     private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+    @ApiModelProperty(value = "Case ID from previously amended case")
+    private String previousCaseId;
+    @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition")
+    private List<String> previousReasonsForDivorce;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

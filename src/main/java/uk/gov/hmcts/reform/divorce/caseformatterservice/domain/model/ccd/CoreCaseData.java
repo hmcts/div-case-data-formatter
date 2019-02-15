@@ -515,7 +515,7 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("RespondentContactDetailsConfidential")
     private String respondentContactDetailsConfidential;
-  
+
     @JsonProperty("D8SeparationTimeTogetherPermitted")
     private String separationTimeTogetherPermitted;
 
@@ -527,5 +527,11 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8SeparationReferenceDate")
     private String referenceDate;
+
+    @JsonProperty("PreviousCaseId")
+    private String previousCaseId;
+
+    @JsonProperty("PreviousReasonsForDivorce")
+    private List<String> previousReasonsForDivorce;
 }
 

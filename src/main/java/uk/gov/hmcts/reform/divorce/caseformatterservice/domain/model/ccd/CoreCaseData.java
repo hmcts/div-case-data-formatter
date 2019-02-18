@@ -532,6 +532,6 @@ public class CoreCaseData extends AosCaseData {
     private String previousCaseId;
 
     @JsonProperty("PreviousReasonsForDivorce")
-    private List<String> previousReasonsForDivorce;
+    private List<CollectionMember> previousReasonsForDivorce;
 }
 

@@ -27,7 +27,8 @@ import java.util.Map;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 
-@Mapper(componentModel = "spring", uses = DocumentCollectionDivorceFormatMapper.class,
+@Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class,
+    StringCollectionDivorceFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class CCDCaseToDivorceMapper {

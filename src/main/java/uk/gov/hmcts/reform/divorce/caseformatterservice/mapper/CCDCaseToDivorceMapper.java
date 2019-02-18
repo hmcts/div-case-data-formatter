@@ -144,6 +144,17 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
+    protected void previousCaseData(CoreCaseData caseData,
+                                    @MappingTarget DivorceSession divorceSession) {
+        if (caseData.getPreviousCaseId() == null) {
+            divorceSession.setPreviousCaseId(null);
+        }
+        if (caseData.getPreviousReasonsForDivorce() == null) {
+            divorceSession.setPreviousReasonsForDivorce(null);
+        }
+    }
+
+    @AfterMapping
     protected void mapMarriageDate(CoreCaseData caseData,
                                    @MappingTarget DivorceSession divorceSession) {
         if (caseData.getD8MarriageDate() != null) {

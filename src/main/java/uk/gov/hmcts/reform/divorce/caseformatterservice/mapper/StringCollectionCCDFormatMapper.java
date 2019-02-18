@@ -4,16 +4,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public class StringCollectionCCDFormatMapper {
 
-    @SuppressWarnings(value = "null")
     public List<CollectionMember> map(List<String> collection) {
         if (collection == null) {
-            return null;
+            return new ArrayList<>();
         }
         return collection.stream()
             .map(value -> {

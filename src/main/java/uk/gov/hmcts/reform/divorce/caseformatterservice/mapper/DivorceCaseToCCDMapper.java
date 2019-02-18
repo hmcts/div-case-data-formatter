@@ -135,6 +135,17 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
+    protected void mapPreviousCaseData(DivorceSession divorceSession,
+                                     @MappingTarget CoreCaseData caseData) {
+        if (divorceSession.getPreviousCaseId() == null) {
+            caseData.setPreviousCaseId(null);
+        }
+        if (divorceSession.getPreviousReasonsForDivorce() == null) {
+            caseData.setPreviousReasonsForDivorce(null);
+        }
+    }
+
+    @AfterMapping
     protected void mapScreenHasMarriageBroken(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8ScreenHasMarriageBroken(translateToAnswer(divorceSession.getScreenHasMarriageBroken()));
     }

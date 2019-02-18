@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 @AllArgsConstructor
 @Getter
-public enum YesNoNeverAnswer {
+public enum TranslateAnswer {
 
     YES("Yes"),
     NO("No"),
@@ -17,7 +17,7 @@ public enum YesNoNeverAnswer {
     private final String answer;
 
     @JsonCreator
-    public static YesNoNeverAnswer fromInput(String input) {
+    public static TranslateAnswer fromInput(String input) {
         if (input.equalsIgnoreCase(YES.getAnswer())) {
             return YES;
         } else if (input.equalsIgnoreCase(NO.getAnswer())) {
@@ -28,6 +28,6 @@ public enum YesNoNeverAnswer {
         throw new IllegalArgumentException(
                 String.format("Could not find match for input '%s' in %s",
                         input,
-                        Arrays.asList(YesNoNeverAnswer.values())));
+                        Arrays.asList(TranslateAnswer.values())));
     }
 }

@@ -10,7 +10,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNoNever;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToAnswer;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToAosCaseMapper {
@@ -52,19 +52,19 @@ public abstract class DivorceCaseToAosCaseMapper {
 
         if (coRespondentAnswers != null) {
             result.setReceivedAosFromCoResp(
-                translateToStringYesNoNever(coRespondentAnswers.getAnswer().getReceived()));
+                translateToAnswer(coRespondentAnswers.getAnswer().getReceived()));
             result.setReceivedAnswerFromCoResp(
-                translateToStringYesNoNever(coRespondentAnswers.getAnswer().getReceived()));
+                translateToAnswer(coRespondentAnswers.getAnswer().getReceived()));
             result.setCoRespConfirmReadPetition(
-                translateToStringYesNoNever(coRespondentAnswers.getConfirmReadPetition()));
-            result.setCoRespStatementOfTruth(translateToStringYesNoNever(coRespondentAnswers.getStatementOfTruth()));
-            result.setCoRespAdmitAdultery(translateToStringYesNoNever(coRespondentAnswers.getAdmitAdultery()));
-            result.setCoRespDefendsDivorce(translateToStringYesNoNever(coRespondentAnswers.getDefendsDivorce()));
-            result.setCoRespAgreeToCosts(translateToStringYesNoNever(coRespondentAnswers.getCosts().getAgreeToCosts()));
+                translateToAnswer(coRespondentAnswers.getConfirmReadPetition()));
+            result.setCoRespStatementOfTruth(translateToAnswer(coRespondentAnswers.getStatementOfTruth()));
+            result.setCoRespAdmitAdultery(translateToAnswer(coRespondentAnswers.getAdmitAdultery()));
+            result.setCoRespDefendsDivorce(translateToAnswer(coRespondentAnswers.getDefendsDivorce()));
+            result.setCoRespAgreeToCosts(translateToAnswer(coRespondentAnswers.getCosts().getAgreeToCosts()));
             result.setCoRespConsentToEmail(
-                    translateToStringYesNoNever(coRespondentAnswers.getContactInfo().getConsentToReceivingEmails()));
+                    translateToAnswer(coRespondentAnswers.getContactInfo().getConsentToReceivingEmails()));
             result.setCoRespContactMethodIsDigital(
-                    translateToStringYesNoNever(coRespondentAnswers.getContactInfo().getContactMethodIsDigital()));
+                    translateToAnswer(coRespondentAnswers.getContactInfo().getContactMethodIsDigital()));
         }
     }
 

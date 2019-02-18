@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class YesNoNeverAnswerUTest {
+public class TranslateAnswerUTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -18,10 +18,10 @@ public class YesNoNeverAnswerUTest {
         String yes = "yes";
 
         // when
-        YesNoNeverAnswer yesNoNeverAnswer = objectMapper.convertValue(yes, YesNoNeverAnswer.class);
+        TranslateAnswer translateAnswer = objectMapper.convertValue(yes, TranslateAnswer.class);
 
         // then
-        assertEquals(YesNoNeverAnswer.YES, yesNoNeverAnswer);
+        assertEquals(TranslateAnswer.YES, translateAnswer);
     }
 
     @Test
@@ -31,10 +31,10 @@ public class YesNoNeverAnswerUTest {
         String no = "no";
 
         // when
-        YesNoNeverAnswer yesNoNeverAnswer = objectMapper.convertValue(no, YesNoNeverAnswer.class);
+        TranslateAnswer translateAnswer = objectMapper.convertValue(no, TranslateAnswer.class);
 
         // then
-        assertEquals(YesNoNeverAnswer.NO, yesNoNeverAnswer);
+        assertEquals(TranslateAnswer.NO, translateAnswer);
     }
 
     @Test
@@ -44,10 +44,10 @@ public class YesNoNeverAnswerUTest {
         String no = "never";
 
         // when
-        YesNoNeverAnswer yesNoNeverAnswer = objectMapper.convertValue(no, YesNoNeverAnswer.class);
+        TranslateAnswer translateAnswer = objectMapper.convertValue(no, TranslateAnswer.class);
 
         // then
-        assertEquals(YesNoNeverAnswer.NEVER, yesNoNeverAnswer);
+        assertEquals(TranslateAnswer.NEVER, translateAnswer);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class YesNoNeverAnswerUTest {
 
         // when
         try {
-            objectMapper.convertValue(maybe, YesNoNeverAnswer.class);
+            objectMapper.convertValue(maybe, TranslateAnswer.class);
         } catch (IllegalArgumentException e) {
             exception = e;
         }
@@ -69,7 +69,7 @@ public class YesNoNeverAnswerUTest {
         assertNotNull(exception);
         String exceptionMessage = exception.getMessage();
 
-        for (YesNoNeverAnswer answer : YesNoNeverAnswer.values()) {
+        for (TranslateAnswer answer : TranslateAnswer.values()) {
             assertTrue(exceptionMessage.contains(answer.name()));
         }
     }

@@ -14,7 +14,7 @@ public class MappingCommons {
 
     public static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
-    public static String translateToStringYesNoNever(final String value) {
+    public static String translateToAnswer(final String value) {
         if (Objects.isNull(value)) {
             return null;
         }

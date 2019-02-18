@@ -19,7 +19,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorc
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Objects;
 
 import static java.lang.String.join;
@@ -142,7 +141,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapScreenHasRespondentAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ScreenHasRespondentAddress(translateToStringYesNoNever(divorceSession.getScreenHasRespondentAddress()));
+        result.setD8ScreenHasRespondentAddress(translateToStringYesNoNever(
+            divorceSession.getScreenHasRespondentAddress()));
     }
 
     @AfterMapping
@@ -205,7 +205,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentKnowsHomeAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8RespondentKnowsHomeAddress(translateToStringYesNoNever(divorceSession.getRespondentKnowsHomeAddress()));
+        result.setD8RespondentKnowsHomeAddress(
+            translateToStringYesNoNever(divorceSession.getRespondentKnowsHomeAddress()));
     }
 
     @AfterMapping
@@ -281,7 +282,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapHelpWithFeesAppliedForFees(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8HelpWithFeesAppliedForFees(translateToStringYesNoNever(divorceSession.getHelpWithFeesAppliedForFees()));
+        result.setD8HelpWithFeesAppliedForFees(
+            translateToStringYesNoNever(divorceSession.getHelpWithFeesAppliedForFees()));
     }
 
     @AfterMapping
@@ -296,7 +298,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapJurisdictionConfidentLegal(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8JurisdictionConfidentLegal(translateToStringYesNoNever(divorceSession.getJurisdictionConfidentLegal()));
+        result.setD8JurisdictionConfidentLegal(
+            translateToStringYesNoNever(divorceSession.getJurisdictionConfidentLegal()));
     }
 
     @AfterMapping
@@ -394,7 +397,8 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapClaimsCostsAppliedForFees(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ClaimsCostsAppliedForFees(translateToStringYesNoNever(divorceSession.getClaimsCostsAppliedForFees()));
+        result.setD8ClaimsCostsAppliedForFees(
+            translateToStringYesNoNever(divorceSession.getClaimsCostsAppliedForFees()));
     }
 
     @AfterMapping

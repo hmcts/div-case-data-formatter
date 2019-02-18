@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class MappingCommons {
 
-    private final static String NEVER = "NEVER";
-
     private MappingCommons() {
     }
+
+    private static final String NEVER = "NEVER";
 
     public static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 

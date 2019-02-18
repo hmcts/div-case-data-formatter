@@ -7,14 +7,19 @@ import java.util.Objects;
 
 public class MappingCommons {
 
+    private final static String NEVER = "NEVER";
+
     private MappingCommons() {
     }
 
     public static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
-    public static String translateToStringYesNo(final String value) {
+    public static String translateToStringYesNoNever(final String value) {
         if (Objects.isNull(value)) {
             return null;
+        }
+        if (value.equalsIgnoreCase(NEVER)) {
+            return NEVER;
         }
         return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
     }

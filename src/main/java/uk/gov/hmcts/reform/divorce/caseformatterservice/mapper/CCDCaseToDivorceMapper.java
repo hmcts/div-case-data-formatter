@@ -13,7 +13,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCas
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoAnswer;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -133,7 +133,7 @@ public abstract class CCDCaseToDivorceMapper {
         if (Strings.isBlank(value)) {
             return null;
         }
-        return YesNoAnswer.fromInput(value).getAnswer();
+        return YesNoNeverAnswer.fromInput(value).getAnswer();
     }
 
     private String translateToBooleanString(final String value) {

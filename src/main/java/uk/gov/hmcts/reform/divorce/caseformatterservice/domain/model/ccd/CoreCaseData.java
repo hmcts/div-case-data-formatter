@@ -285,6 +285,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ResidualJurisdictionEligible")
     private String d8ResidualJurisdictionEligible;
 
+    @JsonProperty("D8JurisdictionPath")
+    private List<String> d8JurisdictionPath;
+
     @JsonProperty("Payments")
     private List<PaymentCollection> payments;
 

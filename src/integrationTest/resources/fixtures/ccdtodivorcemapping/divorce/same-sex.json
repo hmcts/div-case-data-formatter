@@ -25,6 +25,10 @@
         "F": null,
         "G": null
     },
+    "jurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "jurisdictionPetitionerResidence": "Yes",
     "jurisdictionRespondentResidence": "Yes",
     "jurisdictionConfidentLegal": "Yes",

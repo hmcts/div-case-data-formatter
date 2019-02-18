@@ -167,6 +167,11 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
+    protected void mapJurisdictionPath(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        result.setD8JurisdictionPath(divorceSession.getJurisdictionPath());
+    }
+
+    @AfterMapping
     protected void mapCertifiedTranslation(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8CertifiedTranslation(translateToStringYesNo(divorceSession.getCertifiedTranslation()));
     }

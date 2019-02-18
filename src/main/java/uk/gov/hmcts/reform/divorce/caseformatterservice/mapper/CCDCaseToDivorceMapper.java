@@ -335,6 +335,11 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
+    protected void mapJurisdictionPath(CoreCaseData caseData, @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setJurisdictionPath(caseData.getD8JurisdictionPath());
+    }
+
+    @AfterMapping
     protected void mapReasonForDivorceAdulteryKnowWhen(CoreCaseData caseData,
                                                        @MappingTarget DivorceSession divorceSession) {
         divorceSession.setReasonForDivorceAdulteryKnowWhen(

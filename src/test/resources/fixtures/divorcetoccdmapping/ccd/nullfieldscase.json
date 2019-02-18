@@ -103,6 +103,10 @@
         }
       }
     ],
+    "D8JurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8RejectDocumentsUploaded" : null,
     "D8StatementOfTruth" : null,
     "D8SolicitorReference" : null,

@@ -370,6 +370,9 @@ public class DivorceSession {
     private String respAdmitOrConsentToFact;
     @ApiModelProperty(value = "Will respondent defend the divorce?", allowableValues = "Yes, No, NoNoAdmission")
     private String respWillDefendDivorce;
+    @ApiModelProperty(value = "Will respondent defend the divorce - separation 2 years journey?",
+        allowableValues = "Yes, No")
+    private String respDefendsDivorce;
     @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction")
     private String respJurisdictionDisagreeReason;
     @ApiModelProperty(value = "Respondent country of residence")

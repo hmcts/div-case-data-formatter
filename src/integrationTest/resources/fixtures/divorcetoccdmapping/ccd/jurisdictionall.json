@@ -126,6 +126,10 @@
         }
     ],
     "D8DivorceUnit": "eastMidlands",
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8ReasonForDivorceShowAdultery": "YES",
     "D8ReasonForDivorceShowUnreasonableBehavi": "YES",
     "D8ReasonForDivorceShowTwoYearsSeparation": "YES",

@@ -167,11 +167,6 @@
     "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
     "RespondentContactDetailsConfidential": "share",
-    "PreviousReasonsForDivorce": [
-        {
-            "id": null,
-            "value": "adultery"
-        }
-    ],
+    "PreviousReasonsForDivorce": ["adultery"],
     "PreviousCaseId": "1234567891234567"
 }

@@ -196,6 +196,6 @@
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
-    "PreviousReasonsForDivorce": [{"id": "1234", "value": "reason-one"}, {"id": "1122", "value": "reason-two"}],
+    "PreviousReasonsForDivorce": ["reason-one","reason-two"],
     "PreviousCaseId": "caseReferenceOld"
 }

@@ -28,7 +28,7 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCom
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNoNever;
 
 @Mapper(componentModel = "spring", uses = {
-    DocumentCollectionCCDFormatMapper.class, StringCollectionCCDFormatMapper.class},
+    DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class DivorceCaseToCCDMapper {
@@ -132,17 +132,6 @@ public abstract class DivorceCaseToCCDMapper {
             result.setD8ReasonForDivorceBehaviourDetails(
                 join(LINE_SEPARATOR, divorceSession.getReasonForDivorceBehaviourDetails())
             );
-        }
-    }
-
-    @AfterMapping
-    protected void mapPreviousCaseData(DivorceSession divorceSession,
-                                     @MappingTarget CoreCaseData caseData) {
-        if (divorceSession.getPreviousCaseId() == null) {
-            caseData.setPreviousCaseId(null);
-        }
-        if (divorceSession.getPreviousReasonsForDivorce() == null) {
-            caseData.setPreviousReasonsForDivorce(null);
         }
     }
 

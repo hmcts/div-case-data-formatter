@@ -208,6 +208,6 @@
     "D8PetitionerConsent" : "YES",
     "IssueDate": "2006-02-02",
     "dueDate":"2006-02-10",
-    "PreviousReasonsForDivorce": [{"id": null, "value": "reason-one"}, {"id": null, "value": "reason-two"}],
+    "PreviousReasonsForDivorce": ["reason-one","reason-two"],
     "PreviousCaseId": "caseReferenceOld"
   }

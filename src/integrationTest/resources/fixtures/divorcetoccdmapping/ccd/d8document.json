@@ -137,6 +137,9 @@
     "D8InferredRespondentGender": "male",
     "D8PetitionerConsent" : "YES",
     "RespondentContactDetailsConfidential": "share",
-    "PreviousReasonsForDivorce": ["reason-one", "reason-two"],
+    "PreviousReasonsForDivorce": [
+        {"id": null, "value": "reason-one"},
+        {"id": null, "value": "reason-two"}
+    ],
     "PreviousCaseId": "caseReferenceOld"
 }

@@ -93,7 +93,7 @@
         ]
     },
     "livingArrangementsLiveTogether":"No",
-    "livingArrangementsLastLivedTogether":"No",
+    "livingArrangementsLastLivedTogether":"Never",
     "livingArrangementsLastLivedTogetherAddress":{
         "addressType":"manual",
         "postcode":null,

@@ -13,7 +13,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCas
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.TranslateAnswer;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoAnswer;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -26,6 +27,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNoNever;
 
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class,
     StringCollectionDivorceFormatMapper.class},
@@ -133,7 +135,14 @@ public abstract class CCDCaseToDivorceMapper {
         if (Strings.isBlank(value)) {
             return null;
         }
-        return TranslateAnswer.fromInput(value).getAnswer();
+        return YesNoAnswer.fromInput(value).getAnswer();
+    }
+
+    private String translateToYesNoNeverString(final String value) {
+        if (Strings.isBlank(value)) {
+            return null;
+        }
+        return YesNoNeverAnswer.fromInput(value).getAnswer();
     }
 
     private String translateToBooleanString(final String value) {
@@ -323,7 +332,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapLivingArrangementsLastLivedTogether(CoreCaseData caseData,
                                                           @MappingTarget DivorceSession divorceSession) {
         divorceSession.setLivingArrangementsLastLivedTogether(
-                translateToYesNoString(caseData.getD8LivingArrangementsLastLivedTogether()));
+            translateToYesNoNeverString(caseData.getD8LivingArrangementsLastLivedTogether()));
     }
 
     @AfterMapping

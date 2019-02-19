@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class TranslateAnswerUTest {
+public class YesNoAnswerUTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -18,10 +18,10 @@ public class TranslateAnswerUTest {
         String yes = "yes";
 
         // when
-        TranslateAnswer translateAnswer = objectMapper.convertValue(yes, TranslateAnswer.class);
+        YesNoAnswer yesNoAnswer = objectMapper.convertValue(yes, YesNoAnswer.class);
 
         // then
-        assertEquals(TranslateAnswer.YES, translateAnswer);
+        assertEquals(YesNoAnswer.YES, yesNoAnswer);
     }
 
     @Test
@@ -31,23 +31,10 @@ public class TranslateAnswerUTest {
         String no = "no";
 
         // when
-        TranslateAnswer translateAnswer = objectMapper.convertValue(no, TranslateAnswer.class);
+        YesNoAnswer yesNoAnswer = objectMapper.convertValue(no, YesNoAnswer.class);
 
         // then
-        assertEquals(TranslateAnswer.NO, translateAnswer);
-    }
-
-    @Test
-    public void fromInput_converts_never_successfully() {
-
-        // given
-        String no = "never";
-
-        // when
-        TranslateAnswer translateAnswer = objectMapper.convertValue(no, TranslateAnswer.class);
-
-        // then
-        assertEquals(TranslateAnswer.NEVER, translateAnswer);
+        assertEquals(YesNoAnswer.NO, yesNoAnswer);
     }
 
     @Test
@@ -60,7 +47,7 @@ public class TranslateAnswerUTest {
 
         // when
         try {
-            objectMapper.convertValue(maybe, TranslateAnswer.class);
+            objectMapper.convertValue(maybe, YesNoAnswer.class);
         } catch (IllegalArgumentException e) {
             exception = e;
         }
@@ -69,7 +56,7 @@ public class TranslateAnswerUTest {
         assertNotNull(exception);
         String exceptionMessage = exception.getMessage();
 
-        for (TranslateAnswer answer : TranslateAnswer.values()) {
+        for (YesNoAnswer answer : YesNoAnswer.values()) {
             assertTrue(exceptionMessage.contains(answer.name()));
         }
     }

@@ -24,7 +24,8 @@ import java.util.Objects;
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToAnswer;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNo;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNoNever;
 
 @Mapper(componentModel = "spring", uses = {
     DocumentCollectionCCDFormatMapper.class, StringCollectionCCDFormatMapper.class},
@@ -147,319 +148,314 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapScreenHasMarriageBroken(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ScreenHasMarriageBroken(translateToAnswer(divorceSession.getScreenHasMarriageBroken()));
+        result.setD8ScreenHasMarriageBroken(translateToStringYesNo(divorceSession.getScreenHasMarriageBroken()));
     }
 
     @AfterMapping
     protected void mapScreenHasRespondentAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ScreenHasRespondentAddress(translateToAnswer(
-            divorceSession.getScreenHasRespondentAddress()));
+        result.setD8ScreenHasRespondentAddress(translateToStringYesNo(divorceSession.getScreenHasRespondentAddress()));
     }
 
     @AfterMapping
     protected void mapScreenHasMarriageCert(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ScreenHasMarriageCert(translateToAnswer(divorceSession.getScreenHasMarriageCert()));
+        result.setD8ScreenHasMarriageCert(translateToStringYesNo(divorceSession.getScreenHasMarriageCert()));
     }
 
     @AfterMapping
     protected void mapScreenHasPrinter(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ScreenHasPrinter(translateToAnswer(divorceSession.getScreenHasPrinter()));
+        result.setD8ScreenHasPrinter(translateToStringYesNo(divorceSession.getScreenHasPrinter()));
     }
 
     @AfterMapping
     protected void mapMarriageIsSameSexCouple(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8MarriageIsSameSexCouple(translateToAnswer(divorceSession.getMarriageIsSameSexCouple()));
+        result.setD8MarriageIsSameSexCouple(translateToStringYesNo(divorceSession.getMarriageIsSameSexCouple()));
     }
 
     @AfterMapping
     protected void mapMarriedInUk(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8MarriedInUk(translateToAnswer(divorceSession.getMarriedInUk()));
+        result.setD8MarriedInUk(translateToStringYesNo(divorceSession.getMarriedInUk()));
     }
 
     @AfterMapping
     protected void mapCertificateInEnglish(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8CertificateInEnglish(translateToAnswer(divorceSession.getCertificateInEnglish()));
+        result.setD8CertificateInEnglish(translateToStringYesNo(divorceSession.getCertificateInEnglish()));
     }
 
     @AfterMapping
     protected void mapCertifiedTranslation(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8CertifiedTranslation(translateToAnswer(divorceSession.getCertifiedTranslation()));
+        result.setD8CertifiedTranslation(translateToStringYesNo(divorceSession.getCertifiedTranslation()));
     }
 
     @AfterMapping
     protected void mapPetitionerNameDifferentToMarriageCert(DivorceSession divorceSession,
                                                             @MappingTarget CoreCaseData result) {
         result.setD8PetitionerNameDifferentToMarriageCert(
-            translateToAnswer(divorceSession.getPetitionerNameDifferentToMarriageCertificate()));
+            translateToStringYesNo(divorceSession.getPetitionerNameDifferentToMarriageCertificate()));
     }
 
     @AfterMapping
     protected void mapPetitionerCorrespondenceUseHomeAddress(DivorceSession divorceSession,
                                                              @MappingTarget CoreCaseData result) {
         result.setD8PetitionerCorrespondenceUseHomeAddress(
-            translateToAnswer(divorceSession.getPetitionerCorrespondenceUseHomeAddress()));
+            translateToStringYesNo(divorceSession.getPetitionerCorrespondenceUseHomeAddress()));
     }
 
     @AfterMapping
     protected void mapRespondentNameAsOnMarriageCertificate(DivorceSession divorceSession,
                                                             @MappingTarget CoreCaseData result) {
         result.setD8RespondentNameAsOnMarriageCertificate(
-            translateToAnswer(divorceSession.getRespondentNameAsOnMarriageCertificate()));
+            translateToStringYesNo(divorceSession.getRespondentNameAsOnMarriageCertificate()));
     }
 
     @AfterMapping
     protected void mapRespondentCorrespondenceSendToSol(DivorceSession divorceSession,
                                                         @MappingTarget CoreCaseData result) {
         result.setD8RespondentCorrespondenceSendToSol(
-            translateToAnswer(divorceSession.getRespondentCorrespondenceSendToSolicitor()));
+            translateToStringYesNo(divorceSession.getRespondentCorrespondenceSendToSolicitor()));
     }
 
     @AfterMapping
     protected void mapRespondentKnowsHomeAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8RespondentKnowsHomeAddress(
-            translateToAnswer(divorceSession.getRespondentKnowsHomeAddress()));
+        result.setD8RespondentKnowsHomeAddress(translateToStringYesNo(divorceSession.getRespondentKnowsHomeAddress()));
     }
 
     @AfterMapping
     protected void mapRespondentLivesAtLastAddress(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8RespondentLivesAtLastAddress(
-            translateToAnswer(divorceSession.getRespondentLivesAtLastAddress()));
+            translateToStringYesNo(divorceSession.getRespondentLivesAtLastAddress()));
     }
 
     @AfterMapping
     protected void mapLivingArrangementsLastLivedTogether(DivorceSession divorceSession,
                                                           @MappingTarget CoreCaseData result) {
         result.setD8LivingArrangementsLastLivedTogether(
-            translateToAnswer(divorceSession.getLivingArrangementsLastLivedTogether()));
+            translateToStringYesNoNever(divorceSession.getLivingArrangementsLastLivedTogether()));
     }
 
     @AfterMapping
     protected void mapLivingArrangementsLiveTogether(DivorceSession divorceSession,
                                                      @MappingTarget CoreCaseData result) {
         result.setD8LivingArrangementsLiveTogether(
-            translateToAnswer(divorceSession.getLivingArrangementsLiveTogether()));
+            translateToStringYesNo(divorceSession.getLivingArrangementsLiveTogether()));
     }
 
     @AfterMapping
     protected void mapLegalProceedings(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8LegalProceedings(translateToAnswer(divorceSession.getLegalProceedings()));
+        result.setD8LegalProceedings(translateToStringYesNo(divorceSession.getLegalProceedings()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceDesertionAgreed(DivorceSession divorceSession,
                                                       @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceDesertionAgreed(
-            translateToAnswer(divorceSession.getReasonForDivorceDesertionAgreed()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceDesertionAgreed()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceAdulteryKnowWhen(DivorceSession divorceSession,
                                                        @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryKnowWhen(
-            translateToAnswer(divorceSession.getReasonForDivorceAdulteryKnowWhen()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceAdulteryKnowWhen()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceAdulteryWishToName(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryWishToName(
-            translateToAnswer(divorceSession.getReasonForDivorceAdulteryWishToName()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceAdulteryWishToName()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceAdulteryKnowWhere(DivorceSession divorceSession,
                                                         @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryKnowWhere(
-            translateToAnswer(divorceSession.getReasonForDivorceAdulteryKnowWhere()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceAdulteryKnowWhere()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceAdulteryIsNamed(DivorceSession divorceSession,
                                                       @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryIsNamed(
-            translateToAnswer(divorceSession.getReasonForDivorceAdulteryIsNamed()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceAdulteryIsNamed()));
     }
 
     @AfterMapping
     protected void mapFinancialOrder(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8FinancialOrder(translateToAnswer(divorceSession.getFinancialOrder()));
+        result.setD8FinancialOrder(translateToStringYesNo(divorceSession.getFinancialOrder()));
     }
 
     @AfterMapping
     protected void mapHelpWithFeesNeedHelp(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8HelpWithFeesNeedHelp(
-                translateToAnswer(divorceSession.getHelpWithFeesNeedHelp()));
+                translateToStringYesNo(divorceSession.getHelpWithFeesNeedHelp()));
     }
 
     @AfterMapping
     protected void mapHelpWithFeesAppliedForFees(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8HelpWithFeesAppliedForFees(
-            translateToAnswer(divorceSession.getHelpWithFeesAppliedForFees()));
+        result.setD8HelpWithFeesAppliedForFees(translateToStringYesNo(divorceSession.getHelpWithFeesAppliedForFees()));
     }
 
     @AfterMapping
     protected void mapApplyForDecreeNisi(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setApplyForDecreeNisi(translateToAnswer(divorceSession.getApplyForDecreeNisi()));
+        result.setApplyForDecreeNisi(translateToStringYesNo(divorceSession.getApplyForDecreeNisi()));
     }
 
     @AfterMapping
     protected void mapDivorceCostsClaim(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8DivorceCostsClaim(translateToAnswer(divorceSession.getClaimsCosts()));
+        result.setD8DivorceCostsClaim(translateToStringYesNo(divorceSession.getClaimsCosts()));
     }
 
     @AfterMapping
     protected void mapJurisdictionConfidentLegal(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8JurisdictionConfidentLegal(
-            translateToAnswer(divorceSession.getJurisdictionConfidentLegal()));
+        result.setD8JurisdictionConfidentLegal(translateToStringYesNo(divorceSession.getJurisdictionConfidentLegal()));
     }
 
     @AfterMapping
     protected void mapJurisdictionLastTwelveMonths(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8JurisdictionLastTwelveMonths(
-            translateToAnswer(divorceSession.getJurisdictionLastTwelveMonths()));
+            translateToStringYesNo(divorceSession.getJurisdictionLastTwelveMonths()));
     }
 
     @AfterMapping
     protected void mapJurisdictionPetitionerDomicile(DivorceSession divorceSession,
                                                      @MappingTarget CoreCaseData result) {
         result.setD8JurisdictionPetitionerDomicile(
-            translateToAnswer(divorceSession.getJurisdictionPetitionerDomicile()));
+            translateToStringYesNo(divorceSession.getJurisdictionPetitionerDomicile()));
     }
 
     @AfterMapping
     protected void mapJurisdictionPetitionerResidence(DivorceSession divorceSession,
                                                       @MappingTarget CoreCaseData result) {
         result.setD8JurisdictionPetitionerResidence(
-            translateToAnswer(divorceSession.getJurisdictionPetitionerResidence()));
+            translateToStringYesNo(divorceSession.getJurisdictionPetitionerResidence()));
     }
 
     @AfterMapping
     protected void mapJurisdictionRespondentDomicile(DivorceSession divorceSession,
                                                      @MappingTarget CoreCaseData result) {
         result.setD8JurisdictionRespondentDomicile(
-            translateToAnswer(divorceSession.getJurisdictionRespondentDomicile()));
+            translateToStringYesNo(divorceSession.getJurisdictionRespondentDomicile()));
     }
 
     @AfterMapping
     protected void mapJurisdictionRespondentResidence(DivorceSession divorceSession,
                                                       @MappingTarget CoreCaseData result) {
         result.setD8JurisdictionRespondentResidence(
-            translateToAnswer(divorceSession.getJurisdictionRespondentResidence()));
+            translateToStringYesNo(divorceSession.getJurisdictionRespondentResidence()));
     }
 
     @AfterMapping
     protected void mapJurisdictionHabituallyResLast6Months(DivorceSession divorceSession,
                                                            @MappingTarget CoreCaseData result) {
         result.setD8JurisdictionHabituallyResLast6Months(
-            translateToAnswer(divorceSession.getJurisdictionLastHabitualResident()));
+            translateToStringYesNo(divorceSession.getJurisdictionLastHabitualResident()));
     }
 
     @AfterMapping
     protected void mapResidualJurisdictionEligible(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8ResidualJurisdictionEligible(
-            translateToAnswer(divorceSession.getResidualJurisdictionEligible()));
+            translateToStringYesNo(divorceSession.getResidualJurisdictionEligible()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceShowAdultery(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceShowAdultery(
-            translateToAnswer(divorceSession.getReasonForDivorceShowAdultery()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceShowAdultery()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceShowUnreasonableBehavior(DivorceSession divorceSession,
                                                                @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceShowUnreasonableBehaviour(
-            translateToAnswer(divorceSession.getReasonForDivorceShowUnreasonableBehaviour()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceShowUnreasonableBehaviour()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceShowTwoYearsSeparation(DivorceSession divorceSession,
                                                              @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceShowTwoYearsSeparation(
-            translateToAnswer(divorceSession.getReasonForDivorceShowTwoYearsSeparation()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceShowTwoYearsSeparation()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceShowDesertion(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceShowDesertion(
-            translateToAnswer(divorceSession.getReasonForDivorceShowDesertion()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceShowDesertion()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceLimitReasons(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceLimitReasons(
-            translateToAnswer(divorceSession.getReasonForDivorceLimitReasons()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceLimitReasons()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceEnableAdultery(DivorceSession divorceSession,
                                                      @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceEnableAdultery(
-            translateToAnswer(divorceSession.getReasonForDivorceEnableAdultery()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceEnableAdultery()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceDesertionAlright(DivorceSession divorceSession,
                                                        @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceDesertionAlright(
-            translateToAnswer(divorceSession.getReasonForDivorceDesertionAlright()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceDesertionAlright()));
     }
 
     @AfterMapping
     protected void mapClaimsCostsAppliedForFees(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8ClaimsCostsAppliedForFees(
-            translateToAnswer(divorceSession.getClaimsCostsAppliedForFees()));
+        result.setD8ClaimsCostsAppliedForFees(translateToStringYesNo(divorceSession.getClaimsCostsAppliedForFees()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceClaimingAdultery(DivorceSession divorceSession,
                                                        @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceClaimingAdultery(
-            translateToAnswer(divorceSession.getReasonForDivorceClaimingAdultery()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceClaimingAdultery()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceSeperationIsSameOrAftr(DivorceSession divorceSession,
                                                              @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceSeperationIsSameOrAftr(
-            translateToAnswer(divorceSession.getReasonForDivorceSeperationDateIsSameOrAfterLimitDate()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceSeperationDateIsSameOrAfterLimitDate()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceSeperationInFuture(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceSeperationInFuture(
-            translateToAnswer(divorceSession.getReasonForDivorceSeperationInFuture()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceSeperationInFuture()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceDesertionBeforeMarriage(DivorceSession divorceSession,
                                                               @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceDesertionBeforeMarriage(
-            translateToAnswer(divorceSession.getReasonForDivorceDesertionBeforeMarriage()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceDesertionBeforeMarriage()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceDesertionInFuture(DivorceSession divorceSession,
                                                         @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceDesertionInFuture(
-            translateToAnswer(divorceSession.getReasonForDivorceDesertionInFuture()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceDesertionInFuture()));
     }
 
     @AfterMapping
     protected void mapMarriageCanDivorce(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8MarriageCanDivorce(translateToAnswer(divorceSession.getMarriageCanDivorce()));
+        result.setD8MarriageCanDivorce(translateToStringYesNo(divorceSession.getMarriageCanDivorce()));
     }
 
     @AfterMapping
     protected void mapMarriageIsFuture(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8MarriageIsFuture(translateToAnswer(divorceSession.getMarriageIsFuture()));
+        result.setD8MarriageIsFuture(translateToStringYesNo(divorceSession.getMarriageIsFuture()));
     }
 
     @AfterMapping
     protected void mapMarriageMoreThan100(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8MarriageMoreThan100(translateToAnswer(divorceSession.getMarriageMoreThan100()));
+        result.setD8MarriageMoreThan100(translateToStringYesNo(divorceSession.getMarriageMoreThan100()));
     }
 
     @AfterMapping
@@ -512,28 +508,28 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapReasonForDivorceHasMarriage(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceHasMarriage(
-            translateToAnswer(divorceSession.getReasonForDivorceHasMarriageDate()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceHasMarriageDate()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceShowFiveYearsSeparation(DivorceSession divorceSession,
                                                               @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceShowFiveYearsSeparation(
-            translateToAnswer(divorceSession.getReasonForDivorceShowFiveYearsSeparation()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceShowFiveYearsSeparation()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceClaiming5YearSeparation(DivorceSession divorceSession,
                                                               @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceClaiming5YearSeparation(
-            translateToAnswer(divorceSession.getReasonForDivorceClaiming5YearSeparation()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceClaiming5YearSeparation()));
     }
 
     @AfterMapping
     protected void mapReasonForDivorceSeperationBeforeMarriage(DivorceSession divorceSession,
                                                                @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceSeperationBeforeMarriage(
-            translateToAnswer(divorceSession.getReasonForDivorceSeperationBeforeMarriage()));
+            translateToStringYesNo(divorceSession.getReasonForDivorceSeperationBeforeMarriage()));
     }
 
     @AfterMapping
@@ -589,7 +585,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapStatementOfTruth(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8StatementOfTruth(translateToAnswer(divorceSession.getConfirmPrayer()));
+        result.setD8StatementOfTruth(translateToStringYesNo(divorceSession.getConfirmPrayer()));
     }
 
     @AfterMapping
@@ -648,7 +644,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapPetitionerConsent(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        result.setD8PetitionerConsent(translateToAnswer(divorceSession.getPetitionerConsent()));
+        result.setD8PetitionerConsent(translateToStringYesNo(divorceSession.getPetitionerConsent()));
     }
 
     @AfterMapping
@@ -663,7 +659,7 @@ public abstract class DivorceCaseToCCDMapper {
     protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setLivedTogetherMoreTimeThanPermitted(
-            translateToAnswer(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
         );
     }
 
@@ -671,7 +667,7 @@ public abstract class DivorceCaseToCCDMapper {
     protected void mapReasonForDivorceAdulterySecondHandInfo(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryAnyInfo2ndHand(
-            translateToAnswer(divorceSession.getReasonForDivorceAdulterySecondHandInfo())
+            translateToStringYesNo(divorceSession.getReasonForDivorceAdulterySecondHandInfo())
         );
     }
 
@@ -679,7 +675,7 @@ public abstract class DivorceCaseToCCDMapper {
     protected void mapLivedApartEntireTime(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setLivedApartEntireTime(
-            translateToAnswer(divorceSession.getLivedApartEntireTime())
+            translateToStringYesNo(divorceSession.getLivedApartEntireTime())
         );
     }
 

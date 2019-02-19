@@ -8,26 +8,23 @@ import java.util.Arrays;
 
 @AllArgsConstructor
 @Getter
-public enum TranslateAnswer {
+public enum YesNoAnswer {
 
     YES("Yes"),
-    NO("No"),
-    NEVER("Never");
+    NO("No");
 
     private final String answer;
 
     @JsonCreator
-    public static TranslateAnswer fromInput(String input) {
+    public static YesNoAnswer fromInput(String input) {
         if (input.equalsIgnoreCase(YES.getAnswer())) {
             return YES;
         } else if (input.equalsIgnoreCase(NO.getAnswer())) {
             return NO;
-        } else if (input.equalsIgnoreCase(NEVER.getAnswer())) {
-            return NEVER;
         }
         throw new IllegalArgumentException(
                 String.format("Could not find match for input '%s' in %s",
                         input,
-                        Arrays.asList(TranslateAnswer.values())));
+                        Arrays.asList(YesNoAnswer.values())));
     }
 }

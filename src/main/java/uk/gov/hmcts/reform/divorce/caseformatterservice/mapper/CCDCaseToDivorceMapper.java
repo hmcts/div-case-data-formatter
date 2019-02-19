@@ -13,7 +13,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCas
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.TranslateAnswer;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -27,8 +27,7 @@ import java.util.Map;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 
-@Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class,
-    StringCollectionDivorceFormatMapper.class},
+@Mapper(componentModel = "spring", uses = DocumentCollectionDivorceFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class CCDCaseToDivorceMapper {
@@ -133,7 +132,7 @@ public abstract class CCDCaseToDivorceMapper {
         if (Strings.isBlank(value)) {
             return null;
         }
-        return TranslateAnswer.fromInput(value).getAnswer();
+        return YesNoAnswer.fromInput(value).getAnswer();
     }
 
     private String translateToBooleanString(final String value) {
@@ -141,17 +140,6 @@ public abstract class CCDCaseToDivorceMapper {
             return null;
         }
         return String.valueOf("YES".equalsIgnoreCase(value));
-    }
-
-    @AfterMapping
-    protected void previousCaseData(CoreCaseData caseData,
-                                    @MappingTarget DivorceSession divorceSession) {
-        if (caseData.getPreviousCaseId() == null) {
-            divorceSession.setPreviousCaseId(null);
-        }
-        if (caseData.getPreviousReasonsForDivorce() == null) {
-            divorceSession.setPreviousReasonsForDivorce(null);
-        }
     }
 
     @AfterMapping

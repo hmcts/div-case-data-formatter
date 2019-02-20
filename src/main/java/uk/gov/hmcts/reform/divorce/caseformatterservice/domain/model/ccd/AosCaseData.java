@@ -23,9 +23,6 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("RespWillDefendDivorce")
     private String respWillDefendDivorce;
 
-    @JsonProperty("RespDefendsDivorce")
-    private String respDefendsDivorce;
-
     @JsonProperty("RespJurisdictionDisagreeReason")
     private String respJurisdictionDisagreeReason;
 

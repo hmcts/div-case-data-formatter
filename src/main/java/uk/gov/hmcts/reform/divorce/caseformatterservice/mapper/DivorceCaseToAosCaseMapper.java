@@ -51,9 +51,12 @@ public abstract class DivorceCaseToAosCaseMapper {
         CoRespondentAnswers coRespondentAnswers = divorceSession.getCoRespondentAnswers();
 
         if (coRespondentAnswers != null) {
-            result.setReceivedAosFromCoResp(translateToStringYesNo(coRespondentAnswers.getAnswer().getReceived()));
-            result.setReceivedAnswerFromCoResp(translateToStringYesNo(coRespondentAnswers.getAnswer().getReceived()));
-            result.setCoRespConfirmReadPetition(translateToStringYesNo(coRespondentAnswers.getConfirmReadPetition()));
+            result.setReceivedAosFromCoResp(
+                translateToStringYesNo(coRespondentAnswers.getAnswer().getReceived()));
+            result.setReceivedAnswerFromCoResp(
+                translateToStringYesNo(coRespondentAnswers.getAnswer().getReceived()));
+            result.setCoRespConfirmReadPetition(
+                translateToStringYesNo(coRespondentAnswers.getConfirmReadPetition()));
             result.setCoRespStatementOfTruth(translateToStringYesNo(coRespondentAnswers.getStatementOfTruth()));
             result.setCoRespAdmitAdultery(translateToStringYesNo(coRespondentAnswers.getAdmitAdultery()));
             result.setCoRespDefendsDivorce(translateToStringYesNo(coRespondentAnswers.getDefendsDivorce()));

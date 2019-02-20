@@ -10,11 +10,23 @@ public class MappingCommons {
     private MappingCommons() {
     }
 
+    private static final String NEVER = "NEVER";
+
     public static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     public static String translateToStringYesNo(final String value) {
         if (Objects.isNull(value)) {
             return null;
+        }
+        return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
+    }
+
+    public static String translateToStringYesNoNever(final String value) {
+        if (Objects.isNull(value)) {
+            return null;
+        }
+        if (value.equalsIgnoreCase(NEVER)) {
+            return NEVER;
         }
         return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
     }

@@ -114,6 +114,7 @@ public abstract class DivorceCaseToCCDMapper {
         target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
+    @Mapping(source = "desertionTimeTogetherPermitted", target = "desertionTimeTogetherPermitted")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping
@@ -649,6 +650,14 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
+    protected void mapDesertionLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
+                                                         @MappingTarget CoreCaseData result) {
+        result.setDesertionLivedTogetherMoreTimeThanPermitted(
+            translateToStringYesNo(divorceSession.getDesertionLivedTogetherMoreTimeThanPermitted())
+        );
+    }
+
+    @AfterMapping
     protected void mapReasonForDivorceAdulterySecondHandInfo(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryAnyInfo2ndHand(
@@ -664,6 +673,13 @@ public abstract class DivorceCaseToCCDMapper {
         );
     }
 
+    @AfterMapping
+    protected void mapDesertionLivedApartSince(DivorceSession divorceSession,
+                                           @MappingTarget CoreCaseData result) {
+        result.setDesertionLivedApartSince(
+            translateToStringYesNo(divorceSession.getDesertionLivedApartSince())
+        );
+    }
 
     @AfterMapping
     protected void mapSeparationReferenceDate(DivorceSession divorceSession,

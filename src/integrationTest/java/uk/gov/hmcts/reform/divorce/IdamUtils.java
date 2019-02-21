@@ -1,6 +1,6 @@
 package uk.gov.hmcts.reform.divorce;
 
-import io.restassured.RestAssured;
+import net.serenitybdd.rest.SerenityRest;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Base64;
@@ -14,7 +14,7 @@ class IdamUtils {
         String payload = "{\"email\":\"" + username + "@test.com\", \"forename\":\"" + username
             + "\",\"surname\":\"User\",\"password\":\"" + password + "\"}";
 
-        RestAssured.given()
+        SerenityRest.given()
             .header("Content-Type", "application/json")
             .body(payload)
             .post(idamCreateUrl());
@@ -33,7 +33,7 @@ class IdamUtils {
         String userLoginDetails = String.join(":", username + "@test.com", password);
         final String authHeader = "Basic " + new String(Base64.getEncoder().encode(userLoginDetails.getBytes()));
 
-        final String token = RestAssured.given()
+        final String token = SerenityRest.given()
                 .header("Authorization", authHeader)
                 .post(loginUrl())
                 .body()

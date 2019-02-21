@@ -124,7 +124,7 @@
             "value": {
                 "DocumentType": "petition",
                 "DocumentLink": {
-                    "document_url": "http://dm-store-aat.service.core-compute-aat.internal/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
+                    "document_url": "http://dm-store-saat.service.core-compute-saat.internal/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
                 },
                 "DocumentDateAdded": "2017-12-11",
                 "DocumentComment": "",

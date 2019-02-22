@@ -8,6 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
@@ -38,7 +39,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Value("#{${court.details}}")
     private Map<String, Map<String, Object>> courtDetails;
 
-    private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
+    @Autowired
+    private ReasonForDivorceContext reasonForDivorceContext;
 
     @Mapping(source = "d8HelpWithFeesReferenceNumber", target = "helpWithFeesReferenceNumber")
     @Mapping(source = "d8caseReference", target = "caseReference")

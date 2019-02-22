@@ -5,15 +5,14 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCas
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.util.DateUtil;
 
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNo;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToYesNoString;
-
 @Component
 public class SeparationTwoYearsStrategy implements ReasonForDivorceStrategy {
 
     private static final String SEPARATION_2_YEARS = "separation-2-years";
 
     private static final String SEPARATION_STRING = "I have been separated from my %s for 2 years or more from the %s.";
+
+    private final SeparationStrategy separationStrategy = new SeparationStrategy();
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
@@ -31,32 +30,11 @@ public class SeparationTwoYearsStrategy implements ReasonForDivorceStrategy {
 
     @Override
     public void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
-        coreCaseData.setSeparationLivedApartEntireTime(
-            translateToStringYesNo(divorceSession.getLivedApartEntireTime())
-        );
-
-        coreCaseData.setSeparationLivedTogetherMoreTimeThanPermitted(
-            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
-        );
-
-        coreCaseData.setSeparationTimeTogetherPermitted(
-            divorceSession.getTimeLivedTogetherPermitted()
-        );
+        separationStrategy.setLivedApartFieldsFromDivorceSession(divorceSession, coreCaseData);
     }
 
     @Override
     public void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
-
-        divorceSession.setLivedTogetherMoreTimeThanPermitted(
-            translateToYesNoString(coreCaseData.getSeparationLivedTogetherMoreTimeThanPermitted())
-        );
-
-        divorceSession.setLivedApartEntireTime(
-            translateToYesNoString(coreCaseData.getSeparationLivedApartEntireTime())
-        );
-
-        divorceSession.setTimeLivedTogetherPermitted(
-            coreCaseData.getSeparationTimeTogetherPermitted()
-        );
+        separationStrategy.setLivedApartFieldsFromCoreCaseData(coreCaseData, divorceSession);
     }
 }

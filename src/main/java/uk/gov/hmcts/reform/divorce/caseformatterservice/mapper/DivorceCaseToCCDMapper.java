@@ -36,8 +36,11 @@ public abstract class DivorceCaseToCCDMapper {
 
     private static final String SHARE_DETAILS = "share";
 
-    private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
-    private final PaymentContext paymentContext = new PaymentContext();
+    @Autowired
+    private ReasonForDivorceContext reasonForDivorceContext;
+
+    @Autowired
+    private PaymentContext paymentContext;
 
     @Value("${cohort}")
     private String cohort;

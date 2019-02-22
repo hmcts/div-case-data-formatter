@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
+import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
@@ -7,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class ReasonForDivorceContext {
 
     private static final List<ReasonForDivorceStrategy> reasonForDivorceStrategies =

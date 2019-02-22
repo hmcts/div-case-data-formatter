@@ -6,8 +6,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.util.DateUtil;
 
 import static org.apache.commons.lang3.StringUtils.join;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNo;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToYesNoString;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
 @Component
 public class DesertionStrategy implements ReasonForDivorceStrategy {
@@ -39,11 +39,11 @@ public class DesertionStrategy implements ReasonForDivorceStrategy {
     public void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
 
         coreCaseData.setDesertionLivedApartEntireTime(
-            translateToStringYesNo(divorceSession.getLivedApartEntireTime())
+            toYesNoUpperCase(divorceSession.getLivedApartEntireTime())
         );
 
         coreCaseData.setDesertionLivedTogetherMoreTimeThanPermitted(
-            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+            toYesNoUpperCase(divorceSession.getLivedTogetherMoreTimeThanPermitted())
         );
 
         coreCaseData.setDesertionTimeTogetherPermitted(
@@ -55,11 +55,11 @@ public class DesertionStrategy implements ReasonForDivorceStrategy {
     public void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
 
         divorceSession.setLivedTogetherMoreTimeThanPermitted(
-            translateToYesNoString(coreCaseData.getDesertionLivedTogetherMoreTimeThanPermitted())
+            toYesNoPascalCase(coreCaseData.getDesertionLivedTogetherMoreTimeThanPermitted())
         );
 
         divorceSession.setLivedApartEntireTime(
-            translateToYesNoString(coreCaseData.getDesertionLivedApartEntireTime())
+            toYesNoPascalCase(coreCaseData.getDesertionLivedApartEntireTime())
         );
 
         divorceSession.setTimeLivedTogetherPermitted(

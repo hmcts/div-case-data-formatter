@@ -3,17 +3,17 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivor
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToStringYesNo;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToYesNoString;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
 public class SeparationStrategy {
     void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
         coreCaseData.setSeparationLivedApartEntireTime(
-            translateToStringYesNo(divorceSession.getLivedApartEntireTime())
+            toYesNoUpperCase(divorceSession.getLivedApartEntireTime())
         );
 
         coreCaseData.setSeparationLivedTogetherMoreTimeThanPermitted(
-            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+            toYesNoUpperCase(divorceSession.getLivedTogetherMoreTimeThanPermitted())
         );
 
         coreCaseData.setSeparationTimeTogetherPermitted(
@@ -24,11 +24,11 @@ public class SeparationStrategy {
     void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
 
         divorceSession.setLivedTogetherMoreTimeThanPermitted(
-            translateToYesNoString(coreCaseData.getSeparationLivedTogetherMoreTimeThanPermitted())
+            toYesNoPascalCase(coreCaseData.getSeparationLivedTogetherMoreTimeThanPermitted())
         );
 
         divorceSession.setLivedApartEntireTime(
-            translateToYesNoString(coreCaseData.getSeparationLivedApartEntireTime())
+            toYesNoPascalCase(coreCaseData.getSeparationLivedApartEntireTime())
         );
 
         divorceSession.setTimeLivedTogetherPermitted(

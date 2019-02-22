@@ -352,26 +352,15 @@ public class DivorceSession {
     private String respondentContactDetailsConfidential;
 
     @ApiModelProperty(value = "Maximum separation time together permitted?")
-    private String separationTimeTogetherPermitted;
+    @JsonProperty("separationTimeTogetherPermitted")
+    private String timeLivedTogetherPermitted;
 
     @ApiModelProperty(value = "Has petitioner & respondent lived more than"
         + " the time together permitted?", allowableValues = "Yes, No")
     private String livedTogetherMoreTimeThanPermitted;
-
     @ApiModelProperty(value = "Has petitioner & respondent lived apart"
         + " for the entire time since separated?", allowableValues = "Yes, No")
     private String livedApartEntireTime;
-
-    @ApiModelProperty(value = "Maximum desertion time together permitted?")
-    private String desertionTimeTogetherPermitted;
-
-    @ApiModelProperty(value = "Has petitioner & respondent lived more than"
-        + " the time together permitted since desertion?", allowableValues = "Yes, No")
-    private String desertionLivedTogetherMoreTimeThanPermitted;
-
-    @ApiModelProperty(value = "Has petitioner & respondent lived apart"
-        + " for the entire time since desertion?", allowableValues = "Yes, No")
-    private String desertionLivedApartSince;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")

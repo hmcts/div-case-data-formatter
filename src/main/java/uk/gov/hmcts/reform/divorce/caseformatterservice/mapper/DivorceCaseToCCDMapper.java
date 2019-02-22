@@ -114,7 +114,6 @@ public abstract class DivorceCaseToCCDMapper {
         target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
-    @Mapping(source = "desertionTimeTogetherPermitted", target = "desertionTimeTogetherPermitted")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping
@@ -642,22 +641,6 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
-    protected void mapLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
-                                                         @MappingTarget CoreCaseData result) {
-        result.setLivedTogetherMoreTimeThanPermitted(
-            translateToStringYesNo(divorceSession.getLivedTogetherMoreTimeThanPermitted())
-        );
-    }
-
-    @AfterMapping
-    protected void mapDesertionLivedTogetherMoreTimeThanPermitted(DivorceSession divorceSession,
-                                                         @MappingTarget CoreCaseData result) {
-        result.setDesertionLivedTogetherMoreTimeThanPermitted(
-            translateToStringYesNo(divorceSession.getDesertionLivedTogetherMoreTimeThanPermitted())
-        );
-    }
-
-    @AfterMapping
     protected void mapReasonForDivorceAdulterySecondHandInfo(DivorceSession divorceSession,
                                                          @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryAnyInfo2ndHand(
@@ -666,19 +649,9 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
-    protected void mapLivedApartEntireTime(DivorceSession divorceSession,
-                                                         @MappingTarget CoreCaseData result) {
-        result.setLivedApartEntireTime(
-            translateToStringYesNo(divorceSession.getLivedApartEntireTime())
-        );
-    }
-
-    @AfterMapping
-    protected void mapDesertionLivedApartSince(DivorceSession divorceSession,
-                                           @MappingTarget CoreCaseData result) {
-        result.setDesertionLivedApartSince(
-            translateToStringYesNo(divorceSession.getDesertionLivedApartSince())
-        );
+    protected void mapTimeLivedTogetherFields(DivorceSession divorceSession,
+                                           @MappingTarget CoreCaseData coreCaseData) {
+        reasonForDivorceContext.setLivedApartFieldsFromDivorceSession(divorceSession, coreCaseData);
     }
 
     @AfterMapping

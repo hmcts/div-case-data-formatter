@@ -19,6 +19,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.ContactInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Costs;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -36,6 +37,8 @@ public abstract class CCDCaseToDivorceMapper {
 
     @Value("#{${court.details}}")
     private Map<String, Map<String, Object>> courtDetails;
+
+    private final ReasonForDivorceContext reasonForDivorceContext = new ReasonForDivorceContext();
 
     @Mapping(source = "d8HelpWithFeesReferenceNumber", target = "helpWithFeesReferenceNumber")
     @Mapping(source = "d8caseReference", target = "caseReference")
@@ -890,11 +893,9 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
-    protected void mapLivedTogetherMoreTimeThanPermitted(CoreCaseData caseData,
+    protected void mapTimeLivedTogetherFields(CoreCaseData caseData,
                                                          @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setLivedTogetherMoreTimeThanPermitted(
-                translateToYesNoString(caseData.getLivedTogetherMoreTimeThanPermitted())
-        );
+        reasonForDivorceContext.setLivedApartFieldsFromCoreCaseData(caseData, divorceSession);
     }
 
     @AfterMapping
@@ -902,14 +903,6 @@ public abstract class CCDCaseToDivorceMapper {
                                                          @MappingTarget DivorceSession divorceSession) {
         divorceSession.setReasonForDivorceAdulterySecondHandInfo(
             translateToYesNoString(caseData.getD8ReasonForDivorceAdulteryAnyInfo2ndHand())
-        );
-    }
-
-    @AfterMapping
-    protected void mapLivedApartEntireTime(CoreCaseData caseData,
-                                                         @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setLivedApartEntireTime(
-            translateToYesNoString(caseData.getLivedApartEntireTime())
         );
     }
 }

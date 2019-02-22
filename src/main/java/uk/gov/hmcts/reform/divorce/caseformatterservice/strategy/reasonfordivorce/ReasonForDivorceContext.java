@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
 import java.util.Arrays;
@@ -22,5 +23,17 @@ public class ReasonForDivorceContext {
             .filter(strategy -> strategy.accepts(divorceSession.getReasonForDivorce()))
             .map(s -> s.deriveStatementOfCase(divorceSession))
             .collect(Collectors.joining());
+    }
+
+    public void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
+        reasonForDivorceStrategies.stream()
+            .filter(strategy -> strategy.accepts(divorceSession.getReasonForDivorce()))
+            .forEach(s -> s.setLivedApartFieldsFromDivorceSession(divorceSession, coreCaseData));
+    }
+
+    public void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
+        reasonForDivorceStrategies.stream()
+            .filter(strategy -> strategy.accepts(divorceSession.getReasonForDivorce()))
+            .forEach(s -> s.setLivedApartFieldsFromCoreCaseData(coreCaseData, divorceSession));
     }
 }

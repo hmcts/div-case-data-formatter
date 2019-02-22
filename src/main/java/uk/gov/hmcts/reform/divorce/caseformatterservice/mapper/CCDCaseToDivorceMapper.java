@@ -13,7 +13,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCas
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -27,6 +26,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.translateToYesNoString;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionDivorceFormatMapper.class,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -130,13 +130,6 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "previousCaseId", target = "previousCaseId")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
-
-    private String translateToYesNoString(final String value) {
-        if (Strings.isBlank(value)) {
-            return null;
-        }
-        return YesNoAnswer.fromInput(value).getAnswer();
-    }
 
     private String translateToBooleanString(final String value) {
         if (Strings.isBlank(value)) {

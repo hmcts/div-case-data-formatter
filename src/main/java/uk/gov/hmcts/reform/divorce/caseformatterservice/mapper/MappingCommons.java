@@ -6,12 +6,12 @@ import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Locale;
 
-public class MappingCommons {
+public final class MappingCommons {
+
+    public static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     private MappingCommons() {
     }
-
-    public static final String SIMPLE_DATE_FORMAT = "yyyy-MM-dd";
 
     public static String toYesNoUpperCase(final String value) {
         if (Strings.isNullOrEmpty(value)) {

@@ -9,7 +9,11 @@ public interface ReasonForDivorceStrategy {
 
     String deriveStatementOfCase(DivorceSession divorceSession);
 
-    default void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {}
+    default void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
+        //only applicable for some divorce reasons
+    }
 
-    default void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {}
+    default void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
+        //only applicable for some divorce reasons
+    }
 }

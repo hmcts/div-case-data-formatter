@@ -16,16 +16,12 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDM
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.service.IdamUserService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class CaseFormatterServiceImpl implements CaseFormatterService {
-
-    @Autowired
-    private IdamUserService idamUserService;
 
     @Autowired
     private DivorceCaseToCCDMapper divorceCaseToCCDMapper;

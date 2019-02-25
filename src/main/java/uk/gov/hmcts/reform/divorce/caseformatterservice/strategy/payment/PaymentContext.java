@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment;
 
+import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
+@Component
 public class PaymentContext {
 
     private static final List<PaymentStrategy> paymentStrategies = asList(new ExistingPaymentReferenceStrategy(),

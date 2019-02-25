@@ -60,7 +60,7 @@ public class YesNoNeverAnswerUTest {
 
         // when
         try {
-            objectMapper.convertValue(maybe, YesNoAnswer.class);
+            objectMapper.convertValue(maybe, YesNoNeverAnswer.class);
         } catch (IllegalArgumentException e) {
             exception = e;
         }
@@ -69,7 +69,7 @@ public class YesNoNeverAnswerUTest {
         assertNotNull(exception);
         String exceptionMessage = exception.getMessage();
 
-        for (YesNoAnswer answer : YesNoAnswer.values()) {
+        for (YesNoNeverAnswer answer : YesNoNeverAnswer.values()) {
             assertTrue(exceptionMessage.contains(answer.name()));
         }
     }

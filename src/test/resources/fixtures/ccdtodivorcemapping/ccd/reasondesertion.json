@@ -186,5 +186,8 @@
     "D8Cohort" : "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "D8LivedApartSinceDesertion": "NO",
+    "D8DesertionTimeTogetherPermitted":  "1 months, 1 weeks and 1 months",
+    "D8LivedTogetherMoreTimeThanPermittedDesert": "NO"
   }

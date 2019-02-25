@@ -7,7 +7,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 
 import static org.junit.Assert.assertEquals;
 
-public class SeparationStrategyTest {
+public class SeparationStrategyUTest {
 
     private SeparationStrategy separationStrategy;
 
@@ -30,9 +30,9 @@ public class SeparationStrategyTest {
         separationStrategy.setLivedApartFieldsFromDivorceSession(divorceSession, coreCaseData);
 
         //then
-        assertEquals(coreCaseData.getSeparationLivedApartEntireTime(), "YES");
-        assertEquals(coreCaseData.getSeparationLivedTogetherMoreTimeThanPermitted(), "NO");
-        assertEquals(coreCaseData.getSeparationTimeTogetherPermitted(), "1 month");
+        assertEquals("YES", coreCaseData.getSeparationLivedApartEntireTime());
+        assertEquals("NO", coreCaseData.getSeparationLivedTogetherMoreTimeThanPermitted());
+        assertEquals("1 month", coreCaseData.getSeparationTimeTogetherPermitted());
     }
 
     @Test
@@ -50,8 +50,8 @@ public class SeparationStrategyTest {
         separationStrategy.setLivedApartFieldsFromCoreCaseData(coreCaseData, divorceSession);
 
         //then
-        assertEquals(divorceSession.getLivedApartEntireTime(), "Yes");
-        assertEquals(divorceSession.getLivedTogetherMoreTimeThanPermitted(), "No");
-        assertEquals(divorceSession.getTimeLivedTogetherPermitted(), "1 month");
+        assertEquals("Yes", divorceSession.getLivedApartEntireTime());
+        assertEquals("No", divorceSession.getLivedTogetherMoreTimeThanPermitted());
+        assertEquals("1 month", divorceSession.getTimeLivedTogetherPermitted());
     }
 }

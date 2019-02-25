@@ -26,6 +26,10 @@
     "petitionerNameChangedHow":[
         "marriageCertificate"
     ],
+    "jurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "petitionerEmail":"simulate-delivered@notifications.service.gov.uk",
     "petitionerPhoneNumber":"01234567890",
     "petitionerHomeAddress":{

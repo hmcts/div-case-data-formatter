@@ -121,6 +121,10 @@
     "D8ReasonForDivorceShowAdultery": "YES",
     "D8ReasonForDivorceShowUnreasonableBehavi": "YES",
     "D8ReasonForDivorceShowTwoYearsSeparation": "YES",
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8ReasonForDivorceShowDesertion": "YES",
     "D8ReasonForDivorceLimitReasons": "NO",
     "D8ReasonForDivorceEnableAdultery": "YES",

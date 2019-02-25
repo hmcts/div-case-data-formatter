@@ -6,10 +6,9 @@
     "D8ScreenHasRespondentAddress" : "YES",
     "D8ScreenHasMarriageCert" : "YES",
     "D8ScreenHasPrinter" : "YES",
-    "D8DivorceWho" : "wife",
-    "D8MarriageIsSameSexCouple" : "NO",
+    "D8DivorceWho" : "husband",
     "D8MarriageDate" : "2001-02-02",
-    "D8MarriedInUk" : null,
+    "D8MarriedInUk" : "YES",
     "D8CertificateInEnglish" : null,
     "D8CertifiedTranslation" : null,
     "D8MarriagePlaceOfMarriage" : null,
@@ -21,27 +20,18 @@
     "D8PetitionerFirstName" : "John",
     "D8PetitionerLastName" : "Smith",
     "D8DerivedPetitionerCurrentFullName" : "John Smith",
-    "D8PetitionerNameChangedHow" : [ "marriageCertificate", "deedPoll", "other" ],
-    "D8PetitionerNameChangedHowOtherDetails" : "How I changed name",
+    "D8PetitionerNameChangedHow" : [ "marriageCertificate" ],
+    "D8PetitionerNameChangedHowOtherDetails" : null,
     "D8PetitionerContactDetailsConfidential" : "share",
     "D8PetitionerHomeAddress" : {
-      "County" : null,
-      "PostCode" : "SW9 9PE"
+        "County" : null,
+        "PostCode" : "SW9 9PE"
     },
     "D8DerivedPetitionerHomeAddress" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8PetitionerCorrespondenceAddress" : {
-      "County" : null,
-      "PostCode" : "SW9 9PE"
+        "County" : null,
+        "PostCode" : "SW9 9PE"
     },
-    "D8JurisdictionPath" : [
-        "JurisdictionHabitualResidence",
-        "JurisdictionLastTwelveMonths",
-        "JurisdictionNDomicile",
-        "JurisdictionInterstitial",
-        "JurisdictionLastSixMonths",
-        "JurisdictionLastHabitualResidence",
-        "JurisdictionConnectionSummary"
-    ],
     "D8DerivedPetitionerCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8PetitionerCorrespondenceUseHomeAddress" : "YES",
     "D8RespondentNameAsOnMarriageCertificate" : null,
@@ -50,13 +40,13 @@
     "D8DerivedRespondentCurrentName" : "Jane Jamed",
     "D8DerivedRespondentSolicitorDetails" : null,
     "D8RespondentHomeAddress" : {
-      "County" : null,
-      "PostCode" : "SW9 9PE"
+        "County" : null,
+        "PostCode" : "SW9 9PE"
     },
     "D8DerivedRespondentHomeAddress" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentCorrespondenceAddress" : {
-      "County" : null,
-      "PostCode" : "SW9 9PE"
+        "County" : null,
+        "PostCode" : "SW9 9PE"
     },
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentSolicitorName" : null,
@@ -96,55 +86,24 @@
     "D8FinancialOrderFor" : [ "petitioner", "children" ],
     "D8HelpWithFeesNeedHelp" : "YES",
     "D8HelpWithFeesAppliedForFees" : "YES",
-    "D8HelpWithFeesReferenceNumber" : "HWF-123-123",
+    "D8HelpWithFeesReferenceNumber" : "HWF-123-456",
     "D8PaymentMethod" : null,
     "D8DivorceCostsClaim" : "YES",
     "D8DivorceIsNamed" : null,
     "D8DivorceClaimFrom" : [ "respondent" ],
-    "D8JurisdictionConfidentLegal" : "NO",
-    "D8JurisdictionConnection" : [ "B", "E", "F" ],
-    "D8JurisdictionLastTwelveMonths" : "NO",
-    "D8JurisdictionPetitionerDomicile" : "YES",
+    "D8JurisdictionConfidentLegal" : "YES",
+    "D8JurisdictionConnection" : [ "A", "C" ],
+    "D8JurisdictionLastTwelveMonths" : null,
+    "D8JurisdictionPetitionerDomicile" : null,
     "D8JurisdictionPetitionerResidence" : "YES",
-    "D8JurisdictionRespondentDomicile" : "YES",
-    "D8JurisdictionRespondentResidence" : "NO",
-    "D8JurisdictionHabituallyResLast6Months" : "YES",
+    "D8JurisdictionRespondentDomicile" : null,
+    "D8JurisdictionRespondentResidence" : "YES",
+    "D8JurisdictionHabituallyResLast6Months" : null,
     "D8ResidualJurisdictionEligible" : null,
     "Payments" : null,
-    "D8DocumentsUploaded" : [
-      {
-        "id" : null,
-        "value" : {
-          "DocumentType" : "other",
-          "DocumentLink" : {
-            "document_url" : "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
-            "document_binary_url" : null,
-            "document_filename" : null
-          },
-          "DocumentDateAdded" : "2017-12-11",
-          "DocumentComment" : "",
-          "DocumentFileName" : "govuklogo.png",
-          "DocumentEmailContent" : ""
-        }
-      },
-      {
-        "id" : null,
-        "value" : {
-          "DocumentType": "other",
-          "DocumentLink" : {
-            "document_url" : "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
-            "document_binary_url" : null,
-            "document_filename" : null
-          },
-          "DocumentDateAdded": "2017-12-11",
-          "DocumentComment": "",
-          "DocumentFileName": "d8-eng.pdf",
-          "DocumentEmailContent": ""
-        }
-      }
-    ],
+    "D8DocumentsUploaded" : null,
     "D8RejectDocumentsUploaded" : null,
-    "D8StatementOfTruth" : null,
+    "D8StatementOfTruth" : "YES",
     "D8SolicitorReference" : null,
     "D8DivorceUnit" : "eastMidlands",
     "D8ReasonForDivorceShowAdultery" : "YES",
@@ -154,7 +113,7 @@
     "D8ReasonForDivorceLimitReasons" : "NO",
     "D8ReasonForDivorceEnableAdultery" : "YES",
     "D8ReasonForDivorceDesertionAlright" : null,
-    "D8ClaimsCostsAppliedForFees" : "NO",
+    "D8ClaimsCostsAppliedForFees" : "YES",
     "D8ReasonForDivorceClaimingAdultery" : "NO",
     "D8ReasonForDivorceSeperationIsSameOrAftr" : null,
     "D8ReasonForDivorceSeperationInFuture" : null,
@@ -175,16 +134,32 @@
     "D8DerivedRespondentSolicitorAddr" : null,
     "D8DerivedLivingArrangementsLastLivedAddr" : null,
     "D8Connections" : {
-      "A" : null,
-      "B" : "The Petitioner and the Respondent were last habitually resident, insofar as one of them still resides there",
-      "C" : null,
-      "D" : null,
-      "E" : "The Petitioner is domiciled and habitually resident in England and Wales and has resided there for at least six months immediately prior to the petition",
-      "F" : "The Petitioner and Respondent are both domiciled in England and Wales",
-      "G" : null
+        "A" : "The Petitioner and the Respondent are habitually resident in England and Wales",
+        "B" : null,
+        "C" : "The Respondent is habitually resident in England and Wales",
+        "D" : null,
+        "E" : null,
+        "F" : null,
+        "G" : null
     },
-    "D8DocumentsGenerated" : null,
-    "D8ConnectionSummary" : "Yes",
+    "D8DocumentsGenerated" : [{
+        "id" : null,
+        "value" : {
+          "DocumentType": "petition",
+          "DocumentLink" : {
+            "document_url" : "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
+          },
+          "DocumentDateAdded": "2017-12-11",
+          "DocumentComment": "",
+          "DocumentFileName": "d8-eng.pdf",
+          "DocumentEmailContent": ""
+        }
+    }],
+    "D8JurisdictionPath": [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
+    "D8ConnectionSummary" : null,
     "D8ReasonForDivorceHasMarriage" : "YES",
     "D8ReasonForDivorceShowFiveYearsSeparatio" : "YES",
     "D8ReasonForDivorceClaiming5YearSeparatio" : "NO",
@@ -193,8 +168,9 @@
     "D8ReasonForDivorceDesertion" : null,
     "D8DerivedReasonForDivorceAdultery3rdAddr" : null,
     "D8Cohort" : "onlineSubmissionPrivateBeta",
-    "D8InferredPetitionerGender" : "male",
-    "D8InferredRespondentGender" : "female",
+    "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
-    "RespondentContactDetailsConfidential": "share"
-  }
+    "RespondentContactDetailsConfidential": "share",
+    "PreviousReasonsForDivorce": ["adultery"],
+    "PreviousCaseId": "1234567891234567"
+}

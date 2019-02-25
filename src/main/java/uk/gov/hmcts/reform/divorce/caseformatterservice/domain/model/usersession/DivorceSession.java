@@ -75,7 +75,7 @@ public class DivorceSession {
     private String countryName;
     @ApiModelProperty(value = "Place of marriage (as on marriage certificate).")
     private String placeOfMarriage;
-    @ApiModelProperty(hidden = true) //this field is not mapped to anything
+    @ApiModelProperty(value = "Jurisdiction Path")
     private List<String> jurisdictionPath;
     @ApiModelProperty(value = "Legal connections.")
     private List<String> jurisdictionConnection;

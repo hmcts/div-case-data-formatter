@@ -90,6 +90,10 @@
         "A",
         "C"
     ],
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8JurisdictionPetitionerResidence": "YES",
     "D8JurisdictionRespondentResidence": "YES",
     "D8StatementOfTruth": "YES",

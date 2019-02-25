@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
@@ -42,6 +43,17 @@ public abstract class DivorceCaseToDnCaseMapper {
     @AfterMapping
     protected void mapDnApplicationSubmittedDate(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
         result.setDnApplicationSubmittedDate(LocalDate.now().format(DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT)));
+    }
+
+    @AfterMapping
+    protected void mapPreviousCaseData(DivorceSession divorceSession,
+                                       @MappingTarget CoreCaseData caseData) {
+        if (divorceSession.getPreviousCaseId() == null) {
+            caseData.setPreviousCaseId(null);
+        }
+        if (divorceSession.getPreviousReasonsForDivorce() == null) {
+            caseData.setPreviousReasonsForDivorce(null);
+        }
     }
 
     @AfterMapping

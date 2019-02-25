@@ -113,6 +113,10 @@
     "D8JurisdictionHabituallyResLast6Months" : null,
     "D8ResidualJurisdictionEligible" : null,
     "Payments" : null,
+    "D8JurisdictionPath": [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8DocumentsUploaded" : [
         {
             "id" : null,

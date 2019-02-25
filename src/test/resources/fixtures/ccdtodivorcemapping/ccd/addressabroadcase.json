@@ -92,7 +92,7 @@
     "D8RespondentLivesAtLastAddress" : "NO",
     "D8RejectRespondentAddress" : null,
     "D8LivingArrangementsTogetherSeparated" : null,
-    "D8LivingArrangementsLastLivedTogether" : "NO",
+    "D8LivingArrangementsLastLivedTogether" : "NEVER",
     "D8LivingArrangementsLiveTogether" : "NO",
     "D8LivingArrangementsLastLivedTogethAddr": {
         "addressType": "manual",

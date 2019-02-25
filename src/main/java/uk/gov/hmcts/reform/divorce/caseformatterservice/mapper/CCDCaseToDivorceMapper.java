@@ -27,9 +27,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
 
-@Mapper(componentModel = "spring", uses = DocumentCollectionDivorceFormatMapper.class,
+@Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class CCDCaseToDivorceMapper {
@@ -309,7 +310,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapLivingArrangementsLastLivedTogether(CoreCaseData caseData,
                                                           @MappingTarget DivorceSession divorceSession) {
         divorceSession.setLivingArrangementsLastLivedTogether(
-                toYesNoPascalCase(caseData.getD8LivingArrangementsLastLivedTogether()));
+            toYesNoNeverPascalCase(caseData.getD8LivingArrangementsLastLivedTogether()));
     }
 
     @AfterMapping
@@ -330,6 +331,11 @@ public abstract class CCDCaseToDivorceMapper {
                                                       @MappingTarget DivorceSession divorceSession) {
         divorceSession.setReasonForDivorceDesertionAgreed(
                 toYesNoPascalCase(caseData.getD8ReasonForDivorceDesertionAgreed()));
+    }
+
+    @AfterMapping
+    protected void mapJurisdictionPath(CoreCaseData caseData, @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setJurisdictionPath(caseData.getD8JurisdictionPath());
     }
 
     @AfterMapping

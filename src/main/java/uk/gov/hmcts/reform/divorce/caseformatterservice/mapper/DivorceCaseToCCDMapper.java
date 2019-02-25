@@ -24,9 +24,10 @@ import java.util.Objects;
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverUpperCase;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
-@Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
+@Mapper(componentModel = "spring", uses = {DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class DivorceCaseToCCDMapper {
@@ -117,6 +118,8 @@ public abstract class DivorceCaseToCCDMapper {
         target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
+    @Mapping(source = "previousCaseId", target = "previousCaseId")
+    @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping
@@ -170,6 +173,11 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
+    protected void mapJurisdictionPath(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        result.setD8JurisdictionPath(divorceSession.getJurisdictionPath());
+    }
+
+    @AfterMapping
     protected void mapCertifiedTranslation(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8CertifiedTranslation(toYesNoUpperCase(divorceSession.getCertifiedTranslation()));
     }
@@ -217,7 +225,7 @@ public abstract class DivorceCaseToCCDMapper {
     protected void mapLivingArrangementsLastLivedTogether(DivorceSession divorceSession,
                                                           @MappingTarget CoreCaseData result) {
         result.setD8LivingArrangementsLastLivedTogether(
-            toYesNoUpperCase(divorceSession.getLivingArrangementsLastLivedTogether()));
+            toYesNoNeverUpperCase(divorceSession.getLivingArrangementsLastLivedTogether()));
     }
 
     @AfterMapping

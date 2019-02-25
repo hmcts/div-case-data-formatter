@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 @Component
 public class ReasonForDivorceContext {
 
-    private static final List<ReasonForDivorceStrategy> reasonForDivorceStrategies =
+    private final List<ReasonForDivorceStrategy> reasonForDivorceStrategies =
         Arrays.asList(
             new AdulteryStrategy(),
             new DesertionStrategy(),
-            new SeparationFiveYearsStrategy(),
-            new SeparationTwoYearsStrategy(),
+            new SeparationFiveYearsStrategy(new SeparationStrategy()),
+            new SeparationTwoYearsStrategy(new SeparationStrategy()),
             new UnreasonableBehaviourStrategy()
         );
 

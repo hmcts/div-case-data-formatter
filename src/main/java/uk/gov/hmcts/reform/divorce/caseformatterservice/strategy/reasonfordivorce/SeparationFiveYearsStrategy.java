@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -12,7 +13,8 @@ public class SeparationFiveYearsStrategy implements ReasonForDivorceStrategy {
 
     private static final String SEPARATION_STRING = "I have been separated from my %s for 5 years or more from the %s.";
 
-    private final SeparationStrategy separationStrategy = new SeparationStrategy();
+    @Autowired
+    public SeparationStrategy separationStrategy;
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {

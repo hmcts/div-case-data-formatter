@@ -350,9 +350,10 @@ public class DivorceSession {
 
     @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
     private String respondentContactDetailsConfidential;
-  
+
     @ApiModelProperty(value = "Maximum separation time together permitted?")
-    private String separationTimeTogetherPermitted;
+    @JsonProperty("separationTimeTogetherPermitted")
+    private String timeLivedTogetherPermitted;
 
     @ApiModelProperty(value = "Has petitioner & respondent lived more than"
         + " the time together permitted?", allowableValues = "Yes, No")

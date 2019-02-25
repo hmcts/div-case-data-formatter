@@ -520,13 +520,22 @@ public class CoreCaseData extends AosCaseData {
     private String separationTimeTogetherPermitted;
 
     @JsonProperty("D8LivedTogetherMoreTimeThanPermitted")
-    private String livedTogetherMoreTimeThanPermitted;
+    private String separationLivedTogetherMoreTimeThanPermitted;
 
     @JsonProperty("D8LivedApartSinceSeparation")
-    private String livedApartEntireTime;
+    private String separationLivedApartEntireTime;
 
     @JsonProperty("D8SeparationReferenceDate")
     private String referenceDate;
+
+    @JsonProperty("D8LivedApartSinceDesertion")
+    private String desertionLivedApartEntireTime;
+
+    @JsonProperty("D8DesertionTimeTogetherPermitted")
+    private String desertionTimeTogetherPermitted;
+
+    @JsonProperty("D8LivedTogetherMoreTimeThanPermittedDesert")
+    private String desertionLivedTogetherMoreTimeThanPermitted;
 
     @JsonProperty("PreviousCaseId")
     private String previousCaseId;

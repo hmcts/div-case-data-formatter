@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
 import org.springframework.stereotype.Component;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.util.DateUtil;
 
@@ -10,6 +11,12 @@ public class SeparationFiveYearsStrategy implements ReasonForDivorceStrategy {
     private static final String SEPARATION_5_YEARS = "separation-5-years";
 
     private static final String SEPARATION_STRING = "I have been separated from my %s for 5 years or more from the %s.";
+
+    private final SeparationStrategy separationStrategy;
+
+    public SeparationFiveYearsStrategy(SeparationStrategy separationStrategy) {
+        this.separationStrategy = separationStrategy;
+    }
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
@@ -25,4 +32,13 @@ public class SeparationFiveYearsStrategy implements ReasonForDivorceStrategy {
         return SEPARATION_5_YEARS.equalsIgnoreCase(reasonForDivorce);
     }
 
+    @Override
+    public void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
+        separationStrategy.setLivedApartFieldsFromDivorceSession(divorceSession, coreCaseData);
+    }
+
+    @Override
+    public void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
+        separationStrategy.setLivedApartFieldsFromCoreCaseData(coreCaseData, divorceSession);
+    }
 }

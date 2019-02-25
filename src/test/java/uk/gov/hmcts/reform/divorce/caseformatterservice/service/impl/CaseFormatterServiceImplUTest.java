@@ -6,7 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.util.ReflectionTestUtils;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
@@ -21,7 +20,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosC
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.service.IdamUserService;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,9 +38,6 @@ public class CaseFormatterServiceImplUTest {
     private static final String PDF_FILE_EXTENSION =
         (String)ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "PDF_FILE_EXTENSION");
-
-    @Mock
-    private IdamUserService idamUserService;
 
     @Mock
     private DivorceCaseToCCDMapper divorceCaseToCCDMapper;

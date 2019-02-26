@@ -142,5 +142,5 @@
     "D8PetitionerConsent" : "YES",
     "RespondentContactDetailsConfidential": "share",
     "PreviousReasonsForDivorce": ["reason-one", "reason-two"],
-    "PreviousCaseId": "1234567891234567"
+    "PreviousCaseId": {"CaseReference": "1234567891234567"}
 }

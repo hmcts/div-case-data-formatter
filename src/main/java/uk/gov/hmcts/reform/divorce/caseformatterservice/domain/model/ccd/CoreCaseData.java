@@ -541,7 +541,7 @@ public class CoreCaseData extends AosCaseData {
     private String desertionLivedTogetherMoreTimeThanPermitted;
 
     @JsonProperty("PreviousCaseId")
-    private String previousCaseId;
+    private CaseLink previousCaseId;
 
     @JsonProperty("PreviousReasonsForDivorce")
     private List<String> previousReasonsForDivorce;

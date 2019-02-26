@@ -237,5 +237,5 @@
     "reasonForDivorceAdulteryWhereDetails":"On a washing machine.",
     "petitionerConsent" : "Yes",
     "previousReasonsForDivorce": ["reason-one", "reason-two"],
-    "previousCaseId": "caseReferenceOld"
+    "previousCaseId": "1234567891234567"
 }

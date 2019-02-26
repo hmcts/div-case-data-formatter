@@ -209,5 +209,5 @@
     "IssueDate": "2006-02-02",
     "dueDate":"2006-02-10",
     "PreviousReasonsForDivorce": ["reason-one","reason-two"],
-    "PreviousCaseId": "caseReferenceOld"
+    "PreviousCaseId": "1234567891234567"
   }

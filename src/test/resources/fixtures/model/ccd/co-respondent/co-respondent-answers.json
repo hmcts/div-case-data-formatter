@@ -1,8 +1,4 @@
 {
-  "ReceivedAosFromCoResp": "YES",
-  "ReceivedAosFromCoRespDate": "2018-12-11",
-  "ReceivedAnswerFromCoResp": "YES",
-  "ReceivedAnswerFromCoRespDate": "2018-12-12",
   "CoRespConfirmReadPetition": "NO",
   "CoRespStatementOfTruth": "YES",
   "CoRespAdmitAdultery": "YES",
@@ -12,7 +8,5 @@
   "CoRespEmailAddress": "co-respondent@divorce.co.uk",
   "CoRespPhoneNumber": "+4404839202839",
   "CoRespConsentToEmail": "YES",
-  "CoRespLetterHolderId": "LetterHolder123",
-  "CoRespContactMethodIsDigital": "NO",
-  "DueDateCoResp": "2018-12-20"
+  "CoRespContactMethodIsDigital": "NO"
 }

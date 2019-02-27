@@ -9,7 +9,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCase
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -25,15 +24,6 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "coRespondentAnswers.contactInfo.emailAddress", target = "coRespEmailAddress")
     @Mapping(source = "coRespondentAnswers.contactInfo.phoneNumber", target = "coRespPhoneNumber")
     @Mapping(source = "coRespondentAnswers.statementOfTruth", target = "coRespStatementOfTruth")
-    @Mapping(source = "coRespondentAnswers.answer.received", target = "receivedAnswerFromCoResp")
-    @Mapping(source = "coRespondentAnswers.answer.dateReceived", target = "receivedAnswerFromCoRespDate",
-            dateFormat = SIMPLE_DATE_FORMAT)
-    @Mapping(source = "coRespondentAnswers.aos.received", target = "receivedAosFromCoResp")
-    @Mapping(source = "coRespondentAnswers.aos.dateReceived", target = "receivedAosFromCoRespDate",
-            dateFormat = SIMPLE_DATE_FORMAT)
-    @Mapping(source = "coRespondentAnswers.aos.dueDate", target = "dueDateCoResp",
-            dateFormat = SIMPLE_DATE_FORMAT)
-    @Mapping(source = "coRespondentAnswers.aos.letterHolderId", target = "coRespLetterHolderId")
     public abstract AosCaseData divorceCaseDataToAosCaseData(DivorceSession divorceSession);
 
     @AfterMapping
@@ -51,17 +41,15 @@ public abstract class DivorceCaseToAosCaseMapper {
         CoRespondentAnswers coRespondentAnswers = divorceSession.getCoRespondentAnswers();
 
         if (coRespondentAnswers != null) {
-            result.setReceivedAosFromCoResp(toYesNoUpperCase(coRespondentAnswers.getAnswer().getReceived()));
-            result.setReceivedAnswerFromCoResp(toYesNoUpperCase(coRespondentAnswers.getAnswer().getReceived()));
             result.setCoRespConfirmReadPetition(toYesNoUpperCase(coRespondentAnswers.getConfirmReadPetition()));
             result.setCoRespStatementOfTruth(toYesNoUpperCase(coRespondentAnswers.getStatementOfTruth()));
             result.setCoRespAdmitAdultery(toYesNoUpperCase(coRespondentAnswers.getAdmitAdultery()));
             result.setCoRespDefendsDivorce(toYesNoUpperCase(coRespondentAnswers.getDefendsDivorce()));
             result.setCoRespAgreeToCosts(toYesNoUpperCase(coRespondentAnswers.getCosts().getAgreeToCosts()));
             result.setCoRespConsentToEmail(
-                    toYesNoUpperCase(coRespondentAnswers.getContactInfo().getConsentToReceivingEmails()));
+                toYesNoUpperCase(coRespondentAnswers.getContactInfo().getConsentToReceivingEmails()));
             result.setCoRespContactMethodIsDigital(
-                    toYesNoUpperCase(coRespondentAnswers.getContactInfo().getContactMethodIsDigital()));
+                toYesNoUpperCase(coRespondentAnswers.getContactInfo().getContactMethodIsDigital()));
         }
     }
 

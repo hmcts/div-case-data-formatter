@@ -10,6 +10,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
@@ -25,6 +26,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
@@ -130,8 +132,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "dueDateCoResp", target = "coRespondentAnswers.aos.dueDate",
         dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "coRespLetterHolderId", target = "coRespondentAnswers.aos.letterHolderId")
-    @Mapping(source = "previousCaseId", target = "previousCaseId")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
+    @Mapping(ignore = true, target = "previousCaseId")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {
@@ -905,5 +907,21 @@ public abstract class CCDCaseToDivorceMapper {
         divorceSession.setReasonForDivorceAdulterySecondHandInfo(
             toYesNoPascalCase(caseData.getD8ReasonForDivorceAdulteryAnyInfo2ndHand())
         );
+    }
+
+    @AfterMapping
+    protected void mapPreviousCaseId(CoreCaseData caseData, @MappingTarget DivorceSession divorceSession) {
+
+        String caseLink = translateCaseLinkToString(caseData.getPreviousCaseId());
+        divorceSession.setPreviousCaseId(caseLink);
+    }
+
+    private String translateCaseLinkToString(final CaseLink caseLink) {
+        // translate from CaseLink type to String
+        if (Objects.isNull(caseLink)) {
+            return null;
+        }
+
+        return caseLink.getCaseReference();
     }
 }

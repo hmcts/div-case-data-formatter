@@ -8,6 +8,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -452,6 +453,7 @@ public class DivorceSession {
     @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
     private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+
     @ApiModelProperty(value = "Case ID from previously amended case")
     private String previousCaseId;
     @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition")

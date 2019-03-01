@@ -7,7 +7,7 @@ import java.util.Base64;
 
 class IdamUtils {
 
-    @Value("${auth.idam.client.baseUrl}")
+    @Value("${idam.api.baseurl}")
     private String idamUserBaseUrl;
 
     void createUserInIdam(String username, String password) {

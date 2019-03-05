@@ -97,7 +97,7 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
         if (listOfDocuments != null) {
             listOfDocuments.forEach(collectionMember ->
                 collectionMember.put(VALUE_JSON_KEY,
-                    (updateExpectedDocumentUrl((Map<String, Object>) collectionMember.get(VALUE_JSON_KEY)))
+                    updateExpectedDocumentUrl((Map<String, Object>) collectionMember.get(VALUE_JSON_KEY))
                 )
             );
 

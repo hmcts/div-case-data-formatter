@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.emclient.controller;
+package uk.gov.hmcts.reform.divorce.caseformatterservice.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +25,6 @@ public class RootController {
      */
     @GetMapping
     public ResponseEntity<String> welcome() {
-        return ok("Welcome to Divorce Evidence Management Client API");
+        return ok("Welcome to Divorce Case Data Formatter Client API");
     }
 }

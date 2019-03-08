@@ -16,7 +16,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes= CaseFormatterServiceApplication.class)
+@SpringBootTest(classes = CaseFormatterServiceApplication.class)
 @AutoConfigureMockMvc
 public class RootControllerTest {
 

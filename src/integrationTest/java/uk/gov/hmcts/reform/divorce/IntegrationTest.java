@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce;
 
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit.spring.integration.SpringIntegrationMethodRule;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
@@ -12,12 +13,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
-@RunWith(SpringRunner.class)
+@RunWith(SerenityRunner.class)
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 public abstract class IntegrationTest {
-    private static final String USER_NAME = "caseformatterservicetest";
-    private static final String password = "passowrd";
+    private static final String password = "genericPassword1";
 
     private String userToken;
 
@@ -37,8 +38,9 @@ public abstract class IntegrationTest {
     String getUserToken() {
         synchronized (this) {
             if (userToken == null) {
-                idamTestSupportUtil.createUserInIdam(USER_NAME, password);
-                userToken = idamTestSupportUtil.generateUserTokenWithNoRoles(USER_NAME, password);
+                String username = "divorce+cfs-test-" + UUID.randomUUID();
+                idamTestSupportUtil.createUserInIdam(username, password);
+                userToken = idamTestSupportUtil.generateUserTokenWithNoRoles(username, password);
             }
 
             return userToken;

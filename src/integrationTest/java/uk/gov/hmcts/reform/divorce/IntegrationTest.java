@@ -38,7 +38,7 @@ public abstract class IntegrationTest {
     String getUserToken() {
         synchronized (this) {
             if (userToken == null) {
-                String username = "divorce+cfs-test-" + UUID.randomUUID();
+                String username = "divorce-cfs-test-" + UUID.randomUUID();
                 idamTestSupportUtil.createUserInIdam(username, password);
                 userToken = idamTestSupportUtil.generateUserTokenWithNoRoles(username, password);
             }

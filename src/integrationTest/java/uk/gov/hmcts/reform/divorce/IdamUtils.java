@@ -3,10 +3,13 @@ package uk.gov.hmcts.reform.divorce;
 import net.serenitybdd.rest.SerenityRest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import uk.gov.hmcts.reform.divorce.model.RegisterUserRequest;
+import uk.gov.hmcts.reform.divorce.model.UserGroup;
 
 import java.util.Base64;
 
 class IdamUtils {
+    private static final String EMAIL_DOMAIN = "@example.com";
 
     @Value("${idam.api.baseurl}")
     private String idamUserBaseUrl;
@@ -18,12 +21,21 @@ class IdamUtils {
     private String idamSecret;
 
     void createUserInIdam(String username, String password) {
-        String payload = "{\"email\":\"" + username + "@example.com\","
-            + "\"forename\":\"Test\",\"surname\":\"User\",\"password\":\"" + password + "\"}";
+        UserGroup[] roles = { UserGroup.builder().code("citizen").build() };
+
+        RegisterUserRequest registerUserRequest =
+            RegisterUserRequest.builder()
+                .email(username + EMAIL_DOMAIN)
+                .forename("Test")
+                .surname("User")
+                .password(password)
+                .roles(roles)
+                .userGroup(UserGroup.builder().code("citizens").build())
+                .build();
 
         SerenityRest.given()
             .header("Content-Type", "application/json")
-            .body(payload)
+            .body(ResourceLoader.objectToJson(registerUserRequest))
             .post(idamCreateUrl());
     }
 
@@ -32,7 +44,7 @@ class IdamUtils {
     }
 
     String generateUserTokenWithNoRoles(String username, String password) {
-        String userLoginDetails = String.join(":", username + "@test.com", password);
+        String userLoginDetails = String.join(":", username + EMAIL_DOMAIN, password);
         final String authHeader = "Basic " + new String(Base64.getEncoder().encode(userLoginDetails.getBytes()));
 
         final String code = SerenityRest.given()

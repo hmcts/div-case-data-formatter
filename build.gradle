@@ -201,8 +201,9 @@ dependencies {
     compile group:'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest
     compile group:'org.codehaus.sonar-plugins', name:'sonar-pitest-plugin', version: versions.sonarPitest
 
+    compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+
     compileOnly group: 'org.mapstruct', name: 'mapstruct-processor', version: versions.mapstruct
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
     testCompile group: 'com.github.tomakehurst', name:'wiremock', version: versions.wiremockVersion
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile group: 'com.jayway.jsonpath', name:'json-path-assert', version: versions.jsonPathAssert

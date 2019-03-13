@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -36,9 +37,12 @@ public abstract class DivorceCaseToAosCaseMapper {
     protected void setDigital(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
         result.setRespContactMethodIsDigital("YES");
     }
+
     @AfterMapping
     protected void setReceivedAosFromResp(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
-        result.setReceivedAosFromResp(YesNoNeverAnswer.valueOf(result.getReceivedAosFromResp()).getAnswer());
+        if (StringUtils.isNotEmpty(result.getReceivedAosFromResp())) {
+            result.setReceivedAosFromResp(YesNoNeverAnswer.fromInput(result.getReceivedAosFromResp()).getAnswer());
+        }
     }
 
     @AfterMapping

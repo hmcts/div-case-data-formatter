@@ -127,6 +127,12 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("DueDateCoResp")
     private String dueDateCoResp;
 
+    @JsonProperty("CoRespLinkedToCaseDate")
+    private String coRespLinkedToCaseDate;
+
+    @JsonProperty("CoRespLinkedToCase")
+    private String coRespLinkedToCase;
+
     //End of co-respondent answers
 
 }

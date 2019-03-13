@@ -22,4 +22,9 @@ public class AOS {
     @JsonFormat(pattern = SIMPLE_DATE_FORMAT)
     private Date dueDate;
 
+    private String linked;
+
+    @JsonFormat(pattern = SIMPLE_DATE_FORMAT)
+    private Date linkedDate;
+
 }

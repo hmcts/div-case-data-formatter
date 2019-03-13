@@ -131,6 +131,8 @@ public abstract class CCDCaseToDivorceMapper {
         dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "dueDateCoResp", target = "coRespondentAnswers.aos.dueDate",
         dateFormat = SIMPLE_DATE_FORMAT)
+    @Mapping(source = "coRespLinkedToCaseDate", target = "coRespondentAnswers.aos.linkedDate",
+        dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "coRespLetterHolderId", target = "coRespondentAnswers.aos.letterHolderId")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     @Mapping(source = "receivedAosFromResp", target = "receivedAosFromResp")
@@ -836,6 +838,8 @@ public abstract class CCDCaseToDivorceMapper {
                 toYesNoPascalCase(caseData.getReceivedAnswerFromCoResp()));
         divorceSession.getCoRespondentAnswers().getAos().setReceived(
                 toYesNoPascalCase(caseData.getReceivedAosFromCoResp()));
+        divorceSession.getCoRespondentAnswers().getAos().setLinked(
+            toYesNoPascalCase(caseData.getCoRespLinkedToCase()));
 
         //Remove empty objects
         CoRespondentAnswers coRespondentAnswers = divorceSession.getCoRespondentAnswers();
@@ -854,7 +858,9 @@ public abstract class CCDCaseToDivorceMapper {
         if (aos.getReceived() == null
                 && aos.getLetterHolderId() == null
                 && aos.getDateReceived() == null
-                && aos.getDueDate() == null) {
+                && aos.getDueDate() == null
+                && aos.getLinked() == null
+                && aos.getLinkedDate() == null) {
 
             coRespondentAnswers.setAos(null);
 

@@ -133,6 +133,8 @@ public abstract class CCDCaseToDivorceMapper {
         dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "coRespLetterHolderId", target = "coRespondentAnswers.aos.letterHolderId")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
+    @Mapping(source = "receivedAosFromResp", target = "receivedAosFromResp")
+    @Mapping(source = "receivedAosFromRespDate", target = "receivedAosFromRespDate")
     @Mapping(ignore = true, target = "previousCaseId")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 

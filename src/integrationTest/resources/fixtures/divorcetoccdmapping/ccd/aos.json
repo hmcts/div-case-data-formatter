@@ -13,6 +13,8 @@
     "RespPhoneNumber" : "12344555",
     "RespStatementOfTruth" : "YES",
     "RespConsentToEmail" : "NO",
+    "ReceivedAOSfromResp" : "Yes",
+    "ReceivedAOSfromRespDate" : "2001-02-02",
     "RespConsiderFinancialSituation" : "YES",
     "RespHardshipDefenseResponse" : "NO",
     "RespHardshipDescription" : "Some Hardship Description goes here",

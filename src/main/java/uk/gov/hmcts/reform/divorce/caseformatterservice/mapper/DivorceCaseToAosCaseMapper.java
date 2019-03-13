@@ -7,6 +7,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
@@ -34,6 +35,10 @@ public abstract class DivorceCaseToAosCaseMapper {
     @AfterMapping
     protected void setDigital(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
         result.setRespContactMethodIsDigital("YES");
+    }
+    @AfterMapping
+    protected void setReceivedAosFromResp(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
+        result.setReceivedAosFromResp(YesNoNeverAnswer.valueOf(result.getReceivedAosFromResp()).getAnswer());
     }
 
     @AfterMapping

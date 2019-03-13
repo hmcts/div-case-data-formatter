@@ -8,7 +8,6 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -402,6 +401,11 @@ public class DivorceSession {
     private String respHardshipDescription;
     @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
     private String permittedDecreeNisiReason;
+    @ApiModelProperty(value = "Respondent submitted AOS date")
+    private String receivedAosFromRespDate;
+    @ApiModelProperty(value = "Respondent has submitted AOS")
+    private String receivedAosFromResp;
+
     @ApiModelProperty(value = "Answers from co respondent")
     private CoRespondentAnswers coRespondentAnswers;
     //Aos Fields Mappings End

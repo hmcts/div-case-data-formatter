@@ -71,6 +71,12 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("PermittedDecreeNisiReason")
     private String permittedDecreeNisiReason;
 
+    @JsonProperty("ReceivedAOSfromRespDate")
+    private String receivedAosFromRespDate;
+
+    @JsonProperty("ReceivedAOSfromResp")
+    private String receivedAosFromResp;
+
     //Co-respondent answers
 
     @JsonProperty("CoRespConfirmReadPetition")

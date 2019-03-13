@@ -52,6 +52,14 @@ public class CoRespondentAnswersToCCDMapperTest {
                 "ccd/co-respondent/co-respondent-answers-empty.json");
     }
 
+    @Test
+    public void givenNoCostAnswer_whenMapCoRespondent_ShouldMapOtherFields()
+        throws IOException, URISyntaxException, JSONException {
+
+        testJsonResultsAreAsExpected("divorce/co-respondent/co-respondent-answers-no-cost.json",
+            "ccd/co-respondent/co-respondent-answers-no-cost.json");
+    }
+
     private void testJsonResultsAreAsExpected(String divorceJsonFilePath, String ccdJsonFilePath)
             throws IOException, URISyntaxException, JSONException {
 

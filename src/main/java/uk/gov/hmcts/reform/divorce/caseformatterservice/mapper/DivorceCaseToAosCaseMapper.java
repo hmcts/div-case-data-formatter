@@ -45,7 +45,9 @@ public abstract class DivorceCaseToAosCaseMapper {
             result.setCoRespStatementOfTruth(toYesNoUpperCase(coRespondentAnswers.getStatementOfTruth()));
             result.setCoRespAdmitAdultery(toYesNoUpperCase(coRespondentAnswers.getAdmitAdultery()));
             result.setCoRespDefendsDivorce(toYesNoUpperCase(coRespondentAnswers.getDefendsDivorce()));
-            result.setCoRespAgreeToCosts(toYesNoUpperCase(coRespondentAnswers.getCosts().getAgreeToCosts()));
+            if (coRespondentAnswers.getCosts() != null) {
+                result.setCoRespAgreeToCosts(toYesNoUpperCase(coRespondentAnswers.getCosts().getAgreeToCosts()));
+            }
             result.setCoRespConsentToEmail(
                 toYesNoUpperCase(coRespondentAnswers.getContactInfo().getConsentToReceivingEmails()));
             result.setCoRespContactMethodIsDigital(

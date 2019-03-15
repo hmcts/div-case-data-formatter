@@ -1,10 +1,8 @@
 package uk.gov.hmcts.reform.divorce.model;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.Value;
 
-@Builder
-@Getter
+@Value
 public class UserGroup {
     private String code;
 }

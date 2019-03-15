@@ -21,7 +21,7 @@ class IdamUtils {
     private String idamSecret;
 
     void createUserInIdam(String username, String password) {
-        UserGroup[] roles = { UserGroup.builder().code("citizen").build() };
+        UserGroup[] roles = { new UserGroup("citizen") };
 
         RegisterUserRequest registerUserRequest =
             RegisterUserRequest.builder()
@@ -30,7 +30,7 @@ class IdamUtils {
                 .surname("User")
                 .password(password)
                 .roles(roles)
-                .userGroup(UserGroup.builder().code("citizens").build())
+                .userGroup(new UserGroup("citizens"))
                 .build();
 
         SerenityRest.given()

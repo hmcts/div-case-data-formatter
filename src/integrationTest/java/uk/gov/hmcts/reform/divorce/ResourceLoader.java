@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ResourceLoader {
+    private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static String loadJson(final String filePath) throws Exception {
         return new String(loadResource(filePath), Charset.forName("utf-8"));
@@ -25,7 +26,7 @@ public class ResourceLoader {
 
     public static <T> String objectToJson(T object) {
         try {
-            return new ObjectMapper().writeValueAsString(object);
+            return objectMapper.writeValueAsString(object);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

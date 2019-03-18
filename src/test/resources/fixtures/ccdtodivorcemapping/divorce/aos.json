@@ -281,6 +281,8 @@
     "respAgreeToCosts" : "NO",
     "respCostsAmount" : "1232321",
     "respCostsReason" : "Some Reason",
+    "receivedAosFromResp" : "Yes",
+    "receivedAosFromRespDate" : "2001-02-02",
     "respEmailAddress" : "est@somemail.com",
     "respPhoneNumber" : "12344555",
     "respStatementOfTruth" : "YES",

@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -7,8 +8,10 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -24,6 +27,8 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "coRespondentAnswers.contactInfo.emailAddress", target = "coRespEmailAddress")
     @Mapping(source = "coRespondentAnswers.contactInfo.phoneNumber", target = "coRespPhoneNumber")
     @Mapping(source = "coRespondentAnswers.statementOfTruth", target = "coRespStatementOfTruth")
+    @Mapping(source = "coRespondentAnswers.aos.linkedDate", dateFormat = SIMPLE_DATE_FORMAT,
+        target = "coRespLinkedToCaseDate")
     public abstract AosCaseData divorceCaseDataToAosCaseData(DivorceSession divorceSession);
 
     @AfterMapping
@@ -37,6 +42,13 @@ public abstract class DivorceCaseToAosCaseMapper {
     }
 
     @AfterMapping
+    protected void setReceivedAosFromResp(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
+        if (StringUtils.isNotEmpty(divorceSession.getReceivedAosFromResp())) {
+            result.setReceivedAosFromResp(YesNoNeverAnswer.fromInput(divorceSession.getReceivedAosFromResp()).getAnswer());
+        }
+    }
+
+    @AfterMapping
     protected void mapCoRespondentFields(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
         CoRespondentAnswers coRespondentAnswers = divorceSession.getCoRespondentAnswers();
 
@@ -47,6 +59,9 @@ public abstract class DivorceCaseToAosCaseMapper {
             result.setCoRespDefendsDivorce(toYesNoUpperCase(coRespondentAnswers.getDefendsDivorce()));
             if (coRespondentAnswers.getCosts() != null) {
                 result.setCoRespAgreeToCosts(toYesNoUpperCase(coRespondentAnswers.getCosts().getAgreeToCosts()));
+            }
+            if (coRespondentAnswers.getAos() != null) {
+                result.setCoRespLinkedToCase(toYesNoUpperCase(coRespondentAnswers.getAos().getLinked()));
             }
             result.setCoRespConsentToEmail(
                 toYesNoUpperCase(coRespondentAnswers.getContactInfo().getConsentToReceivingEmails()));

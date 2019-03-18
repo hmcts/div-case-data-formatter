@@ -71,6 +71,12 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("PermittedDecreeNisiReason")
     private String permittedDecreeNisiReason;
 
+    @JsonProperty("ReceivedAOSfromRespDate")
+    private String receivedAosFromRespDate;
+
+    @JsonProperty("ReceivedAOSfromResp")
+    private String receivedAosFromResp;
+
     //Co-respondent answers
 
     @JsonProperty("CoRespConfirmReadPetition")
@@ -120,6 +126,12 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("DueDateCoResp")
     private String dueDateCoResp;
+
+    @JsonProperty("CoRespLinkedToCaseDate")
+    private String coRespLinkedToCaseDate;
+
+    @JsonProperty("CoRespLinkedToCase")
+    private String coRespLinkedToCase;
 
     //End of co-respondent answers
 

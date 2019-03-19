@@ -402,7 +402,7 @@ public class DivorceSession {
     @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
     private String permittedDecreeNisiReason;
     @ApiModelProperty(value = "Respondent submitted AOS date")
-    private String receivedAosFromRespDate;
+    private Date receivedAosFromRespDate;
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
 

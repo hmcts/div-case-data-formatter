@@ -35,7 +35,59 @@ public class DivorceCaseToDnCaseMapperUTest {
             LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
         DivorceSession divorceSession = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn.json", DivorceSession.class);
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn.json",
+                DivorceSession.class);
+
+        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
+
+        assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
+    }
+
+    @Test
+    public void shouldMapTheFieldsProperlyForBehaviour() throws URISyntaxException, IOException {
+
+        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-behaviour.json", DnCaseData.class);
+        expectedDnCaseData.setDnApplicationSubmittedDate(
+            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-behaviour.json",
+                DivorceSession.class);
+
+        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
+
+        assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
+    }
+
+    @Test
+    public void shouldMapTheFieldsProperlyForDesertion() throws URISyntaxException, IOException {
+
+        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-desertion.json", DnCaseData.class);
+        expectedDnCaseData.setDnApplicationSubmittedDate(
+            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-desertion.json",
+                DivorceSession.class);
+
+        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
+
+        assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
+    }
+
+    @Test
+    public void shouldMapTheFieldsProperlyForSeparation() throws URISyntaxException, IOException {
+
+        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-separation.json", DnCaseData.class);
+        expectedDnCaseData.setDnApplicationSubmittedDate(
+            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-separation.json",
+                DivorceSession.class);
 
         DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
 

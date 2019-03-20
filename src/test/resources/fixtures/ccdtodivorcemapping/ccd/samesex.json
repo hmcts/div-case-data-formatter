@@ -101,6 +101,10 @@
     "D8JurisdictionRespondentResidence" : "YES",
     "D8JurisdictionHabituallyResLast6Months" : null,
     "D8ResidualJurisdictionEligible" : null,
+    "D8JurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "Payments" : null,
     "D8DocumentsUploaded" : [
       {

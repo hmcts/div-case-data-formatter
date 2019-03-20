@@ -8,7 +8,7 @@
     "D8MarriageIsSameSexCouple": "NO",
     "D8MarriageDate": "2001-02-02",
     "D8PetitionerNameDifferentToMarriageCert": "YES",
-    "D8PetitionerEmail": "caseformatterservicetest@test.com",
+    "D8PetitionerEmail": "simulate-delivered@notifications.service.gov.uk",
     "D8PetitionerPhoneNumber": "01234567890",
     "D8PetitionerFirstName": "John",
     "D8PetitionerLastName": "Smith",
@@ -125,6 +125,15 @@
         }
     ],
     "D8DivorceUnit": "eastMidlands",
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionLastTwelveMonths",
+        "JurisdictionNDomicile",
+        "JurisdictionInterstitial",
+        "JurisdictionLastSixMonths",
+        "JurisdictionLastHabitualResidence",
+        "JurisdictionConnectionSummary"
+    ],
     "D8ReasonForDivorceShowAdultery": "YES",
     "D8ReasonForDivorceShowUnreasonableBehavi": "YES",
     "D8ReasonForDivorceShowTwoYearsSeparation": "YES",
@@ -152,5 +161,6 @@
     "D8Cohort": "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender": "male",
     "D8InferredRespondentGender": "female",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "RespondentContactDetailsConfidential": "share"
 }

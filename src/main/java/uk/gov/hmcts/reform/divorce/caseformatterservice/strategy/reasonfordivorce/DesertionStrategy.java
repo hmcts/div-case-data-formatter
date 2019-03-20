@@ -1,10 +1,13 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
 import org.springframework.stereotype.Component;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.util.DateUtil;
 
 import static org.apache.commons.lang3.StringUtils.join;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
 @Component
 public class DesertionStrategy implements ReasonForDivorceStrategy {
@@ -32,4 +35,35 @@ public class DesertionStrategy implements ReasonForDivorceStrategy {
         return DESERTION.equalsIgnoreCase(reasonForDivorce);
     }
 
+    @Override
+    public void setLivedApartFieldsFromDivorceSession(DivorceSession divorceSession, CoreCaseData coreCaseData) {
+
+        coreCaseData.setDesertionLivedApartEntireTime(
+            toYesNoUpperCase(divorceSession.getLivedApartEntireTime())
+        );
+
+        coreCaseData.setDesertionLivedTogetherMoreTimeThanPermitted(
+            toYesNoUpperCase(divorceSession.getLivedTogetherMoreTimeThanPermitted())
+        );
+
+        coreCaseData.setDesertionTimeTogetherPermitted(
+            divorceSession.getTimeLivedTogetherPermitted()
+        );
+    }
+
+    @Override
+    public void setLivedApartFieldsFromCoreCaseData(CoreCaseData coreCaseData, DivorceSession divorceSession) {
+
+        divorceSession.setLivedTogetherMoreTimeThanPermitted(
+            toYesNoPascalCase(coreCaseData.getDesertionLivedTogetherMoreTimeThanPermitted())
+        );
+
+        divorceSession.setLivedApartEntireTime(
+            toYesNoPascalCase(coreCaseData.getDesertionLivedApartEntireTime())
+        );
+
+        divorceSession.setTimeLivedTogetherPermitted(
+            coreCaseData.getDesertionTimeTogetherPermitted()
+        );
+    }
 }

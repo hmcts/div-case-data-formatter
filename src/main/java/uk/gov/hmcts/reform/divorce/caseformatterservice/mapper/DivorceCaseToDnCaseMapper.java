@@ -1,11 +1,13 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
@@ -34,16 +36,24 @@ public abstract class DivorceCaseToDnCaseMapper {
     @Mapping(source = "behaviourContinuedSinceApplication", target = "behaviourStillHappeningDN")
     @Mapping(source = "lastIncidentDate", dateFormat = SIMPLE_DATE_FORMAT, target = "behaviourMostRecentIncidentDateDN")
     @Mapping(source = "livedApartSinceLastIncidentDate", target = "behaviourLivedApartSinceEventDN")
-    @Mapping(source = "approximateDatesOfLivingTogetherField", target = "behaviourTimeLivedTogetherDetailsDN")
     @Mapping(source = "livedApartSinceDesertion", target = "desertionLivedApartSinceEventDN")
-    @Mapping(source = "approximateDatesOfLivingTogetherField", target = "desertionTimeLivedTogetherDetailsDN")
     @Mapping(source = "livedApartSinceSeparation", target = "separationLivedApartSinceEventDN")
-    @Mapping(source = "approximateDatesOfLivingTogetherField", target = "separationTimeLivedTogetherDetailsDN")
     public abstract DnCaseData divorceCaseDataToDnCaseData(DivorceSession divorceSession);
 
     @AfterMapping
     protected void mapDnApplicationSubmittedDate(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
         result.setDnApplicationSubmittedDate(LocalDate.now().format(DateTimeFormatter.ofPattern(SIMPLE_DATE_FORMAT)));
+    }
+
+    @AfterMapping
+    protected void mapPreviousCaseData(DivorceSession divorceSession,
+                                       @MappingTarget CoreCaseData caseData) {
+        if (divorceSession.getPreviousCaseId() == null) {
+            caseData.setPreviousCaseId(null);
+        }
+        if (divorceSession.getPreviousReasonsForDivorce() == null) {
+            caseData.setPreviousReasonsForDivorce(null);
+        }
     }
 
     @AfterMapping
@@ -54,7 +64,6 @@ public abstract class DivorceCaseToDnCaseMapper {
             result.setConfirmPetitionDN(YES);
         }
     }
-
 
     @AfterMapping
     protected void mapAgreeToApplyDn(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
@@ -72,6 +81,33 @@ public abstract class DivorceCaseToDnCaseMapper {
     protected void mapPetitionChangedYesNoDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
 
         result.setPetitionChangedYesNoDN(translateToStringYesNo(divorceSession.getHasBeenChanges()));
+    }
+
+    @AfterMapping
+    protected void mapBehaviourTimeLivedTogetherDetailsDN(DivorceSession divorceSession,
+                                                          @MappingTarget DnCaseData result) {
+
+        if (StringUtils.isNotBlank(divorceSession.getLivedApartSinceLastIncidentDate())) {
+            result.setBehaviourTimeLivedTogetherDetailsDN(divorceSession.getApproximateDatesOfLivingTogetherField());
+        }
+    }
+
+    @AfterMapping
+    protected void mapDesertionTimeLivedTogetherDetailsDN(DivorceSession divorceSession,
+                                                          @MappingTarget DnCaseData result) {
+
+        if (StringUtils.isNotBlank(divorceSession.getLivedApartSinceDesertion())) {
+            result.setDesertionTimeLivedTogetherDetailsDN(divorceSession.getApproximateDatesOfLivingTogetherField());
+        }
+    }
+
+    @AfterMapping
+    protected void mapSeparationTimeLivedTogetherDetailsDN(DivorceSession divorceSession,
+                                                          @MappingTarget DnCaseData result) {
+
+        if (StringUtils.isNotBlank(divorceSession.getLivedApartSinceSeparation())) {
+            result.setSeparationTimeLivedTogetherDetailsDN(divorceSession.getApproximateDatesOfLivingTogetherField());
+        }
     }
 
     private String translateToStringYesNo(final String value) {

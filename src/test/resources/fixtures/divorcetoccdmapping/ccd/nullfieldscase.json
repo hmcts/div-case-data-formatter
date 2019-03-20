@@ -51,6 +51,8 @@
     "D8ReasonForDivorceAdulteryWhenDetails" : null,
     "D8ReasonForDivorceAdulteryIsNamed" : "NO",
     "D8ReasonForDivorceAdultery3rdAddress" : null,
+    "D8ReasonForDivorceAdulteryAnyInfo2ndHand" : null,
+    "D8ReasonForDivorceAdultery2ndHandDetails" : null,
     "D8FinancialOrder" : "YES",
     "D8FinancialOrderFor" : [ "petitioner", "children" ],
     "D8HelpWithFeesAppliedForFees" : "YES",
@@ -101,6 +103,10 @@
         }
       }
     ],
+    "D8JurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8RejectDocumentsUploaded" : null,
     "D8StatementOfTruth" : null,
     "D8SolicitorReference" : null,
@@ -149,5 +155,6 @@
     "D8ReasonForDivorceDesertion" : null,
     "D8DerivedReasonForDivorceAdultery3rdAddr" : null,
     "D8Cohort" : "onlineSubmissionPrivateBeta",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "RespondentContactDetailsConfidential": "share"
   }

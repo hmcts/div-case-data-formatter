@@ -8,7 +8,7 @@
     "D8MarriageIsSameSexCouple": "NO",
     "D8MarriageDate": "2001-02-02",
     "D8PetitionerNameDifferentToMarriageCert": "YES",
-    "D8PetitionerEmail": "caseformatterservicetest@test.com",
+    "D8PetitionerEmail": "simulate-delivered@notifications.service.gov.uk",
     "D8PetitionerPhoneNumber": "01234567890",
     "D8PetitionerFirstName": "John",
     "D8PetitionerLastName": "Smith",
@@ -36,6 +36,10 @@
         "County": null,
         "Country": null
     },
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8DerivedPetitionerCorrespondenceAddr": "82 Landor Road\nLondon\nSW9 9PE",
     "D8PetitionerCorrespondenceUseHomeAddress": "YES",
     "D8RespondentFirstName": "Jane",
@@ -154,6 +158,8 @@
     "D8ReasonForDivorce2YearSepConsentGiven" : "Yes",
     "D8MentalSeparationDate": "2015-03-01",
     "D8PhysicalSeparationDate": "2015-02-01",
+    "RespondentContactDetailsConfidential": "share",
     "D8SeparationTimeTogetherPermitted":"3 months, 2 weeks and 5 months",
-    "D8LivedTogetherMoreTimeThanPermitted":"YES"
+    "D8LivedTogetherMoreTimeThanPermitted":"YES",
+    "D8LivedApartSinceSeparation":"YES"
 }

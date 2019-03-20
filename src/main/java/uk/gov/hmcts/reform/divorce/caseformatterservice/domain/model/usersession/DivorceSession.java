@@ -75,7 +75,7 @@ public class DivorceSession {
     private String countryName;
     @ApiModelProperty(value = "Place of marriage (as on marriage certificate).")
     private String placeOfMarriage;
-    @ApiModelProperty(hidden = true) //this field is not mapped to anything
+    @ApiModelProperty(value = "Jurisdiction Path")
     private List<String> jurisdictionPath;
     @ApiModelProperty(value = "Legal connections.")
     private List<String> jurisdictionConnection;
@@ -188,6 +188,11 @@ public class DivorceSession {
     private String reasonForDivorceAdulteryWhenDetails;
     @ApiModelProperty(value = "Where did adultery take place?")
     private String reasonForDivorceAdulteryWhereDetails;
+    @ApiModelProperty(value = "Did any of the information about adultery come from another person?",
+        allowableValues = "Yes, No")
+    private String reasonForDivorceAdulterySecondHandInfo;
+    @ApiModelProperty(value = "Details of the information about adultery that has come from another person")
+    private String reasonForDivorceAdulterySecondHandInfoDetails;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceDesertionAlright;
     @ApiModelProperty(
@@ -305,6 +310,14 @@ public class DivorceSession {
     private List<UploadedFile> d8Documents;
     @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
     private String petitionerConsent;
+    @ApiModelProperty(value = " Reference date used for 6-month rule calculation of "
+        + "time petitioner and respondent can have lived together.")
+    private String referenceDate;
+
+    private Integer livingTogetherMonths;
+
+    private String mostRecentSeparationDate;
+
     private Date createdDate;
 
     @ApiModelProperty(
@@ -335,12 +348,19 @@ public class DivorceSession {
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date reasonForDivorceLivingApartDate;
 
+    @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
+    private String respondentContactDetailsConfidential;
+
     @ApiModelProperty(value = "Maximum separation time together permitted?")
-    private String separationTimeTogetherPermitted;
+    @JsonProperty("separationTimeTogetherPermitted")
+    private String timeLivedTogetherPermitted;
 
     @ApiModelProperty(value = "Has petitioner & respondent lived more than"
         + " the time together permitted?", allowableValues = "Yes, No")
     private String livedTogetherMoreTimeThanPermitted;
+    @ApiModelProperty(value = "Has petitioner & respondent lived apart"
+        + " for the entire time since separated?", allowableValues = "Yes, No")
+    private String livedApartEntireTime;
 
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
@@ -381,6 +401,11 @@ public class DivorceSession {
     private String respHardshipDescription;
     @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
     private String permittedDecreeNisiReason;
+    @ApiModelProperty(value = "Respondent submitted AOS date")
+    private String receivedAosFromRespDate;
+    @ApiModelProperty(value = "Respondent has submitted AOS")
+    private String receivedAosFromResp;
+
     @ApiModelProperty(value = "Answers from co respondent")
     private CoRespondentAnswers coRespondentAnswers;
     //Aos Fields Mappings End
@@ -432,6 +457,11 @@ public class DivorceSession {
     @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
     private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+
+    @ApiModelProperty(value = "Case ID from previously amended case")
+    private String previousCaseId;
+    @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition")
+    private List<String> previousReasonsForDivorce;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

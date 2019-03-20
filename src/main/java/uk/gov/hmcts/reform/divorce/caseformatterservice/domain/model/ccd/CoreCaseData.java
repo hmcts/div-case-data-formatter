@@ -285,6 +285,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ResidualJurisdictionEligible")
     private String d8ResidualJurisdictionEligible;
 
+    @JsonProperty("D8JurisdictionPath")
+    private List<String> d8JurisdictionPath;
+
     @JsonProperty("Payments")
     private List<PaymentCollection> payments;
 
@@ -329,6 +332,12 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8ReasonForDivorceClaimingAdultery")
     private String d8ReasonForDivorceClaimingAdultery;
+
+    @JsonProperty("D8ReasonForDivorceAdulteryAnyInfo2ndHand")
+    private String d8ReasonForDivorceAdulteryAnyInfo2ndHand;
+
+    @JsonProperty("D8ReasonForDivorceAdultery2ndHandDetails")
+    private String d8ReasonForDivorceAdultery2ndHandDetails;
 
     @JsonProperty("D8ReasonForDivorceSeperationIsSameOrAftr")
     private String d8ReasonForDivorceSeperationIsSameOrAftr;
@@ -507,10 +516,34 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8PhysicalSeparationDate")
     private String reasonForDivorceLivingApartDate;
 
+    @JsonProperty("RespondentContactDetailsConfidential")
+    private String respondentContactDetailsConfidential;
+
     @JsonProperty("D8SeparationTimeTogetherPermitted")
     private String separationTimeTogetherPermitted;
 
     @JsonProperty("D8LivedTogetherMoreTimeThanPermitted")
-    private String livedTogetherMoreTimeThanPermitted;
+    private String separationLivedTogetherMoreTimeThanPermitted;
+
+    @JsonProperty("D8LivedApartSinceSeparation")
+    private String separationLivedApartEntireTime;
+
+    @JsonProperty("D8SeparationReferenceDate")
+    private String referenceDate;
+
+    @JsonProperty("D8LivedApartSinceDesertion")
+    private String desertionLivedApartEntireTime;
+
+    @JsonProperty("D8DesertionTimeTogetherPermitted")
+    private String desertionTimeTogetherPermitted;
+
+    @JsonProperty("D8LivedTogetherMoreTimeThanPermittedDesert")
+    private String desertionLivedTogetherMoreTimeThanPermitted;
+
+    @JsonProperty("PreviousCaseId")
+    private CaseLink previousCaseId;
+
+    @JsonProperty("PreviousReasonsForDivorce")
+    private List<String> previousReasonsForDivorce;
 }
 

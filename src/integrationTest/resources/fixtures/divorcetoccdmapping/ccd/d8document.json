@@ -9,7 +9,7 @@
     "D8MarriageDate": "2001-02-02",
     "D8MarriedInUk": "YES",
     "D8PetitionerNameDifferentToMarriageCert": "YES",
-    "D8PetitionerEmail": "caseformatterservicetest@test.com",
+    "D8PetitionerEmail": "simulate-delivered@notifications.service.gov.uk",
     "D8PetitionerPhoneNumber": "01234567890",
     "D8PetitionerFirstName": "John",
     "D8PetitionerLastName": "Smith",
@@ -90,6 +90,10 @@
         "A",
         "C"
     ],
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8JurisdictionPetitionerResidence": "YES",
     "D8JurisdictionRespondentResidence": "YES",
     "D8StatementOfTruth": "YES",
@@ -135,5 +139,8 @@
     "D8Cohort": "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender": "female",
     "D8InferredRespondentGender": "male",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "RespondentContactDetailsConfidential": "share",
+    "PreviousReasonsForDivorce": ["reason-one", "reason-two"],
+    "PreviousCaseId": {"CaseReference": "1234567891234567"}
 }

@@ -49,6 +49,10 @@
       "County" : null,
       "PostCode" : "SW9 9PE"
     },
+    "D8JurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentSolicitorName" : "Justin",
     "D8RespondentSolicitorCompany" : "Case",
@@ -197,5 +201,6 @@
     "D8Cohort" : "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "RespondentContactDetailsConfidential": "share"
   }

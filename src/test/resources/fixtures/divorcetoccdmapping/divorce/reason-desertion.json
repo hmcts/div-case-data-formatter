@@ -219,5 +219,9 @@
   "claimsCosts": "No",
   "claimsCostsAppliedForFees": true,
   "petitionerConsent" : "Yes",
+  "separationTimeTogetherPermitted": "3 months, 2 weeks and 5 months",
+  "livedTogetherMoreTimeThanPermitted": "Yes",
+  "livedApartEntireTime": "Yes",
+  "referenceDate": "06 August 2013",
   "sessionKey": "1d6364a303a4cad55dcae3c4004b02186be646740bbb8908cf4ac15604334958:dfb7803cc172403569fb072e5b947774:18f0eb3009f631c695c3a5c25b4007156ed3c9ff36a8f9fcb5c976d2d6ad54a8fa0c3f3698ae44eeaa78fd92b82869072c377ad58a90efe927b72add055c7a8a"
 }

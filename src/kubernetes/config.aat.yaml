@@ -8,7 +8,7 @@ data:
   REFORM_ENVIRONMENT : "aat"
   APPLICATION_INSIGHTS_IKEY : "63c30ef9-a27b-4d38-8afc-4c180fb6ac33"
   SLOT : "PRODUCTION"
-  IDAM_API_BASEURL : "https://preprod-idamapi.reform.hmcts.net:3511"
+  IDAM_API_BASEURL : "https://idam-api.aat.platform.hmcts.net"
   REFORM_SERVICE_NAME : "cfs"
   REFORM_TEAM : "div"
   APPINSIGHTS_INSTRUMENTATIONKEY : "63c30ef9-a27b-4d38-8afc-4c180fb6ac3"

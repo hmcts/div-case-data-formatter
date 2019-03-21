@@ -460,6 +460,13 @@ public class DivorceSession {
 
     @ApiModelProperty(value = "Case ID from previously amended case")
     private String previousCaseId;
+
+    @ApiModelProperty(
+        value = "Issue date from previously amended case in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
+            + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
+            + "\"yyyy-MM-dd\").")
+    private Date previousIssueDate;
+
     @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition")
     private List<String> previousReasonsForDivorce;
 

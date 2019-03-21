@@ -1,4 +1,5 @@
 {
+    "IssueDate": "2006-02-02",
     "D8legalProcess" : null,
     "D8caseReference" : null,
     "createdDate" : null,
@@ -196,6 +197,7 @@
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
-    "PreviousReasonsForDivorce": ["reason-one","reason-two"],
-    "PreviousCaseId": {"CaseReference": "1234567891234567"}
+    "PreviousCaseId": {"CaseReference": "1234567891234567"},
+    "PreviousIssueDate": "2006-03-03",
+    "PreviousReasonsForDivorce": ["reason-one","reason-two"]
 }

@@ -543,7 +543,10 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("PreviousCaseId")
     private CaseLink previousCaseId;
 
+    @JsonProperty("PreviousIssueDate")
+    private String previousIssueDate;
+
     @JsonProperty("PreviousReasonsForDivorce")
     private List<String> previousReasonsForDivorce;
-}
 
+}

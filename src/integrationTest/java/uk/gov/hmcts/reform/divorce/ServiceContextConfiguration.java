@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 @Configuration
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 @PropertySource({"classpath:application.properties"})
+@PropertySource({"classpath:application-${env}.properties"})
 public class ServiceContextConfiguration {
     @Bean
     public IdamUtils getIdamUtil() {

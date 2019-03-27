@@ -19,14 +19,43 @@ def component = "cfs"
 
 def channel = '#div-dev'
 
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+    [ $class: 'AzureKeyVaultSecret',
+      secretType: 'Secret',
+      name: secretName,
+      version: '',
+      envVariable: envVar
+    ]
+}
+
+List<LinkedHashMap<String, Object>> secrets = [
+    secret("idam-secret", "AUTH_IDAM_CLIENT_SECRET"),
+]
+
 withPipeline(type , product, component) {
     if (env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) {
         enableDockerBuild()
         installCharts()
     }
 
+    loadVaultSecrets(secrets)
+    setVaultName('div')
+
     after('checkout') {
         echo '${product}-${component} checked out'
+    }
+
+    after('functionalTest:aat') {
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/site/serenity/**/*'
+    }
+
+    // Kubernetes does not retrieve variables from the output terraform
+    before('functionalTest:preview') {
+        env.test_environment = 'aat'
+    }
+
+    after('functionalTest:preview') {
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/site/serenity/**/*'
     }
 
     enableSlackNotifications(channel)

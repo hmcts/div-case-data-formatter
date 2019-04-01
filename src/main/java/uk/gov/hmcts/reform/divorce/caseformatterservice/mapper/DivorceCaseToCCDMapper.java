@@ -120,7 +120,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceLivingApartDate")
     @Mapping(ignore = true, target = "previousCaseId")
-    @Mapping(source = "previousIssueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "previousIssueDate")
+    @Mapping(ignore = true, dateFormat = SIMPLE_DATE_FORMAT, target = "previousIssueDate")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 

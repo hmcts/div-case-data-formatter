@@ -172,6 +172,5 @@
     "D8PetitionerConsent" : "YES",
     "RespondentContactDetailsConfidential": "share",
     "PreviousCaseId": {"CaseReference": "1234567891234567"},
-    "PreviousIssueDate": "2006-03-03",
     "PreviousReasonsForDivorce": ["adultery"]
 }

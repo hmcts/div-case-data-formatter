@@ -2,10 +2,9 @@ package uk.gov.hmcts.reform.divorce;
 
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,11 +27,11 @@ public class DivorceToAosCaseDataTest extends IntegrationTest {
             getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_PATH));
 
-        final Map<String, Object> expectedOutput = getExpected("aos.json");
+        String expectedOutput = ResourceLoader.loadJson(getExpectedContextPath() + "aos.json");
 
-        final Map<String, Object> actualOutput = getActual(response.getBody().asString());
+        String actualOutput = response.getBody().asString();
 
-        assertEquals(expectedOutput, actualOutput);
+        JSONAssert.assertEquals(expectedOutput, actualOutput, true);
     }
 
     @Override

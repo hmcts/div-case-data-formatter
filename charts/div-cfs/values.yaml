@@ -1,8 +1,5 @@
 java:
     applicationPort: 4011
-    # Don't modify below here
-    image: ${IMAGE_NAME}
-    ingressHost: ${SERVICE_FQDN}
     environment:
         REFORM_SERVICE_NAME: "cfs"
         REFORM_TEAM: "div"

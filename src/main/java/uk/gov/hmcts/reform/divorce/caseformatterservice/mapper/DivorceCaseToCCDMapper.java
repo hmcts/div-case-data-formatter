@@ -54,6 +54,7 @@ public abstract class DivorceCaseToCCDMapper {
     private SeparationDateService separationDateService;
 
     @Mapping(source = "helpWithFeesReferenceNumber", target = "d8HelpWithFeesReferenceNumber")
+    @Mapping(source = "caseReference", target = "d8caseReference")
     @Mapping(source = "divorceWho", target = "d8DivorceWho")
     @Mapping(source = "marriageDate", dateFormat = SIMPLE_DATE_FORMAT, target = "d8MarriageDate")
     @Mapping(source = "reasonForDivorceDesertionDay", target = "d8ReasonForDivorceDesertionDay")

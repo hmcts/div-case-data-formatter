@@ -1,5 +1,4 @@
 {
-    "expires": 0,
     "caseReference" : "caseReference",
     "screenHasMarriageBroken": "Yes",
     "screenHasRespondentAddress": "Yes",
@@ -265,6 +264,8 @@
     },
     "marriageCertificateFiles": [
         {
+
+            "id" : null,
             "createdBy": 0,
             "createdOn": "2017-12-11T00:00:00.000+0000",
             "lastModifiedBy": 0,
@@ -275,6 +276,7 @@
             "status": null
         },
         {
+            "id" : null,
             "createdBy": 0,
             "createdOn": "2017-12-11T00:00:00.000+0000",
             "lastModifiedBy": 0,

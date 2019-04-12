@@ -12,8 +12,9 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCom
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings("squid:S1610")
 public abstract class DocumentCollectionDivorceFormatMapper {
-    @Mapping(source = "value.documentFileName", target = "fileName")
+    @Mapping(source = "value.documentLink.documentFilename", target = "fileName")
     @Mapping(source = "value.documentDateAdded", dateFormat = SIMPLE_DATE_FORMAT, target = "createdOn")
     @Mapping(source = "value.documentLink.documentUrl", target = "fileUrl")
+    @Mapping(source = "id", target = "id")
     public abstract UploadedFile map(CollectionMember<Document> documentCollectionMember);
 }

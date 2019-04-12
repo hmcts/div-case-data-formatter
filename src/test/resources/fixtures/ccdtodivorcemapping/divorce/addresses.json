@@ -85,6 +85,7 @@
     "reasonForDivorceClaimingAdultery":false,
     "marriageCertificateFiles":[
         {
+            "id":"documentId",
             "createdBy":0,
             "createdOn":"2017-12-11",
             "lastModifiedBy":0,
@@ -92,6 +93,7 @@
             "fileUrl":"https://api-gateway.test.dm.reform.hmcts.net/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936"
         },
         {
+            "id":"documentId",
             "createdBy":0,
             "createdOn":"2017-12-11",
             "lastModifiedBy":0,

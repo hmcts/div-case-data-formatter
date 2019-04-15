@@ -29,6 +29,7 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "coRespondentAnswers.statementOfTruth", target = "coRespStatementOfTruth")
     @Mapping(source = "coRespondentAnswers.aos.linkedDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "coRespLinkedToCaseDate")
+    @Mapping(source = "receivedAosFromRespDate", dateFormat = SIMPLE_DATE_FORMAT, target = "receivedAosFromRespDate")
     public abstract AosCaseData divorceCaseDataToAosCaseData(DivorceSession divorceSession);
 
     @AfterMapping
@@ -44,7 +45,10 @@ public abstract class DivorceCaseToAosCaseMapper {
     @AfterMapping
     protected void setReceivedAosFromResp(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
         if (StringUtils.isNotEmpty(divorceSession.getReceivedAosFromResp())) {
-            result.setReceivedAosFromResp(YesNoNeverAnswer.fromInput(divorceSession.getReceivedAosFromResp()).getAnswer());
+            result.setReceivedAosFromResp(toYesNoUpperCase(
+                    YesNoNeverAnswer.fromInput(divorceSession.getReceivedAosFromResp()).getAnswer()
+                )
+            );
         }
     }
 

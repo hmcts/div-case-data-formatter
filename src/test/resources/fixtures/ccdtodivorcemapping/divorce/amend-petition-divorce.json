@@ -1,5 +1,6 @@
 {
     "expires":0,
+    "issueDate": "2006-02-02T00:00:00.000+0000",
     "screenHasMarriageBroken":"Yes",
     "screenHasRespondentAddress":"Yes",
     "screenHasMarriageCert":"Yes",
@@ -236,6 +237,7 @@
     "reasonForDivorceAdulteryWhenDetails":"Some time ago.",
     "reasonForDivorceAdulteryWhereDetails":"On a washing machine.",
     "petitionerConsent" : "Yes",
-    "previousReasonsForDivorce": ["reason-one", "reason-two"],
-    "previousCaseId": "1234567891234567"
+    "previousCaseId": "1234567891234567",
+    "previousIssueDate": "2006-03-03T00:00:00.000+0000",
+    "previousReasonsForDivorce": ["reason-one", "reason-two"]
 }

@@ -134,10 +134,11 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "coRespLinkedToCaseDate", target = "coRespondentAnswers.aos.linkedDate",
         dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(source = "coRespLetterHolderId", target = "coRespondentAnswers.aos.letterHolderId")
-    @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     @Mapping(source = "receivedAosFromResp", target = "receivedAosFromResp")
-    @Mapping(source = "receivedAosFromRespDate", target = "receivedAosFromRespDate")
+    @Mapping(source = "receivedAosFromRespDate", target = "receivedAosFromRespDate", dateFormat = SIMPLE_DATE_FORMAT)
     @Mapping(ignore = true, target = "previousCaseId")
+    @Mapping(source = "previousIssueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "previousIssueDate")
+    @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {
@@ -895,6 +896,11 @@ public abstract class CCDCaseToDivorceMapper {
 
         }
 
+    }
+
+    @AfterMapping
+    protected void mapReceivedAosFromRespondent(CoreCaseData caseData, @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setReceivedAosFromResp(toYesNoPascalCase(caseData.getReceivedAosFromResp()));
     }
 
     @AfterMapping

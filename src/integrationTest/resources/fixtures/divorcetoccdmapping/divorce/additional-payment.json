@@ -6,6 +6,7 @@
         "httpOnly": true,
         "secure": false
     },
+    "expires": 1510922360607,
     "screenHasMarriageBroken": "Yes",
     "screenHasRespondentAddress": "Yes",
     "screenHasMarriageCert": "Yes",

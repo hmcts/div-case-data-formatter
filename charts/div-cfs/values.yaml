@@ -1,0 +1,7 @@
+java:
+    applicationPort: 4011
+    environment:
+        REFORM_SERVICE_NAME: "cfs"
+        REFORM_TEAM: "div"
+        SLOT: "PRODUCTION"
+

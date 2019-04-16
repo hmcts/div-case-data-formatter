@@ -1,0 +1,10 @@
+java:
+    environment:
+        DOCUMENT_MANAGEMENT_STORE_URL: "http://dm-store-aat.service.core-compute-aat.internal"
+        REFORM_ENVIRONMENT: "aat"
+        IDAM_API_BASEURL : "https://idam-api.aat.platform.hmcts.net"
+        APPINSIGHTS_INSTRUMENTATIONKEY: "dummy"
+
+    # Don't modify below here
+    image: ${IMAGE_NAME}
+    ingressHost: ${SERVICE_FQDN}

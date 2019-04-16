@@ -22,7 +22,7 @@ public class DocumentUrlRewrite {
     public DocumentUrlRewrite(@Value("${document.management.store.url}") String documentManagementStoreUrl) {
         log.info("DM store url {}", documentManagementStoreUrl);
         this.documentManagementStoreUrl = documentManagementStoreUrl;
-        this.urlPatter = Pattern.compile(documentManagementStoreUrl + "/documents/(.+)");
+        this.urlPatter = Pattern.compile(".*?/documents/(.+)");
     }
 
     public String getDocumentUrl(String url) {

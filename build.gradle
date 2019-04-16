@@ -64,7 +64,7 @@ compileTestJava {
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-openfeign:2.0.0.RELEASE'
+        mavenBom 'org.springframework.cloud:spring-cloud-openfeign:2.1.1.RELEASE'
     }
 }
 

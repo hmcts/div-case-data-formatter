@@ -64,7 +64,7 @@ compileTestJava {
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-openfeign:2.0.0.RELEASE'
+        mavenBom 'org.springframework.cloud:spring-cloud-openfeign:2.1.1.RELEASE'
     }
 }
 
@@ -119,7 +119,7 @@ def versions = [
     commonsCollections4: '4.1',
     commonsIo: '2.5',
     commonsLang3: '3.7',
-    feignHttpClient: '9.5.1',
+    feignHttpClient: '10.2.0',
     gradlePitest: '1.3.0',
     guava: '27.0.1-jre',
     jacksonDatabind: '2.9.8',
@@ -131,11 +131,13 @@ def versions = [
     orgSpringframework: '5.1.4.RELEASE',
     pitest: '1.3.2',
     puppyCrawl: '7.6',
+    reformHealth: '0.0.3',
+    reformPropertiesVolume: '0.0.4',
     reformsJavaLogging: '4.0.1',
     reformSpringBootAutoConfigure: '1.1.0',
     restAssured: '3.0.3',
-    serenity: '1.5.2',
-    serenityCucumber: '1.1.3',
+    serenity: '2.0.41',
+    serenityCucumber: '1.9.31',
     sonarPitest: '0.5',
     spring_security_rsa: '1.0.8.RELEASE',
     springfoxSwagger: '2.9.2',
@@ -197,6 +199,9 @@ dependencies {
 
     compile group: 'org.apache.commons', name: 'commons-collections4', version: versions.commonsCollections4
     compile group: 'org.apache.commons', name: 'commons-lang3', version : versions.commonsLang3
+
+    compile group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: versions.reformPropertiesVolume
+    compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth
     compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformsJavaLogging
     compile group: 'uk.gov.hmcts.reform', name: 'java-logging-appinsights', version: versions.reformsJavaLogging
     compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: versions.reformsJavaLogging

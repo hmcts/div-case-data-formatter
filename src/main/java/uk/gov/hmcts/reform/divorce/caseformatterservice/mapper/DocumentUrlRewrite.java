@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
+@Slf4j
 public class DocumentUrlRewrite {
 
     private static final String URL_REGEX = ".*?(/documents/.*)";
@@ -18,6 +20,7 @@ public class DocumentUrlRewrite {
     private final Pattern urlPatter; // Document pattern
 
     public DocumentUrlRewrite(@Value("${document.management.store.url}") String documentManagementStoreUrl) {
+        log.info("DM store url {}", documentManagementStoreUrl);
         this.documentManagementStoreUrl = documentManagementStoreUrl;
         this.urlPatter = Pattern.compile(documentManagementStoreUrl + "/documents/(.+)");
     }
@@ -32,10 +35,11 @@ public class DocumentUrlRewrite {
 
     public Optional<String> getDocumentId(String docUrl) {
         Matcher urlMatcher = urlPatter.matcher(docUrl);
-        if (urlMatcher.find( )) {
+        if (urlMatcher.find()) {
+            log.info("Document url matched, Returning url ");
             return Optional.ofNullable(urlMatcher.group(1));
         }
-
+        log.info("Document url did not matched, Returning empty");
         return Optional.empty();
     }
 }

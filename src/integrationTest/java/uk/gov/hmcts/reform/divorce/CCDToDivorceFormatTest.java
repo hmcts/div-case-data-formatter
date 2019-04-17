@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.util.ProxyUtils;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -54,7 +55,7 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
         final Map<String, Object> expectedOutput = getExpected(expected);
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
-
+        ProxyUtils.printDiff(expectedOutput, actualOutput);
         Assert.assertEquals(expectedOutput, actualOutput);
     }
 

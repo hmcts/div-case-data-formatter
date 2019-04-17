@@ -20,3 +20,5 @@ target/
 
 src/main/resources/version
 java-rpm-packaging/
+
+src/integrationTest/resources/application-local.properties

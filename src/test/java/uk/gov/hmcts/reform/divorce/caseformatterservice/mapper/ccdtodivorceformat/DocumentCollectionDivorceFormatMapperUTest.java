@@ -37,6 +37,7 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         final Document document = new Document();
         final DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
         document.setDocumentLink(documentLink);
         document.setDocumentFileName(FILE_NAME);
         document.setDocumentDateAdded(dateDocumentAdded);

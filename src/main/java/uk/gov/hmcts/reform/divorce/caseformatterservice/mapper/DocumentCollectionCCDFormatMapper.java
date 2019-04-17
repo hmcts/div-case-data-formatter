@@ -35,5 +35,6 @@ public abstract class DocumentCollectionCCDFormatMapper {
         DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl(fileUrl);
         result.getValue().setDocumentLink(documentLink);
+        result.setId(null);
     }
 }

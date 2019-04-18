@@ -6,6 +6,7 @@
         "httpOnly": true,
         "secure": false
     },
+    "caseReference" : "LV17D80100",
     "expires": 1510922360607,
     "screenHasMarriageBroken": "Yes",
     "screenHasRespondentAddress": "Yes",

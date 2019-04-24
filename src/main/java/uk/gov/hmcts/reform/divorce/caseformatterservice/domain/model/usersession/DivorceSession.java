@@ -294,6 +294,10 @@ public class DivorceSession {
     private String respondentSolicitorName;
     @ApiModelProperty(value = "Company of solicitor used by respondent.")
     private String respondentSolicitorCompany;
+    @ApiModelProperty(value = "Email of solicitor used by respondent.")
+    private String respondentSolicitorEmail;
+    @ApiModelProperty(value = "Phone number of solicitor used by respondent.")
+    private String respondentSolicitorPhoneNumber;
     @ApiModelProperty(value = "Address of solicitor used by respondent.")
     private Address respondentSolicitorAddress;
     @ApiModelProperty(value = "Agree to statement of truth?", allowableValues = "Yes, No")

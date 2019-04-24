@@ -105,6 +105,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8Documents", target = "d8Documents")
     @Mapping(source = "d8RespondentSolicitorName", target = "respondentSolicitorName")
     @Mapping(source = "d8RespondentSolicitorCompany", target = "respondentSolicitorCompany")
+    @Mapping(source = "d8RespondentSolicitorEmail", target = "respondentSolicitorEmail")
+    @Mapping(source = "d8RespondentSolicitorPhone", target = "respondentSolicitorPhoneNumber")
     @Mapping(source = "d8RespondentSolicitorAddress.postCode", target = "respondentSolicitorAddress.postcode")
     @Mapping(source = "createdDate", dateFormat = SIMPLE_DATE_FORMAT, target = "createdDate")
     @Mapping(source = "issueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "issueDate")

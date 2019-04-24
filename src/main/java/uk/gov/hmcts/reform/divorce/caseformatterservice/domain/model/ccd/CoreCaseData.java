@@ -549,4 +549,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("PreviousReasonsForDivorce")
     private List<String> previousReasonsForDivorce;
 
+    @JsonProperty("D8RespondentSolicitorEmail")
+    private String d8RespondentSolicitorEmail;
+
+    @JsonProperty("D8RespondentSolicitorPhone")
+    private String d8RespondentSolicitorPhone;
 }

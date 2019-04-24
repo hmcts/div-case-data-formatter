@@ -258,6 +258,8 @@
   },
   "respondentSolicitorName": "Justin",
   "respondentSolicitorCompany": "Case",
+  "respondentSolicitorEmail" : "justin@example.com",
+  "respondentSolicitorPhoneNumber" : "01234567890",
   "respondentSolicitorAddress": {
     "addressType": "postcode",
     "postcode": "A AAA",

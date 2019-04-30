@@ -1,0 +1,11 @@
+{
+    "respConfirmReadPetition": "YES",
+    "respWillDefendDivorce": null,
+    "respondentCorrespondenceSendToSolicitor": "Yes",
+    "respondentSolicitorName": "Some name",
+    "respondentSolicitorCompany": "Awesome Solicitors LLP",
+    "respondentSolicitorEmail": "solicitor@localhost.local",
+    "respondentSolicitorPhoneNumber": "2222222222",
+    "respondentSolicitorReference": "1234",
+    "respStatementOfTruth": "YES"
+}

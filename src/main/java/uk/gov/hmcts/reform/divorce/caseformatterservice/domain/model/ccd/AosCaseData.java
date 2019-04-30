@@ -135,6 +135,24 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("CoRespLinkedToCase")
     private String coRespLinkedToCase;
 
+    @JsonProperty("D8RespondentSolicitorName")
+    private String d8RespondentSolicitorName;
+
+    @JsonProperty("D8RespondentSolicitorCompany")
+    private String d8RespondentSolicitorCompany;
+
+    @JsonProperty("D8RespondentCorrespondenceSendToSol")
+    private String d8RespondentCorrespondenceSendToSol;
+
+    @JsonProperty("D8RespondentSolicitorEmail")
+    private String d8RespondentSolicitorEmail;
+
+    @JsonProperty("D8RespondentSolicitorPhone")
+    private String d8RespondentSolicitorPhone;
+
+    @JsonProperty("respondentSolicitorReference")
+    private String respondentSolicitorReference;
+
     //End of co-respondent answers
 
 }

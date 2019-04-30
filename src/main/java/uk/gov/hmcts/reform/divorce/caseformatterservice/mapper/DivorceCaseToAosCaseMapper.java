@@ -30,6 +30,11 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "coRespondentAnswers.aos.linkedDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "coRespLinkedToCaseDate")
     @Mapping(source = "receivedAosFromRespDate", dateFormat = SIMPLE_DATE_FORMAT, target = "receivedAosFromRespDate")
+    @Mapping(source = "respondentCorrespondenceSendToSolicitor", target = "d8RespondentCorrespondenceSendToSol")
+    @Mapping(source = "respondentSolicitorName", target = "d8RespondentSolicitorName")
+    @Mapping(source = "respondentSolicitorCompany", target = "d8RespondentSolicitorCompany")
+    @Mapping(source = "respondentSolicitorEmail", target = "d8RespondentSolicitorEmail")
+    @Mapping(source = "respondentSolicitorPhoneNumber", target = "d8RespondentSolicitorPhone")
     public abstract AosCaseData divorceCaseDataToAosCaseData(DivorceSession divorceSession);
 
     @AfterMapping

@@ -17,6 +17,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,6 +30,8 @@ public class GetAosCaseDataITest {
     private static final String API_URL = "/caseformatter/version/1/to-aos-submit-format";
     private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/aos.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/ccd/aos.json";
+    private static final String SOL_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/aos-solicitor-representation.json";
+    private static final String SOL_EXPECTED_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/ccd/aos-solicitor-representation.json";
 
     @Autowired
     private MockMvc webClient;
@@ -57,5 +60,23 @@ public class GetAosCaseDataITest {
                 ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(), AosCaseData.class);
 
         assertThat(actualAosCaseData, samePropertyValuesAs(expectedAosCaseData));
+    }
+
+    @Test
+    public void givenValidSolicitorDetails_whenGetAosCaseData_thenReturnExpected() throws Exception {
+        final AosCaseData expectedAosCaseData =
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(SOL_EXPECTED_PAYLOAD_PATH, AosCaseData.class);
+
+        MvcResult result = webClient.perform(post(API_URL)
+            .content(ObjectMapperTestUtil.retrieveFileContents(SOL_PAYLOAD_PATH))
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+
+        final AosCaseData actualAosCaseData =
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(), AosCaseData.class);
+
+        assertEquals(expectedAosCaseData, actualAosCaseData);
     }
 }

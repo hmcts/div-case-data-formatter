@@ -132,15 +132,6 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8DerivedRespondentCorrespondenceAddr")
     private String d8DerivedRespondentCorrespondenceAddr;
 
-    @JsonProperty("D8RespondentSolicitorName")
-    private String d8RespondentSolicitorName;
-
-    @JsonProperty("D8RespondentSolicitorCompany")
-    private String d8RespondentSolicitorCompany;
-
-    @JsonProperty("D8RespondentCorrespondenceSendToSol")
-    private String d8RespondentCorrespondenceSendToSol;
-
     @JsonProperty("D8RespondentSolicitorAddress")
     private Address d8RespondentSolicitorAddress;
 
@@ -549,9 +540,4 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("PreviousReasonsForDivorce")
     private List<String> previousReasonsForDivorce;
 
-    @JsonProperty("D8RespondentSolicitorEmail")
-    private String d8RespondentSolicitorEmail;
-
-    @JsonProperty("D8RespondentSolicitorPhone")
-    private String d8RespondentSolicitorPhone;
 }

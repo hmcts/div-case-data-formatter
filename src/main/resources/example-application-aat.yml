@@ -1,0 +1,9 @@
+
+idam:
+    api:
+        url: ${IDAM_API_BASEURL:https://idam-api.aat.platform.hmcts.net}
+
+document:
+    management:
+        store:
+            url: ${DOCUMENT_MANAGEMENT_STORE_URL:http://dm-store-aat.service.core-compute-aat.internal}

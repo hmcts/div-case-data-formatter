@@ -143,7 +143,8 @@ def versions = [
     springfoxSwagger: '2.9.2',
     unirest: '1.4.9',
     wiremockVersion: '2.8.0',
-    springSecurityCrypto: '5.1.5.RELEASE'
+    springSecurityCrypto: '5.1.5.RELEASE',
+    tomcatEmbed: '9.0.19'
 ]
 
 dependencies {
@@ -177,6 +178,16 @@ dependencies {
     }
 
     compile (group:  'org.springframework.security', name: 'spring-security-crypto', version: versions.springSecurityCrypto) {
+        force = true
+    }
+
+    compile (group: 'org.apache.tomcat.embed', name:'tomcat-embed-core', version: versions.tomcatEmbed) {
+        force = true
+    }
+    compile (group: 'org.apache.tomcat.embed', name:'tomcat-embed-websocket', version: versions.tomcatEmbed) {
+        force = true
+    }
+    compile (group: 'org.apache.tomcat.embed', name:'tomcat-embed-el', version: versions.tomcatEmbed) {
         force = true
     }
 

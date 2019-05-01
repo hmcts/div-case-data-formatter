@@ -1,3 +1,4 @@
+# Example file - DO NOT PUT SECRETS HERE - make a copy as application-aat.yaml (git ignored)
 
 idam:
     api:

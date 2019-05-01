@@ -50,9 +50,9 @@
       "PostCode" : "SW9 9PE"
     },
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
-    "D8RespondentSolicitorName" : "Justin",
-    "D8RespondentSolicitorCompany" : "Case",
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "D8RespondentSolicitorName": "Justin",
+    "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
+    "D8RespondentCorrespondenceSendToSol": "Yes",
     "D8RespondentSolicitorAddress" : {
         "AddressLine1":null,
         "AddressLine2":null,
@@ -62,6 +62,9 @@
         "County":null,
         "Country":null
     },
+    "D8RespondentSolicitorEmail": "solicitor@localhost.local",
+    "D8RespondentSolicitorPhone": "2222222222",
+    "respondentSolicitorReference": "1234",
     "D8RespondentCorrespondenceUseHomeAddress" : "Solicitor",
     "D8RespondentKnowsHomeAddress" : null,
     "D8RespondentLivesAtLastAddress" : "NO",

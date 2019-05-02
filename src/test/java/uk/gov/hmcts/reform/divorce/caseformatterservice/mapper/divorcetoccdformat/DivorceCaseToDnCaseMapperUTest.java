@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 
 @RunWith(SpringRunner.class)
@@ -92,5 +93,24 @@ public class DivorceCaseToDnCaseMapperUTest {
         DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
+    }
+
+    @Test
+    public void shouldMapTheFieldsProperlyForNull() throws URISyntaxException, IOException {
+
+        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-null.json", DnCaseData.class);
+        expectedDnCaseData.setDnApplicationSubmittedDate(
+            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        DivorceSession divorceSession = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-null.json",
+                DivorceSession.class);
+
+        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceSession);
+
+        assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
+        // Assert that actual data has null values
+        assertThat(ObjectMapperTestUtil.convertObjectToJson(actualDnCaseData), containsString("null"));
     }
 }

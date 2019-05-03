@@ -15,8 +15,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -56,6 +55,6 @@ public class GetAosCaseDataITest {
         final AosCaseData actualAosCaseData =
                 ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(), AosCaseData.class);
 
-        assertThat(actualAosCaseData, samePropertyValuesAs(expectedAosCaseData));
+        assertEquals(expectedAosCaseData, actualAosCaseData);
     }
 }

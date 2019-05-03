@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.run.BootRun
+
 buildscript {
     ext {
         springBootVersion = '2.1.2.RELEASE'
@@ -143,7 +145,8 @@ def versions = [
     springfoxSwagger: '2.9.2',
     unirest: '1.4.9',
     wiremockVersion: '2.8.0',
-    springSecurityCrypto: '5.1.5.RELEASE'
+    springSecurityCrypto: '5.1.5.RELEASE',
+    tomcatEmbed: '9.0.19'
 ]
 
 dependencies {
@@ -177,6 +180,16 @@ dependencies {
     }
 
     compile (group:  'org.springframework.security', name: 'spring-security-crypto', version: versions.springSecurityCrypto) {
+        force = true
+    }
+
+    compile (group: 'org.apache.tomcat.embed', name:'tomcat-embed-core', version: versions.tomcatEmbed) {
+        force = true
+    }
+    compile (group: 'org.apache.tomcat.embed', name:'tomcat-embed-websocket', version: versions.tomcatEmbed) {
+        force = true
+    }
+    compile (group: 'org.apache.tomcat.embed', name:'tomcat-embed-el', version: versions.tomcatEmbed) {
         force = true
     }
 
@@ -254,6 +267,15 @@ dependencies {
 task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verification') {
     useJUnit {
         includeCategories 'uk.gov.hmcts.reform.divorce.caseformatterservice.category.SmokeTest'
+    }
+}
+
+task bootRunAat(type: BootRun, description: 'Runs the app using AAT config', dependsOn: 'classes', group: 'Application') {
+    environment "http_proxy", "http://proxyout.reform.hmcts.net:8080"
+    doFirst() {
+        main = bootJar.mainClassName
+        classpath = sourceSets.main.runtimeClasspath
+        systemProperty 'spring.profiles.active', 'aat'
     }
 }
 

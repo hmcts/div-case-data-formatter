@@ -249,7 +249,7 @@
         }
     },
     "respondentSolicitorName":"Justin",
-    "respondentSolicitorCompany":"Case",
+    "respondentSolicitorCompany":"Awesome Solicitors LLP",
     "respondentSolicitorAddress":{
         "addressType":"postcode",
         "postcode":"SW9 9PE",
@@ -270,6 +270,10 @@
             "postcode":"A AAA"
         }
     },
+    "respondentCorrespondenceSendToSolicitor": "Yes",
+    "respondentSolicitorEmail": "solicitor@localhost.local",
+    "respondentSolicitorPhoneNumber": "2222222222",
+    "respondentSolicitorReference": "1234",
     "petitionerConsent" : "Yes",
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",

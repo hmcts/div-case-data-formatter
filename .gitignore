@@ -22,3 +22,6 @@ src/main/resources/version
 java-rpm-packaging/
 
 src/integrationTest/resources/application-local.properties
+application-*.yml
+application-*.yaml
+application-local.properties

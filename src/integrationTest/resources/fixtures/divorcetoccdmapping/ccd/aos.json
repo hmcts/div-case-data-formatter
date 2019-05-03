@@ -19,5 +19,11 @@
     "RespHardshipDefenseResponse" : "NO",
     "RespHardshipDescription" : "Some Hardship Description goes here",
     "RespContactMethodIsDigital" : "YES",
-    "PermittedDecreeNisiReason" : "0"
+    "PermittedDecreeNisiReason" : "0",
+    "D8RespondentCorrespondenceSendToSol": "Yes",
+    "D8RespondentSolicitorName": "Justin",
+    "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
+    "D8RespondentSolicitorEmail": "solicitor@localhost.local",
+    "D8RespondentSolicitorPhone": "2222222222",
+    "respondentSolicitorReference": "1234"
 }

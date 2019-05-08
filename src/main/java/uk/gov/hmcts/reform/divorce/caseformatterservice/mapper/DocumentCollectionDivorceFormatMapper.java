@@ -33,7 +33,7 @@ public abstract class DocumentCollectionDivorceFormatMapper {
                                                  @MappingTarget  UploadedFile result ) {
 
         Optional.of(document)
-            .map(documentCollectionMember -> document.getValue())
+            .map(documentEntry -> document.getValue())
             .map(Document::getDocumentLink)
             .map(DocumentLink::getDocumentUrl)
             .ifPresent(url -> documentUrlRewrite.getDocumentId(url).ifPresent(result::setId));

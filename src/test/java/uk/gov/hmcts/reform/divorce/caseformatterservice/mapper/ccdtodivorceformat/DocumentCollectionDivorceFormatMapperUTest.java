@@ -74,4 +74,16 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         assertThatCode(() -> mapper.map(collectionMember))
             .doesNotThrowAnyException();
     }
+
+    @Test
+    public void shouldNotThrowExceptionForNullDocumentLinkUrl() {
+        final Document document = new Document();
+        document.setDocumentLink(new DocumentLink());
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        assertThatCode(() -> mapper.map(collectionMember))
+            .doesNotThrowAnyException();
+    }
 }

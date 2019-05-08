@@ -19,6 +19,20 @@
             "id" : null,
             "value" : {
                 "DocumentType" : "other",
+                "DocumentLink" : {
+                    "document_binary_url" : null,
+                    "document_filename" : "some-file1.pdf"
+                },
+                "DocumentDateAdded" : "2017-12-11",
+                "DocumentComment" : "",
+                "DocumentFileName" : "some-file1.pdf",
+                "DocumentEmailContent" : ""
+            }
+        },
+        {
+            "id" : null,
+            "value" : {
+                "DocumentType" : "other",
                 "DocumentDateAdded" : "2017-12-11",
                 "DocumentComment" : "",
                 "DocumentFileName" : "broken.png",

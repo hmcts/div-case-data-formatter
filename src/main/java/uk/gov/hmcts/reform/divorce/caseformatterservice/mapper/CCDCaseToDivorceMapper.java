@@ -307,7 +307,7 @@ public abstract class CCDCaseToDivorceMapper {
                 divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
                     .filter(uploadedFile -> {
                         boolean fileIdExists = uploadedFile.getId() != null;
-                        if(!fileIdExists) {
+                        if (!fileIdExists) {
                             log.warn("Missing uploaded file properties in Case ID: {} - skipping file", caseData.getD8caseReference());
                         }
                         return fileIdExists;

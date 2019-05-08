@@ -36,6 +36,6 @@ public abstract class DocumentCollectionDivorceFormatMapper {
             .map(documentCollectionMember -> document.getValue())
             .map(Document::getDocumentLink)
             .map(DocumentLink::getDocumentUrl)
-            .ifPresent(s -> documentUrlRewrite.getDocumentId(s).ifPresent(result::setId));
+            .ifPresent(url -> documentUrlRewrite.getDocumentId(url).ifPresent(result::setId));
     }
 }

@@ -8,7 +8,10 @@ import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
+
+import java.util.Optional;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 
@@ -28,7 +31,11 @@ public abstract class DocumentCollectionDivorceFormatMapper {
     @AfterMapping
     protected void mapDocumentIDToDocumentObject(CollectionMember<Document> document,
                                                  @MappingTarget  UploadedFile result ) {
-        documentUrlRewrite.getDocumentId(document.getValue().getDocumentLink().getDocumentUrl())
-            .ifPresent(result::setId);
+
+        Optional.of(document)
+            .map(documentCollectionMember -> document.getValue())
+            .map(Document::getDocumentLink)
+            .map(DocumentLink::getDocumentUrl)
+            .ifPresent(s -> documentUrlRewrite.getDocumentId(s).ifPresent(result::setId));
     }
 }

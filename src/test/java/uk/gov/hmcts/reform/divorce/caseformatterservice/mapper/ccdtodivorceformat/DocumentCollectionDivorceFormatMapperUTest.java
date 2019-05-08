@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -61,5 +62,16 @@ public class DocumentCollectionDivorceFormatMapperUTest {
     @Test
     public void shouldReturnNullWithNullInput() {
         assertNull(mapper.map(null));
+    }
+
+    @Test
+    public void shouldNotThrowExceptionForNullDocumentLink() {
+        final Document document = new Document();
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        assertThatCode(() -> mapper.map(collectionMember))
+            .doesNotThrowAnyException();
     }
 }

@@ -24,9 +24,12 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorc
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
@@ -292,6 +295,17 @@ public abstract class CCDCaseToDivorceMapper {
                                                             @MappingTarget DivorceSession divorceSession) {
         divorceSession.setRespondentNameAsOnMarriageCertificate(
                 toYesNoPascalCase(caseData.getD8RespondentNameAsOnMarriageCertificate()));
+    }
+
+    @AfterMapping
+    protected void mapMarriageCertificateFiles(CoreCaseData caseData,
+                                                            @MappingTarget DivorceSession divorceSession) {
+        Optional.ofNullable(divorceSession.getMarriageCertificateFiles())
+            .ifPresent(uploadedFiles -> {
+                divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
+                    .filter(uploadedFile -> uploadedFile.getId() != null)
+                    .collect(Collectors.toCollection(ArrayList::new)));
+            });
     }
 
     @AfterMapping

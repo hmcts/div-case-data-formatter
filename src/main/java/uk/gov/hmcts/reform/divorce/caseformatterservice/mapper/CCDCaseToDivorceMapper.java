@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.util.Strings;
@@ -24,14 +25,18 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorc
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
 
+@Slf4j
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
@@ -292,6 +297,23 @@ public abstract class CCDCaseToDivorceMapper {
                                                             @MappingTarget DivorceSession divorceSession) {
         divorceSession.setRespondentNameAsOnMarriageCertificate(
                 toYesNoPascalCase(caseData.getD8RespondentNameAsOnMarriageCertificate()));
+    }
+
+    @AfterMapping
+    protected void mapMarriageCertificateFiles(CoreCaseData caseData,
+                                                            @MappingTarget DivorceSession divorceSession) {
+        Optional.ofNullable(divorceSession.getMarriageCertificateFiles())
+            .ifPresent(uploadedFiles -> {
+                divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
+                    .filter(uploadedFile -> {
+                        boolean fileIdExists = uploadedFile.getId() != null;
+                        if (!fileIdExists) {
+                            log.warn("Missing uploaded file properties in Case ID: {} - skipping file", caseData.getD8caseReference());
+                        }
+                        return fileIdExists;
+                    })
+                    .collect(Collectors.toCollection(ArrayList::new)));
+            });
     }
 
     @AfterMapping

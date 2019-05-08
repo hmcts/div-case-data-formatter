@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.util.Strings;
@@ -35,6 +36,7 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCom
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
 
+@Slf4j
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
@@ -303,7 +305,13 @@ public abstract class CCDCaseToDivorceMapper {
         Optional.ofNullable(divorceSession.getMarriageCertificateFiles())
             .ifPresent(uploadedFiles -> {
                 divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
-                    .filter(uploadedFile -> uploadedFile.getId() != null)
+                    .filter(uploadedFile -> {
+                        boolean fileIdExists = uploadedFile.getId() != null;
+                        if(!fileIdExists) {
+                            log.warn("Missing uploaded file properties in Case ID: {} - skipping file", caseData.getD8caseReference());
+                        }
+                        return fileIdExists;
+                    })
                     .collect(Collectors.toCollection(ArrayList::new)));
             });
     }

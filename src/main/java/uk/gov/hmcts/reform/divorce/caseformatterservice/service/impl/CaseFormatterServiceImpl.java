@@ -60,17 +60,17 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                     .map(documentCollectionDocumentRequestMapper::map)
                     .collect(Collectors.toList());
 
-                if (CollectionUtils.isNotEmpty(coreCaseData.getD8Documents())) {
-                    List<CollectionMember<Document>> existingDocuments = coreCaseData.getD8Documents().stream()
-                            .filter(documentCollectionMember ->
-                                !generatedDocumentInfos.stream()
-                                    .map(GeneratedDocumentInfo::getDocumentType)
-                                    .collect(Collectors.toSet())
-                                    .contains(documentCollectionMember.getValue().getDocumentType()))
-                            .collect(Collectors.toList());
+            if (CollectionUtils.isNotEmpty(coreCaseData.getD8Documents())) {
+                List<CollectionMember<Document>> existingDocuments = coreCaseData.getD8Documents().stream()
+                        .filter(documentCollectionMember ->
+                            !generatedDocumentInfos.stream()
+                                .map(GeneratedDocumentInfo::getDocumentType)
+                                .collect(Collectors.toSet())
+                                .contains(documentCollectionMember.getValue().getDocumentType()))
+                        .collect(Collectors.toList());
 
-                    resultDocuments.addAll(existingDocuments);
-                }
+                resultDocuments.addAll(existingDocuments);
+            }
 
             resultDocuments.addAll(newDocuments);
             coreCaseData.setD8Documents(resultDocuments);

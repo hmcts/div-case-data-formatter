@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.functionaltest;
 
+import com.github.tomakehurst.wiremock.common.Json;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -57,6 +59,6 @@ public class AddDocumentsITest {
             ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
                 CoreCaseData.class);
 
-        assertThat(expectedCaseData, samePropertyValuesAs(actualCaseData));
+        assertThat(expectedCaseData).isEqualTo(samePropertyValuesAs(actualCaseData));
     }
 }

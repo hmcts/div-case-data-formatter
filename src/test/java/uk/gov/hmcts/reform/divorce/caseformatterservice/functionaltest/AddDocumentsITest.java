@@ -59,6 +59,6 @@ public class AddDocumentsITest {
             ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
                 CoreCaseData.class);
 
-        assertThat(expectedCaseData).isEqualTo(actualCaseData);
+        assertThat(actualCaseData).isEqualTo(expectedCaseData);
     }
 }

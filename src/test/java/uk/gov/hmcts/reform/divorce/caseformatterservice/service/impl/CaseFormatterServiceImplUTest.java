@@ -172,7 +172,7 @@ public class CaseFormatterServiceImplUTest {
         when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo2)).thenReturn(document2);
 
         final CoreCaseData expected = new CoreCaseData();
-        expected.setD8Documents(Arrays.asList(document1, document2, document3));
+        expected.setD8Documents(Arrays.asList(document3, document1, document2));
 
         final CoreCaseData input = new CoreCaseData();
         input.setD8Documents(Arrays.asList(document3, document4));

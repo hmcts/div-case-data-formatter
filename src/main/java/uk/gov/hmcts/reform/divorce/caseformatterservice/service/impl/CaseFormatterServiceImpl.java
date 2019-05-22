@@ -17,6 +17,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCa
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,24 +51,29 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public CoreCaseData addDocuments(CoreCaseData coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos) {
+
         if (coreCaseData != null && CollectionUtils.isNotEmpty(generatedDocumentInfos)) {
-            List<CollectionMember<Document>> documents =
+            List<CollectionMember<Document>> resultDocuments = new ArrayList<>();
+
+            List<CollectionMember<Document>> newDocuments =
                 generatedDocumentInfos.stream()
                     .map(documentCollectionDocumentRequestMapper::map)
                     .collect(Collectors.toList());
 
             if (CollectionUtils.isNotEmpty(coreCaseData.getD8Documents())) {
-                documents.addAll(
-                    coreCaseData.getD8Documents().stream()
+                List<CollectionMember<Document>> existingDocuments = coreCaseData.getD8Documents().stream()
                         .filter(documentCollectionMember ->
                             !generatedDocumentInfos.stream()
                                 .map(GeneratedDocumentInfo::getDocumentType)
                                 .collect(Collectors.toSet())
                                 .contains(documentCollectionMember.getValue().getDocumentType()))
-                        .collect(Collectors.toList()));
+                        .collect(Collectors.toList());
+
+                resultDocuments.addAll(existingDocuments);
             }
 
-            coreCaseData.setD8Documents(documents);
+            resultDocuments.addAll(newDocuments);
+            coreCaseData.setD8Documents(resultDocuments);
         }
 
         return coreCaseData;

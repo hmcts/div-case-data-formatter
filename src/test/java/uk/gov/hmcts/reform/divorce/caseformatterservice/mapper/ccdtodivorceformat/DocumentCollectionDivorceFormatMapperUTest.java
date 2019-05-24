@@ -31,7 +31,36 @@ public class DocumentCollectionDivorceFormatMapperUTest {
     private DocumentCollectionDivorceFormatMapper mapper;
 
     @Test
-    public void shouldMapUploadedFileToCollectionMember() throws ParseException {
+    public void shouldMapUploadedFileToCollectionMember() {
+        final String dateDocumentAdded = "2012-11-11";
+
+        final Document document = new Document();
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
+        document.setDocumentLink(documentLink);
+        document.setDocumentFileName(FILE_NAME);
+        document.setDocumentDateAdded(dateDocumentAdded);
+        document.setDocumentDateAdded("");
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        final UploadedFile uploadedFile = mapper.map(collectionMember);
+
+        assertNull(uploadedFile.getStatus());
+        assertNull(uploadedFile.getMimeType());
+        assertNull(uploadedFile.getModifiedOn());
+        assertNull(uploadedFile.getFileType());
+        assertEquals(0, uploadedFile.getCreatedBy());
+        assertEquals(0, uploadedFile.getLastModifiedBy());
+        assertEquals(FILE_NAME, uploadedFile.getFileName());
+        assertEquals(FILE_URL, uploadedFile.getFileUrl());
+        assertNull(uploadedFile.getCreatedOn());
+    }
+
+    @Test
+    public void shouldMapDateCorrectly() throws ParseException {
         final String dateDocumentAdded = "2012-11-11";
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
@@ -48,15 +77,25 @@ public class DocumentCollectionDivorceFormatMapperUTest {
 
         final UploadedFile uploadedFile = mapper.map(collectionMember);
 
-        assertNull(uploadedFile.getStatus());
-        assertNull(uploadedFile.getMimeType());
-        assertNull(uploadedFile.getModifiedOn());
-        assertNull(uploadedFile.getFileType());
-        assertEquals(0, uploadedFile.getCreatedBy());
-        assertEquals(0, uploadedFile.getLastModifiedBy());
-        assertEquals(FILE_NAME, uploadedFile.getFileName());
-        assertEquals(FILE_URL, uploadedFile.getFileUrl());
         assertEquals(dateFormat.parse(dateDocumentAdded), uploadedFile.getCreatedOn());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldThrowRuntimeExceptionOnBadDateFormat() {
+        final String dateDocumentAdded = "wrong-format-1234";
+
+        final Document document = new Document();
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
+        document.setDocumentLink(documentLink);
+        document.setDocumentFileName(FILE_NAME);
+        document.setDocumentDateAdded(dateDocumentAdded);
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        mapper.map(collectionMember);
     }
 
     @Test

@@ -14,9 +14,13 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CaseFormatterServiceApplication.class)
@@ -37,5 +41,25 @@ public class DocumentsMappingUTest {
         List<UploadedFile> marriageCertificateFiles = actualDivorceSession.getMarriageCertificateFiles();
         assertEquals(marriageCertificateFiles.size(), 1);
         assertEquals(marriageCertificateFiles.get(0).getFileName(), "some-file.pdf");
+    }
+
+    @Test
+    public void shouldHandleDocumentDateBeingEmptyString()
+        throws URISyntaxException, IOException, ParseException {
+
+        CoreCaseData coreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/document-dates-empty.json",
+                CoreCaseData.class);
+
+        DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        List<UploadedFile> marriageCertificateFiles = actualDivorceSession.getMarriageCertificateFiles();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(SIMPLE_DATE_FORMAT);
+        String date = dateFormat.format(marriageCertificateFiles.get(0).getCreatedOn());
+
+        assertEquals(marriageCertificateFiles.size(), 3);
+        assertEquals(marriageCertificateFiles.get(0).getFileName(), "some-file.pdf");
+        assertEquals(date, "2019-05-10");
     }
 }

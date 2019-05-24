@@ -52,3 +52,8 @@ variable "vault_env" {}
 variable "common_tags" {
     type = "map"
 }
+
+variable "health_check_ttl" {
+    type = "string"
+    value = "4000"
+}

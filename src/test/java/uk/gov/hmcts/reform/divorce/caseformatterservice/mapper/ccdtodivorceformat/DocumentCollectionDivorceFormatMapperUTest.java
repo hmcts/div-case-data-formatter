@@ -57,7 +57,7 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         assertEquals(0, uploadedFile.getLastModifiedBy());
         assertEquals(FILE_NAME, uploadedFile.getFileName());
         assertEquals(FILE_URL, uploadedFile.getFileUrl());
-        //assertEquals(dateFormat.parse(dateDocumentAdded), uploadedFile.getCreatedOn());
+        assertEquals(dateFormat.parse(dateDocumentAdded), uploadedFile.getCreatedOn());
     }
 
     @Test

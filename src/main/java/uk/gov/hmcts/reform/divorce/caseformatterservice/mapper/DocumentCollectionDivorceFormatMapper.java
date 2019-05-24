@@ -7,7 +7,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
@@ -15,7 +14,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
 

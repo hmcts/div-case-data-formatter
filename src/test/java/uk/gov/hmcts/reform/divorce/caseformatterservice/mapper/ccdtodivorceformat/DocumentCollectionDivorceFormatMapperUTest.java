@@ -80,6 +80,24 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         assertEquals(dateFormat.parse(dateDocumentAdded), uploadedFile.getCreatedOn());
     }
 
+    @Test(expected = RuntimeException.class)
+    public void shouldThrowRuntimeExceptionOnBadDateFormat() {
+        final String dateDocumentAdded = "wrong-format-1234";
+
+        final Document document = new Document();
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
+        document.setDocumentLink(documentLink);
+        document.setDocumentFileName(FILE_NAME);
+        document.setDocumentDateAdded(dateDocumentAdded);
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        mapper.map(collectionMember);
+    }
+
     @Test
     public void shouldReturnNullWithNullInput() {
         assertNull(mapper.map(null));

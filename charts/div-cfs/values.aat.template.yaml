@@ -4,6 +4,7 @@ java:
         REFORM_ENVIRONMENT: "aat"
         IDAM_API_BASEURL : "https://idam-api.aat.platform.hmcts.net"
         APPINSIGHTS_INSTRUMENTATIONKEY: "dummy"
+        HEALTH_SLEEP_ENABLED: false
 
     # Don't modify below here
     image: ${IMAGE_NAME}

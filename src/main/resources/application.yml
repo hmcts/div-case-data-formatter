@@ -102,6 +102,8 @@ health:
                 timeout: 5000
                 request:
                     timeout: 5000
+    sleep:
+        enabled: ${HEALTH_SLEEP_ENABLED:false}
 
 documentation:
   swagger:

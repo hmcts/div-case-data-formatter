@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.management.monitoring.health;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.HttpEntity;
@@ -15,6 +16,10 @@ import java.util.HashMap;
 
 @Slf4j
 public abstract class WebServiceHealthCheck implements HealthIndicator {
+
+    @Value("${health.sleep.enabled:false}")
+    private boolean sleepEnabled;
+
     private final HttpEntityFactory httpEntityFactory;
     private final RestTemplate restTemplate;
     private final String uri;
@@ -30,7 +35,9 @@ public abstract class WebServiceHealthCheck implements HealthIndicator {
         ResponseEntity<Object> responseEntity;
 
         try {
-            Thread.sleep(15000);
+            if(sleepEnabled) {
+                Thread.sleep(15000);
+            }
             responseEntity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, Object.class, new HashMap<>());
         } catch (HttpServerErrorException | ResourceAccessException serverException) {
             log.error("Exception occurred while doing health check", serverException);

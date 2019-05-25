@@ -30,6 +30,7 @@ public abstract class WebServiceHealthCheck implements HealthIndicator {
         ResponseEntity<Object> responseEntity;
 
         try {
+            Thread.sleep(15000);
             responseEntity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, Object.class, new HashMap<>());
         } catch (HttpServerErrorException | ResourceAccessException serverException) {
             log.error("Exception occurred while doing health check", serverException);

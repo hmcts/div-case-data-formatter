@@ -35,7 +35,7 @@ public abstract class WebServiceHealthCheck implements HealthIndicator {
         ResponseEntity<Object> responseEntity;
 
         try {
-            if(sleepEnabled) {
+            if (sleepEnabled) {
                 Thread.sleep(15000);
             }
             responseEntity = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, Object.class, new HashMap<>());

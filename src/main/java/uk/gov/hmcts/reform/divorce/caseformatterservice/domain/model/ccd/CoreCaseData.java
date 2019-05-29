@@ -544,7 +544,7 @@ public class CoreCaseData extends AosCaseData {
     private String dnApprovalDate;
 
     @JsonProperty("BulkListingCaseId")
-    private String bulkListingCaseId;
+    private CaseLink bulkListingCaseId;
 
     @JsonProperty("CostsClaimGranted")
     private String costsClaimGranted;

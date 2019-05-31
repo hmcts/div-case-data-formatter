@@ -12,7 +12,9 @@ import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.HearingDateTime;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -27,6 +29,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -952,6 +956,16 @@ public abstract class CCDCaseToDivorceMapper {
 
         String caseLink = translateCaseLinkToString(caseData.getPreviousCaseId());
         divorceSession.setPreviousCaseId(caseLink);
+    }
+
+    @AfterMapping
+    protected void mapCourtHearingDateAndTime(CoreCaseData caseData, @MappingTarget DivorceSession divorceSession) {
+        List<CollectionMember<HearingDateTime>> hearingDateTimeList = caseData.getDateAndTimeOfHearing();
+        if (CollectionUtils.isNotEmpty(hearingDateTimeList)) {
+            CollectionMember<HearingDateTime> hearingDateTime = hearingDateTimeList.get(hearingDateTimeList.size() - 1);
+            divorceSession.setHearingDate(hearingDateTime.getValue().getDateOfHearing());
+            divorceSession.setHearingTime(hearingDateTime.getValue().getTimeOfHearing());
+        }
     }
 
     private String translateCaseLinkToString(final CaseLink caseLink) {

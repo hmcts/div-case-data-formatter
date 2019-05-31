@@ -463,6 +463,14 @@ public class DivorceSession {
     @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
     private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+    //Dn Bulk Listing Fields Mapping Start
+    @ApiModelProperty(value = "Name of the Court where the Hearing is Scheduled")
+    private String courtName;
+    @ApiModelProperty(value = "Date of the Hearing in \"yyyy-MM-dd\" format")
+    private String hearingDate;
+    @ApiModelProperty(value = "Time of the Hearing in \"HH:mm\" format")
+    private String hearingTime;
+    //Dn Bulk Listing Fields Mapping End
 
     @ApiModelProperty(value = "Case ID from previously amended case")
     private String previousCaseId;

@@ -2,7 +2,7 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 
 buildscript {
     ext {
-        springBootVersion = '2.1.2.RELEASE'
+        springBootVersion = '2.1.3.RELEASE'
     }
     repositories {
         mavenLocal()
@@ -130,7 +130,7 @@ def versions = [
     junit: '4.12',
     lombok: '1.16.16',
     mapstruct: '1.2.0.Final',
-    orgSpringframework: '5.1.7.RELEASE',
+    orgSpringframework: '5.1.4.RELEASE',
     pitest: '1.3.2',
     puppyCrawl: '7.6',
     reformHealth: '0.0.3',
@@ -157,7 +157,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-webmvc',  version: versions.orgSpringframework
     compile group: 'org.springframework', name: 'spring-web',  version: versions.orgSpringframework
     compile group: 'org.springframework', name: 'spring-aop' , version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-beans' , version: versions.orgSpringframework
+    compile group: 'org.springframework', name: 'spring-beans' , version: versions.orgSpringframework
     compile group: 'org.springframework', name: 'spring-expression' , version: versions.orgSpringframework
     compile group: 'org.springframework', name: 'spring-core' , version: versions.orgSpringframework
     compile group: 'org.springframework', name: 'spring-jcl' , version: versions.orgSpringframework
@@ -208,10 +208,11 @@ dependencies {
         }
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
+    annotationProcessor("org.mapstruct:mapstruct-processor:${versions.mapstruct}")
     compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: versions.mapstruct
 
-    implementation group: 'org.apache.commons', name: 'commons-collections4', version: versions.commonsCollections4
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version : versions.commonsLang3
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: versions.commonsCollections4
+    compile group: 'org.apache.commons', name: 'commons-lang3', version : versions.commonsLang3
 
     compile group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: versions.reformPropertiesVolume
     compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth

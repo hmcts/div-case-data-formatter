@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.UUID;
 import javax.annotation.PostConstruct;
 
-
 @Slf4j
 @RunWith(SerenityRunner.class)
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})

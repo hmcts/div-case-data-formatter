@@ -1,12 +1,13 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
+
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;

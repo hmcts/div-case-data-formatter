@@ -161,5 +161,6 @@
     "CourtName": "placeholder Court",
     "CostsClaimGranted": "YES",
     "DNApprovalDate": "2000-01-01",
-    "DecreeNisiGrantedDate": "2020-01-01"
+    "DecreeNisiGrantedDate": "2020-01-01",
+    "DAEligibleFromDate": "2020-02-15"
 }

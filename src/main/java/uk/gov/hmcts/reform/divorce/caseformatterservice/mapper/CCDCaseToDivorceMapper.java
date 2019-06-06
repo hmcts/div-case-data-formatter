@@ -4,11 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.util.Strings;
-import org.mapstruct.AfterMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
@@ -18,27 +14,15 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Hearing
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.ContactInfo;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Costs;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.*;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.*;
 
 @Slf4j
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},
@@ -321,15 +305,15 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
-    protected void mapRespondentCorrespondenceSendToSol(CoreCaseData caseData,
+    protected void mapRespondentSolicitorRepresented(CoreCaseData caseData,
                                                         @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setRespondentCorrespondenceSendToSolicitor(
-                toYesNoPascalCase(caseData.getD8RespondentCorrespondenceSendToSol()));
+        divorceSession.setRespondentSolicitorRepresented(
+                toYesNoPascalCase(caseData.getRespondentSolicitorRepresented()));
     }
 
     @AfterMapping
     protected void mapRespondentKnowsHomeAddress(CoreCaseData caseData,
-                                                 @MappingTarget DivorceSession divorceSession) {
+                                                   @MappingTarget DivorceSession divorceSession) {
         divorceSession.setRespondentKnowsHomeAddress(
                 toYesNoPascalCase(caseData.getD8RespondentKnowsHomeAddress()));
     }

@@ -231,7 +231,7 @@
     "reasonForDivorceDesertionInFuture":null,
     "reasonForDivorceDesertion":null,
     "respondentNameAsOnMarriageCertificate":null,
-    "respondentCorrespondenceSendToSolicitor":null,
+    "respondentSolicitorRepresented":null,
     "respondentKnowsHomeAddress":null,
     "sessionKey":null,
     "court":{

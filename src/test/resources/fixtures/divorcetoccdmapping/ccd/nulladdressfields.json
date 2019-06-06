@@ -52,7 +52,7 @@
     "D8DerivedRespondentCorrespondenceAddr" : null,
     "D8RespondentSolicitorName" : "Justin",
     "D8RespondentSolicitorCompany" : "Case",
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : null,
     "D8RespondentCorrespondenceUseHomeAddress" : "Solicitor",
     "D8RespondentKnowsHomeAddress" : null,

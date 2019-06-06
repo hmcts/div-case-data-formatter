@@ -54,7 +54,7 @@
     "D8RespondentSolicitorCompany" : "Case",
     "D8RespondentSolicitorEmail" : "justin@example.com",
     "D8RespondentSolicitorPhone" : "01234567890",
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : {
         "AddressLine1":null,
         "AddressLine2":null,

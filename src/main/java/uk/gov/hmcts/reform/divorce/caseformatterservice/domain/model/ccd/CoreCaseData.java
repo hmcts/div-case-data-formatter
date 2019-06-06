@@ -557,4 +557,7 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("DateAndTimeOfHearing")
     private List<CollectionMember<HearingDateTime>> dateAndTimeOfHearing;
+
+    @JsonProperty("DAEligibleFromDate")
+    private String decreeAbsoluteEligibleFromDate;
 }

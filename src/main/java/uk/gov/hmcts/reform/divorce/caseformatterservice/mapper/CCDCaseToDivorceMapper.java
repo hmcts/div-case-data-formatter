@@ -29,7 +29,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -321,15 +320,15 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
-    protected void mapRespondentCorrespondenceSendToSol(CoreCaseData caseData,
+    protected void mapRespondentSolicitorRepresented(CoreCaseData caseData,
                                                         @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setRespondentCorrespondenceSendToSolicitor(
-                toYesNoPascalCase(caseData.getD8RespondentCorrespondenceSendToSol()));
+        divorceSession.setRespondentSolicitorRepresented(
+                toYesNoPascalCase(caseData.getRespondentSolicitorRepresented()));
     }
 
     @AfterMapping
     protected void mapRespondentKnowsHomeAddress(CoreCaseData caseData,
-                                                 @MappingTarget DivorceSession divorceSession) {
+                                                   @MappingTarget DivorceSession divorceSession) {
         divorceSession.setRespondentKnowsHomeAddress(
                 toYesNoPascalCase(caseData.getD8RespondentKnowsHomeAddress()));
     }

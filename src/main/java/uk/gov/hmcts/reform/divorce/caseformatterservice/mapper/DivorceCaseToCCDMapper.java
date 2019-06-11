@@ -209,10 +209,10 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
-    protected void mapRespondentCorrespondenceSendToSol(DivorceSession divorceSession,
+    protected void mapRespondentSolicitorRepresented(DivorceSession divorceSession,
                                                         @MappingTarget CoreCaseData result) {
-        result.setD8RespondentCorrespondenceSendToSol(
-            toYesNoUpperCase(divorceSession.getRespondentCorrespondenceSendToSolicitor()));
+        result.setRespondentSolicitorRepresented(
+            toYesNoUpperCase(divorceSession.getRespondentSolicitorRepresented()));
     }
 
     @AfterMapping

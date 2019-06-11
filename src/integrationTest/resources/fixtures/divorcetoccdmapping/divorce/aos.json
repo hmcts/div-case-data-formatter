@@ -270,7 +270,7 @@
             "postcode":"A AAA"
         }
     },
-    "respondentCorrespondenceSendToSolicitor": "Yes",
+    "respondentSolicitorRepresented": "Yes",
     "respondentSolicitorEmail": "solicitor@localhost.local",
     "respondentSolicitorPhoneNumber": "2222222222",
     "respondentSolicitorReference": "1234",

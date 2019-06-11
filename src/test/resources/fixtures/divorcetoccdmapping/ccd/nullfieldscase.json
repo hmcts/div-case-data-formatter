@@ -23,7 +23,7 @@
     "D8RespondentNameAsOnMarriageCertificate" : null,
     "D8RespondentSolicitorName" : null,
     "D8RespondentSolicitorCompany" : null,
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : null,
     "D8RespondentCorrespondenceUseHomeAddress" : "Solicitor",
     "D8RespondentKnowsHomeAddress" : null,

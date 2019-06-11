@@ -40,7 +40,7 @@
     "D8DerivedRespondentCorrespondenceAddr":null,
     "D8RespondentSolicitorName":null,
     "D8RespondentSolicitorCompany":null,
-    "D8RespondentCorrespondenceSendToSol":null,
+    "respondentSolicitorRepresented":null,
     "D8RespondentSolicitorAddress":null,
     "D8RespondentCorrespondenceUseHomeAddress":null,
     "D8RespondentKnowsHomeAddress":null,

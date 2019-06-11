@@ -281,7 +281,7 @@ public class DivorceSession {
         value = "Respondent current name is the same as that on marriage certificate?", allowableValues = "Yes, No")
     private String respondentNameAsOnMarriageCertificate;
     @ApiModelProperty(value = "Is respondent using a solicitor?", allowableValues = "Yes, No")
-    private String respondentCorrespondenceSendToSolicitor;
+    private String respondentSolicitorRepresented;
     @ApiModelProperty(value = "Does petitioner know the respondents home address?", allowableValues = "Yes, No")
     private String respondentKnowsHomeAddress;
     @ApiModelProperty(hidden = true)

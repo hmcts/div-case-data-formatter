@@ -6,8 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.Date;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
@@ -141,8 +139,8 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("D8RespondentSolicitorCompany")
     private String d8RespondentSolicitorCompany;
 
-    @JsonProperty("D8RespondentCorrespondenceSendToSol")
-    private String d8RespondentCorrespondenceSendToSol;
+    @JsonProperty("respondentSolicitorRepresented")
+    private String respondentSolicitorRepresented;
 
     @JsonProperty("D8RespondentSolicitorEmail")
     private String d8RespondentSolicitorEmail;

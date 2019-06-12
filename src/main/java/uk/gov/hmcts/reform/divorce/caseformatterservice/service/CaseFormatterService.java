@@ -7,6 +7,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupd
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CaseFormatterService {
 
@@ -14,7 +15,7 @@ public interface CaseFormatterService {
 
     DivorceSession transformToDivorceSession(CoreCaseData coreCaseData);
 
-    CoreCaseData addDocuments(CoreCaseData coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);
+    Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);
 
     AosCaseData getAosCaseData(DivorceSession divorceSession);
 

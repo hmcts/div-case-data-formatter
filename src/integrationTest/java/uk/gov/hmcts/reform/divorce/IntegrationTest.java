@@ -12,13 +12,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import javax.annotation.PostConstruct;
 
 @Slf4j
 @RunWith(SerenityRunner.class)
@@ -45,11 +45,11 @@ public abstract class IntegrationTest {
     }
 
     @PostConstruct
-    public void init(){
-        if(!Strings.isNullOrEmpty(httpProxy)) {
+    public void init() {
+        if (!Strings.isNullOrEmpty(httpProxy)) {
             try {
                 URL proxy = new URL(httpProxy);
-                if(!InetAddress.getByName(proxy.getHost()).isReachable(2000)) {
+                if (!InetAddress.getByName(proxy.getHost()).isReachable(2000)) {
                     throw new IOException("Proxy host is not reachable");
                 }
                 System.setProperty("http.proxyHost", proxy.getHost());

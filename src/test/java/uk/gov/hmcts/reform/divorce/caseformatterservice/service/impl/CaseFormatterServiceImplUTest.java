@@ -96,10 +96,10 @@ public class CaseFormatterServiceImplUTest {
         verify(ccdCaseToDivorceMapper).courtCaseDataToDivorceCaseData(coreCaseData);
     }
 
-    @Test
-    public void givenCoreCaseDataIsNull_whenAddDocuments_thenReturnNull() {
-        assertNull(classUnderTest.addDocuments(null,
-            Collections.singletonList(GeneratedDocumentInfo.builder().build())));
+    @Test(expected = IllegalArgumentException.class)
+    public void givenCoreCaseDataIsNull_whenAddDocuments_thenReturnThrowException() {
+        classUnderTest.addDocuments(null,
+            Collections.singletonList(GeneratedDocumentInfo.builder().build()));
     }
 
     @Test

@@ -463,6 +463,20 @@ public class DivorceSession {
     @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
     private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+    //Dn Approval Fields Mapping Start
+    @ApiModelProperty(value = "Has the Costs Claim been granted")
+    private String costsClaimGranted;
+    @ApiModelProperty(value = "Who has been ordered to pay the costs")
+    private String whoPaysCosts;
+    @ApiModelProperty(value = "The type of cost decision made")
+    private String typeCostsDecision;
+    @ApiModelProperty(value = "Any additional information on the cost order")
+    private String costsOrderAdditionalInfo;
+    @ApiModelProperty(value = "Date Decree Nisi has been pronounced")
+    private Date decreeNisiGrantedDate;
+    @ApiModelProperty(value = "Date Decree Absolute can be aplied for")
+    private Date decreeAbsoluteEligibleFromDate;
+    //Dn Approval Fields Mapping End
     //Dn Bulk Listing Fields Mapping Start
     @ApiModelProperty(value = "Name of the Court where the Hearing is Scheduled")
     private String courtName;

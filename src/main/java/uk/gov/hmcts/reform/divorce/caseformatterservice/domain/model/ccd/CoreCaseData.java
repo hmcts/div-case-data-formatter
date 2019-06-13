@@ -549,6 +549,15 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("CostsClaimGranted")
     private String costsClaimGranted;
 
+    @JsonProperty("WhoPaysCosts")
+    private String whoPaysCosts;
+
+    @JsonProperty("TypeCostsDecision")
+    private String typeCostsDecision;
+
+    @JsonProperty("CostsOrderAdditionalInfo")
+    private String costsOrderAdditionalInfo;
+
     @JsonProperty("DecreeNisiGrantedDate")
     private String decreeNisiGrantedDate;
 

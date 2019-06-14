@@ -20,6 +20,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupd
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping(path = "caseformatter/version/1", consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE )
@@ -58,11 +60,11 @@ public class CaseFormatterController {
     @PostMapping(path = "/add-documents")
     @ApiOperation(value = "Given a case in CCD format and documents to add this will update the case with documents")
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "Case transformed into Divorce Session format",
-            response = DivorceSession.class),
+        @ApiResponse(code = 200, message = "D8DocumentsGenerated values after CCD update",
+            response = Map.class),
         }
     )
-    public ResponseEntity<CoreCaseData> addDocuments(
+    public ResponseEntity<Map<String, Object>> addDocuments(
         @RequestBody @ApiParam(value = "CCD Data", required = true) DocumentUpdateRequest documentUpdateRequest) {
         return ResponseEntity.ok(caseFormatterService.addDocuments(documentUpdateRequest.getCaseData(),
             documentUpdateRequest.getDocuments()));

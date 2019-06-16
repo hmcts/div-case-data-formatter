@@ -23,7 +23,7 @@ public class DnCaseData {
     private String confirmPetitionDN;
 
     @JsonProperty("DivorceCostsOptionDN")
-    private String divorceCostsOptionDN;
+    private DynamicList divorceCostsOptionDN;
 
     @JsonProperty("CostsDifferentDetails")
     private String costsDifferentDetails;

@@ -7,16 +7,21 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
-
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DynamicList;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DynamicListItem;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DynamicListConfigMap.DN_COST_OPTION_MAP;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
@@ -27,7 +32,6 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @Mapping(source = "files", target = "documentsUploadedDN")
     @Mapping(source = "changesDetails", target = "petitionChangedDetailsDN")
-    @Mapping(source = "claimCosts", target = "divorceCostsOptionDN")
     @Mapping(source = "costsDifferentDetails", target = "costsDifferentDetails")
     @Mapping(source = "statementOfTruth", target = "statementOfTruthDN")
     @Mapping(source = "intolerable", target = "adulteryLifeIntolerable")
@@ -110,6 +114,29 @@ public abstract class DivorceCaseToDnCaseMapper {
             result.setSeparationTimeLivedTogetherDetailsDN(divorceSession.getApproximateDatesOfLivingTogetherField());
         }
     }
+
+    @AfterMapping
+    protected void mapDNClaimCosts(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+        List<DynamicListItem> itemsList = new ArrayList<>();
+        if (divorceSession.getClaimCosts() == null) {
+            result.setDivorceCostsOptionDN(null);
+        } else {
+            DynamicListItem selectedOption = new DynamicListItem(
+                divorceSession.getClaimCosts(),
+                DN_COST_OPTION_MAP.get(divorceSession.getClaimCosts())
+            );
+
+            itemsList = DN_COST_OPTION_MAP
+                .entrySet()
+                .stream()
+                .map(
+                    entry -> new DynamicListItem(entry.getKey(), entry.getValue())
+                ).collect(Collectors.toList());
+
+            result.setDivorceCostsOptionDN(new DynamicList(selectedOption, itemsList));
+        }
+    }
+
 
     private String translateToStringYesNo(final String value) {
         if (Objects.isNull(value)) {

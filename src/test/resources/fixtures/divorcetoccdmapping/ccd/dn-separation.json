@@ -2,7 +2,26 @@
     "PetitionChangedYesNoDN" : "YES",
     "PetitionChangedDetailsDN" : "Some details about this dn changes",
     "ConfirmPetitionDN" : "YES",
-    "DivorceCostsOptionDN" : "differentAmount",
+    "DivorceCostsOptionDN" : {
+        "value": {
+            "code": "differentAmount",
+            "label": "I want to claim a specific amount"
+        },
+        "list_items": [
+            {
+                "code": "originalAmount",
+                "label": "I still want to claim my costs and will let the court decide how much"
+            },
+            {
+                "code": "differentAmount",
+                "label": "I want to claim a specific amount"
+            },
+            {
+                "code": "endClaim",
+                "label": "I don't want to claim my costs anymore"
+            }
+        ]
+    },
     "CostsDifferentDetails" : "I want to pay 60%",
     "statementOfTruthDN" : "YES",
     "SeparationLivedApartSinceEventDN" : "NO",

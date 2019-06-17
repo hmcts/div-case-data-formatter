@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +19,18 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCa
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 public class CaseFormatterServiceImpl implements CaseFormatterService {
+
+    private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private DivorceCaseToCCDMapper divorceCaseToCCDMapper;
@@ -49,25 +58,38 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
-    public CoreCaseData addDocuments(CoreCaseData coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos) {
-        if (coreCaseData != null && CollectionUtils.isNotEmpty(generatedDocumentInfos)) {
-            List<CollectionMember<Document>> documents =
+    public Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos) {
+
+        if (coreCaseData == null) {
+            throw new IllegalArgumentException("Existing case data must not be null.");
+        }
+
+        if (CollectionUtils.isNotEmpty(generatedDocumentInfos)) {
+            List<CollectionMember<Document>> resultDocuments = new ArrayList<>();
+
+            List<CollectionMember<Document>> newDocuments =
                 generatedDocumentInfos.stream()
                     .map(documentCollectionDocumentRequestMapper::map)
                     .collect(Collectors.toList());
 
-            if (CollectionUtils.isNotEmpty(coreCaseData.getD8Documents())) {
-                documents.addAll(
-                    coreCaseData.getD8Documents().stream()
+            List<CollectionMember<Document>> documentsGenerated =
+                objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
+                    new TypeReference<List<CollectionMember<Document>>>() {});
+
+            if (CollectionUtils.isNotEmpty(documentsGenerated)) {
+                List<CollectionMember<Document>> existingDocuments = documentsGenerated.stream()
                         .filter(documentCollectionMember ->
                             !generatedDocumentInfos.stream()
                                 .map(GeneratedDocumentInfo::getDocumentType)
                                 .collect(Collectors.toSet())
                                 .contains(documentCollectionMember.getValue().getDocumentType()))
-                        .collect(Collectors.toList()));
+                        .collect(Collectors.toList());
+
+                resultDocuments.addAll(existingDocuments);
             }
 
-            coreCaseData.setD8Documents(documents);
+            resultDocuments.addAll(newDocuments);
+            coreCaseData.put(D8_DOCUMENTS_GENERATED_CCD_FIELD, resultDocuments);
         }
 
         return coreCaseData;

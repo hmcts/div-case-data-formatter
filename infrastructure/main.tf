@@ -21,6 +21,7 @@ module "div-cfs" {
     common_tags                     = "${var.common_tags}"
     asp_name                        = "${local.asp_name}"
     asp_rg                          = "${local.asp_rg}"
+    instance_size                   = "${var.instance_size}"
 
     app_settings = {
         REFORM_SERVICE_NAME                                   = "${var.component}"
@@ -28,5 +29,6 @@ module "div-cfs" {
         REFORM_ENVIRONMENT                                    = "${var.env}"
         IDAM_API_BASEURL                                      = "${var.idam_api_baseurl}"
         DOCUMENT_MANAGEMENT_STORE_URL                         = "${local.dm_store_url}"
+        MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE                = "${var.health_check_ttl}"
     }
 }

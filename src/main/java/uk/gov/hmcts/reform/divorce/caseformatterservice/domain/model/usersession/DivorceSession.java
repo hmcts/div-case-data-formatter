@@ -281,7 +281,7 @@ public class DivorceSession {
         value = "Respondent current name is the same as that on marriage certificate?", allowableValues = "Yes, No")
     private String respondentNameAsOnMarriageCertificate;
     @ApiModelProperty(value = "Is respondent using a solicitor?", allowableValues = "Yes, No")
-    private String respondentCorrespondenceSendToSolicitor;
+    private String respondentSolicitorRepresented;
     @ApiModelProperty(value = "Does petitioner know the respondents home address?", allowableValues = "Yes, No")
     private String respondentKnowsHomeAddress;
     @ApiModelProperty(hidden = true)
@@ -294,8 +294,14 @@ public class DivorceSession {
     private String respondentSolicitorName;
     @ApiModelProperty(value = "Company of solicitor used by respondent.")
     private String respondentSolicitorCompany;
+    @ApiModelProperty(value = "Email of solicitor used by respondent.")
+    private String respondentSolicitorEmail;
+    @ApiModelProperty(value = "Phone number of solicitor used by respondent.")
+    private String respondentSolicitorPhoneNumber;
     @ApiModelProperty(value = "Address of solicitor used by respondent.")
     private Address respondentSolicitorAddress;
+    @ApiModelProperty(value = "Respondent's Solicitor reference number.")
+    private String respondentSolicitorReference;
     @ApiModelProperty(value = "Agree to statement of truth?", allowableValues = "Yes, No")
     private String confirmPrayer;
     @ApiModelProperty(value = "Payment details.")
@@ -457,6 +463,28 @@ public class DivorceSession {
     @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
     private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+    //Dn Approval Fields Mapping Start
+    @ApiModelProperty(value = "Has the Costs Claim been granted")
+    private String costsClaimGranted;
+    @ApiModelProperty(value = "Who has been ordered to pay the costs")
+    private String whoPaysCosts;
+    @ApiModelProperty(value = "The type of cost decision made")
+    private String typeCostsDecision;
+    @ApiModelProperty(value = "Any additional information on the cost order")
+    private String costsOrderAdditionalInfo;
+    @ApiModelProperty(value = "Date Decree Nisi has been pronounced")
+    private Date decreeNisiGrantedDate;
+    @ApiModelProperty(value = "Date Decree Absolute can be aplied for")
+    private Date decreeAbsoluteEligibleFromDate;
+    //Dn Approval Fields Mapping End
+    //Dn Bulk Listing Fields Mapping Start
+    @ApiModelProperty(value = "Name of the Court where the Hearing is Scheduled")
+    private String courtName;
+    @ApiModelProperty(value = "Date of the Hearing in \"yyyy-MM-dd\" format")
+    private String hearingDate;
+    @ApiModelProperty(value = "Time of the Hearing in \"HH:mm\" format")
+    private String hearingTime;
+    //Dn Bulk Listing Fields Mapping End
 
     @ApiModelProperty(value = "Case ID from previously amended case")
     private String previousCaseId;

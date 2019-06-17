@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.util.Strings;
@@ -11,7 +12,9 @@ import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.HearingDateTime;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -24,14 +27,19 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorc
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
 
+@Slf4j
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
@@ -105,6 +113,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8Documents", target = "d8Documents")
     @Mapping(source = "d8RespondentSolicitorName", target = "respondentSolicitorName")
     @Mapping(source = "d8RespondentSolicitorCompany", target = "respondentSolicitorCompany")
+    @Mapping(source = "d8RespondentSolicitorEmail", target = "respondentSolicitorEmail")
+    @Mapping(source = "d8RespondentSolicitorPhone", target = "respondentSolicitorPhoneNumber")
     @Mapping(source = "d8RespondentSolicitorAddress.postCode", target = "respondentSolicitorAddress.postcode")
     @Mapping(source = "createdDate", dateFormat = SIMPLE_DATE_FORMAT, target = "createdDate")
     @Mapping(source = "issueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "issueDate")
@@ -139,6 +149,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(ignore = true, target = "previousCaseId")
     @Mapping(source = "previousIssueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "previousIssueDate")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
+    @Mapping(source = "decreeNisiGrantedDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeNisiGrantedDate")
+    @Mapping(source = "decreeAbsoluteEligibleFromDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeAbsoluteEligibleFromDate")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {
@@ -293,15 +305,32 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
-    protected void mapRespondentCorrespondenceSendToSol(CoreCaseData caseData,
+    protected void mapMarriageCertificateFiles(CoreCaseData caseData,
+                                                            @MappingTarget DivorceSession divorceSession) {
+        Optional.ofNullable(divorceSession.getMarriageCertificateFiles())
+            .ifPresent(uploadedFiles -> {
+                divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
+                    .filter(uploadedFile -> {
+                        boolean fileIdExists = uploadedFile.getId() != null;
+                        if (!fileIdExists) {
+                            log.warn("Missing uploaded file properties in Case ID: {} - skipping file", caseData.getD8caseReference());
+                        }
+                        return fileIdExists;
+                    })
+                    .collect(Collectors.toCollection(ArrayList::new)));
+            });
+    }
+
+    @AfterMapping
+    protected void mapRespondentSolicitorRepresented(CoreCaseData caseData,
                                                         @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setRespondentCorrespondenceSendToSolicitor(
-                toYesNoPascalCase(caseData.getD8RespondentCorrespondenceSendToSol()));
+        divorceSession.setRespondentSolicitorRepresented(
+                toYesNoPascalCase(caseData.getRespondentSolicitorRepresented()));
     }
 
     @AfterMapping
     protected void mapRespondentKnowsHomeAddress(CoreCaseData caseData,
-                                                 @MappingTarget DivorceSession divorceSession) {
+                                                   @MappingTarget DivorceSession divorceSession) {
         divorceSession.setRespondentKnowsHomeAddress(
                 toYesNoPascalCase(caseData.getD8RespondentKnowsHomeAddress()));
     }
@@ -928,6 +957,16 @@ public abstract class CCDCaseToDivorceMapper {
 
         String caseLink = translateCaseLinkToString(caseData.getPreviousCaseId());
         divorceSession.setPreviousCaseId(caseLink);
+    }
+
+    @AfterMapping
+    protected void mapCourtHearingDateAndTime(CoreCaseData caseData, @MappingTarget DivorceSession divorceSession) {
+        List<CollectionMember<HearingDateTime>> hearingDateTimeList = caseData.getDateAndTimeOfHearing();
+        if (CollectionUtils.isNotEmpty(hearingDateTimeList)) {
+            CollectionMember<HearingDateTime> hearingDateTime = hearingDateTimeList.get(hearingDateTimeList.size() - 1);
+            divorceSession.setHearingDate(hearingDateTime.getValue().getDateOfHearing());
+            divorceSession.setHearingTime(hearingDateTime.getValue().getTimeOfHearing());
+        }
     }
 
     private String translateCaseLinkToString(final CaseLink caseLink) {

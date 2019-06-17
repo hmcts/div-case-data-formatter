@@ -19,5 +19,11 @@
     "RespContactMethodIsDigital" : "YES",
     "PermittedDecreeNisiReason" : "0",
     "ReceivedAOSfromResp" : "YES",
-    "ReceivedAOSfromRespDate" : "2001-02-03"
+    "ReceivedAOSfromRespDate" : "2001-02-03",
+    "respondentSolicitorRepresented": "Yes",
+    "D8RespondentSolicitorName": "Justin",
+    "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
+    "D8RespondentSolicitorEmail": "solicitor@localhost.local",
+    "D8RespondentSolicitorPhone": "2222222222",
+    "respondentSolicitorReference": "1234"
 }

@@ -38,6 +38,10 @@ variable "capacity" {
     default = "1"
 }
 
+variable "instance_size" {
+    default = "I2"
+}
+
 variable "subscription" {}
 
 variable "location" {
@@ -51,4 +55,9 @@ variable "vault_env" {}
 
 variable "common_tags" {
     type = "map"
+}
+
+variable "health_check_ttl" {
+    type = "string"
+    default = "4000"
 }

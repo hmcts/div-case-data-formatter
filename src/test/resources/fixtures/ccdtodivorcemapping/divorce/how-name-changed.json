@@ -141,6 +141,7 @@
     "reasonForDivorceClaimingAdultery": false,
     "marriageCertificateFiles": [
         {
+            "id": "7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "createdBy": 0,
             "createdOn": "2017-12-11",
             "lastModifiedBy": 0,
@@ -148,6 +149,7 @@
             "fileUrl": "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936"
         },
         {
+            "id": "560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "createdBy": 0,
             "createdOn": "2017-12-11",
             "lastModifiedBy": 0,
@@ -204,7 +206,7 @@
             "poBox": "PO Box 10447",
             "postCode": "NG2 9QN",
             "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-            "email": "divorcecase@justice.gov.uk",
+            "email": "contactdivorce@justice.gov.uk",
             "phoneNumber": "0300 303 0642",
             "siteId": "AA07"
         }

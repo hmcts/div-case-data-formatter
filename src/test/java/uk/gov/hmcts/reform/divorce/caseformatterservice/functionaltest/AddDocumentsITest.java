@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.functionaltest;
 
+import com.github.tomakehurst.wiremock.common.Json;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,10 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -43,8 +47,8 @@ public class AddDocumentsITest {
 
     @Test
     public void givenValidDetails_whenAddDocuments_thenReturnExpected() throws Exception {
-        final CoreCaseData expectedCaseData =
-            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
+        final Map<String, Object> expectedCaseData =
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, Map.class);
 
         MvcResult result = webClient.perform(post(API_URL)
             .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
@@ -53,10 +57,10 @@ public class AddDocumentsITest {
             .andExpect(status().isOk())
             .andReturn();
 
-        final CoreCaseData actualCaseData =
+        final Map<String, Object> actualCaseData =
             ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
-                CoreCaseData.class);
+                Map.class);
 
-        assertThat(expectedCaseData, samePropertyValuesAs(actualCaseData));
+        assertThat(actualCaseData).isEqualTo(expectedCaseData);
     }
 }

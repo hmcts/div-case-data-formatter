@@ -54,6 +54,7 @@ public abstract class DivorceCaseToCCDMapper {
     private SeparationDateService separationDateService;
 
     @Mapping(source = "helpWithFeesReferenceNumber", target = "d8HelpWithFeesReferenceNumber")
+    @Mapping(source = "caseReference", target = "d8caseReference")
     @Mapping(source = "divorceWho", target = "d8DivorceWho")
     @Mapping(source = "marriageDate", dateFormat = SIMPLE_DATE_FORMAT, target = "d8MarriageDate")
     @Mapping(source = "reasonForDivorceDesertionDay", target = "d8ReasonForDivorceDesertionDay")
@@ -115,6 +116,8 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "d8Documents", target = "d8Documents")
     @Mapping(source = "respondentSolicitorName", target = "d8RespondentSolicitorName")
     @Mapping(source = "respondentSolicitorCompany", target = "d8RespondentSolicitorCompany")
+    @Mapping(source = "respondentSolicitorEmail", target = "d8RespondentSolicitorEmail")
+    @Mapping(source = "respondentSolicitorPhoneNumber", target = "d8RespondentSolicitorPhone")
     @Mapping(source = "reasonForDivorceDecisionDate", dateFormat = SIMPLE_DATE_FORMAT,
         target = "reasonForDivorceDecisionDate")
     @Mapping(source = "reasonForDivorceLivingApartDate", dateFormat = SIMPLE_DATE_FORMAT,
@@ -206,10 +209,10 @@ public abstract class DivorceCaseToCCDMapper {
     }
 
     @AfterMapping
-    protected void mapRespondentCorrespondenceSendToSol(DivorceSession divorceSession,
+    protected void mapRespondentSolicitorRepresented(DivorceSession divorceSession,
                                                         @MappingTarget CoreCaseData result) {
-        result.setD8RespondentCorrespondenceSendToSol(
-            toYesNoUpperCase(divorceSession.getRespondentCorrespondenceSendToSolicitor()));
+        result.setRespondentSolicitorRepresented(
+            toYesNoUpperCase(divorceSession.getRespondentSolicitorRepresented()));
     }
 
     @AfterMapping

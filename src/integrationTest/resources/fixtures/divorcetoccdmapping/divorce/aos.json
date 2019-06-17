@@ -148,7 +148,7 @@
             "poBox": "PO Box 10447",
             "postCode": "NG2 9QN",
             "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-            "email": "divorcecase@justice.gov.uk",
+            "email": "contactdivorce@justice.gov.uk",
             "phoneNumber": "0300 303 0642",
             "siteId": "AA07"
         }
@@ -249,7 +249,7 @@
         }
     },
     "respondentSolicitorName":"Justin",
-    "respondentSolicitorCompany":"Case",
+    "respondentSolicitorCompany":"Awesome Solicitors LLP",
     "respondentSolicitorAddress":{
         "addressType":"postcode",
         "postcode":"SW9 9PE",
@@ -270,6 +270,10 @@
             "postcode":"A AAA"
         }
     },
+    "respondentSolicitorRepresented": "Yes",
+    "respondentSolicitorEmail": "solicitor@localhost.local",
+    "respondentSolicitorPhoneNumber": "2222222222",
+    "respondentSolicitorReference": "1234",
     "petitionerConsent" : "Yes",
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",

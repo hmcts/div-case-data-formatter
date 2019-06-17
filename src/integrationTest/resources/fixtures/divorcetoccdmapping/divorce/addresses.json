@@ -151,7 +151,7 @@
       "poBox": "PO Box 10447",
       "postCode": "NG2 9QN",
       "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-      "email": "divorcecase@justice.gov.uk",
+      "email": "contactdivorce@justice.gov.uk",
       "phoneNumber": "0300 303 0642",
       "siteId": "AA07"
     }
@@ -258,6 +258,8 @@
   },
   "respondentSolicitorName": "Justin",
   "respondentSolicitorCompany": "Case",
+  "respondentSolicitorEmail" : "justin@example.com",
+  "respondentSolicitorPhoneNumber" : "01234567890",
   "respondentSolicitorAddress": {
     "addressType": "postcode",
     "postcode": "A AAA",

@@ -52,7 +52,9 @@
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentSolicitorName" : "Justin",
     "D8RespondentSolicitorCompany" : "Case",
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "D8RespondentSolicitorEmail" : "justin@example.com",
+    "D8RespondentSolicitorPhone" : "01234567890",
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : {
         "AddressLine1":null,
         "AddressLine2":null,
@@ -123,28 +125,26 @@
     "Payments" : null,
     "D8DocumentsUploaded" : [
       {
-        "id" : null,
         "value" : {
           "DocumentType" : "other",
           "DocumentLink" : {
-            "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
+            "document_url" : "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "govuklogo.png"
           },
           "DocumentDateAdded" : "2017-12-11",
           "DocumentComment" : "",
-          "DocumentFileName" : "govuklogo.png",
+          "DocumentFileName" : "govuklogo",
           "DocumentEmailContent" : ""
         }
       },
       {
-        "id" : null,
         "value" : {
           "DocumentType": "other",
           "DocumentLink" : {
-            "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+            "document_url" : "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "d8-eng.pdf"
           },
           "DocumentDateAdded": "2017-12-11",
           "DocumentComment": "",

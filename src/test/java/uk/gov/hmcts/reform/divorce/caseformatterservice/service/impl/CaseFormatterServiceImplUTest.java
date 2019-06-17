@@ -1,9 +1,11 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
@@ -23,6 +25,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectio
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -32,12 +36,16 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CaseFormatterServiceImplUTest {
+    private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
     private static final String HAL_BINARY_RESPONSE_CONTEXT_PATH =
         (String)ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "HAL_BINARY_RESPONSE_CONTEXT_PATH");
     private static final String PDF_FILE_EXTENSION =
         (String)ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "PDF_FILE_EXTENSION");
+
+    @Spy
+    private ObjectMapper objectMapper;
 
     @Mock
     private DivorceCaseToCCDMapper divorceCaseToCCDMapper;
@@ -88,28 +96,28 @@ public class CaseFormatterServiceImplUTest {
         verify(ccdCaseToDivorceMapper).courtCaseDataToDivorceCaseData(coreCaseData);
     }
 
-    @Test
-    public void givenCoreCaseDataIsNull_whenAddDocuments_thenReturnNull() {
-        assertNull(classUnderTest.addDocuments(null,
-            Collections.singletonList(GeneratedDocumentInfo.builder().build())));
+    @Test(expected = IllegalArgumentException.class)
+    public void givenCoreCaseDataIsNull_whenAddDocuments_thenReturnThrowException() {
+        classUnderTest.addDocuments(null,
+            Collections.singletonList(GeneratedDocumentInfo.builder().build()));
     }
 
     @Test
     public void givenGeneratedDocumentInfoIsNull_whenAddDocuments_thenReturnSameCaseData() {
-        final CoreCaseData expected = new CoreCaseData();
-        final CoreCaseData input = new CoreCaseData();
+        final Map<String, Object> expected = Collections.emptyMap();
+        final Map<String, Object> input = Collections.emptyMap();
 
-        CoreCaseData actual = classUnderTest.addDocuments(input, null);
+        Map<String, Object> actual = classUnderTest.addDocuments(input, null);
 
         assertEquals(expected, actual);
     }
 
     @Test
     public void givenGeneratedDocumentInfoIsEmpty_whenAddDocuments_thenReturnSameCaseData() {
-        final CoreCaseData expected = new CoreCaseData();
-        final CoreCaseData input = new CoreCaseData();
+        final Map<String, Object> expected = Collections.emptyMap();
+        final Map<String, Object> input = Collections.emptyMap();
 
-        CoreCaseData actual = classUnderTest.addDocuments(input, Collections.emptyList());
+        Map<String, Object> actual = classUnderTest.addDocuments(input, Collections.emptyList());
 
         assertEquals(expected, actual);
     }
@@ -132,12 +140,12 @@ public class CaseFormatterServiceImplUTest {
         when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo1)).thenReturn(document1);
         when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo2)).thenReturn(document2);
 
-        final CoreCaseData expected = new CoreCaseData();
-        expected.setD8Documents(Arrays.asList(document1, document2));
+        final Map<String, Object> expected =
+            Collections.singletonMap(D8_DOCUMENTS_GENERATED_CCD_FIELD, Arrays.asList(document1, document2));
 
-        final CoreCaseData input = new CoreCaseData();
+        final Map<String, Object> input = new HashMap<>();
 
-        CoreCaseData actual = classUnderTest.addDocuments(input,
+        Map<String, Object> actual = classUnderTest.addDocuments(input,
             Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2));
 
         assertEquals(expected, actual);
@@ -171,17 +179,17 @@ public class CaseFormatterServiceImplUTest {
         when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo1)).thenReturn(document1);
         when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo2)).thenReturn(document2);
 
-        final CoreCaseData expected = new CoreCaseData();
-        expected.setD8Documents(Arrays.asList(document1, document2, document3));
+        final Map<String, Object> expected =
+            Collections.singletonMap(D8_DOCUMENTS_GENERATED_CCD_FIELD, Arrays.asList(document3, document1, document2));
 
-        final CoreCaseData input = new CoreCaseData();
-        input.setD8Documents(Arrays.asList(document3, document4));
+        final Map<String, Object> input = new HashMap<>();
+        input.put(D8_DOCUMENTS_GENERATED_CCD_FIELD, Arrays.asList(document3, document4));
 
         DocumentUpdateRequest documentUpdateRequest = new DocumentUpdateRequest();
         documentUpdateRequest.setDocuments(Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2));
         documentUpdateRequest.setCaseData(input);
 
-        CoreCaseData actual = classUnderTest.addDocuments(input,
+        Map<String, Object> actual = classUnderTest.addDocuments(input,
             Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2));
 
         assertEquals(expected, actual);

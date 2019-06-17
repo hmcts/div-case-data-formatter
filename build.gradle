@@ -150,6 +150,8 @@ def versions = [
 ]
 
 dependencies {
+    compile('com.bazaarvoice.jolt:jolt-core:0.1.0')
+    compile('com.bazaarvoice.jolt:json-utils:0.1.0')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
 

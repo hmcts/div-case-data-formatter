@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.controller;
 
+import com.bazaarvoice.jolt.Chainr;
+import com.bazaarvoice.jolt.JsonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -19,7 +21,9 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseD
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterServiceV2;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -32,17 +36,20 @@ public class CaseFormatterController {
     @Autowired
     private CaseFormatterService caseFormatterService;
 
+    @Autowired CaseFormatterServiceV2 caseFormatterServiceV2;
+
     @PostMapping(path = "/to-ccd-format")
     @ApiOperation(value = "Given a case in Divorce format, will transform it into CCD format")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into CCD format", response = CoreCaseData.class),
         }
     )
-    public ResponseEntity<CoreCaseData> transformToCCDFormat(
-        @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession data,
+    public ResponseEntity<String> transformToCCDFormat(
+        @RequestBody @ApiParam(value = "Divorce Session Data", required = true) String data,
         @RequestHeader("Authorization")
         @ApiParam(value = "JWT authorisation token issued by IDAM", required = true) final String jwt) {
-        return ResponseEntity.ok(caseFormatterService.transformToCCDFormat(data, jwt));
+        Object ccdCase = caseFormatterServiceV2.transformToCCDFormat(data);
+        return ResponseEntity.ok(JsonUtils.toJsonString(ccdCase));
     }
 
     @PostMapping(path = "/to-divorce-format")

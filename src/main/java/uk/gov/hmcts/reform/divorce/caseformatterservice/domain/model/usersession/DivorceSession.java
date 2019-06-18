@@ -453,6 +453,12 @@ public class DivorceSession {
     private String livedApartSinceLastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour time lived together details")
     private String approximateDatesOfLivingTogetherField;
+    @ApiModelProperty(value = "Dn Desertion - Respondent asked petitioner to resume living together")
+    private String desertionAskedToResumeDN;
+    @ApiModelProperty(value = "Dn Desertion - Did the petitioner refuse to  resume living together")
+    private String desertionAskedToResumeDNRefused;
+    @ApiModelProperty(value = "Dn Desertion - Resuming living together refusal details")
+    private String desertionAskedToResumeDNDetails;
     @ApiModelProperty(value = "Dn Desertion live apart since event")
     private String livedApartSinceDesertion;
     @ApiModelProperty(value = "Dn Separation time lived together")

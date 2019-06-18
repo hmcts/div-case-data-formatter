@@ -79,4 +79,12 @@ public class DnCaseData {
     @JsonProperty("DocumentsUploadedQuestionDN")
     private String documentsUploadedQuestionDN;
 
+    @JsonProperty("DesertionAskedToResumeDN")
+    private String desertionAskedToResumeDN;
+
+    @JsonProperty("DesertionAskedToResumeDNRefused")
+    private String desertionAskedToResumeDNRefused;
+
+    @JsonProperty("DesertionAskedToResumeDNDetails")
+    private String desertionAskedToResumeDNDetails;
 }

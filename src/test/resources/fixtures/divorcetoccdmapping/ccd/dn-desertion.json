@@ -7,6 +7,9 @@
     "statementOfTruthDN" : "YES",
     "DesertionLivedApartSinceEventDN" : "NO",
     "DesertionTimeLivedTogetherDetailsDN" : "Since we've met in a bar",
+    "DesertionAskedToResumeDN" : "YES",
+    "DesertionAskedToResumeDNRefused" : "YES",
+    "DesertionAskedToResumeDNDetails" : "Refused to stay",
     "DocumentsUploadedDN" : [
         {
             "id" : null,

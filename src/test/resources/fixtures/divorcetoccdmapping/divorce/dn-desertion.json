@@ -297,6 +297,9 @@
     "costsDifferentDetails" : "I want to pay 60%",
     "statementOfTruth" : "YES",
     "approximateDatesOfLivingTogetherField" : "Since we've met in a bar",
+    "desertionAskedToResumeDN" : "YES",
+    "desertionAskedToResumeDNRefused" : "YES",
+    "desertionAskedToResumeDNDetails" : "Refused to stay",
     "livedApartSinceDesertion" : "NO",
     "files" : [
         {

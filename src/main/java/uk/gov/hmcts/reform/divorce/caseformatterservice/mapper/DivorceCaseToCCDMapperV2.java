@@ -1,17 +1,26 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
-import com.bazaarvoice.jolt.JsonUtils;
+import com.bazaarvoice.jolt.Transform;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Map;
+
 @Component
-public class DivorceCaseToCCDMapperV2 extends Mapper {
+public class DivorceCaseToCCDMapperV2 extends Mapper implements Transform {
     public Object transformToCCDFormat(String divorceSession) {
-        Object output = transform(divorceSession, "divorce-case-to-ccd-spec");
-        output = applyPostMappingTransformationTo(output);
-        return output;
+        return transform(divorceSession, "divorce-case-to-ccd-spec");
     }
 
-    private Object applyPostMappingTransformationTo(Object divorceSession) {
-        return divorceSession;
+    @Override
+    public Object transform( final Object input ) {
+        setCreatedDateToToday(input);
+        return input;
+    }
+
+    private void setCreatedDateToToday(Object input) {
+        ((Map) input).put("createdDate", LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
 }

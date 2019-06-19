@@ -111,6 +111,29 @@ public abstract class DivorceCaseToDnCaseMapper {
         }
     }
 
+    @AfterMapping
+    protected void mapDesertionAskedToResumeDN(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+
+        result.setDesertionAskedToResumeDN(translateToStringYesNo(divorceSession.getDesertionAskedToResumeDN()));
+    }
+
+    @AfterMapping
+    protected void mapDesertionAskedToResumeDNRefused(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
+
+        if (StringUtils.equalsIgnoreCase(divorceSession.getDesertionAskedToResumeDN(), YES)) {
+            result.setDesertionAskedToResumeDNRefused(translateToStringYesNo(divorceSession.getDesertionAskedToResumeDNRefused()));
+        }
+    }
+
+    @AfterMapping
+    protected void mapDesertionAskedToResumeDNDetails(DivorceSession divorceSession,
+                                                          @MappingTarget DnCaseData result) {
+
+        if (StringUtils.equalsIgnoreCase(divorceSession.getDesertionAskedToResumeDNRefused(), YES)) {
+            result.setDesertionAskedToResumeDNDetails(divorceSession.getDesertionAskedToResumeDNDetails());
+        }
+    }
+
     private String translateToStringYesNo(final String value) {
         if (Objects.isNull(value)) {
             return null;

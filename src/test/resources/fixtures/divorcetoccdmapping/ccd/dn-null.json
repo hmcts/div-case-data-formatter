@@ -17,6 +17,9 @@
     "DesertionTimeLivedTogetherDetailsDN" : "Since we've met in a bar",
     "SeparationLivedApartSinceEventDN" : "NO",
     "SeparationTimeLivedTogetherDetailsDN" : "Since we've met in a bar",
+    "DesertionAskedToResumeDN" : "YES",
+    "DesertionAskedToResumeDNRefused" : "YES",
+    "DesertionAskedToResumeDNDetails" : "Refused to stay",
     "DocumentsUploadedDN" : null,
     "DocumentsUploadedQuestionDN" : "YES"
 }

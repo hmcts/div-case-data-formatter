@@ -70,6 +70,18 @@ public class CaseFormatterController {
             documentUpdateRequest.getDocuments()));
     }
 
+    @PostMapping(path = "/remove-documents-by-type")
+    @ApiOperation(value = "Given a case in CCD format and document type to remove this will update the document collection")
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "D8DocumentsGenerated values after CCD update", response = Map.class)})
+    public ResponseEntity<Map<String, Object>> removeDocumentsByType(
+        @RequestBody @ApiParam(value = "CCD Data", required = true) DocumentUpdateRequest documentUpdateRequest,
+        @RequestBody @ApiParam(value = "Document type", required = true) String documentType) {
+        return ResponseEntity.ok(
+            caseFormatterService.removeDocumentsByType(documentUpdateRequest.getCaseData(), documentType)
+        );
+    }
+
     @PostMapping(path = "/to-aos-submit-format")
     @ApiOperation(value = "Given a case in Divorce format, will extract the AOS data and convert it to CCD format")
     @ApiResponses(value = {

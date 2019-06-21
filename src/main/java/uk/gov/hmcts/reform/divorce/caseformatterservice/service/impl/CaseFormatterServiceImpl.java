@@ -96,6 +96,26 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
+    public Map<String, Object> removeDocumentsByType(Map<String, Object> coreCaseData, String documentType) {
+        if (coreCaseData == null) {
+            throw new IllegalArgumentException("Existing case data must not be null.");
+        }
+
+        List<CollectionMember<Document>> allDocuments =
+            objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
+                new TypeReference<List<CollectionMember<Document>>>() {
+                });
+
+        if (CollectionUtils.isNotEmpty(allDocuments)) {
+            allDocuments.removeIf(document -> isDocumentTypeEqual(document, documentType));
+            coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
+        }
+
+        return coreCaseData;
+    }
+
+
+    @Override
     public AosCaseData getAosCaseData(DivorceSession divorceSession) {
         return divorceCaseToAosCaseMapper.divorceCaseDataToAosCaseData(divorceSession);
     }
@@ -105,4 +125,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         return divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession);
     }
 
+    private boolean isDocumentTypeEqual(CollectionMember<Document> document, String documentType) {
+        return document.getValue().getDocumentType().equalsIgnoreCase(documentType);
+    }
 }

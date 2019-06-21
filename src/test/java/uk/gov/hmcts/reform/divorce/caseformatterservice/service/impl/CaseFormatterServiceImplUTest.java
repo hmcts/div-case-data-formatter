@@ -26,10 +26,13 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectio
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -195,6 +198,58 @@ public class CaseFormatterServiceImplUTest {
         assertEquals(expected, actual);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void givenCoreCaseDataIsNull_whenRemoveDocumentsByType_thenReturnThrowException() {
+        classUnderTest.removeDocumentsByType(null, "");
+    }
+
+    @Test
+    public void givenNoDocumentsWithExpectedType_whenRemoveDocumentsByType_thenDontRemoveAnything() {
+        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList("not this 1", "not that 1"));
+
+        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+
+        assertDocumentsCollectionSize(2, updatedCaseData);
+    }
+
+    @Test
+    public void givenOneDocumentWithExpectedType_whenRemoveDocumentsByType_thenRemoveThisDocument() {
+        String myType = "my-document-type";
+        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(myType, "no", "no no"));
+
+        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+
+        assertDocumentsCollectionSize(2, updatedCaseData);
+    }
+
+    @Test
+    public void givenTwoDocumentWithExpectedType_whenRemoveDocumentsByType_thenRemoveAllDocumentWithThisType() {
+        String myType = "my-document-type";
+        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(myType, "not this", myType));
+
+        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+
+        assertDocumentsCollectionSize(1, updatedCaseData);
+    }
+
+
+
+    @Test
+    public void givenThereIsOnlyOneDocumentInCollection_whenRemoveDocumentsByType_thenReturnEmptyList() {
+        String typeIamLookingFor = "my-document-type";
+
+        Map<String, Object> caseData = new HashMap<>(
+            Collections.singletonMap(
+                D8_DOCUMENTS_GENERATED_CCD_FIELD,
+                Collections.singletonList(createCollectionMemberDocument("url3", typeIamLookingFor, "X"))
+            )
+        );
+
+        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+
+        assertDocumentsCollectionSize(0, updatedCaseData);
+    }
+
     @Test
     public void whenGetAosCaseData_thenProceedAsExpected() {
         DivorceSession divorceSession = mock(DivorceSession.class);
@@ -243,5 +298,21 @@ public class CaseFormatterServiceImplUTest {
         collectionMember.setValue(document);
 
         return collectionMember;
+    }
+
+    private Map<String, Object> caseDataMapWithDocumentsCollection(List<String> documentTypes) {
+        return new HashMap<>(
+            Collections.singletonMap(
+                D8_DOCUMENTS_GENERATED_CCD_FIELD,
+                documentTypes.stream()
+                    .map(type -> createCollectionMemberDocument("url", type, "x"))
+                    .collect(Collectors.toList()))
+        );
+    }
+
+    private void assertDocumentsCollectionSize(int expected, Map caseData) {
+        List<CollectionMember<Document>> documents = ((List)caseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD));
+
+        assertEquals(expected, documents.size());
     }
 }

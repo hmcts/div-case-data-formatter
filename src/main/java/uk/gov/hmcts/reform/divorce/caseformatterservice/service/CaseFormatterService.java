@@ -17,6 +17,8 @@ public interface CaseFormatterService {
 
     Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);
 
+    Map<String, Object> removeDocumentsByType(Map<String, Object> coreCaseData, String documentType);
+
     AosCaseData getAosCaseData(DivorceSession divorceSession);
 
     DnCaseData getDnCaseData(DivorceSession divorceSession);

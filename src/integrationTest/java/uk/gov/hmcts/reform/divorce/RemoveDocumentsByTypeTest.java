@@ -5,11 +5,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-
 import java.util.Map;
 
 public class RemoveDocumentsByTypeTest extends IntegrationTest {
-    private static final String PAYLOAD_PATH = "fixtures/model/ccd/addDocumentsInput.json";
+    private static final String PAYLOAD_PATH = "fixtures/model/ccd/removeDocumentsByTypeInput.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/model/ccd/";
 
     @Value("${case.formatter.service.transform.removedocumentsbytype.context-path}")
@@ -24,18 +23,22 @@ public class RemoveDocumentsByTypeTest extends IntegrationTest {
     }
 
     @Test
-    public void whenAddDocuments_thenReturnExpected() throws Exception {
+    public void whenRemoveDocumentsByType_thenReturnExpected() throws Exception {
         final Response response = RestUtil.postToRestService(
             getAPIPath(),
             getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_PATH)
         );
 
-        final Map<String, Object> expectedOutput = getExpected("addDocumentsOutput.json");
+        final Map<String, Object> expectedOutput = getExpected("removeDocumentsByTypeOutput.json");
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
         Assert.assertEquals(actualOutput, expectedOutput);
+    }
+
+    String getAPIPath(String documentType) {
+        return getAPIPath() + "/" + documentType;
     }
 
     @Override

@@ -15,12 +15,12 @@ class RestUtil {
                 .when()
                 .post(url)
                 .andReturn();
-        } else {
-            return SerenityRest.given()
-                .headers(headers)
-                .when()
-                .post(url)
-                .andReturn();
         }
+
+        return SerenityRest.given()
+            .headers(headers)
+            .when()
+            .post(url)
+            .andReturn();
     }
 }

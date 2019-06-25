@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import java.util.Map;
 
-public class RemoveDocumentsByTypeTest extends IntegrationTest {
-    private static final String PAYLOAD_PATH = "fixtures/model/ccd/removeDocumentsByTypeInput.json";
+public class RemoveAllPetitionsTest extends IntegrationTest {
+    private static final String PAYLOAD_PATH = "fixtures/model/ccd/removeAllPetitionsInput.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/model/ccd/";
 
-    @Value("${case.formatter.service.transform.removedocumentsbytype.context-path}")
+    @Value("${case.formatter.service.transform.removeallpetitions.context-path}")
     private String contextPath;
 
     @Test
-    public void givenDataIsNull_whenRemoveDocumentsByTypes_thenReturnBadRequest() {
+    public void givenDataIsNull_whenRemoveAllPetitions_thenReturnBadRequest() {
         Assert.assertEquals(
             HttpStatus.BAD_REQUEST.value(),
             RestUtil.postToRestService(getAPIPath(), getHeaders(),null).getStatusCode()
@@ -23,22 +23,18 @@ public class RemoveDocumentsByTypeTest extends IntegrationTest {
     }
 
     @Test
-    public void whenRemoveDocumentsByType_thenReturnExpected() throws Exception {
+    public void whenRemoveAllPetitions_thenReturnExpected() throws Exception {
         final Response response = RestUtil.postToRestService(
             getAPIPath(),
             getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_PATH)
         );
 
-        final Map<String, Object> expectedOutput = getExpected("removeDocumentsByTypeOutput.json");
+        final Map<String, Object> expectedOutput = getExpected("removeAllPetitionsOutput.json");
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
-        Assert.assertEquals(actualOutput, expectedOutput);
-    }
-
-    String getAPIPath(String documentType) {
-        return getAPIPath() + "/" + documentType;
+        Assert.assertEquals(expectedOutput, actualOutput);
     }
 
     @Override

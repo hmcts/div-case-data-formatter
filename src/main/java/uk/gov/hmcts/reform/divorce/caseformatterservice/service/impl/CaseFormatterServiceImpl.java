@@ -96,7 +96,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
-    public Map<String, Object> removeDocumentsByType(Map<String, Object> coreCaseData, String documentType) {
+    public Map<String, Object> removeAllPetitions(Map<String, Object> coreCaseData) {
         if (coreCaseData == null) {
             throw new IllegalArgumentException("Existing case data must not be null.");
         }
@@ -107,7 +107,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                 });
 
         if (CollectionUtils.isNotEmpty(allDocuments)) {
-            allDocuments.removeIf(document -> isDocumentTypeEqual(document, documentType));
+            allDocuments.removeIf(document -> isDocumentTypeEqual(document, "petition"));
             coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
         }
 

@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -71,15 +70,13 @@ public class CaseFormatterController {
             documentUpdateRequest.getDocuments()));
     }
 
-    @PostMapping(path = "/remove-documents-by-type")
-    @ApiOperation(value = "Given a case in CCD format and document type to remove this will update the document collection")
+    @PostMapping(path = "/remove-all-petitions")
+    @ApiOperation(value = "Given a case in CCD format removes all petitions from generated documents collection")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "D8DocumentsGenerated values after CCD update", response = Map.class)})
-    public ResponseEntity<Map<String, Object>> removeDocumentsByType(
+    public ResponseEntity<Map<String, Object>> removeAllPetitions(
         @RequestBody @ApiParam(value = "CCD Data", required = true) Map<String, Object> caseData) {
-        return ResponseEntity.ok(
-            caseFormatterService.removeDocumentsByType(caseData, "petition")
-        );
+        return ResponseEntity.ok(caseFormatterService.removeAllPetitions(caseData));
     }
 
     @PostMapping(path = "/to-aos-submit-format")

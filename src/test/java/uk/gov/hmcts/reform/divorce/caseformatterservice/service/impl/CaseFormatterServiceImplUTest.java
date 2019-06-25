@@ -47,6 +47,8 @@ public class CaseFormatterServiceImplUTest {
         (String)ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "PDF_FILE_EXTENSION");
 
+    private static final String petitionType = "petition";
+
     @Spy
     private ObjectMapper objectMapper;
 
@@ -199,53 +201,50 @@ public class CaseFormatterServiceImplUTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void givenCoreCaseDataIsNull_whenRemoveDocumentsByType_thenReturnThrowException() {
-        classUnderTest.removeDocumentsByType(null, "");
+    public void givenCoreCaseDataIsNull_whenRemoveAllPetitions_thenReturnThrowException() {
+        classUnderTest.removeAllPetitions(null);
     }
 
     @Test
-    public void givenNoDocumentsWithExpectedType_whenRemoveDocumentsByType_thenDontRemoveAnything() {
+    public void givenNoPetitions_whenRemoveAllPetitions_thenDontRemoveAnything() {
         Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList("not this 1", "not that 1"));
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
 
         assertDocumentsCollectionSize(2, updatedCaseData);
     }
 
     @Test
-    public void givenOneDocumentWithExpectedType_whenRemoveDocumentsByType_thenRemoveThisDocument() {
-        String myType = "my-document-type";
-        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(myType, "no", "no no"));
+    public void givenOnePetition_whenRemoveAllPetitions_thenRemoveThisDocument() {
+        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(petitionType, "no", "no no"));
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
 
         assertDocumentsCollectionSize(2, updatedCaseData);
     }
 
     @Test
-    public void givenTwoDocumentWithExpectedType_whenRemoveDocumentsByType_thenRemoveAllDocumentWithThisType() {
-        String myType = "my-document-type";
-        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(myType, "not this", myType));
+    public void givenTwoPetitions_whenRemoveAllPetitions_thenRemoveAllPetitions() {
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(
+            Arrays.asList(petitionType, "not this", petitionType)
+        );
+
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
 
         assertDocumentsCollectionSize(1, updatedCaseData);
     }
 
-
-
     @Test
-    public void givenThereIsOnlyOneDocumentInCollection_whenRemoveDocumentsByType_thenReturnEmptyList() {
-        String typeIamLookingFor = "my-document-type";
-
+    public void givenThereIsOnlyOneDocumentInCollection_whenRemoveAllPetitions_thenReturnEmptyList() {
         Map<String, Object> caseData = new HashMap<>(
             Collections.singletonMap(
                 D8_DOCUMENTS_GENERATED_CCD_FIELD,
-                Collections.singletonList(createCollectionMemberDocument("url3", typeIamLookingFor, "X"))
+                Collections.singletonList(createCollectionMemberDocument("url3", petitionType, "X"))
             )
         );
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeDocumentsByType(caseData, "my-document-type");
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
 
         assertDocumentsCollectionSize(0, updatedCaseData);
     }

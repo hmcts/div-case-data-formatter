@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import java.util.Map;
 
-public class RemoveAllPetitionsTest extends IntegrationTest {
-    private static final String PAYLOAD_PATH = "fixtures/model/ccd/removeAllPetitionsInput.json";
+public class RemoveAllPetitionDocumentsTest extends IntegrationTest {
+    private static final String PAYLOAD_PATH = "fixtures/model/ccd/removeAllPetitionDocumentsInput.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/model/ccd/";
 
-    @Value("${case.formatter.service.transform.removeallpetitions.context-path}")
+    @Value("${case.formatter.service.transform.removeallpetitiondocuments.context-path}")
     private String contextPath;
 
     @Test
@@ -30,7 +30,7 @@ public class RemoveAllPetitionsTest extends IntegrationTest {
             ResourceLoader.loadJson(PAYLOAD_PATH)
         );
 
-        final Map<String, Object> expectedOutput = getExpected("removeAllPetitionsOutput.json");
+        final Map<String, Object> expectedOutput = getExpected("removeAllPetitionDocumentsOutput.json");
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 

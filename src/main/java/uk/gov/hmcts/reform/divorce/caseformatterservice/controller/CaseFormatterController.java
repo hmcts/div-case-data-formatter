@@ -70,13 +70,13 @@ public class CaseFormatterController {
             documentUpdateRequest.getDocuments()));
     }
 
-    @PostMapping(path = "/remove-all-petitions")
+    @PostMapping(path = "/remove-all-petition-documents")
     @ApiOperation(value = "Given a case in CCD format removes all petitions from generated documents collection")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "D8DocumentsGenerated values after CCD update", response = Map.class)})
     public ResponseEntity<Map<String, Object>> removeAllPetitions(
         @RequestBody @ApiParam(value = "CCD Data", required = true) Map<String, Object> caseData) {
-        return ResponseEntity.ok(caseFormatterService.removeAllPetitions(caseData));
+        return ResponseEntity.ok(caseFormatterService.removeAllPetitionDocuments(caseData));
     }
 
     @PostMapping(path = "/to-aos-submit-format")

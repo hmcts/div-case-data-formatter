@@ -202,41 +202,41 @@ public class CaseFormatterServiceImplUTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void givenCoreCaseDataIsNull_whenRemoveAllPetitions_thenReturnThrowException() {
-        classUnderTest.removeAllPetitions(null);
+        classUnderTest.removeAllPetitionDocuments(null);
     }
 
     @Test
     public void givenNoPetitions_whenRemoveAllPetitions_thenDontRemoveAnything() {
         Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList("not this 1", "not that 1"));
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitionDocuments(caseData);
 
         assertDocumentsCollectionSize(2, updatedCaseData);
     }
 
     @Test
-    public void givenOnePetition_whenRemoveAllPetitions_thenRemoveThisDocument() {
+    public void givenOnePetition_whenRemoveAllPetitionDocuments_thenRemoveThisDocument() {
         Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(petitionType, "no", "no no"));
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitionDocuments(caseData);
 
         assertDocumentsCollectionSize(2, updatedCaseData);
     }
 
     @Test
-    public void givenTwoPetitions_whenRemoveAllPetitions_thenRemoveAllPetitions() {
+    public void givenTwoPetitions_whenRemoveAllPetitionDocuments_thenRemoveAllPetitions() {
 
         Map<String, Object> caseData = caseDataMapWithDocumentsCollection(
             Arrays.asList(petitionType, "not this", petitionType)
         );
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitionDocuments(caseData);
 
         assertDocumentsCollectionSize(1, updatedCaseData);
     }
 
     @Test
-    public void givenThereIsOnlyOneDocumentInCollection_whenRemoveAllPetitions_thenReturnEmptyList() {
+    public void givenThereIsOnlyOneDocumentInCollection_whenRemoveAllPetitionDocuments_thenReturnEmptyList() {
         Map<String, Object> caseData = new HashMap<>(
             Collections.singletonMap(
                 D8_DOCUMENTS_GENERATED_CCD_FIELD,
@@ -244,7 +244,7 @@ public class CaseFormatterServiceImplUTest {
             )
         );
 
-        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitions(caseData);
+        Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitionDocuments(caseData);
 
         assertDocumentsCollectionSize(0, updatedCaseData);
     }

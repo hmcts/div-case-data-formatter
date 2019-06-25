@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
+    private final String miniPetitionDocType = "petition";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -96,7 +97,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
-    public Map<String, Object> removeAllPetitions(Map<String, Object> coreCaseData) {
+    public Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData) {
         if (coreCaseData == null) {
             throw new IllegalArgumentException("Existing case data must not be null.");
         }
@@ -107,7 +108,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                 });
 
         if (CollectionUtils.isNotEmpty(allDocuments)) {
-            allDocuments.removeIf(document -> isDocumentTypeEqual(document, "petition"));
+            allDocuments.removeIf(this::isDocumentPetition);
             coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
         }
 
@@ -125,7 +126,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         return divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession);
     }
 
-    private boolean isDocumentTypeEqual(CollectionMember<Document> document, String documentType) {
-        return document.getValue().getDocumentType().equalsIgnoreCase(documentType);
+    private boolean isDocumentPetition(CollectionMember<Document> document) {
+        return document.getValue().getDocumentType().equalsIgnoreCase(miniPetitionDocType);
     }
 }

@@ -490,6 +490,9 @@ public class DivorceSession {
     private String hearingDate;
     @ApiModelProperty(value = "Time of the Hearing in \"HH:mm\" format")
     private String hearingTime;
+    @ApiModelProperty(value = "Judge who ponounced the decree nisi")
+    private String pronouncementJudge;
+
     //Dn Bulk Listing Fields Mapping End
 
     @ApiModelProperty(value = "Case ID from previously amended case")

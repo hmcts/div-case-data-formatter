@@ -24,11 +24,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DocumentType.PETITION;
+
 @Service
 public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
-    private final String miniPetitionDocType = "petition";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -127,6 +128,6 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     private boolean isDocumentPetition(CollectionMember<Document> document) {
-        return document.getValue().getDocumentType().equalsIgnoreCase(miniPetitionDocType);
+        return document.getValue().getDocumentType().equalsIgnoreCase(PETITION);
     }
 }

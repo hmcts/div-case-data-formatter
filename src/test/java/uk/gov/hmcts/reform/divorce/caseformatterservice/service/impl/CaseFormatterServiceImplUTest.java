@@ -31,11 +31,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DocumentType.PETITION;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CaseFormatterServiceImplUTest {
@@ -46,8 +45,6 @@ public class CaseFormatterServiceImplUTest {
     private static final String PDF_FILE_EXTENSION =
         (String)ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "PDF_FILE_EXTENSION");
-
-    private static final String petitionType = "petition";
 
     @Spy
     private ObjectMapper objectMapper;
@@ -216,7 +213,7 @@ public class CaseFormatterServiceImplUTest {
 
     @Test
     public void givenOnePetition_whenRemoveAllPetitionDocuments_thenRemoveThisDocument() {
-        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(petitionType, "no", "no no"));
+        Map<String, Object> caseData = caseDataMapWithDocumentsCollection(Arrays.asList(PETITION, "no", "no no"));
 
         Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitionDocuments(caseData);
 
@@ -227,7 +224,7 @@ public class CaseFormatterServiceImplUTest {
     public void givenTwoPetitions_whenRemoveAllPetitionDocuments_thenRemoveAllPetitions() {
 
         Map<String, Object> caseData = caseDataMapWithDocumentsCollection(
-            Arrays.asList(petitionType, "not this", petitionType)
+            Arrays.asList(PETITION, "not this", PETITION)
         );
 
         Map<String, Object> updatedCaseData = classUnderTest.removeAllPetitionDocuments(caseData);
@@ -240,7 +237,7 @@ public class CaseFormatterServiceImplUTest {
         Map<String, Object> caseData = new HashMap<>(
             Collections.singletonMap(
                 D8_DOCUMENTS_GENERATED_CCD_FIELD,
-                Collections.singletonList(createCollectionMemberDocument("url3", petitionType, "X"))
+                Collections.singletonList(createCollectionMemberDocument("url3", PETITION, "X"))
             )
         );
 

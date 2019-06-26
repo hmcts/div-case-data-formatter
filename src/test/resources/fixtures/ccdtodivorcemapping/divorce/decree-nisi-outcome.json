@@ -5,6 +5,8 @@
     "decreeNisiGrantedDate": "2020-01-01T00:00:00.000Z",
     "decreeAbsoluteEligibleFromDate": "2020-02-13T00:00:00.000Z",
     "courtName": "London Court Number One",
+    "dnOutcomeCase": "Yes",
+    "decreeNisiDecisionMadeDate": "2020-02-01T00:00:00.000Z",
     "court":{
         "eastMidlands":{
             "divorceCentre":"East Midlands Regional Divorce Centre",

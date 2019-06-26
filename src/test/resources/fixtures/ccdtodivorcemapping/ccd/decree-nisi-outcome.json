@@ -3,6 +3,8 @@
     "WhoPaysCosts": "respondent",
     "CostsOrderAdditionalInfo": "all",
     "DecreeNisiGrantedDate": "2020-01-01",
+    "DNDecisionDate": "2020-02-01",
+    "DnOutcomeCase": "Yes",
     "DAEligibleFromDate": "2020-02-13",
     "CourtName": "London Court Number One"
 }

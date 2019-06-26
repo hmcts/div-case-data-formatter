@@ -540,8 +540,11 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("PreviousReasonsForDivorce")
     private List<String> previousReasonsForDivorce;
 
-    @JsonProperty("DNApprovalDate")
-    private String dnApprovalDate;
+    @JsonProperty("DNDecisionDate")
+    private String dnDecisionDate;
+
+    @JsonProperty("DnOutcomeCase")
+    private String dnOutcomeCase;
 
     @JsonProperty("BulkListingCaseId")
     private CaseLink bulkListingCaseId;

@@ -151,6 +151,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     @Mapping(source = "decreeNisiGrantedDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeNisiGrantedDate")
     @Mapping(source = "decreeAbsoluteEligibleFromDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeAbsoluteEligibleFromDate")
+    @Mapping(source = "dnDecisionDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeNisiDecisionMadeDate")
+    @Mapping(source = "dnOutcomeCase", target = "dnOutcomeCase")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {

@@ -482,6 +482,10 @@ public class DivorceSession {
     private Date decreeNisiGrantedDate;
     @ApiModelProperty(value = "Date Decree Absolute can be aplied for")
     private Date decreeAbsoluteEligibleFromDate;
+    @ApiModelProperty(value = "Date Decree Nisi decision made")
+    private Date decreeNisiDecisionMadeDate;
+    @ApiModelProperty(value = "Flat to indicate the case is processed by outcome of dn")
+    private String dnOutcomeCase;
     //Dn Approval Fields Mapping End
     //Dn Bulk Listing Fields Mapping Start
     @ApiModelProperty(value = "Name of the Court where the Hearing is Scheduled")

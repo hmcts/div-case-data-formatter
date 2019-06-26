@@ -180,8 +180,9 @@
     "D8InferredPetitionerGender": "female",
     "CourtName": "placeholder Court",
     "CostsClaimGranted": "YES",
-    "DNApprovalDate": "2000-01-01",
+    "DNDecisionDate": "2000-01-01",
     "DecreeNisiGrantedDate": "2020-01-01",
+    "DnOutcomeCase": "YES",
     "DAEligibleFromDate": "2020-02-15",
     "ExtraUnmappedField": "unmapped",
     "AnotherUnmappedField": "should be dropped"

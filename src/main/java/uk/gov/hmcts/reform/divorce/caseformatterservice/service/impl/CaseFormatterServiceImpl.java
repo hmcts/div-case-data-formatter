@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DocumentType.PETITION;
+
 @Service
 public class CaseFormatterServiceImpl implements CaseFormatterService {
 
@@ -96,6 +98,26 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
+    public Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData) {
+        if (coreCaseData == null) {
+            throw new IllegalArgumentException("Existing case data must not be null.");
+        }
+
+        List<CollectionMember<Document>> allDocuments =
+            objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
+                new TypeReference<List<CollectionMember<Document>>>() {
+                });
+
+        if (CollectionUtils.isNotEmpty(allDocuments)) {
+            allDocuments.removeIf(this::isDocumentPetition);
+            coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
+        }
+
+        return coreCaseData;
+    }
+
+
+    @Override
     public AosCaseData getAosCaseData(DivorceSession divorceSession) {
         return divorceCaseToAosCaseMapper.divorceCaseDataToAosCaseData(divorceSession);
     }
@@ -105,4 +127,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         return divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession);
     }
 
+    private boolean isDocumentPetition(CollectionMember<Document> document) {
+        return document.getValue().getDocumentType().equalsIgnoreCase(PETITION);
+    }
 }

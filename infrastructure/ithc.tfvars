@@ -1,5 +1,5 @@
 vault_env           = "preprod"
-idam_api_baseurl    = "https://idam-api.aat.platform.hmcts.net"
+idam_api_baseurl    = "https://idam-api.ithc.platform.hmcts.net"
 
 capacity            = "2"
 

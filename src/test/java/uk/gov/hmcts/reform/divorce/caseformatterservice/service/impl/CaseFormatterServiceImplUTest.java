@@ -11,6 +11,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
@@ -20,6 +21,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 
@@ -63,6 +65,9 @@ public class CaseFormatterServiceImplUTest {
 
     @Mock
     private DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
+
+    @Mock
+    private DivorceCaseToDaCaseMapper divorceCaseToDaCaseMapper;
 
     @InjectMocks
     private CaseFormatterServiceImpl classUnderTest;
@@ -268,6 +273,18 @@ public class CaseFormatterServiceImplUTest {
         assertEquals(dnCaseData, classUnderTest.getDnCaseData(divorceSession));
 
         verify(divorceCaseToDnCaseMapper).divorceCaseDataToDnCaseData(divorceSession);
+    }
+
+    @Test
+    public void whenGetDaCaseData_thenProceedAsExpected() {
+        DivorceSession divorceSession = mock(DivorceSession.class);
+        DaCaseData daCaseData = mock(DaCaseData.class);
+
+        when(divorceCaseToDaCaseMapper.divorceCaseDataToDaCaseData(divorceSession)).thenReturn(daCaseData);
+
+        assertEquals(daCaseData, classUnderTest.getDaCaseData(divorceSession));
+
+        verify(divorceCaseToDaCaseMapper).divorceCaseDataToDaCaseData(divorceSession);
     }
 
     private GeneratedDocumentInfo createGeneratedDocument(String url, String documentType, String fileName) {

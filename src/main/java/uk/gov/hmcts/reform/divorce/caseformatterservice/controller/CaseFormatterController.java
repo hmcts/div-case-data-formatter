@@ -106,7 +106,7 @@ public class CaseFormatterController {
     @ApiOperation(value = "Given a case in Divorce format, will extract the DA data and convert it to CCD format")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into DA format", response = DaCaseData.class),
-    }
+        }
     )
     public ResponseEntity<DaCaseData> getDaCaseData(
         @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession divorceSession) {

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
@@ -114,5 +115,20 @@ public class CaseFormatterControllerUTest {
         assertEquals(dnCaseData, actual.getBody());
 
         verify(caseFormatterService).getDnCaseData(divorceSession);
+    }
+
+    @Test
+    public void whenGetDaCaseData_thenProceedAsExpected() {
+        DivorceSession divorceSession = mock(DivorceSession.class);
+        DaCaseData daCaseData = mock(DaCaseData.class);
+
+        when(caseFormatterService.getDaCaseData(divorceSession)).thenReturn(daCaseData);
+
+        ResponseEntity<DaCaseData> actual = classUnderTest.getDaCaseData(divorceSession);
+
+        assertEquals(HttpStatus.OK, actual.getStatusCode());
+        assertEquals(daCaseData, actual.getBody());
+
+        verify(caseFormatterService).getDaCaseData(divorceSession);
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-public class DnCaseData {
+public class DnCaseData extends DaCaseData {
 
     @JsonProperty("DNApplicationSubmittedDate")
     private String dnApplicationSubmittedDate;

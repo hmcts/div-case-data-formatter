@@ -491,6 +491,10 @@ public class DivorceSession {
     @ApiModelProperty(value = "Time of the Hearing in \"HH:mm\" format")
     private String hearingTime;
     //Dn Bulk Listing Fields Mapping End
+    //DaCase Fields Mapping Start
+    @ApiModelProperty(value = "Petitioner Applied for Decree Absolute", allowableValues = "Yes, No")
+    private String applyForDecreeAbsolute;
+    //DaCase Fields Mapping End
 
     @ApiModelProperty(value = "Case ID from previously amended case")
     private String previousCaseId;

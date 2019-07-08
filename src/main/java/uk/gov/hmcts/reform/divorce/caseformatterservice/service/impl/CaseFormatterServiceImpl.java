@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
@@ -15,6 +16,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
@@ -48,6 +50,9 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Autowired
     private DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
+
+    @Autowired
+    private DivorceCaseToDaCaseMapper divorceCaseToDaCaseMapper;
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {
@@ -125,6 +130,11 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     @Override
     public DnCaseData getDnCaseData(DivorceSession divorceSession) {
         return divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession);
+    }
+
+    @Override
+    public DaCaseData getDaCaseData(DivorceSession divorceSession) {
+        return divorceCaseToDaCaseMapper.divorceCaseDataToDaCaseData(divorceSession);
     }
 
     private boolean isDocumentPetition(CollectionMember<Document> document) {

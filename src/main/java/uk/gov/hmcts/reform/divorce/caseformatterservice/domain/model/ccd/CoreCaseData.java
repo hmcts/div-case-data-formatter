@@ -569,4 +569,11 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("DAEligibleFromDate")
     private String decreeAbsoluteEligibleFromDate;
+
+    @JsonProperty("DateRespondentEligibleForDA")
+    private String dateRespondentEligibleForDA;
+
+    @JsonProperty("DateCaseNoLongerEligibleForDA")
+    private String dateCaseNoLongerEligibleForDA;
+
 }

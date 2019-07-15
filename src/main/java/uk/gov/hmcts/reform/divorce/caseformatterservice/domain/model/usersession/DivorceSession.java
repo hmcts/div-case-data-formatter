@@ -508,6 +508,14 @@ public class DivorceSession {
     @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition")
     private List<String> previousReasonsForDivorce;
 
+    @ApiModelProperty(
+        value = "Date from which the respondent can apply for Decree Absolute.")
+    private Date dateRespondentEligibleForDA;
+
+    @ApiModelProperty(
+        value = "Final date to apply for Decree Absolute.")
+    private Date dateCaseNoLongerEligibleForDA;
+
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {
             d8Documents.forEach(doc -> doc.setFileType("petition"));

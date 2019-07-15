@@ -37,4 +37,5 @@ public class DecreeAbsoluteToCCDMapperUTest {
 
         assertThat(actualDaCaseData, samePropertyValuesAs(expectedDaCaseData));
     }
+
 }

@@ -453,6 +453,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("SolicitorAgreeToReceiveEmails")
     private String solicitorAgreeToReceiveEmails;
 
+    @JsonProperty("SolServiceMethod")
+    private String solServiceMethod;
+
     @JsonProperty("SolStatementOfReconciliationCertify")
     private String solStatementOfReconciliationCertify;
 

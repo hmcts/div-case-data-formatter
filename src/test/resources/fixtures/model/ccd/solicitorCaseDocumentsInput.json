@@ -53,6 +53,7 @@
         "D8RespondentSolicitorCompany": "Solicitor Firm",
         "SolStatementOfReconciliationDiscussed": "Yes",
         "SolicitorAgreeToReceiveEmails": "Yes",
+        "SolServiceMethod": "courtService",
         "D8PetitionerEmail": "petitioner-test-email@example.com",
         "D8ReasonForDivorceBehaviourDetails": "Bad Behaviour from everybody.",
         "SolClaimCostsDetails": "Claiming costs for everything.",

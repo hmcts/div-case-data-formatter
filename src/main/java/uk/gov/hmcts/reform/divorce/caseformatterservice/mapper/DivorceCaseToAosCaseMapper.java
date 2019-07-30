@@ -7,15 +7,21 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
+import java.util.Objects;
+
+import static java.lang.String.join;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToAosCaseMapper {
+
+    private static final String LINE_SEPARATOR = "\n";
 
     @Mapping(source = "coRespondentAnswers.confirmReadPetition", target = "coRespConfirmReadPetition")
     @Mapping(source = "coRespondentAnswers.admitAdultery", target = "coRespAdmitAdultery")
@@ -55,6 +61,16 @@ public abstract class DivorceCaseToAosCaseMapper {
             );
         }
     }
+
+    @AfterMapping
+    protected void mapRespondentSolicitorAddress(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
+        if (Objects.nonNull(divorceSession.getRespondentSolicitorAddress())
+            && Objects.nonNull(divorceSession.getRespondentSolicitorAddress().getAddressField())) {
+            result.setD8DerivedRespondentSolicitorAddr(
+                join(LINE_SEPARATOR, divorceSession.getRespondentSolicitorAddress().getAddressField()));
+        }
+    }
+
 
     @AfterMapping
     protected void mapCoRespondentFields(DivorceSession divorceSession, @MappingTarget AosCaseData result) {

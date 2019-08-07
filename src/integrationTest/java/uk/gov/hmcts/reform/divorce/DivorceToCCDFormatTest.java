@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -63,7 +64,7 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
     @Test
     public void whenTransformToCCDFormat_thenReturnExpected() throws Exception {
         final Response response = RestUtil.postToRestService(getAPIPath(),
-            getHeaders(getUserToken()),
+            Collections.emptyMap(),
             ResourceLoader.loadJson(PAYLOAD_CONTEXT_PATH + input));
 
         final Map<String, Object> expectedOutput = getExpected(expected);

@@ -19,13 +19,6 @@ jackson:
     serialization:
         FAIL_ON_EMPTY_BEANS: false
 
-idam:
-  api:
-    url: ${IDAM_API_BASEURL:http://localhost:4503}
-    port: 4503
-    health:
-      context-path: /health
-
 document:
   management:
     store:

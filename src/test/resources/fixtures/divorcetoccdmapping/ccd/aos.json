@@ -25,5 +25,6 @@
     "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
     "D8RespondentSolicitorEmail": "solicitor@localhost.local",
     "D8RespondentSolicitorPhone": "2222222222",
-    "respondentSolicitorReference": "1234"
+    "respondentSolicitorReference": "1234",
+    "D8DerivedRespondentSolicitorAddr": "90 Landor Road\nLondon\nSW9 9PE"
 }

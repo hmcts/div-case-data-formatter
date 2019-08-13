@@ -1,11 +1,8 @@
 package uk.gov.hmcts.reform.divorce;
 
-import io.restassured.response.Response;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-
-import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +13,7 @@ public class DivorceToCCDFormatErrorHandlingTest extends IntegrationTest {
     @Test
     public void givenDataIsNull_whenTransformToCCDFormat_thenReturnBadRequest() {
         assertEquals(HttpStatus.BAD_REQUEST.value(),
-            RestUtil.postToRestService(getAPIPath(), Collections.emptyMap(), null).getStatusCode());
+            RestUtil.postToRestService(getAPIPath(), getHeaders("remove_me"), null).getStatusCode());
     }
 
     @Test

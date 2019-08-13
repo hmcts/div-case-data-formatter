@@ -20,6 +20,8 @@ public interface CaseFormatterService {
 
     Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData);
 
+    Map<String, Object> removeAllDocumentsByType(Map<String, Object> coreCaseData, String documentType);
+
     AosCaseData getAosCaseData(DivorceSession divorceSession);
 
     DnCaseData getDnCaseData(DivorceSession divorceSession);

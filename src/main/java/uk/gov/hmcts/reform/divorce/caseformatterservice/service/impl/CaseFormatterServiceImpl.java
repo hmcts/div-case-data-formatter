@@ -104,6 +104,11 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData) {
+         return removeAllDocumentsByType(coreCaseData, PETITION);
+    }
+
+    @Override
+    public Map<String, Object> removeAllDocumentsByType(Map<String, Object> coreCaseData, String documentType) {
         if (coreCaseData == null) {
             throw new IllegalArgumentException("Existing case data must not be null.");
         }
@@ -114,13 +119,12 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                 });
 
         if (CollectionUtils.isNotEmpty(allDocuments)) {
-            allDocuments.removeIf(this::isDocumentPetition);
+            allDocuments.removeIf(documens -> isDocumentType(documens, documentType));
             coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
         }
 
         return coreCaseData;
     }
-
 
     @Override
     public AosCaseData getAosCaseData(DivorceSession divorceSession) {
@@ -137,7 +141,8 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         return divorceCaseToDaCaseMapper.divorceCaseDataToDaCaseData(divorceSession);
     }
 
-    private boolean isDocumentPetition(CollectionMember<Document> document) {
-        return document.getValue().getDocumentType().equalsIgnoreCase(PETITION);
+
+    private boolean isDocumentType(CollectionMember<Document> document, String documentType) {
+        return document.getValue().getDocumentType().equalsIgnoreCase(documentType);
     }
 }

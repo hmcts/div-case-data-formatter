@@ -132,6 +132,7 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("CoRespLinkedToCase")
     private String coRespLinkedToCase;
+    //End of co-respondent answers
 
     @JsonProperty("D8RespondentSolicitorName")
     private String d8RespondentSolicitorName;
@@ -151,6 +152,9 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("respondentSolicitorReference")
     private String respondentSolicitorReference;
 
-    //End of co-respondent answers
+    @JsonProperty("D8RespondentSolicitorAddress")
+    private Address d8RespondentSolicitorAddress;
 
+    @JsonProperty("D8DerivedRespondentSolicitorAddr")
+    private String d8DerivedRespondentSolicitorAddr;
 }

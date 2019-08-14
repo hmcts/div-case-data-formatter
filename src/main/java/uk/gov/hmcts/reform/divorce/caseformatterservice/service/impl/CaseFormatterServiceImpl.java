@@ -104,7 +104,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData) {
-         return removeAllDocumentsByType(coreCaseData, PETITION);
+        return removeAllDocumentsByType(coreCaseData, PETITION);
     }
 
     @Override

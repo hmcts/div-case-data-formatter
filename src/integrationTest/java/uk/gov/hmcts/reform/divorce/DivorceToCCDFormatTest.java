@@ -63,7 +63,7 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
     @Test
     public void whenTransformToCCDFormat_thenReturnExpected() throws Exception {
         final Response response = RestUtil.postToRestService(getAPIPath(),
-            getHeaders(getUserToken()),
+            getHeaders("remove_me"),
             ResourceLoader.loadJson(PAYLOAD_CONTEXT_PATH + input));
 
         final Map<String, Object> expectedOutput = getExpected(expected);

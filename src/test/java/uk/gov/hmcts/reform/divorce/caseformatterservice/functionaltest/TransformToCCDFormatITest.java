@@ -50,7 +50,6 @@ public class TransformToCCDFormatITest {
     private static final String API_URL = "/caseformatter/version/1/to-ccd-format";
     private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/addresses.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/ccd/addresscase.json";
-    private static final String IDAM_USER_DETAILS_CONTEXT_PATH = "/details";
     private static final String EMAIL_ADDRESS = "caseformatterservicetest@notifications.service.gov.uk";
 
     private static final String USER_TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwOTg3NjU0M"
@@ -61,9 +60,6 @@ public class TransformToCCDFormatITest {
 
     @Autowired
     private MockMvc webClient;
-
-    @ClassRule
-    public static WireMockClassRule idamUserDetailsServer = new WireMockClassRule(4503);
 
     @Test
     public void givenDivorceSessionIsNull_whenTransformToCCDFormat_thenReturnBadRequest() throws Exception {
@@ -85,9 +81,6 @@ public class TransformToCCDFormatITest {
 
     @Test
     public void givenValidDetails_whenTransformToCCDFormat_thenReturnExpected() throws Exception {
-        final String message = getUserDetails();
-        stubUserDetailsEndpoint(HttpStatus.OK, new EqualToPattern(USER_TOKEN), message);
-
         final CoreCaseData expectedCaseData =
             ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
 
@@ -100,15 +93,6 @@ public class TransformToCCDFormatITest {
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().json(ObjectMapperTestUtil.convertObjectToJson(expectedCaseData)));
-    }
-
-    private void stubUserDetailsEndpoint(HttpStatus status, StringValuePattern authHeader, String message) {
-        idamUserDetailsServer.stubFor(get(IDAM_USER_DETAILS_CONTEXT_PATH)
-            .withHeader(HttpHeaders.AUTHORIZATION, authHeader)
-            .willReturn(aResponse()
-                .withStatus(status.value())
-                .withHeader(CONTENT_TYPE, APPLICATION_JSON_UTF8_VALUE)
-                .withBody(message)));
     }
 
     private String getUserDetails() throws JsonProcessingException {

@@ -119,7 +119,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                 });
 
         if (CollectionUtils.isNotEmpty(allDocuments)) {
-            allDocuments.removeIf(documens -> isDocumentType(documens, documentType));
+            allDocuments.removeIf(documents -> isDocumentType(documents, documentType));
             coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
         }
 

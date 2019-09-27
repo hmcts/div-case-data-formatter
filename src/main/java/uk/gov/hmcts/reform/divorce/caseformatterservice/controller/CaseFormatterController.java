@@ -118,7 +118,7 @@ public class CaseFormatterController {
     @ApiOperation(value = "Given a case in Divorce format, will extract the DN Clarification data and convert it to CCD format")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into DN Clarification format", response = DnCaseData.class),
-    }
+        }
     )
     public ResponseEntity<DnCaseData> getDnClarificationCaseData(
         @RequestBody @ApiParam(value = "Divorce CCD and Session data", required = true) DivorceCaseWrapper divorceCaseWrapper) {

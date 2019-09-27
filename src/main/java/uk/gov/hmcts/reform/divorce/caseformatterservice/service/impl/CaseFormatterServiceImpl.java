@@ -34,6 +34,7 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.Docu
 public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
+    private static final String GENERIC_DOCUMENT_TYPE = "other";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -91,7 +92,8 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
             if (CollectionUtils.isNotEmpty(documentsGenerated)) {
                 List<CollectionMember<Document>> existingDocuments = documentsGenerated.stream()
                         .filter(documentCollectionMember ->
-                            !generatedDocumentInfos.stream()
+                            GENERIC_DOCUMENT_TYPE.equals(documentCollectionMember.getValue().getDocumentType())
+                            || !generatedDocumentInfos.stream()
                                 .map(GeneratedDocumentInfo::getDocumentType)
                                 .collect(Collectors.toSet())
                                 .contains(documentCollectionMember.getValue().getDocumentType()))

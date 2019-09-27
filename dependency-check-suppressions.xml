@@ -16,4 +16,20 @@
         <gav regex="true">.*</gav>
         <cve>CVE-2018-1258</cve>
     </suppress>
+    <suppress>
+        <notes><![CDATA[
+            This appears to be a false-positive as this is only exploitable in
+            Spring Framework 5.0.5.RELEASE which we don't use ]]>
+        </notes>
+        <gav regex="true">.*</gav>
+        <cve>CVE-2018-1258</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+            False positive due to gradle-pitest-plugin matching gradle* ]]>
+        </notes>
+        <gav regex="true">.*</gav>
+        <cve>CVE-2019-15052</cve>
+        <cve>CVE-2019-16370</cve>
+    </suppress>
 </suppressions>

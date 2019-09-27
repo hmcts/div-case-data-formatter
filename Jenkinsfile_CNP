@@ -34,8 +34,6 @@ withPipeline(type , product, component) {
         installCharts()
     }
 
-    setVaultName('div')
-
     after('checkout') {
         echo '${product}-${component} checked out'
     }

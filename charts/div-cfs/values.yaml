@@ -1,7 +1,7 @@
 java:
     applicationPort: 4011
+    ingressHost: "div-cfs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     environment:
         REFORM_SERVICE_NAME: "cfs"
         REFORM_TEAM: "div"
         SLOT: "PRODUCTION"
-

@@ -20,10 +20,8 @@ def component = "cfs"
 def channel = '#div-dev'
 
 withPipeline(type , product, component) {
-    enableDockerBuild()
-    installCharts()
-    enableAksStagingDeployment()
-    disableLegacyDeployment()
+
+    
 
     after('checkout') {
         echo '${product}-${component} checked out'

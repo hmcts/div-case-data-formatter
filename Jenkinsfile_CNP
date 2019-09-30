@@ -19,20 +19,11 @@ def component = "cfs"
 
 def channel = '#div-dev'
 
-static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
-    [ $class: 'AzureKeyVaultSecret',
-      secretType: 'Secret',
-      name: secretName,
-      version: '',
-      envVariable: envVar
-    ]
-}
-
 withPipeline(type , product, component) {
-    if (env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) {
-        enableDockerBuild()
-        installCharts()
-    }
+    enableDockerBuild()
+    installCharts()
+    enableAksStagingDeployment()
+    disableLegacyDeployment()
 
     after('checkout') {
         echo '${product}-${component} checked out'

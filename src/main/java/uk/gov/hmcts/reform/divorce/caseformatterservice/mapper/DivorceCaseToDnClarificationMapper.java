@@ -27,17 +27,20 @@ public abstract class DivorceCaseToDnClarificationMapper {
     protected void mapDnClarificationResponse(DivorceCaseWrapper divorceCaseWrapper,
                                               @MappingTarget DnCaseData result) {
 
-        List<String> clarificationReasons =
+        List<CollectionMember<String>> clarificationReasons =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse())
                 .orElse(new ArrayList<>());
 
         DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
 
-        if (!divorceSession.getClarificationResponse().isEmpty()) {
-            clarificationReasons.add(divorceSession.getClarificationResponse());
-        }
+        if (divorceSession.getClarificationResponse() != null) {
+            CollectionMember<String> clarificationResponse = new CollectionMember<>();
+            clarificationResponse.setValue(divorceSession.getClarificationResponse());
 
-        result.setDnClarificationResponse(clarificationReasons);
+            clarificationReasons.add(clarificationResponse);
+
+            result.setDnClarificationResponse(clarificationReasons);
+        }
     }
 
     @AfterMapping
@@ -50,10 +53,10 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
         // New documents are already added to the result from the @Mapping annotation on the constructor
         // This can then be used in the AfterMapping
-        if (!result.getDocumentsUploadedDnClarification().isEmpty()) {
+        if (result.getDocumentsUploadedDnClarification() != null) {
             clarificationDocuments.addAll(result.getDocumentsUploadedDnClarification());
-        }
 
-        result.setDocumentsUploadedDnClarification(clarificationDocuments);
+            result.setDocumentsUploadedDnClarification(clarificationDocuments);
+        }
     }
 }

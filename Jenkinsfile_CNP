@@ -21,7 +21,8 @@ def channel = '#div-dev'
 
 withPipeline(type , product, component) {
 
-    
+    enableDockerBuild()
+    installCharts()
 
     after('checkout') {
         echo '${product}-${component} checked out'

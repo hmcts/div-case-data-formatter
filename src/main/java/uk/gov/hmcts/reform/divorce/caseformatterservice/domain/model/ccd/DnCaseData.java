@@ -89,12 +89,16 @@ public class DnCaseData {
     @JsonProperty("DesertionAskedToResumeDNDetails")
     private String desertionAskedToResumeDNDetails;
 
+    // These three JsonInclude 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DnClarificationResponse")
     private List<CollectionMember<String>> dnClarificationResponse;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DnClarificationUploadDocuments")
     private List<CollectionMember<String>> dnClarificationUploadDocuments;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DocumentsUploadedDnClarification")
     private List<CollectionMember<Document>> documentsUploadedDnClarification;
 

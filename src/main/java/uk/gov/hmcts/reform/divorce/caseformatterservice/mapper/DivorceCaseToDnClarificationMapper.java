@@ -79,7 +79,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
                 .orElse(new ArrayList<>());
 
         int clarificationNumber =
-            Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse()).orElse(new ArrayList<>())
+            Optional.ofNullable(result.getDnClarificationResponse()).orElse(new ArrayList<>())
                 .size();
 
         // New documents are already added to the result from the @Mapping annotation on the constructor

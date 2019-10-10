@@ -90,10 +90,10 @@ public class DnCaseData {
     private String desertionAskedToResumeDNDetails;
 
     @JsonProperty("DnClarificationResponse")
-    private List<CollectionMember<String>> dnClarificationResponse;
+    private List<CollectionMember<Clarification>> dnClarificationResponse;
 
     @JsonProperty("DnClarificationUploadDocuments")
-    private List<CollectionMember<String>> dnClarificationUploadDocuments;
+    private List<CollectionMember<Clarification>> dnClarificationUploadDocuments;
 
     @JsonProperty("DocumentsUploadedDnClarification")
     private List<CollectionMember<Document>> documentsUploadedDnClarification;

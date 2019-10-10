@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Clarification;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
@@ -67,13 +68,13 @@ public class DivorceCaseToDnClarificationMapperUTest {
         List<CollectionMember<Document>> existingDocuments = new ArrayList<>();
         existingDocuments.add(collectionMember);
 
-        CollectionMember<String> clarificationResponse = new CollectionMember<>();
+        CollectionMember<Clarification> clarificationResponse = new CollectionMember<>();
         clarificationResponse.setId("initial-id");
-        clarificationResponse.setValue("Clarification 1: This is the initial response");
+        clarificationResponse.setValue(new Clarification("1", "This is the initial response."));
 
-        CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
+        CollectionMember<Clarification> uploadAnyOtherDocuments = new CollectionMember<>();
         uploadAnyOtherDocuments.setId("initial-id");
-        uploadAnyOtherDocuments.setValue("Clarification 1: No");
+        uploadAnyOtherDocuments.setValue(new Clarification("1", "No"));
 
         CoreCaseData coreCaseData = new CoreCaseData();
         coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));

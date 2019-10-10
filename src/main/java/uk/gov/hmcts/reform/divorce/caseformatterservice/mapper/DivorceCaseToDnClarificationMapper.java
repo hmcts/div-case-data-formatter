@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -7,6 +8,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Clarification;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
@@ -30,17 +32,17 @@ public abstract class DivorceCaseToDnClarificationMapper {
     protected void mapDnClarificationResponse(DivorceCaseWrapper divorceCaseWrapper,
                                               @MappingTarget DnCaseData result) {
 
-        List<CollectionMember<String>> clarificationReasons =
+        List<CollectionMember<Clarification>> clarificationReasons =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse())
                 .orElse(new ArrayList<>());
 
         DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
 
         if (divorceSession.getClarificationResponse() != null) {
-            CollectionMember<String> clarificationResponse = new CollectionMember<>();
-            clarificationResponse.setValue(String.format(CLARIFICATION_STRING,
-                clarificationReasons.size() + 1, divorceSession.getClarificationResponse()
-            ));
+            CollectionMember<Clarification> clarificationResponse = new CollectionMember<>();
+            clarificationResponse.setValue(
+                new Clarification(String.valueOf(clarificationReasons.size() + 1),
+                    divorceSession.getClarificationResponse()));
 
             clarificationReasons.add(clarificationResponse);
 
@@ -52,17 +54,17 @@ public abstract class DivorceCaseToDnClarificationMapper {
     protected void mapDnClarificationUploadAnyOtherDocuments(DivorceCaseWrapper divorceCaseWrapper,
                                                              @MappingTarget DnCaseData result) {
 
-        List<CollectionMember<String>> uploadAnyOtherDocumentsList =
+        List<CollectionMember<Clarification>> uploadAnyOtherDocumentsList =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationUploadDocuments())
                 .orElse(new ArrayList<>());
 
         DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
 
         if (divorceSession.getUploadAnyOtherDocuments() != null) {
-            CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
-            uploadAnyOtherDocuments.setValue(String.format(CLARIFICATION_STRING,
-                uploadAnyOtherDocumentsList.size() + 1, divorceSession.getUploadAnyOtherDocuments()
-            ));
+            CollectionMember<Clarification> uploadAnyOtherDocuments = new CollectionMember<>();
+            uploadAnyOtherDocuments.setValue(
+                new Clarification(String.valueOf(uploadAnyOtherDocumentsList.size() + 1),
+                    StringUtils.capitalize(divorceSession.getUploadAnyOtherDocuments())));
 
             uploadAnyOtherDocumentsList.add(uploadAnyOtherDocuments);
 

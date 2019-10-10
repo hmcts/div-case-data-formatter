@@ -2,21 +2,33 @@
     "DnClarificationResponse" : [
         {
             "id" : "initial-id",
-            "value" : "Clarification 1: This is the initial response"
+            "value" : {
+                "ClarificationId" : 1,
+                "ClarificationValue" : "This is the initial response."
+            }
         },
         {
             "id" : null,
-            "value" : "Clarification 2: This is a response attempt."
+            "value" : {
+                "ClarificationId" : 2,
+                "ClarificationValue" : "This is a response attempt."
+            }
         }
     ],
     "DnClarificationUploadDocuments" : [
         {
             "id" : "initial-id",
-            "value" : "Clarification 1: No"
+            "value" : {
+                "ClarificationId" : 1,
+                "ClarificationValue" : "No"
+            }
         },
         {
             "id" : null,
-            "value" : "Clarification 2: Yes"
+            "value" : {
+                "ClarificationId" : 2,
+                "ClarificationValue" : "Yes"
+            }
         }
     ],
     "DocumentsUploadedDnClarification" : [

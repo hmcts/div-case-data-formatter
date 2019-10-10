@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -87,4 +88,26 @@ public class DnCaseData {
 
     @JsonProperty("DesertionAskedToResumeDNDetails")
     private String desertionAskedToResumeDNDetails;
+
+    @JsonProperty("DnClarificationResponse")
+    private List<CollectionMember<String>> dnClarificationResponse;
+
+    @JsonProperty("DnClarificationUploadDocuments")
+    private List<CollectionMember<String>> dnClarificationUploadDocuments;
+
+    @JsonProperty("DocumentsUploadedDnClarification")
+    private List<CollectionMember<Document>> documentsUploadedDnClarification;
+
+    // Caseworker only fields so frontend submission does not modify these
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalClarificationReason")
+    private List<String> refusalClarificationReason;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalClarificationAdditionalInfo")
+    private String refusalClarificationAdditionalInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("DnOutcomeCase")
+    private String dnOutcomeCase;
 }

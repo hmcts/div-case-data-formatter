@@ -6,7 +6,6 @@ import net.serenitybdd.junit.spring.integration.SpringIntegrationMethodRule;
 import org.assertj.core.util.Strings;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,25 +16,18 @@ import java.net.InetAddress;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
 
 @Slf4j
 @RunWith(SerenityRunner.class)
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 public abstract class IntegrationTest {
-    private static final String password = "genericPassword1";
-
-    private String userToken;
 
     @Value("${case.formatter.service.base.uri}")
     private String serverUrl;
 
     @Value("${http.proxy:#{null}}")
     protected String httpProxy;
-
-    @Autowired
-    private IdamUtils idamTestSupportUtil;
 
     @Rule
     public SpringIntegrationMethodRule springMethodIntegration;
@@ -60,18 +52,6 @@ public abstract class IntegrationTest {
                 log.error("Error setting up proxy - are you connected to the VPN?", e);
                 throw new RuntimeException(e);
             }
-        }
-    }
-
-    String getUserToken() {
-        synchronized (this) {
-            if (userToken == null) {
-                String username = "divorce-cfs-test-" + UUID.randomUUID();
-                idamTestSupportUtil.createUserInIdam(username, password);
-                userToken = idamTestSupportUtil.generateUserTokenWithNoRoles(username, password);
-            }
-
-            return userToken;
         }
     }
 

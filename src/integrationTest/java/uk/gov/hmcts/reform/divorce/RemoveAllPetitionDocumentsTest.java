@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+
 import java.util.Map;
 
 public class RemoveAllPetitionDocumentsTest extends IntegrationTest {

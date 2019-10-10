@@ -27,7 +27,6 @@ module "div-cfs" {
         REFORM_SERVICE_NAME                                   = "${var.component}"
         REFORM_TEAM                                           = "${var.product}"
         REFORM_ENVIRONMENT                                    = "${var.env}"
-        IDAM_API_BASEURL                                      = "${var.idam_api_baseurl}"
         DOCUMENT_MANAGEMENT_STORE_URL                         = "${local.dm_store_url}"
         MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE                = "${var.health_check_ttl}"
     }

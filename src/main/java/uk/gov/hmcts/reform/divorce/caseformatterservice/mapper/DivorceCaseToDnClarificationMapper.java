@@ -21,6 +21,7 @@ import java.util.Optional;
 public abstract class DivorceCaseToDnClarificationMapper {
 
     private static final String CLARIFICATION_STRING = "Clarification %s: %s";
+    private static final String DOCUMENT_COMMENT = "Document";
 
     @Mapping(source = "divorceSession.files", target = "documentsUploadedDnClarification")
     public abstract DnCaseData divorceCaseDataToDnCaseData(DivorceCaseWrapper divorceCaseWrapper);
@@ -77,9 +78,17 @@ public abstract class DivorceCaseToDnClarificationMapper {
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDocumentsUploadedDnClarification())
                 .orElse(new ArrayList<>());
 
+        int clarificationNumber =
+            Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse()).orElse(new ArrayList<>())
+                .size();
+
         // New documents are already added to the result from the @Mapping annotation on the constructor
         // This can then be used in the AfterMapping
         if (result.getDocumentsUploadedDnClarification() != null) {
+            result.getDocumentsUploadedDnClarification().stream().forEach(document -> {
+                document.getValue().setDocumentComment(String.format(CLARIFICATION_STRING,
+                    clarificationNumber, DOCUMENT_COMMENT));
+            });
             clarificationDocuments.addAll(result.getDocumentsUploadedDnClarification());
 
             result.setDocumentsUploadedDnClarification(clarificationDocuments);

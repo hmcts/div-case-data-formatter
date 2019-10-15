@@ -519,8 +519,17 @@ public class DivorceSession {
     @ApiModelProperty("Reason for why clarification is needed.")
     private List<String> refusalClarificationReason;
 
-    @ApiModelProperty("Any additional input by the legal advisor.")
+    @ApiModelProperty("Any additional input by the legal advisor for clarification.")
     private String refusalClarificationAdditionalInfo;
+
+    @ApiModelProperty("Reason for why refusal rejection is needed.")
+    private List<String> refusalRejectionReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor for refusal rejection.")
+    private String refusalRejectionAdditionalInfo;
+
+    @ApiModelProperty("Any additional input by the legal advisor for admin error.")
+    private String refusalAdminErrorInfo;
 
     @ApiModelProperty(value = "Clarification response for the current clarification journey")
     private String clarificationResponse;

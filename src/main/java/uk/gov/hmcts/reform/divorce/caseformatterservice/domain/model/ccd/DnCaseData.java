@@ -90,4 +90,7 @@ public class DnCaseData extends DnRefusalCaseData {
 
     @JsonProperty("DesertionAskedToResumeDNDetails")
     private String desertionAskedToResumeDNDetails;
+
+    @JsonProperty("ClarificationDigital")
+    private String clarificationDigital;
 }

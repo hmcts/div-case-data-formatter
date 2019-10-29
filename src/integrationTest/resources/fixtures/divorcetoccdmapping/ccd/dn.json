@@ -47,5 +47,6 @@
             }
         }
     ],
-    "DocumentsUploadedQuestionDN" : "YES"
+    "DocumentsUploadedQuestionDN" : "YES",
+    "ClarificationDigital": "YES"
 }

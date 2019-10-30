@@ -59,4 +59,8 @@ public class DnRefusalCaseData {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("PreviousRefusalRejectionAdditionalInfo")
     private String previousRefusalRejectionAdditionalInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("ClarificationDigital")
+    private String clarificationDigital;
 }

@@ -977,6 +977,13 @@ public abstract class CCDCaseToDivorceMapper {
         }
     }
 
+    @AfterMapping
+    protected void mapClarificationDigital(CoreCaseData caseData,
+                                                      @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setClarificationDigital(
+            toYesNoPascalCase(caseData.getClarificationDigital()));
+    }
+
     private String translateCaseLinkToString(final CaseLink caseLink) {
         // translate from CaseLink type to String
         if (Objects.isNull(caseLink)) {

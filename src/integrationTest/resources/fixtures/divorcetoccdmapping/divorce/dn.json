@@ -328,6 +328,5 @@
             "status" : "OK"
         }
     ],
-    "uploadAnyOtherDocuments" : "Yes",
-    "clarificationDigital": "Yes"
+    "uploadAnyOtherDocuments" : "Yes"
 }

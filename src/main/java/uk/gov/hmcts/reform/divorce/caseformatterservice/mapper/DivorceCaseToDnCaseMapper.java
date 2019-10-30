@@ -134,12 +134,6 @@ public abstract class DivorceCaseToDnCaseMapper {
         }
     }
 
-    @AfterMapping
-    protected void mapClarificationDigital(DivorceSession divorceSession, @MappingTarget DnCaseData result) {
-
-        result.setClarificationDigital(translateToStringYesNo(divorceSession.getClarificationDigital()));
-    }
-
     private String translateToStringYesNo(final String value) {
         if (Objects.isNull(value)) {
             return null;

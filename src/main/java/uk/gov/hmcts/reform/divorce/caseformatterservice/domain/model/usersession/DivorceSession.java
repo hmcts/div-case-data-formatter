@@ -286,8 +286,6 @@ public class DivorceSession {
     private String respondentKnowsHomeAddress;
     @ApiModelProperty(hidden = true)
     private String sessionKey;
-    @ApiModelProperty(value = "Regional divorce unit details")
-    private Map<String, Map<String, Object>> court;//TODO - understand where this is used
     @ApiModelProperty(value = "Regional divorce unit.")
     private String courts;
     @ApiModelProperty(value = "Name of solicitor used by respondent.")

@@ -62,5 +62,5 @@ public class DnRefusalCaseData {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("ClarificationDigital")
-    private String clarificationDigital;
+    private List<CollectionMember<String>> clarificationDigital;
 }

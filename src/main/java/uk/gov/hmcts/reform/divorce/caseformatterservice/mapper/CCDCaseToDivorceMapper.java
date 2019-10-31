@@ -980,8 +980,12 @@ public abstract class CCDCaseToDivorceMapper {
     @AfterMapping
     protected void mapClarificationDigital(CoreCaseData caseData,
                                                       @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setClarificationDigital(
-            toYesNoPascalCase(caseData.getClarificationDigital()));
+        List<String> clarificationSendMethodList = new ArrayList<>();
+        if (caseData.getClarificationDigital() != null)  {
+            caseData.getClarificationDigital().forEach((entry) -> clarificationSendMethodList.add(entry.getValue()));
+        }
+
+        divorceSession.setClarificationDigital(clarificationSendMethodList);
     }
 
     private String translateCaseLinkToString(final CaseLink caseLink) {

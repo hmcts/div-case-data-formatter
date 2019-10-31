@@ -102,8 +102,8 @@ public abstract class DivorceCaseToDnClarificationMapper {
     @AfterMapping
     protected void mapClarificationDigital(DivorceCaseWrapper divorceCaseWrapper,
                                            @MappingTarget DnRefusalCaseData result) {
-        result.setClarificationDigital(translateToStringYesNo(
-            divorceCaseWrapper.getDivorceSession().getClarificationDigital()));
+        List<CollectionMember<String>> clarificationMethods = Optional.ofNullable(divorceCaseWrapper.getCaseData().getClarificationDigital())
+            .orElse(new ArrayList<>());
     }
 
     private String translateToStringYesNo(final String value) {

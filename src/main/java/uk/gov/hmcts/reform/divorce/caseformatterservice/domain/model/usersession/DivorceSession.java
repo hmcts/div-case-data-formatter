@@ -541,7 +541,7 @@ public class DivorceSession {
     private String dnOutcomeCase;
 
     @ApiModelProperty(value = "Indicates if petitioner is sending the clarification as upload or in post")
-    private String clarificationDigital;
+    private List<String> clarificationDigital;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

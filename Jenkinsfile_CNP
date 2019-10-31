@@ -22,6 +22,7 @@ def channel = '#div-dev'
 withPipeline(type , product, component) {
 
     enableDockerBuild()
+    enableAksStagingDeployment()
     installCharts()
 
     after('checkout') {

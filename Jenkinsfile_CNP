@@ -22,10 +22,15 @@ def channel = '#div-dev'
 withPipeline(type , product, component) {
 
     enableDockerBuild()
+    enableAksStagingDeployment()
     installCharts()
 
     after('checkout') {
         echo '${product}-${component} checked out'
+    }
+
+    before('functionalTest:aat') {
+        env.test_environment = 'aat'
     }
 
     after('functionalTest:aat') {

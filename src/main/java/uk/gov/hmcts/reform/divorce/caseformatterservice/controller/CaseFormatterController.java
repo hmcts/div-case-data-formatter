@@ -19,6 +19,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCase
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
@@ -120,7 +121,7 @@ public class CaseFormatterController {
         @ApiResponse(code = 200, message = "Case transformed into DN Clarification format", response = DnCaseData.class),
         }
     )
-    public ResponseEntity<DnCaseData> getDnClarificationCaseData(
+    public ResponseEntity<DnRefusalCaseData> getDnClarificationCaseData(
         @RequestBody @ApiParam(value = "Divorce CCD and Session data", required = true) DivorceCaseWrapper divorceCaseWrapper) {
         return ResponseEntity.ok(caseFormatterService.getDnClarificationCaseData(divorceCaseWrapper));
     }

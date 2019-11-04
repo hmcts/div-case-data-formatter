@@ -9,7 +9,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -18,7 +18,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -35,8 +34,8 @@ public class DivorceCaseToDnClarificationMapperUTest {
     public void shouldMapDivorceSessionFieldsToDnCaseData() throws Exception {
         CoreCaseData coreCaseData = new CoreCaseData();
 
-        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification.json", DnCaseData.class);
+        DnRefusalCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification.json", DnRefusalCaseData.class);
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-clarification.json",
@@ -44,7 +43,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
 
-        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+        DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }
@@ -80,8 +79,8 @@ public class DivorceCaseToDnClarificationMapperUTest {
         coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
         coreCaseData.setDocumentsUploadedDnClarification(existingDocuments);
 
-        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification-existing-data.json", DnCaseData.class);
+        DnRefusalCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification-existing-data.json", DnRefusalCaseData.class);
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-clarification-existing-data.json",
@@ -89,7 +88,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
 
-        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+        DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }
@@ -101,9 +100,9 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
 
-        DnCaseData expectedDnCaseData = new DnCaseData();
+        DnRefusalCaseData expectedDnCaseData = new DnRefusalCaseData();
 
-        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+        DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }

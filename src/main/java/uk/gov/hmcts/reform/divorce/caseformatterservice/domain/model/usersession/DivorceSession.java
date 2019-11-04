@@ -286,8 +286,6 @@ public class DivorceSession {
     private String respondentKnowsHomeAddress;
     @ApiModelProperty(hidden = true)
     private String sessionKey;
-    @ApiModelProperty(value = "Regional divorce unit details")
-    private Map<String, Map<String, Object>> court;
     @ApiModelProperty(value = "Regional divorce unit.")
     private String courts;
     @ApiModelProperty(value = "Name of solicitor used by respondent.")
@@ -519,14 +517,29 @@ public class DivorceSession {
     @ApiModelProperty("Reason for why clarification is needed.")
     private List<String> refusalClarificationReason;
 
-    @ApiModelProperty("Any additional input by the legal advisor.")
+    @ApiModelProperty("Any additional input by the legal advisor for clarification.")
     private String refusalClarificationAdditionalInfo;
+
+    @ApiModelProperty("Reason for why refusal rejection is needed.")
+    private List<String> refusalRejectionReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor for refusal rejection.")
+    private String refusalRejectionAdditionalInfo;
+
+    @ApiModelProperty("Any additional input by the legal advisor for admin error.")
+    private String refusalAdminErrorInfo;
 
     @ApiModelProperty(value = "Clarification response for the current clarification journey")
     private String clarificationResponse;
 
+    @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition for refusal rejection")
+    private List<String> previousReasonsForDivorceRefusal;
+
     @ApiModelProperty(value = "Flag for online Decree Nisi Outcome journey")
     private String dnOutcomeCase;
+
+    @ApiModelProperty(value = "Indicates if petitioner is sending the clarification as upload or in post")
+    private String clarificationDigital;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

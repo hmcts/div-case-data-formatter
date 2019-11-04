@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,11 +10,14 @@ import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 
 @Mapper(componentModel = "spring", uses = DocumentCollectionCCDFormatMapper.class,
@@ -24,11 +28,11 @@ public abstract class DivorceCaseToDnClarificationMapper {
     private static final String DOCUMENT_COMMENT = "Document";
 
     @Mapping(source = "divorceSession.files", target = "documentsUploadedDnClarification")
-    public abstract DnCaseData divorceCaseDataToDnCaseData(DivorceCaseWrapper divorceCaseWrapper);
+    public abstract DnRefusalCaseData divorceCaseDataToDnCaseData(DivorceCaseWrapper divorceCaseWrapper);
 
     @AfterMapping
     protected void mapDnClarificationResponse(DivorceCaseWrapper divorceCaseWrapper,
-                                              @MappingTarget DnCaseData result) {
+                                              @MappingTarget DnRefusalCaseData result) {
 
         List<CollectionMember<String>> clarificationReasons =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse())
@@ -50,7 +54,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
     @AfterMapping
     protected void mapDnClarificationUploadAnyOtherDocuments(DivorceCaseWrapper divorceCaseWrapper,
-                                                             @MappingTarget DnCaseData result) {
+                                                             @MappingTarget DnRefusalCaseData result) {
 
         List<CollectionMember<String>> uploadAnyOtherDocumentsList =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationUploadDocuments())
@@ -72,7 +76,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
     @AfterMapping
     protected void mapDocumentsUploadedDnClarification(DivorceCaseWrapper divorceCaseWrapper,
-                                                       @MappingTarget DnCaseData result) {
+                                                       @MappingTarget DnRefusalCaseData result) {
 
         List<CollectionMember<Document>> clarificationDocuments =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDocumentsUploadedDnClarification())
@@ -93,5 +97,19 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
             result.setDocumentsUploadedDnClarification(clarificationDocuments);
         }
+    }
+
+    @AfterMapping
+    protected void mapClarificationDigital(DivorceCaseWrapper divorceCaseWrapper,
+                                           @MappingTarget DnRefusalCaseData result) {
+        result.setClarificationDigital(translateToStringYesNo(
+            divorceCaseWrapper.getDivorceSession().getClarificationDigital()));
+    }
+
+    private String translateToStringYesNo(final String value) {
+        if (Objects.isNull(value)) {
+            return null;
+        }
+        return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
     }
 }

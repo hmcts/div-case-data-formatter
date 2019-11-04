@@ -10,7 +10,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
@@ -30,7 +29,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,9 +44,6 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCom
 public abstract class CCDCaseToDivorceMapper {
 
     private static final String LINE_BREAK = "\n";
-
-    @Value("#{${court.details}}")
-    private Map<String, Map<String, Object>> courtDetails;
 
     @Autowired
     private ReasonForDivorceContext reasonForDivorceContext;
@@ -155,6 +150,9 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "dateCaseNoLongerEligibleForDA", dateFormat = SIMPLE_DATE_FORMAT, target = "dateCaseNoLongerEligibleForDA")
     @Mapping(source = "refusalClarificationReason", target = "refusalClarificationReason")
     @Mapping(source = "refusalClarificationAdditionalInfo", target = "refusalClarificationAdditionalInfo")
+    @Mapping(source = "refusalRejectionReason", target = "refusalRejectionReason")
+    @Mapping(source = "refusalRejectionAdditionalInfo", target = "refusalRejectionAdditionalInfo")
+    @Mapping(source = "refusalAdminErrorInfo", target = "refusalAdminErrorInfo")
     @Mapping(source = "dnOutcomeCase", target = "dnOutcomeCase")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
@@ -176,12 +174,6 @@ public abstract class CCDCaseToDivorceMapper {
             divorceSession.setMarriageDateMonth(marriageDate.getMonthValue());
             divorceSession.setMarriageDateYear(marriageDate.getYear());
         }
-    }
-
-    @AfterMapping
-    protected void addCourtDetails(CoreCaseData caseData,
-                                   @MappingTarget DivorceSession divorceSession) {
-        divorceSession.setCourt(courtDetails);
     }
 
     @AfterMapping
@@ -972,6 +964,13 @@ public abstract class CCDCaseToDivorceMapper {
             divorceSession.setHearingDate(hearingDateTime.getValue().getDateOfHearing());
             divorceSession.setHearingTime(hearingDateTime.getValue().getTimeOfHearing());
         }
+    }
+
+    @AfterMapping
+    protected void mapClarificationDigital(CoreCaseData caseData,
+                                                      @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setClarificationDigital(
+            toYesNoPascalCase(caseData.getClarificationDigital()));
     }
 
     private String translateCaseLinkToString(final CaseLink caseLink) {

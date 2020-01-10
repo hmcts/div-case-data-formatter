@@ -28,7 +28,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(path = "caseformatter/version/1", consumes = MediaType.APPLICATION_JSON_VALUE,
-    produces = MediaType.APPLICATION_JSON_VALUE )
+    produces = MediaType.APPLICATION_JSON_VALUE)
 @Api(value = "Case Formatter Services", consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class CaseFormatterController {

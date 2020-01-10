@@ -41,7 +41,7 @@ public class DocumentCollectionDocumentRequestMapperUTest {
         CollectionMember<Document> actual = mapper.map(generatedDocumentInfo);
 
         assertEquals(url, actual.getValue().getDocumentLink().getDocumentUrl());
-        assertEquals(url + HAL_BINARY_RESPONSE_CONTEXT_PATH ,
+        assertEquals(url + HAL_BINARY_RESPONSE_CONTEXT_PATH,
             actual.getValue().getDocumentLink().getDocumentBinaryUrl());
         assertEquals(fileName + PDF_FILE_EXTENSION, actual.getValue().getDocumentLink().getDocumentFilename());
         assertEquals(fileName, actual.getValue().getDocumentFileName());

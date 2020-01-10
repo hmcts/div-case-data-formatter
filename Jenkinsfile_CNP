@@ -24,6 +24,7 @@ withPipeline(type , product, component) {
     enableDockerBuild()
     enableAksStagingDeployment()
     installCharts()
+    disableLegacyDeploymentOnAAT()
 
     after('checkout') {
         echo '${product}-${component} checked out'

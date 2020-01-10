@@ -83,10 +83,6 @@ dependencyManagement {
 repositories {
     mavenLocal()
     jcenter()
-
-    maven { url 'https://repo.spring.io/libs-milestone' }
-    maven { url "https://dl.bintray.com/hmcts/hmcts-maven" }
-    maven { url "http://repo.maven.apache.org/maven2" }
 }
 
 distributions {
@@ -99,19 +95,11 @@ distributions {
     }
 }
 
-checkstyle.toolVersion = '8.21'
-checkstyle.configFile = new File(rootDir, "checkstyle.xml")
-
-// make build fail on Checkstyle issues (https://github.com/gradle/gradle/issues/881)
-tasks.withType(Checkstyle).each { checkstyleTask ->
-    checkstyleTask.doLast {
-        reports.all { report ->
-            def outputFile = report.destination
-            if (outputFile.exists() && outputFile.text.contains("<error ")) {
-                throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
-            }
-        }
-    }
+checkstyle {
+    maxWarnings = 0
+    toolVersion = '8.24'
+    // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
+    configDir = new File(rootDir, 'config/checkstyle')
 }
 
 configurations {
@@ -145,7 +133,7 @@ def versions = [
     puppyCrawl: '8.21',
     reformHealth: '0.0.3',
     reformPropertiesVolume: '0.0.4',
-    reformsJavaLogging: '4.0.1',
+    reformsJavaLogging: '5.1.1',
     reformSpringBootAutoConfigure: '1.1.0',
     restAssured: '3.0.3',
     serenity: '2.0.41',
@@ -226,10 +214,8 @@ dependencies {
 
     compile group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: versions.reformPropertiesVolume
     compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth
-    compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformsJavaLogging
-    compile group: 'uk.gov.hmcts.reform', name: 'java-logging-appinsights', version: versions.reformsJavaLogging
-    compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: versions.reformsJavaLogging
-    compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: versions.reformsJavaLogging
+    compile group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformsJavaLogging
+    compile group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformsJavaLogging
 
     compile group: 'org.pitest', name: 'pitest', version: versions.pitest
     compile group:'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest

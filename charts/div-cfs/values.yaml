@@ -1,7 +1,11 @@
 java:
-    applicationPort: 4011
-    ingressHost: "div-cfs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    environment:
-        REFORM_SERVICE_NAME: "cfs"
-        REFORM_TEAM: "div"
-        SLOT: "PRODUCTION"
+  applicationPort: 4011
+  aadIdentityName: divorce
+  image: hmctspublic.azurecr.io/div/cfs:latest
+  ingressHost: "div-cfs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  environment:
+    DOCUMENT_MANAGEMENT_STORE_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  keyVaults:
+    div:
+      secrets:
+        - AppInsightsInstrumentationKey

@@ -1,10 +1,4 @@
 java:
-    environment:
-        DOCUMENT_MANAGEMENT_STORE_URL: "http://dm-store-aat.service.core-compute-aat.internal"
-        REFORM_ENVIRONMENT: "aat"
-        APPINSIGHTS_INSTRUMENTATIONKEY: "dummy"
-        MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE: "30000"
-
-    # Don't modify below here
-    image: ${IMAGE_NAME}
-    ingressHost: ${SERVICE_FQDN}
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}

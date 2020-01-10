@@ -14,7 +14,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

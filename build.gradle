@@ -131,7 +131,7 @@ def versions = [
     orgSpringframework: '5.1.4.RELEASE',
     pitest: '1.3.2',
     puppyCrawl: '8.21',
-    reformHealth: '0.0.3',
+    reformHealth: '0.0.5',
     reformPropertiesVolume: '0.0.4',
     reformsJavaLogging: '5.1.1',
     reformSpringBootAutoConfigure: '1.1.0',

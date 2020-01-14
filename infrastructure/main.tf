@@ -22,12 +22,13 @@ module "div-cfs" {
     asp_name                        = "${local.asp_name}"
     asp_rg                          = "${local.asp_rg}"
     instance_size                   = "${var.instance_size}"
+    enable_ase                      = "${var.enable_ase}"
 
     app_settings = {
         REFORM_SERVICE_NAME                                   = "${var.component}"
         REFORM_TEAM                                           = "${var.product}"
         REFORM_ENVIRONMENT                                    = "${var.env}"
         DOCUMENT_MANAGEMENT_STORE_URL                         = "${local.dm_store_url}"
-        MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE                = "${var.health_check_ttl}"
+        MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE           = "${var.health_check_ttl}"
     }
 }

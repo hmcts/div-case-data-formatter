@@ -57,3 +57,7 @@ variable "health_check_ttl" {
     type = "string"
     default = "4000"
 }
+
+variable "enable_ase" {
+    default = false
+}

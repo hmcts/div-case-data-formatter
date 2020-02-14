@@ -4,7 +4,6 @@ import org.apache.commons.lang3.BooleanUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
-
 import org.mapstruct.ReportingPolicy;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;

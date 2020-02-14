@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

@@ -305,17 +305,15 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapMarriageCertificateFiles(CoreCaseData caseData,
                                                             @MappingTarget DivorceSession divorceSession) {
         Optional.ofNullable(divorceSession.getMarriageCertificateFiles())
-            .ifPresent(uploadedFiles -> {
-                divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
-                    .filter(uploadedFile -> {
-                        boolean fileIdExists = uploadedFile.getId() != null;
-                        if (!fileIdExists) {
-                            log.warn("Missing uploaded file properties in Case ID: {} - skipping file", caseData.getD8caseReference());
-                        }
-                        return fileIdExists;
-                    })
-                    .collect(Collectors.toCollection(ArrayList::new)));
-            });
+            .ifPresent(uploadedFiles -> divorceSession.setMarriageCertificateFiles(uploadedFiles.stream()
+                .filter(uploadedFile -> {
+                    boolean fileIdExists = uploadedFile.getId() != null;
+                    if (!fileIdExists) {
+                        log.warn("Missing uploaded file properties in Case ID: {} - skipping file", caseData.getD8caseReference());
+                    }
+                    return fileIdExists;
+                })
+                .collect(Collectors.toCollection(ArrayList::new))));
     }
 
     @AfterMapping

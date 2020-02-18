@@ -17,7 +17,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -75,8 +75,8 @@ public class DivorceCaseToDnClarificationMapperUTest {
         uploadAnyOtherDocuments.setValue("Clarification 1: No");
 
         CoreCaseData coreCaseData = new CoreCaseData();
-        coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));
-        coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
+        coreCaseData.setDnClarificationResponse(new ArrayList<>(Collections.singletonList(clarificationResponse)));
+        coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(Collections.singletonList(uploadAnyOtherDocuments)));
         coreCaseData.setDocumentsUploadedDnClarification(existingDocuments);
 
         DnRefusalCaseData expectedDnCaseData = ObjectMapperTestUtil
@@ -94,7 +94,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
     }
 
     @Test
-    public void shouldNotThrowErrorEventWhenClarificationDataIsNull() throws Exception {
+    public void shouldNotThrowErrorEventWhenClarificationDataIsNull() {
         CoreCaseData coreCaseData = new CoreCaseData();
         DivorceSession divorceSession = new DivorceSession();
 

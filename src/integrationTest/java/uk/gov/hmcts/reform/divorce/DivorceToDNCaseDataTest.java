@@ -8,9 +8,9 @@ import org.springframework.http.HttpStatus;
 
 import java.util.Map;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class DivorceToDNCaseDataTest extends IntegrationTest {
     private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/dn.json";

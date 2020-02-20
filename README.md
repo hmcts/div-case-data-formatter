@@ -1,7 +1,7 @@
 # Divorce Case Formatter Service [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is a case formatter service. This fill take care all the different data conversion between different
-Divorce Components. For example this will convert the Front End Session Data to CCD data format and vice versa.
+This is the Divorce Case Formatter Service which handles the different data conversion between different Divorce Components.
+For example this will convert the Front End Session Data to CCD data format and vice versa.
 
 ## Setup
 

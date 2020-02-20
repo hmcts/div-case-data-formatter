@@ -117,8 +117,7 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
                 .replaceAll(URL_REGEX, documentManagementStoreUrl + "$1"));
         }
 
-        Map<String, Object> updatedDocument = document;
-        updatedDocument.put(documentLinkJsonKey, documentLink);
-        return updatedDocument;
+        document.put(documentLinkJsonKey, documentLink);
+        return document;
     }
 }

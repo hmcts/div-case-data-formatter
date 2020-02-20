@@ -41,12 +41,10 @@ public class PaymentContextUTest {
     }
 
     private Payment createPayment(String reference, String status) {
-        final Payment payment = Payment.builder()
+
+        return Payment.builder()
             .paymentReference(reference)
             .paymentStatus(status)
             .build();
-
-        return payment;
     }
-
 }

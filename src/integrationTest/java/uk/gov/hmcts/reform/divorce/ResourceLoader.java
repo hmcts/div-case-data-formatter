@@ -3,15 +3,15 @@ package uk.gov.hmcts.reform.divorce;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ResourceLoader {
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static String loadJson(final String filePath) throws Exception {
-        return new String(loadResource(filePath), Charset.forName("utf-8"));
+        return new String(loadResource(filePath), StandardCharsets.UTF_8);
     }
 
     private static byte[] loadResource(final String filePath) throws Exception {

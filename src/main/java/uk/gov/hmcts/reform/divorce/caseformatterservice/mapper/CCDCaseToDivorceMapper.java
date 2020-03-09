@@ -973,6 +973,13 @@ public abstract class CCDCaseToDivorceMapper {
             toYesNoPascalCase(caseData.getClarificationDigital()));
     }
 
+    @AfterMapping
+    protected void mapLanguagePreferenceWelsh(CoreCaseData caseData,
+                                           @MappingTarget DivorceSession divorceSession) {
+        divorceSession.setLanguagePreferenceWelsh(
+            toYesNoPascalCase(caseData.getLanguagePreferenceWelsh()));
+    }
+
     private String translateCaseLinkToString(final CaseLink caseLink) {
         // translate from CaseLink type to String
         if (Objects.isNull(caseLink)) {

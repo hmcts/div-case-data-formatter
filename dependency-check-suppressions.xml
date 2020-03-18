@@ -31,5 +31,9 @@
         <gav regex="true">.*</gav>
         <cve>CVE-2019-15052</cve>
         <cve>CVE-2019-16370</cve>
+        <cve>CVE-2019-10782</cve>
+        <cve>CVE-2020-1938</cve>
+        <cve>CVE-2019-17569</cve>
+        <cve>CVE-2020-1935</cve>
     </suppress>
 </suppressions>

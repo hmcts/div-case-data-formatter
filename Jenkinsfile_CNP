@@ -26,7 +26,7 @@ withPipeline(type , product, component) {
 
     if ((env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) || 'hmctsdemo'.equalsIgnoreCase(env.BRANCH_NAME) ) {
        // enableDockerBuild()
-        enableDeployToAKS()
+        // enableDeployToAKS()
     }
   
     after('checkout') {

@@ -1,19 +1,22 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-public class DnCaseData {
+@EqualsAndHashCode(callSuper = true)
+public class DnCaseData extends DnRefusalCaseData {
 
     @JsonProperty("DNApplicationSubmittedDate")
     private String dnApplicationSubmittedDate;
+
+    @JsonProperty("PetitionChangedYesNoDN")
+    private String petitionChangedYesNoDN;
 
     @JsonProperty("PetitionChangedDetailsDN")
     private String petitionChangedDetailsDN;
@@ -38,6 +41,9 @@ public class DnCaseData {
 
     @JsonProperty("AdulteryDateFoundOut")
     private String adulteryDateFoundOut;
+
+    @JsonProperty("DNApplyForDecreeNisi")
+    private String applyForDecreeNisi;
 
     @JsonProperty("AdulteryLivedApartSinceEventDN")
     private String adulteryLivedApartSinceEventDN;
@@ -72,4 +78,15 @@ public class DnCaseData {
     @JsonProperty("DocumentsUploadedDN")
     private List<CollectionMember<Document>> documentsUploadedDN;
 
+    @JsonProperty("DocumentsUploadedQuestionDN")
+    private String documentsUploadedQuestionDN;
+
+    @JsonProperty("DesertionAskedToResumeDN")
+    private String desertionAskedToResumeDN;
+
+    @JsonProperty("DesertionAskedToResumeDNRefused")
+    private String desertionAskedToResumeDNRefused;
+
+    @JsonProperty("DesertionAskedToResumeDNDetails")
+    private String desertionAskedToResumeDNDetails;
 }

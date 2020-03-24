@@ -12,8 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
+
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
@@ -35,19 +36,19 @@ public class AddDocumentsSolicitorITest {
 
     @Test
     public void givenValidSolicitorDetails_whenAddDocuments_thenReturnExpected() throws Exception {
-        final CoreCaseData expectedCaseData =
-            (CoreCaseData)ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, CoreCaseData.class);
+        final Map<String, Object> expectedCaseData =
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, Map.class);
 
         MvcResult result = webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andReturn();
 
-        final CoreCaseData actualCaseData =
-            (CoreCaseData)ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
-                CoreCaseData.class);
+        final Map<String, Object> actualCaseData =
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
+                Map.class);
 
         assertThat(expectedCaseData, samePropertyValuesAs(actualCaseData));
     }

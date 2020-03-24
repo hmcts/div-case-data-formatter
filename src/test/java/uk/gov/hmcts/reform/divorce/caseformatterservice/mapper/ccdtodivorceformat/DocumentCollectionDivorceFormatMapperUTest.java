@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -30,16 +31,17 @@ public class DocumentCollectionDivorceFormatMapperUTest {
     private DocumentCollectionDivorceFormatMapper mapper;
 
     @Test
-    public void shouldMapUploadedFileToCollectionMember() throws ParseException {
+    public void shouldMapUploadedFileToCollectionMember() {
         final String dateDocumentAdded = "2012-11-11";
-        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         final Document document = new Document();
         final DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
         document.setDocumentLink(documentLink);
         document.setDocumentFileName(FILE_NAME);
         document.setDocumentDateAdded(dateDocumentAdded);
+        document.setDocumentDateAdded("");
 
         final CollectionMember<Document> collectionMember = new CollectionMember<>();
         collectionMember.setValue(document);
@@ -54,11 +56,73 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         assertEquals(0, uploadedFile.getLastModifiedBy());
         assertEquals(FILE_NAME, uploadedFile.getFileName());
         assertEquals(FILE_URL, uploadedFile.getFileUrl());
+        assertNull(uploadedFile.getCreatedOn());
+    }
+
+    @Test
+    public void shouldMapDateCorrectly() throws ParseException {
+        final String dateDocumentAdded = "2012-11-11";
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+        final Document document = new Document();
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
+        document.setDocumentLink(documentLink);
+        document.setDocumentFileName(FILE_NAME);
+        document.setDocumentDateAdded(dateDocumentAdded);
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        final UploadedFile uploadedFile = mapper.map(collectionMember);
+
         assertEquals(dateFormat.parse(dateDocumentAdded), uploadedFile.getCreatedOn());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldThrowRuntimeExceptionOnBadDateFormat() {
+        final String dateDocumentAdded = "wrong-format-1234";
+
+        final Document document = new Document();
+        final DocumentLink documentLink = new DocumentLink();
+        documentLink.setDocumentUrl(FILE_URL);
+        documentLink.setDocumentFilename(FILE_NAME);
+        document.setDocumentLink(documentLink);
+        document.setDocumentFileName(FILE_NAME);
+        document.setDocumentDateAdded(dateDocumentAdded);
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        mapper.map(collectionMember);
     }
 
     @Test
     public void shouldReturnNullWithNullInput() {
         assertNull(mapper.map(null));
+    }
+
+    @Test
+    public void shouldNotThrowExceptionForNullDocumentLink() {
+        final Document document = new Document();
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        assertThatCode(() -> mapper.map(collectionMember))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
+    public void shouldNotThrowExceptionForNullDocumentLinkUrl() {
+        final Document document = new Document();
+        document.setDocumentLink(new DocumentLink());
+
+        final CollectionMember<Document> collectionMember = new CollectionMember<>();
+        collectionMember.setValue(document);
+
+        assertThatCode(() -> mapper.map(collectionMember))
+            .doesNotThrowAnyException();
     }
 }

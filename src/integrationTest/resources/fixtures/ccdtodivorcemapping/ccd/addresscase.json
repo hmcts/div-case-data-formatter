@@ -1,6 +1,6 @@
 {
     "D8legalProcess" : null,
-    "D8caseReference" : "caseReference",
+    "D8caseReference" : "LV17D80100",
     "createdDate" : null,
     "D8ScreenHasMarriageBroken" : "YES",
     "D8ScreenHasRespondentAddress" : "YES",
@@ -52,7 +52,9 @@
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentSolicitorName" : "Justin",
     "D8RespondentSolicitorCompany" : "Case",
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "D8RespondentSolicitorEmail" : "justin@example.com",
+    "D8RespondentSolicitorPhone" : "01234567890",
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : {
         "AddressLine1":null,
         "AddressLine2":null,
@@ -129,7 +131,7 @@
           "DocumentLink" : {
             "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "govuklogo.png"
           },
           "DocumentDateAdded" : "2017-12-11",
           "DocumentComment" : "",
@@ -144,7 +146,7 @@
           "DocumentLink" : {
             "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "d8-eng.pdf"
           },
           "DocumentDateAdded": "2017-12-11",
           "DocumentComment": "",
@@ -207,5 +209,7 @@
     "D8InferredRespondentGender" : "male",
     "D8PetitionerConsent" : "YES",
     "IssueDate": "2006-02-02",
-    "dueDate":"2006-02-10"
+    "dueDate":"2006-02-10",
+    "PreviousReasonsForDivorce": ["reason-one","reason-two"],
+    "PreviousCaseId": {"CaseReference": "1234567891234567"}
   }

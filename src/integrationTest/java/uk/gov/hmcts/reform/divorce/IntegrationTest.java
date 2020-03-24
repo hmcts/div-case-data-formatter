@@ -1,32 +1,33 @@
 package uk.gov.hmcts.reform.divorce;
 
+import lombok.extern.slf4j.Slf4j;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit.spring.integration.SpringIntegrationMethodRule;
+import org.assertj.core.util.Strings;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.PostConstruct;
 
-@RunWith(SpringRunner.class)
+@Slf4j
+@RunWith(SerenityRunner.class)
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 public abstract class IntegrationTest {
-    private static final String USER_NAME = "caseformatterservicetest";
-    static final String EMAIL_ADDRESS = USER_NAME + "@test.com";
-    private static final String password = "passowrd";
-
-    private String userToken;
 
     @Value("${case.formatter.service.base.uri}")
     private String serverUrl;
 
-    @Autowired
-    private IdamUtils idamTestSupportUtil;
+    @Value("${http.proxy:#{null}}")
+    protected String httpProxy;
 
     @Rule
     public SpringIntegrationMethodRule springMethodIntegration;
@@ -35,14 +36,22 @@ public abstract class IntegrationTest {
         this.springMethodIntegration = new SpringIntegrationMethodRule();
     }
 
-    String getUserToken() {
-        synchronized (this) {
-            if (userToken == null) {
-                idamTestSupportUtil.createUserInIdam(USER_NAME, password);
-                userToken = idamTestSupportUtil.generateUserTokenWithNoRoles(USER_NAME, password);
+    @PostConstruct
+    public void init() {
+        if (!Strings.isNullOrEmpty(httpProxy)) {
+            try {
+                URL proxy = new URL(httpProxy);
+                if (!InetAddress.getByName(proxy.getHost()).isReachable(2000)) {
+                    throw new IOException("Proxy host is not reachable");
+                }
+                System.setProperty("http.proxyHost", proxy.getHost());
+                System.setProperty("http.proxyPort", Integer.toString(proxy.getPort()));
+                System.setProperty("https.proxyHost", proxy.getHost());
+                System.setProperty("https.proxyPort", Integer.toString(proxy.getPort()));
+            } catch (IOException e) {
+                log.error("Error setting up proxy - are you connected to the VPN?", e);
+                throw new RuntimeException(e);
             }
-
-            return userToken;
         }
     }
 
@@ -52,7 +61,7 @@ public abstract class IntegrationTest {
 
     Map<String, Object> getHeaders(String userToken) {
         Map<String, Object> headers = new HashMap<>();
-        headers.put(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE);
+        headers.put(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
 
         if (userToken != null) {
             headers.put(HttpHeaders.AUTHORIZATION, userToken);

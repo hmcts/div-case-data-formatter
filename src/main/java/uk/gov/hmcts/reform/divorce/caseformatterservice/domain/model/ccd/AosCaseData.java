@@ -20,8 +20,8 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("RespAdmitOrConsentToFact")
     private String respAdmitOrConsentToFact;
 
-    @JsonProperty("RespDefendsDivorce")
-    private String respDefendsDivorce;
+    @JsonProperty("RespWillDefendDivorce")
+    private String respWillDefendDivorce;
 
     @JsonProperty("RespJurisdictionDisagreeReason")
     private String respJurisdictionDisagreeReason;
@@ -70,4 +70,91 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("PermittedDecreeNisiReason")
     private String permittedDecreeNisiReason;
+
+    @JsonProperty("ReceivedAOSfromRespDate")
+    private String receivedAosFromRespDate;
+
+    @JsonProperty("ReceivedAOSfromResp")
+    private String receivedAosFromResp;
+
+    //Co-respondent answers
+
+    @JsonProperty("CoRespConfirmReadPetition")
+    private String coRespConfirmReadPetition;
+
+    @JsonProperty("CoRespAdmitAdultery")
+    private String coRespAdmitAdultery;
+
+    @JsonProperty("CoRespAgreeToCosts")
+    private String coRespAgreeToCosts;
+
+    @JsonProperty("CoRespConsentToEmail")
+    private String coRespConsentToEmail;
+
+    @JsonProperty("CoRespContactMethodIsDigital")
+    private String coRespContactMethodIsDigital;
+
+    @JsonProperty("CoRespCostsReason")
+    private String coRespCostsReason;
+
+    @JsonProperty("CoRespDefendsDivorce")
+    private String coRespDefendsDivorce;
+
+    @JsonProperty("CoRespEmailAddress")
+    private String coRespEmailAddress;
+
+    @JsonProperty("CoRespPhoneNumber")
+    private String coRespPhoneNumber;
+
+    @JsonProperty("CoRespStatementOfTruth")
+    private String coRespStatementOfTruth;
+
+    @JsonProperty("ReceivedAnswerFromCoResp")
+    private String receivedAnswerFromCoResp;
+
+    @JsonProperty("ReceivedAnswerFromCoRespDate")
+    private String receivedAnswerFromCoRespDate;
+
+    @JsonProperty("ReceivedAosFromCoResp")
+    private String receivedAosFromCoResp;
+
+    @JsonProperty("CoRespLetterHolderId")
+    private String coRespLetterHolderId;
+
+    @JsonProperty("ReceivedAosFromCoRespDate")
+    private String receivedAosFromCoRespDate;
+
+    @JsonProperty("DueDateCoResp")
+    private String dueDateCoResp;
+
+    @JsonProperty("CoRespLinkedToCaseDate")
+    private String coRespLinkedToCaseDate;
+
+    @JsonProperty("CoRespLinkedToCase")
+    private String coRespLinkedToCase;
+    //End of co-respondent answers
+
+    @JsonProperty("D8RespondentSolicitorName")
+    private String d8RespondentSolicitorName;
+
+    @JsonProperty("D8RespondentSolicitorCompany")
+    private String d8RespondentSolicitorCompany;
+
+    @JsonProperty("respondentSolicitorRepresented")
+    private String respondentSolicitorRepresented;
+
+    @JsonProperty("D8RespondentSolicitorEmail")
+    private String d8RespondentSolicitorEmail;
+
+    @JsonProperty("D8RespondentSolicitorPhone")
+    private String d8RespondentSolicitorPhone;
+
+    @JsonProperty("respondentSolicitorReference")
+    private String respondentSolicitorReference;
+
+    @JsonProperty("D8RespondentSolicitorAddress")
+    private Address d8RespondentSolicitorAddress;
+
+    @JsonProperty("D8DerivedRespondentSolicitorAddr")
+    private String d8DerivedRespondentSolicitorAddr;
 }

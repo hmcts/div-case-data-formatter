@@ -30,12 +30,12 @@ variable "appinsights_instrumentation_key" {
     default = ""
 }
 
-variable "idam_api_baseurl" {
-    type = "string"
-}
-
 variable "capacity" {
     default = "1"
+}
+
+variable "instance_size" {
+    default = "I2"
 }
 
 variable "subscription" {}
@@ -51,4 +51,13 @@ variable "vault_env" {}
 
 variable "common_tags" {
     type = "map"
+}
+
+variable "health_check_ttl" {
+    type = "string"
+    default = "4000"
+}
+
+variable "enable_ase" {
+    default = false
 }

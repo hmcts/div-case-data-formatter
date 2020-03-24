@@ -15,8 +15,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -36,27 +35,26 @@ public class GetAosCaseDataITest {
     @Test
     public void givenCaseDataIsNull_whenGetAosCaseData_thenReturnBadRequest() throws Exception {
         webClient.perform(post(API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isBadRequest());
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
     @Test
     public void givenValidDetails_whenGetAosCaseData_thenReturnExpected() throws Exception {
         final AosCaseData expectedAosCaseData =
-            (AosCaseData) ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, AosCaseData.class);
+                ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, AosCaseData.class);
 
         MvcResult result = webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andReturn();
+                .content(ObjectMapperTestUtil.retrieveFileContents(PAYLOAD_PATH))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
 
         final AosCaseData actualAosCaseData =
-            (AosCaseData) ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
-                AosCaseData.class);
+                ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(), AosCaseData.class);
 
-        assertThat(actualAosCaseData, samePropertyValuesAs(expectedAosCaseData));
+        assertEquals(expectedAosCaseData, actualAosCaseData);
     }
 }

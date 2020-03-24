@@ -11,6 +11,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Documen
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DocumentCollectionCCDFormatMapper {
 
@@ -18,7 +20,7 @@ public abstract class DocumentCollectionCCDFormatMapper {
     private DocumentUrlRewrite documentUrlRewrite;
 
     @Mapping(source = "fileName", target = "value.documentFileName")
-    @Mapping(source = "createdOn", dateFormat = "yyyy-MM-dd", target = "value.documentDateAdded")
+    @Mapping(source = "createdOn", dateFormat = SIMPLE_DATE_FORMAT, target = "value.documentDateAdded")
     @Mapping(target = "value.documentEmailContent", constant = "")
     @Mapping(target = "value.documentComment", constant = "")
     @Mapping(source = "fileType", target = "value.documentType", defaultValue = "other")
@@ -33,5 +35,6 @@ public abstract class DocumentCollectionCCDFormatMapper {
         DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl(fileUrl);
         result.getValue().setDocumentLink(documentLink);
+        result.setId(null);
     }
 }

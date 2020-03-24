@@ -22,6 +22,7 @@ public class UploadedFileTest {
 
     private final UploadedFile uploadedFile = UploadedFile.builder()
         .fileName("marriage-certificate.pdf")
+        .id("DocumentId")
         .fileUrl("http://em-api-gateway-web:3404/documents/3627acc4-cb3b-4c95-9588-fea94e6c5855")
         .createdBy(8)
         .lastModifiedBy(8)
@@ -35,7 +36,7 @@ public class UploadedFileTest {
 
     @Before
     public void setUp() throws Exception {
-        json = ObjectMapperTestUtil.loadJson("fixtures/model/divorce/UploadedFile.json");
+        json = ObjectMapperTestUtil.retrieveFileContents("fixtures/model/divorce/UploadedFile.json");
     }
 
     @Test
@@ -51,6 +52,6 @@ public class UploadedFileTest {
             .writer(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH))
             .withDefaultPrettyPrinter();
 
-        assertEquals(json, objectWriter.writeValueAsString(uploadedFile));
+        assertEquals(json.trim(), objectWriter.writeValueAsString(uploadedFile));
     }
 }

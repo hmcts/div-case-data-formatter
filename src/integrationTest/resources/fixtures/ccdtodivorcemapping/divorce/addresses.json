@@ -1,6 +1,6 @@
 {
     "expires": 0,
-    "caseReference" : "caseReference",
+    "caseReference" : "LV17D80100",
     "screenHasMarriageBroken": "Yes",
     "screenHasRespondentAddress": "Yes",
     "screenHasMarriageCert": "Yes",
@@ -170,52 +170,11 @@
     "claimsCostsAppliedForFees": "true",
     "reasonForDivorceClaiming5YearSeparation": "false",
     "reasonForDivorceClaimingAdultery": "false",
-    "court":{
-        "eastMidlands":{
-            "divorceCentre":"East Midlands Regional Divorce Centre",
-            "courtCity":"Nottingham",
-            "poBox":"PO Box 10447",
-            "postCode":"NG2 9QN",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"eastmidlandsdivorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA01"
-        },
-        "westMidlands":{
-            "divorceCentre":"West Midlands Regional Divorce Centre",
-            "courtCity":"Stoke-on-Trent",
-            "poBox":"PO Box 3650",
-            "postCode":"ST4 9NH",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"westmidlandsdivorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA02"
-        },
-        "southWest":{
-            "divorceCentre":"South West Regional Divorce Centre",
-            "courtCity":"Southampton",
-            "poBox":"PO Box 1792",
-            "postCode":"SO15 9GG",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"sw-region-divorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA03"
-        },
-        "northWest":{
-            "divorceCentre":"North West Regional Divorce Centre",
-            "divorceCentreAddressName":"Liverpool Civil & Family Court",
-            "courtCity":"Liverpool",
-            "street":"35 Vernon Street",
-            "postCode":"L2 2BX",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"family@liverpool.countycourt.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA04"
-        }
-    },
     "courts": "eastMidlands",
     "respondentSolicitorName": "Justin",
     "respondentSolicitorCompany": "Case",
+    "respondentSolicitorEmail" : "justin@example.com",
+    "respondentSolicitorPhoneNumber" : "01234567890",
     "respondentSolicitorAddress": {
         "addressType": "postcode",
         "postcode": "SW9 9PE",
@@ -254,6 +213,8 @@
     },
     "marriageCertificateFiles": [
         {
+
+            "id" : "7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "createdBy": 0,
             "createdOn": "2017-12-11T00:00:00.000+0000",
             "lastModifiedBy": 0,
@@ -264,6 +225,7 @@
             "status": null
         },
         {
+            "id" : "560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "createdBy": 0,
             "createdOn": "2017-12-11T00:00:00.000+0000",
             "lastModifiedBy": 0,
@@ -276,5 +238,7 @@
     ],
     "petitionerConsent" : "Yes",
     "issueDate": "2006-02-02T00:00:00.000+0000",
-    "dueDate": "2006-02-10T00:00:00.000+0000"
+    "dueDate": "2006-02-10T00:00:00.000+0000",
+    "previousReasonsForDivorce": ["reason-one", "reason-two"],
+    "previousCaseId": "1234567891234567"
 }

@@ -1,13 +1,10 @@
-FROM hmcts/cnp-java-base:openjdk-jre-8-alpine-1.4
+ARG APP_INSIGHTS_AGENT_VERSION=2.5.1
 
-ENV APP div-case-formatter-service.jar
-ENV APPLICATION_TOTAL_MEMORY 1024M
-ENV APPLICATION_SIZE_ON_DISK_IN_MB 59
+FROM hmctspublic.azurecr.io/base/java:openjdk-8-distroless-1.4
 
-COPY build/libs/$APP /opt/app/
-
-WORKDIR /opt/app
-
-HEALTHCHECK --interval=100s --timeout=100s --retries=10 CMD http_proxy="" wget -q http://localhost:4011/health || exit 1
+COPY lib/AI-Agent.xml /opt/app/
+COPY build/libs/div-case-formatter-service.jar /opt/app/
 
 EXPOSE 4011
+
+CMD ["div-case-formatter-service.jar"]

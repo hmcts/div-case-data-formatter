@@ -132,18 +132,6 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8DerivedRespondentCorrespondenceAddr")
     private String d8DerivedRespondentCorrespondenceAddr;
 
-    @JsonProperty("D8RespondentSolicitorName")
-    private String d8RespondentSolicitorName;
-
-    @JsonProperty("D8RespondentSolicitorCompany")
-    private String d8RespondentSolicitorCompany;
-
-    @JsonProperty("D8RespondentCorrespondenceSendToSol")
-    private String d8RespondentCorrespondenceSendToSol;
-
-    @JsonProperty("D8RespondentSolicitorAddress")
-    private Address d8RespondentSolicitorAddress;
-
     @JsonProperty("D8RespondentCorrespondenceUseHomeAddress")
     private String d8RespondentCorrespondenceUseHomeAddress;
 
@@ -285,6 +273,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ResidualJurisdictionEligible")
     private String d8ResidualJurisdictionEligible;
 
+    @JsonProperty("D8JurisdictionPath")
+    private List<String> d8JurisdictionPath;
+
     @JsonProperty("Payments")
     private List<PaymentCollection> payments;
 
@@ -329,6 +320,12 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8ReasonForDivorceClaimingAdultery")
     private String d8ReasonForDivorceClaimingAdultery;
+
+    @JsonProperty("D8ReasonForDivorceAdulteryAnyInfo2ndHand")
+    private String d8ReasonForDivorceAdulteryAnyInfo2ndHand;
+
+    @JsonProperty("D8ReasonForDivorceAdultery2ndHandDetails")
+    private String d8ReasonForDivorceAdultery2ndHandDetails;
 
     @JsonProperty("D8ReasonForDivorceSeperationIsSameOrAftr")
     private String d8ReasonForDivorceSeperationIsSameOrAftr;
@@ -377,9 +374,6 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8DerivedReasonForDivorceAdultery3dPtyNm")
     private String d8DerivedReasonForDivorceAdultery3dPtyNm;
-
-    @JsonProperty("D8DerivedRespondentSolicitorAddr")
-    private String d8DerivedRespondentSolicitorAddr;
 
     @JsonProperty("D8DerivedLivingArrangementsLastLivedAddr")
     private String d8DerivedLivingArrangementsLastLivedAddr;
@@ -453,6 +447,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("SolicitorAgreeToReceiveEmails")
     private String solicitorAgreeToReceiveEmails;
 
+    @JsonProperty("SolServiceMethod")
+    private String solServiceMethod;
+
     @JsonProperty("SolStatementOfReconciliationCertify")
     private String solStatementOfReconciliationCertify;
 
@@ -506,5 +503,74 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8PhysicalSeparationDate")
     private String reasonForDivorceLivingApartDate;
-}
 
+    @JsonProperty("RespondentContactDetailsConfidential")
+    private String respondentContactDetailsConfidential;
+
+    @JsonProperty("D8SeparationTimeTogetherPermitted")
+    private String separationTimeTogetherPermitted;
+
+    @JsonProperty("D8LivedTogetherMoreTimeThanPermitted")
+    private String separationLivedTogetherMoreTimeThanPermitted;
+
+    @JsonProperty("D8LivedApartSinceSeparation")
+    private String separationLivedApartEntireTime;
+
+    @JsonProperty("D8SeparationReferenceDate")
+    private String referenceDate;
+
+    @JsonProperty("D8LivedApartSinceDesertion")
+    private String desertionLivedApartEntireTime;
+
+    @JsonProperty("D8DesertionTimeTogetherPermitted")
+    private String desertionTimeTogetherPermitted;
+
+    @JsonProperty("D8LivedTogetherMoreTimeThanPermittedDesert")
+    private String desertionLivedTogetherMoreTimeThanPermitted;
+
+    @JsonProperty("PreviousCaseId")
+    private CaseLink previousCaseId;
+
+    @JsonProperty("PreviousIssueDate")
+    private String previousIssueDate;
+
+    @JsonProperty("PreviousReasonsForDivorce")
+    private List<String> previousReasonsForDivorce;
+
+    @JsonProperty("DNApprovalDate")
+    private String dnApprovalDate;
+
+    @JsonProperty("BulkListingCaseId")
+    private CaseLink bulkListingCaseId;
+
+    @JsonProperty("CostsClaimGranted")
+    private String costsClaimGranted;
+
+    @JsonProperty("WhoPaysCosts")
+    private String whoPaysCosts;
+
+    @JsonProperty("TypeCostsDecision")
+    private String typeCostsDecision;
+
+    @JsonProperty("CostsOrderAdditionalInfo")
+    private String costsOrderAdditionalInfo;
+
+    @JsonProperty("DecreeNisiGrantedDate")
+    private String decreeNisiGrantedDate;
+
+    @JsonProperty("CourtName")
+    private String courtName;
+
+    @JsonProperty("DateAndTimeOfHearing")
+    private List<CollectionMember<HearingDateTime>> dateAndTimeOfHearing;
+
+    @JsonProperty("DAEligibleFromDate")
+    private String decreeAbsoluteEligibleFromDate;
+
+    @JsonProperty("DateRespondentEligibleForDA")
+    private String dateRespondentEligibleForDA;
+
+    @JsonProperty("DateCaseNoLongerEligibleForDA")
+    private String dateCaseNoLongerEligibleForDA;
+
+}

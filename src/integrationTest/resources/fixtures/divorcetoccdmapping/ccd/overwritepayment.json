@@ -9,7 +9,7 @@
     "D8MarriageDate": "2001-02-02",
     "D8MarriedInUk": "YES",
     "D8PetitionerNameDifferentToMarriageCert": "YES",
-    "D8PetitionerEmail": "caseformatterservicetest@test.com",
+    "D8PetitionerEmail": "simulate-delivered@notifications.service.gov.uk",
     "D8PetitionerPhoneNumber": "01234567890",
     "D8PetitionerFirstName": "John",
     "D8PetitionerLastName": "Smith",
@@ -37,6 +37,10 @@
         "County": null,
         "Country": null
     },
+    "D8JurisdictionPath":[
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8DerivedPetitionerCorrespondenceAddr": "82 Landor Road\nLondon\nSW9 9PE",
     "D8PetitionerCorrespondenceUseHomeAddress": "YES",
     "D8RespondentFirstName": "Jane",
@@ -94,7 +98,7 @@
     "D8JurisdictionRespondentResidence": "YES",
     "Payments": [
         {
-            "id": null,
+            "id": "123456789",
             "value": {
                 "PaymentChannel": "card",
                 "PaymentTransactionId": "111222333",
@@ -135,5 +139,6 @@
     "D8Cohort": "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender": "female",
     "D8InferredRespondentGender": "male",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "RespondentContactDetailsConfidential": "share"
 }

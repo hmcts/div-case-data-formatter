@@ -34,21 +34,21 @@ public class SeparationDateServiceImplUTest {
 
     @Parameterized.Parameters
     public static Collection<Date[]> data() {
-        return Arrays.asList(new Date[][] {
-            { null, null, null, null },
-            { getDate("2015-1-1"), null, null, getDate("2015-1-1") },
-            { null, getDate("2015-1-1"), null, getDate("2015-1-1") },
-            { null, null, getDate("2015-1-1"), getDate("2015-1-1") },
-            { getDate("2015-1-1"), getDate("2015-1-2"), null, getDate("2015-1-2") },
-            { getDate("2015-1-2"), getDate("2015-1-1"), null, getDate("2015-1-1") },
-            { getDate("2015-1-1"), null , getDate("2015-1-2"), getDate("2015-1-2") },
-            { getDate("2015-1-2"), null , getDate("2015-1-1"), getDate("2015-1-1") },
-            { null, getDate("2015-1-1") , getDate("2015-1-2"), getDate("2015-1-2") },
-            { null, getDate("2015-1-2") , getDate("2015-1-1"), getDate("2015-1-2") },
-            { getDate("2015-1-1"), getDate("2015-1-1") , getDate("2015-1-1"), getDate("2015-1-1") },
-            { getDate("2015-1-1"), getDate("2015-1-2") , getDate("2015-1-3"), getDate("2015-1-3") },
-            { getDate("2015-1-3"), getDate("2015-1-2") , getDate("2015-1-1"), getDate("2015-1-2") },
-            { getDate("2015-1-3"), getDate("2015-1-1") , getDate("2015-1-2"), getDate("2015-1-2") },
+        return Arrays.asList(new Date[][]{
+            {null, null, null, null},
+            {getDate("2015-1-1"), null, null, getDate("2015-1-1")},
+            {null, getDate("2015-1-1"), null, getDate("2015-1-1")},
+            {null, null, getDate("2015-1-1"), getDate("2015-1-1")},
+            {getDate("2015-1-1"), getDate("2015-1-2"), null, getDate("2015-1-2")},
+            {getDate("2015-1-2"), getDate("2015-1-1"), null, getDate("2015-1-1")},
+            {getDate("2015-1-1"), null, getDate("2015-1-2"), getDate("2015-1-2")},
+            {getDate("2015-1-2"), null, getDate("2015-1-1"), getDate("2015-1-1")},
+            {null, getDate("2015-1-1"), getDate("2015-1-2"), getDate("2015-1-2")},
+            {null, getDate("2015-1-2"), getDate("2015-1-1"), getDate("2015-1-2")},
+            {getDate("2015-1-1"), getDate("2015-1-1"), getDate("2015-1-1"), getDate("2015-1-1")},
+            {getDate("2015-1-1"), getDate("2015-1-2"), getDate("2015-1-3"), getDate("2015-1-3")},
+            {getDate("2015-1-3"), getDate("2015-1-2"), getDate("2015-1-1"), getDate("2015-1-2")},
+            {getDate("2015-1-3"), getDate("2015-1-1"), getDate("2015-1-2"), getDate("2015-1-2")},
         });
     }
 

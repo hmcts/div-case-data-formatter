@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
@@ -16,7 +17,9 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -68,7 +71,7 @@ public class CaseFormatterControllerUTest {
     @Test
     public void whenAddDocuments_thenProceedAsExpected() {
         final DocumentUpdateRequest documentUpdateRequest = new DocumentUpdateRequest();
-        final CoreCaseData coreCaseData = new CoreCaseData();
+        final Map<String, Object> coreCaseData = new HashMap<>();
         final List<GeneratedDocumentInfo> documents = Collections.emptyList();
 
         documentUpdateRequest.setCaseData(coreCaseData);
@@ -76,7 +79,7 @@ public class CaseFormatterControllerUTest {
 
         when(caseFormatterService.addDocuments(coreCaseData, documents)).thenReturn(coreCaseData);
 
-        ResponseEntity<CoreCaseData> actualResponse = classUnderTest.addDocuments(documentUpdateRequest);
+        ResponseEntity<Map<String, Object>> actualResponse = classUnderTest.addDocuments(documentUpdateRequest);
 
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
         assertEquals(coreCaseData, actualResponse.getBody());
@@ -112,5 +115,20 @@ public class CaseFormatterControllerUTest {
         assertEquals(dnCaseData, actual.getBody());
 
         verify(caseFormatterService).getDnCaseData(divorceSession);
+    }
+
+    @Test
+    public void whenGetDaCaseData_thenProceedAsExpected() {
+        DivorceSession divorceSession = mock(DivorceSession.class);
+        DaCaseData daCaseData = mock(DaCaseData.class);
+
+        when(caseFormatterService.getDaCaseData(divorceSession)).thenReturn(daCaseData);
+
+        ResponseEntity<DaCaseData> actual = classUnderTest.getDaCaseData(divorceSession);
+
+        assertEquals(HttpStatus.OK, actual.getStatusCode());
+        assertEquals(daCaseData, actual.getBody());
+
+        verify(caseFormatterService).getDaCaseData(divorceSession);
     }
 }

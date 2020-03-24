@@ -1,2 +1,3 @@
 vault_env           = "preprod"
-idam_api_baseurl    = "https://preprod-idamapi.reform.hmcts.net:3511"
+
+health_check_ttl = 30000

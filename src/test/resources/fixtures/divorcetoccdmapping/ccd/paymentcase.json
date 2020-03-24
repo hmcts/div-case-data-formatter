@@ -27,6 +27,10 @@
         "County" : null,
         "PostCode" : "SW9 9PE"
     },
+    "D8JurisdictionPath" : [
+        "JurisdictionHabitualResidence",
+        "JurisdictionInterstitial"
+    ],
     "D8DerivedPetitionerHomeAddress" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8PetitionerCorrespondenceAddress" : {
         "County" : null,
@@ -51,7 +55,7 @@
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentSolicitorName" : null,
     "D8RespondentSolicitorCompany" : null,
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : null,
     "D8RespondentCorrespondenceUseHomeAddress" : "No",
     "D8RespondentKnowsHomeAddress" : null,
@@ -164,5 +168,6 @@
     "D8ReasonForDivorceDesertion" : null,
     "D8DerivedReasonForDivorceAdultery3rdAddr" : null,
     "D8Cohort" : "onlineSubmissionPrivateBeta",
-    "D8PetitionerConsent" : "YES"
+    "D8PetitionerConsent" : "YES",
+    "RespondentContactDetailsConfidential": "share"
 }

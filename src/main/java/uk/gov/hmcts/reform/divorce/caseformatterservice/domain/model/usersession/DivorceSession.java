@@ -10,10 +10,10 @@ import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -35,6 +35,8 @@ public class DivorceSession {
     private String helpWithFeesNeedHelp;
     @ApiModelProperty(value = "Has petitioner applied for Help With Fees?", allowableValues = "Yes, No")
     private String helpWithFeesAppliedForFees;
+    @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
+    private String applyForDecreeNisi;
     @ApiModelProperty(
         value = "Help with fees reference. Must conform to regex ([Hh][Ww][Ff]-?)?[0-9a-zA-Z]{3}-?[0-9a-zA-Z]{3}$")
     private String helpWithFeesReferenceNumber;
@@ -72,7 +74,7 @@ public class DivorceSession {
     private String countryName;
     @ApiModelProperty(value = "Place of marriage (as on marriage certificate).")
     private String placeOfMarriage;
-    @ApiModelProperty(hidden = true) //this field is not mapped to anything
+    @ApiModelProperty(value = "Jurisdiction Path")
     private List<String> jurisdictionPath;
     @ApiModelProperty(value = "Legal connections.")
     private List<String> jurisdictionConnection;
@@ -185,6 +187,11 @@ public class DivorceSession {
     private String reasonForDivorceAdulteryWhenDetails;
     @ApiModelProperty(value = "Where did adultery take place?")
     private String reasonForDivorceAdulteryWhereDetails;
+    @ApiModelProperty(value = "Did any of the information about adultery come from another person?",
+        allowableValues = "Yes, No")
+    private String reasonForDivorceAdulterySecondHandInfo;
+    @ApiModelProperty(value = "Details of the information about adultery that has come from another person")
+    private String reasonForDivorceAdulterySecondHandInfoDetails;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceDesertionAlright;
     @ApiModelProperty(
@@ -273,21 +280,25 @@ public class DivorceSession {
         value = "Respondent current name is the same as that on marriage certificate?", allowableValues = "Yes, No")
     private String respondentNameAsOnMarriageCertificate;
     @ApiModelProperty(value = "Is respondent using a solicitor?", allowableValues = "Yes, No")
-    private String respondentCorrespondenceSendToSolicitor;
+    private String respondentSolicitorRepresented;
     @ApiModelProperty(value = "Does petitioner know the respondents home address?", allowableValues = "Yes, No")
     private String respondentKnowsHomeAddress;
     @ApiModelProperty(hidden = true)
     private String sessionKey;
-    @ApiModelProperty(value = "Regional divorce unit details")
-    private Map<String, Map<String, String>> court;
     @ApiModelProperty(value = "Regional divorce unit.")
     private String courts;
     @ApiModelProperty(value = "Name of solicitor used by respondent.")
     private String respondentSolicitorName;
     @ApiModelProperty(value = "Company of solicitor used by respondent.")
     private String respondentSolicitorCompany;
+    @ApiModelProperty(value = "Email of solicitor used by respondent.")
+    private String respondentSolicitorEmail;
+    @ApiModelProperty(value = "Phone number of solicitor used by respondent.")
+    private String respondentSolicitorPhoneNumber;
     @ApiModelProperty(value = "Address of solicitor used by respondent.")
     private Address respondentSolicitorAddress;
+    @ApiModelProperty(value = "Respondent's Solicitor reference number.")
+    private String respondentSolicitorReference;
     @ApiModelProperty(value = "Agree to statement of truth?", allowableValues = "Yes, No")
     private String confirmPrayer;
     @ApiModelProperty(value = "Payment details.")
@@ -302,6 +313,14 @@ public class DivorceSession {
     private List<UploadedFile> d8Documents;
     @ApiModelProperty(value = "Agree receive communications?", allowableValues = "Yes, No")
     private String petitionerConsent;
+    @ApiModelProperty(value = " Reference date used for 6-month rule calculation of "
+        + "time petitioner and respondent can have lived together.")
+    private String referenceDate;
+
+    private Integer livingTogetherMonths;
+
+    private String mostRecentSeparationDate;
+
     private Date createdDate;
 
     @ApiModelProperty(
@@ -332,6 +351,20 @@ public class DivorceSession {
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
     private Date reasonForDivorceLivingApartDate;
 
+    @ApiModelProperty(value = "Respondent contact details to be kept private?", allowableValues = "share, keep")
+    private String respondentContactDetailsConfidential;
+
+    @ApiModelProperty(value = "Maximum separation time together permitted?")
+    @JsonProperty("separationTimeTogetherPermitted")
+    private String timeLivedTogetherPermitted;
+
+    @ApiModelProperty(value = "Has petitioner & respondent lived more than"
+        + " the time together permitted?", allowableValues = "Yes, No")
+    private String livedTogetherMoreTimeThanPermitted;
+    @ApiModelProperty(value = "Has petitioner & respondent lived apart"
+        + " for the entire time since separated?", allowableValues = "Yes, No")
+    private String livedApartEntireTime;
+
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
     private String respConfirmReadPetition;
@@ -339,8 +372,8 @@ public class DivorceSession {
     private String respJurisdictionAgree;
     @ApiModelProperty(value = "Respondent agreed or disagree with the reason for divorce?")
     private String respAdmitOrConsentToFact;
-    @ApiModelProperty(value = "Does respondent defend the divorce?")
-    private String respDefendsDivorce;
+    @ApiModelProperty(value = "Will respondent defend the divorce?", allowableValues = "Yes, No, NoNoAdmission")
+    private String respWillDefendDivorce;
     @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction")
     private String respJurisdictionDisagreeReason;
     @ApiModelProperty(value = "Respondent country of residence")
@@ -371,9 +404,18 @@ public class DivorceSession {
     private String respHardshipDescription;
     @ApiModelProperty(value = "Reason for AwaitingDecreeNisi?")
     private String permittedDecreeNisiReason;
+    @ApiModelProperty(value = "Respondent submitted AOS date")
+    private Date receivedAosFromRespDate;
+    @ApiModelProperty(value = "Respondent has submitted AOS")
+    private String receivedAosFromResp;
+
+    @ApiModelProperty(value = "Answers from co respondent")
+    private CoRespondentAnswers coRespondentAnswers;
     //Aos Fields Mappings End
 
     //DnCase Fields Mapping Start
+    @ApiModelProperty(value = "Dn Petition needs changes")
+    private String hasBeenChanges;
     @ApiModelProperty(value = "Dn Petition Change details")
     private String changesDetails;
     @ApiModelProperty(value = "Dn Change Confirmation Petition Yes")
@@ -399,12 +441,21 @@ public class DivorceSession {
     private String datesLivedTogether;
     @ApiModelProperty(value = "Dn Behaviour still happening")
     private String behaviourContinuedSinceApplication;
-    @ApiModelProperty(value = "Dn Behaviour most recent incident")
-    private String lastIncidentDate;
-    @ApiModelProperty(value = "Dn Behaviour lived appart since event")
+    @ApiModelProperty(
+        value = "Dn Behaviour most recent incident date in one of the following formats "
+            + "(\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", "
+            + "\"EEE, dd MMM yyyy HH:mm:ss zzz\", \"yyyy-MM-dd\").")
+    private Date lastIncidentDate;
+    @ApiModelProperty(value = "Dn Behaviour lived apart since event")
     private String livedApartSinceLastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour time lived together details")
     private String approximateDatesOfLivingTogetherField;
+    @ApiModelProperty(value = "Dn Desertion - Respondent asked petitioner to resume living together")
+    private String desertionAskedToResumeDN;
+    @ApiModelProperty(value = "Dn Desertion - Did the petitioner refuse to  resume living together")
+    private String desertionAskedToResumeDNRefused;
+    @ApiModelProperty(value = "Dn Desertion - Resuming living together refusal details")
+    private String desertionAskedToResumeDNDetails;
     @ApiModelProperty(value = "Dn Desertion live apart since event")
     private String livedApartSinceDesertion;
     @ApiModelProperty(value = "Dn Separation time lived together")
@@ -412,7 +463,82 @@ public class DivorceSession {
     @ApiModelProperty(value = "Dn uploaded documents URL details.")
     @JsonProperty("files")
     private List<UploadedFile> files;
+    @ApiModelProperty(value = "Agree to apply for Dn?", allowableValues = "Yes, No")
+    private String uploadAnyOtherDocuments;
     //DnCase Fields Mapping End
+    //Dn Approval Fields Mapping Start
+    @ApiModelProperty(value = "Has the Costs Claim been granted")
+    private String costsClaimGranted;
+    @ApiModelProperty(value = "Who has been ordered to pay the costs")
+    private String whoPaysCosts;
+    @ApiModelProperty(value = "The type of cost decision made")
+    private String typeCostsDecision;
+    @ApiModelProperty(value = "Any additional information on the cost order")
+    private String costsOrderAdditionalInfo;
+    @ApiModelProperty(value = "Date Decree Nisi has been pronounced")
+    private Date decreeNisiGrantedDate;
+    @ApiModelProperty(value = "Date Decree Absolute can be aplied for")
+    private Date decreeAbsoluteEligibleFromDate;
+    //Dn Approval Fields Mapping End
+    //Dn Bulk Listing Fields Mapping Start
+    @ApiModelProperty(value = "Name of the Court where the Hearing is Scheduled")
+    private String courtName;
+    @ApiModelProperty(value = "Date of the Hearing in \"yyyy-MM-dd\" format")
+    private String hearingDate;
+    @ApiModelProperty(value = "Time of the Hearing in \"HH:mm\" format")
+    private String hearingTime;
+    //Dn Bulk Listing Fields Mapping End
+    //DaCase Fields Mapping Start
+    @ApiModelProperty(value = "Petitioner Applied for Decree Absolute", allowableValues = "Yes, No")
+    private String applyForDecreeAbsolute;
+    //DaCase Fields Mapping End
+
+    @ApiModelProperty(value = "Case ID from previously amended case")
+    private String previousCaseId;
+
+    @ApiModelProperty(
+        value = "Issue date from previously amended case in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
+            + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
+            + "\"yyyy-MM-dd\").")
+    private Date previousIssueDate;
+
+    @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition")
+    private List<String> previousReasonsForDivorce;
+
+    @ApiModelProperty(
+        value = "Date from which the respondent can apply for Decree Absolute.")
+    private Date dateRespondentEligibleForDA;
+
+    @ApiModelProperty(
+        value = "Final date to apply for Decree Absolute.")
+    private Date dateCaseNoLongerEligibleForDA;
+
+    @ApiModelProperty("Reason for why clarification is needed.")
+    private List<String> refusalClarificationReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor for clarification.")
+    private String refusalClarificationAdditionalInfo;
+
+    @ApiModelProperty("Reason for why refusal rejection is needed.")
+    private List<String> refusalRejectionReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor for refusal rejection.")
+    private String refusalRejectionAdditionalInfo;
+
+    @ApiModelProperty("Any additional input by the legal advisor for admin error.")
+    private String refusalAdminErrorInfo;
+
+    @ApiModelProperty(value = "Clarification response for the current clarification journey")
+    private String clarificationResponse;
+
+    @ApiModelProperty(value = "List of previous reasons used for divorce, before amending petition for refusal rejection")
+    private List<String> previousReasonsForDivorceRefusal;
+
+    @ApiModelProperty(value = "Flag for online Decree Nisi Outcome journey")
+    private String dnOutcomeCase;
+
+    @ApiModelProperty(value = "Indicates if petitioner is sending the clarification as upload or in post")
+    private String clarificationDigital;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

@@ -177,35 +177,6 @@
       "status" : "OK"
     }
   ],
-  "court": {
-    "eastMidlands": {
-      "phone": "0115 955 8266",
-      "divorceCentre": "East Midlands Regional Divorce Centre",
-      "courtCity": "Nottingham",
-      "poBox": "PO Box 10447",
-      "postCode": "NG2 9QN",
-      "openingHours": "Telephone Enquiries from: 8am to 4pm",
-      "email": "eastmidlandsdivorce@hmcts.gsi.gov.uk",
-      "phoneNumber": "0115 955 8186"
-    },
-    "westMidlands": {
-      "divorceCentre": "West Midlands Regional Divorce Centre",
-      "courtCity": "Stoke-on-Trent",
-      "poBox": "PO Box 3650",
-      "postCode": "ST4 9NH",
-      "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-      "phoneNumber": "0300 123 5577"
-    },
-    "southWest": {
-      "divorceCentre": "South West Regional Divorce Centre",
-      "courtCity": "Southampton",
-      "poBox": "PO Box 1792",
-      "postCode": "SO15 9GG",
-      "openingHours": "Telephone Enquiries from: 8am to 4pm",
-      "email": "sw-region-divorce@hmcts.gsi.gov.uk",
-      "phoneNumber": "023 8038 4200"
-    }
-  },
   "courts": "southWest",
   "reasonForDivorceDesertionDay": 1,
   "reasonForDivorceDesertionMonth": 2,
@@ -219,5 +190,9 @@
   "claimsCosts": "No",
   "claimsCostsAppliedForFees": true,
   "petitionerConsent" : "Yes",
+  "separationTimeTogetherPermitted": "3 months, 2 weeks and 5 months",
+  "livedTogetherMoreTimeThanPermitted": "Yes",
+  "livedApartEntireTime": "Yes",
+  "referenceDate": "06 August 2013",
   "sessionKey": "1d6364a303a4cad55dcae3c4004b02186be646740bbb8908cf4ac15604334958:dfb7803cc172403569fb072e5b947774:18f0eb3009f631c695c3a5c25b4007156ed3c9ff36a8f9fcb5c976d2d6ad54a8fa0c3f3698ae44eeaa78fd92b82869072c377ad58a90efe927b72add055c7a8a"
 }

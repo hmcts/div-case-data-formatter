@@ -141,59 +141,18 @@
     ],
     "marriageCertificateFiles":[
         {
+            "id": "7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "createdOn":"2017-12-11",
             "fileName":"govuklogo.png",
             "fileUrl":"http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936"
         },
         {
+            "id": "560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "createdOn":"2017-12-11",
             "fileName":"d8-eng.pdf",
             "fileUrl":"http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
         }
     ],
-    "court":{
-        "eastMidlands":{
-            "divorceCentre":"East Midlands Regional Divorce Centre",
-            "courtCity":"Nottingham",
-            "poBox":"PO Box 10447",
-            "postCode":"NG2 9QN",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"eastmidlandsdivorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA01"
-        },
-        "westMidlands":{
-            "divorceCentre":"West Midlands Regional Divorce Centre",
-            "courtCity":"Stoke-on-Trent",
-            "poBox":"PO Box 3650",
-            "postCode":"ST4 9NH",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"westmidlandsdivorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA02"
-        },
-        "southWest":{
-            "divorceCentre":"South West Regional Divorce Centre",
-            "courtCity":"Southampton",
-            "poBox":"PO Box 1792",
-            "postCode":"SO15 9GG",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"sw-region-divorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA03"
-        },
-        "northWest":{
-            "divorceCentre":"North West Regional Divorce Centre",
-            "divorceCentreAddressName":"Liverpool Civil & Family Court",
-            "courtCity":"Liverpool",
-            "street":"35 Vernon Street",
-            "postCode":"L2 2BX",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"family@liverpool.countycourt.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA04"
-        }
-    },
     "courts":"southWest",
     "reasonForDivorceDesertionDay":1,
     "reasonForDivorceDesertionMonth":2,
@@ -207,5 +166,8 @@
     "claimsCosts":"No",
     "claimsCostsAppliedForFees":true,
     "petitionerConsent" : "Yes",
-    "createdDate": "2015-03-01T00:00:00.000+0000"
+    "createdDate": "2015-03-01T00:00:00.000+0000",
+    "separationTimeTogetherPermitted": "1 months, 1 weeks and 1 months",
+    "livedTogetherMoreTimeThanPermitted": "No",
+    "livedApartEntireTime": "No"
 }

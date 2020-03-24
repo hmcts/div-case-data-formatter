@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UploadedFile {
+    private String id;
     private int createdBy;
     private Date createdOn;
     private int lastModifiedBy;

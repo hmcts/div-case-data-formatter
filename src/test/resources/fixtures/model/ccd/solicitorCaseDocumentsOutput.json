@@ -10,7 +10,7 @@
     "D8DivorceCostsClaim": "Yes",
     "D8InferredRespondentGender": "female",
     "FeeAccountReference": "Solicitor PBA",
-    "D8RespondentCorrespondenceSendToSol": "Yes",
+    "respondentSolicitorRepresented": "Yes",
     "D8FinancialOrderFor": [
         "petitioner",
         "children"
@@ -40,6 +40,7 @@
     "D8RespondentSolicitorCompany": "Solicitor Firm",
     "SolStatementOfReconciliationDiscussed": "Yes",
     "SolicitorAgreeToReceiveEmails": "Yes",
+    "SolServiceMethod": "courtService",
     "D8PetitionerEmail": "petitioner-test-email@example.com",
     "D8ReasonForDivorceBehaviourDetails": "Bad Behaviour from everybody.",
     "SolClaimCostsDetails": "Claiming costs for everything.",
@@ -104,6 +105,21 @@
         {
             "id":null,
             "value":{
+                "DocumentType":"aos1",
+                "DocumentLink":{
+                    "document_url":"url3",
+                    "document_binary_url":"url3/binary",
+                    "document_filename":"fileName3.pdf"
+                },
+                "DocumentDateAdded":null,
+                "DocumentComment":null,
+                "DocumentFileName":"fileName3",
+                "DocumentEmailContent":null
+            }
+        },
+        {
+            "id":null,
+            "value":{
                 "DocumentType":"petition",
                 "DocumentLink":{
                     "document_url":"url1",
@@ -128,21 +144,6 @@
                 "DocumentDateAdded":null,
                 "DocumentComment":null,
                 "DocumentFileName":"fileName2",
-                "DocumentEmailContent":null
-            }
-        },
-        {
-            "id":null,
-            "value":{
-                "DocumentType":"aos1",
-                "DocumentLink":{
-                    "document_url":"url3",
-                    "document_binary_url":"url3/binary",
-                    "document_filename":"fileName3.pdf"
-                },
-                "DocumentDateAdded":null,
-                "DocumentComment":null,
-                "DocumentFileName":"fileName3",
                 "DocumentEmailContent":null
             }
         }

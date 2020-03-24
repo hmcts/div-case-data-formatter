@@ -30,13 +30,13 @@ public class ReasonUnreasonableBehaviourCaseToCCDMapperUTest extends ObjectMappe
     public void shouldMapAllAndTransformAllFieldsForReasonUnreasonableBehaviourScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = (CoreCaseData) ObjectMapperTestUtil
-            .jsonToObject("fixtures/divorcetoccdmapping/ccd/reasonunreasonablebehaviour.json",
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/reasonunreasonablebehaviour.json",
                 CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = (DivorceSession) ObjectMapperTestUtil.jsonToObject(
+        DivorceSession divorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
             "fixtures/divorcetoccdmapping/divorce/reason-unreasonable-behaviour.json",
             DivorceSession.class);
 

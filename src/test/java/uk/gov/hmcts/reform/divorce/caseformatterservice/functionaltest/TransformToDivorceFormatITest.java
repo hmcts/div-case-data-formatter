@@ -19,6 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContents;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CaseFormatterServiceApplication.class)
@@ -44,17 +45,17 @@ public class TransformToDivorceFormatITest {
     @Test
     public void givenValidDetails_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
         final DivorceSession expectedDivorceSession =
-            (DivorceSession)ObjectMapperTestUtil.jsonToObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
+            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
 
         MvcResult result = webClient.perform(post(API_URL)
-            .content(ObjectMapperTestUtil.loadJson(PAYLOAD_PATH))
+            .content(retrieveFileContents(PAYLOAD_PATH))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andReturn();
 
         final DivorceSession actualDivorceSession =
-            (DivorceSession)ObjectMapperTestUtil.jsonStringToObject(result.getResponse().getContentAsString(),
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
                 DivorceSession.class);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));

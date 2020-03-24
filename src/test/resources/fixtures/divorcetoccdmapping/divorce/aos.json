@@ -99,49 +99,6 @@
             "fileUrl":"https://api-gateway.test.dm.reform.hmcts.net/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
         }
     ],
-    "court":{
-        "eastMidlands":{
-            "divorceCentre":"East Midlands Regional Divorce Centre",
-            "courtCity":"Nottingham",
-            "poBox":"PO Box 10447",
-            "postCode":"NG2 9QN",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"eastmidlandsdivorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA01"
-        },
-        "westMidlands":{
-            "divorceCentre":"West Midlands Regional Divorce Centre",
-            "courtCity":"Stoke-on-Trent",
-            "poBox":"PO Box 3650",
-            "postCode":"ST4 9NH",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"westmidlandsdivorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA02"
-        },
-        "southWest":{
-            "divorceCentre":"South West Regional Divorce Centre",
-            "courtCity":"Southampton",
-            "poBox":"PO Box 1792",
-            "postCode":"SO15 9GG",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"sw-region-divorce@hmcts.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA03"
-        },
-        "northWest":{
-            "divorceCentre":"North West Regional Divorce Centre",
-            "divorceCentreAddressName":"Liverpool Civil & Family Court",
-            "courtCity":"Liverpool",
-            "street":"35 Vernon Street",
-            "postCode":"L2 2BX",
-            "openingHours":"Telephone Enquiries from: 8.30am to 5pm",
-            "email":"family@liverpool.countycourt.gsi.gov.uk",
-            "phoneNumber":"0300 303 0642",
-            "siteId":"AA04"
-        }
-    },
     "courts":"eastMidlands",
     "jurisdictionConnection":[
         "A",
@@ -238,7 +195,7 @@
         }
     },
     "respondentSolicitorName":"Justin",
-    "respondentSolicitorCompany":"Case",
+    "respondentSolicitorCompany":"Awesome Solicitors LLP",
     "respondentSolicitorAddress":{
         "addressType":"postcode",
         "postcode":"SW9 9PE",
@@ -259,10 +216,14 @@
             "postcode":"A AAA"
         }
     },
+    "respondentSolicitorRepresented": "Yes",
+    "respondentSolicitorEmail": "solicitor@localhost.local",
+    "respondentSolicitorPhoneNumber": "2222222222",
+    "respondentSolicitorReference": "1234",
     "petitionerConsent" : "Yes",
     "respConfirmReadPetition" : "YES",
     "respAdmitOrConsentToFact" : "YES",
-    "respDefendsDivorce" : "YES",
+    "respWillDefendDivorce" : "YES",
     "respJurisdictionAgree" : "NO",
     "respJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
     "respJurisdictionRespCountryOfResidence" : "UK",
@@ -272,6 +233,8 @@
     "respCostsAmount" : "1232321",
     "respCostsReason" : "Some Reason",
     "respEmailAddress" : "est@somemail.com",
+    "receivedAosFromRespDate" : "2001-02-03T00:00:00.000Z",
+    "receivedAosFromResp" : "Yes",
     "respPhoneNumber" : "12344555",
     "respStatementOfTruth" : "YES",
     "respConsentToEmail" : "NO",

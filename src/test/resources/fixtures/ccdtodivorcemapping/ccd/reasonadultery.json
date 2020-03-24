@@ -52,7 +52,7 @@
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentSolicitorName" : null,
     "D8RespondentSolicitorCompany" : null,
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "respondentSolicitorRepresented" : null,
     "D8RespondentSolicitorAddress" : null,
     "D8RespondentCorrespondenceUseHomeAddress" : "No",
     "D8RespondentKnowsHomeAddress" : null,
@@ -92,6 +92,8 @@
         "addressAbroad": "Headquarters 1120 N Street Sacramento 916-654-5266\t\r\nP.O. Box 942873 Sacramento, CA 94273-0001\r\n",
         "url": "/about-divorce/reason-for-divorce/adultery/co-respondent-address"
     },
+    "D8ReasonForDivorceAdulteryAnyInfo2ndHand" : "YES",
+    "D8ReasonForDivorceAdultery2ndHandDetails" : "foo",
     "D8DerivedReasonForDivorceAdultery3rdAddr" : "Headquarters 1120 N Street Sacramento 916-654-5266\t\nP.O. Box 942873 Sacramento, CA 94273-0001",
     "D8FinancialOrder" : "YES",
     "D8FinancialOrderFor" : [ "petitioner", "children" ],
@@ -120,7 +122,7 @@
           "DocumentLink" : {
             "document_url" : "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "govuklogo.png"
           },
           "DocumentDateAdded" : "2017-12-11",
           "DocumentComment" : "",
@@ -135,7 +137,7 @@
           "DocumentLink" : {
             "document_url" : "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "d8-eng.pdf"
           },
           "DocumentDateAdded": "2017-12-11",
           "DocumentComment": "",

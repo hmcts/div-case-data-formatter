@@ -50,9 +50,9 @@
       "PostCode" : "SW9 9PE"
     },
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
-    "D8RespondentSolicitorName" : "Justin",
-    "D8RespondentSolicitorCompany" : "Case",
-    "D8RespondentCorrespondenceSendToSol" : null,
+    "D8RespondentSolicitorName": "Justin",
+    "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
+    "respondentSolicitorRepresented": "Yes",
     "D8RespondentSolicitorAddress" : {
         "AddressLine1":null,
         "AddressLine2":null,
@@ -62,6 +62,9 @@
         "County":null,
         "Country":null
     },
+    "D8RespondentSolicitorEmail": "solicitor@localhost.local",
+    "D8RespondentSolicitorPhone": "2222222222",
+    "respondentSolicitorReference": "1234",
     "D8RespondentCorrespondenceUseHomeAddress" : "Solicitor",
     "D8RespondentKnowsHomeAddress" : null,
     "D8RespondentLivesAtLastAddress" : "NO",
@@ -126,7 +129,7 @@
           "DocumentLink" : {
             "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "govuklogo.png"
           },
           "DocumentDateAdded" : "2017-12-11",
           "DocumentComment" : "",
@@ -141,7 +144,7 @@
           "DocumentLink" : {
             "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "document_binary_url" : null,
-            "document_filename" : null
+            "document_filename" : "d8-eng.pdf"
           },
           "DocumentDateAdded": "2017-12-11",
           "DocumentComment": "",
@@ -204,7 +207,7 @@
     "D8InferredRespondentGender" : "male",
     "RespConfirmReadPetition" : "YES",
     "RespAdmitOrConsentToFact" : "YES",
-    "RespDefendsDivorce" : "YES",
+    "RespWillDefendDivorce" : "YES",
     "RespJurisdictionAgree" : "NO",
     "RespJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
     "RespJurisdictionRespCountryOfResidence" : "UK",
@@ -213,6 +216,8 @@
     "RespAgreeToCosts" : "NO",
     "RespCostsAmount" : "1232321",
     "RespCostsReason" : "Some Reason",
+    "ReceivedAOSfromResp" : "YES",
+    "ReceivedAOSfromRespDate" : "2001-02-03",
     "RespEmailAddress" : "est@somemail.com",
     "RespPhoneNumber" : "12344555",
     "RespStatementOfTruth" : "YES",

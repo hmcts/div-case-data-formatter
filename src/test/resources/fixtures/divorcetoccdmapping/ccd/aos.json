@@ -1,7 +1,7 @@
 {
     "RespConfirmReadPetition" : "YES",
     "RespAdmitOrConsentToFact" : "YES",
-    "RespDefendsDivorce" : "YES",
+    "RespWillDefendDivorce" : "YES",
     "RespJurisdictionAgree" : "NO",
     "RespJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
     "RespJurisdictionRespCountryOfResidence" : "UK",
@@ -17,5 +17,14 @@
     "RespHardshipDefenseResponse" : "NO",
     "RespHardshipDescription" : "Some Hardship Description goes here",
     "RespContactMethodIsDigital" : "YES",
-    "PermittedDecreeNisiReason" : "0"
+    "PermittedDecreeNisiReason" : "0",
+    "ReceivedAOSfromResp" : "YES",
+    "ReceivedAOSfromRespDate" : "2001-02-03",
+    "respondentSolicitorRepresented": "Yes",
+    "D8RespondentSolicitorName": "Justin",
+    "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
+    "D8RespondentSolicitorEmail": "solicitor@localhost.local",
+    "D8RespondentSolicitorPhone": "2222222222",
+    "respondentSolicitorReference": "1234",
+    "D8DerivedRespondentSolicitorAddr": "90 Landor Road\nLondon\nSW9 9PE"
 }

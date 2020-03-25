@@ -698,6 +698,14 @@ public abstract class DivorceCaseToCCDMapper {
         result.setPreviousCaseId(caseLink);
     }
 
+
+    @AfterMapping
+    protected void mapLanguagePreferenceWelsh(DivorceSession divorceSession,
+                                                             @MappingTarget CoreCaseData result) {
+        result.setLanguagePreferenceWelsh(
+            toYesNoUpperCase(divorceSession.getLanguagePreferenceWelsh()));
+    }
+
     private CaseLink translateStringToCaseLink(final String value) {
         // translate from string to CaseLink type
         if (Objects.isNull(value)) {

@@ -63,4 +63,7 @@ public class DnRefusalCaseData {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("ClarificationDigital")
     private String clarificationDigital;
+
+    @JsonProperty("LanguagePreferenceWelsh")
+    private String languagePreferenceWelsh;
 }

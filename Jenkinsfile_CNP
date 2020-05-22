@@ -22,7 +22,6 @@ def channel = '#div-dev'
 withPipeline(type , product, component) {
 
     enableAksStagingDeployment()
-    installCharts()
     disableLegacyDeployment()
 
     after('checkout') {

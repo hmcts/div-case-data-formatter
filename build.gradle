@@ -136,7 +136,7 @@ def versions = [
     wiremockVersion: '2.25.1',
     springSecurityCrypto: '5.2.4.RELEASE',
     springOpenFeign: '2.2.1.RELEASE',
-    tomcatEmbed: '9.0.31'
+    tomcatEmbed: '9.0.35'
 ]
 
 dependencies {

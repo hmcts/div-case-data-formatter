@@ -20,20 +20,15 @@ def component = "cfs"
 def channel = '#div-dev'
 
 withPipeline(type , product, component) {
-     enableAksStagingDeployment()
-     installCharts()
-     disableLegacyDeployment()
 
-    if ((env.CHANGE_TITLE && !env.CHANGE_TITLE.startsWith('[PREVIEW]')) || 'hmctsdemo'.equalsIgnoreCase(env.BRANCH_NAME) ) {
-       // enableDockerBuild()
-        // enableDeployToAKS()
-    }
-  
+    enableAksStagingDeployment()
+    disableLegacyDeployment()
+
     after('checkout') {
         echo '${product}-${component} checked out'
     }
 
-     before('functionalTest:aat') {
+    before('functionalTest:aat') {
         env.test_environment = 'aat'
     }
 

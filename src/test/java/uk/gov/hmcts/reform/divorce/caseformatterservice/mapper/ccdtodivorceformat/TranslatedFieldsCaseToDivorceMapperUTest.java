@@ -14,8 +14,9 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CaseFormatterServiceApplication.class)

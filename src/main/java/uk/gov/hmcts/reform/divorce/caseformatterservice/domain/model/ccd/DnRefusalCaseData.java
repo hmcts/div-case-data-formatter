@@ -32,12 +32,20 @@ public class DnRefusalCaseData {
     private String refusalClarificationAdditionalInfo;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalClarificationAdditionalInfoWelsh")
+    private String refusalClarificationAdditionalInfoWelsh;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("RefusalRejectionReason")
     private List<String> refusalRejectionReason;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("RefusalRejectionAdditionalInfo")
     private String refusalRejectionAdditionalInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalRejectionAdditionalInfoWelsh")
+    private String refusalRejectionAdditionalInfoWelsh;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("RefusalAdminErrorInfo")
@@ -59,6 +67,10 @@ public class DnRefusalCaseData {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("PreviousRefusalRejectionAdditionalInfo")
     private String previousRefusalRejectionAdditionalInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("PreviousRefusalRejectionAdditionalInfoWelsh")
+    private String previousRefusalRejectionAdditionalInfoWelsh;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("ClarificationDigital")

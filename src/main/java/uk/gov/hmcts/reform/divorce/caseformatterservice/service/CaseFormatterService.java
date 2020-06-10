@@ -18,12 +18,6 @@ public interface CaseFormatterService {
 
     DivorceSession transformToDivorceSession(CoreCaseData coreCaseData);
 
-    /**
-     * Adds new documents to case data.
-     *
-     * @deprecated - This logic was moved to COS. Please refrain from using this method.
-     */
-    @Deprecated
     Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);
 
     Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData);

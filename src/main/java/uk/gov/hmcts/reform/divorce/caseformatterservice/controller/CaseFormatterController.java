@@ -61,6 +61,11 @@ public class CaseFormatterController {
         return ResponseEntity.ok(caseFormatterService.transformToDivorceSession(data));
     }
 
+    /**
+     * Adds new documents to case data.
+     *
+     * @deprecated This functionality was moved to COS. Please refrain from using this endpoint.
+     */
     @PostMapping(path = "/add-documents")
     @ApiOperation(value = "Given a case in CCD format and documents to add this will update the case with documents")
     @ApiResponses(value = {
@@ -68,9 +73,6 @@ public class CaseFormatterController {
             response = Map.class),
     })
     @Deprecated
-    /**
-     * @deprecated This functionality was moved to COS. Please refrain from using this endpoint.
-     */
     public ResponseEntity<Map<String, Object>> addDocuments(
         @RequestBody @ApiParam(value = "CCD Data", required = true) DocumentUpdateRequest documentUpdateRequest) {
 

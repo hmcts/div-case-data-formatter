@@ -72,13 +72,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         return ccdCaseToDivorceMapper.courtCaseDataToDivorceCaseData(coreCaseData);
     }
 
-    /**
-     * Adds new documents to case data.
-     *
-     * @deprecated This logic was moved to COS. Please refrain from using this method.
-     */
     @Override
-    @Deprecated
     public Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos) {
 
         if (coreCaseData == null) {

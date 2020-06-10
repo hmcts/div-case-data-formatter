@@ -68,12 +68,12 @@ public class CaseFormatterController {
             response = Map.class),
     })
     @Deprecated
+    /**
+     * @deprecated This functionality was moved to COS. Please refrain from using this endpoint.
+     */
     public ResponseEntity<Map<String, Object>> addDocuments(
         @RequestBody @ApiParam(value = "CCD Data", required = true) DocumentUpdateRequest documentUpdateRequest) {
 
-        /*
-         * This functionality was moved to COS. Please refrain from using this endpoint.
-         */
         log.warn("/add-documents endpoint was called.");
 
         return ResponseEntity.ok(caseFormatterService.addDocuments(documentUpdateRequest.getCaseData(),

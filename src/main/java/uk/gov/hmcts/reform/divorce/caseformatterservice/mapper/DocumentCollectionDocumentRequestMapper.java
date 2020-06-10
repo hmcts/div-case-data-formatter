@@ -10,7 +10,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Documen
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 
 /**
- * Deprecated. This logic was moved to COS. Please refrain from using this method.
+ * @deprecated - This logic was moved to COS. Please refrain from using this method.
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @Deprecated

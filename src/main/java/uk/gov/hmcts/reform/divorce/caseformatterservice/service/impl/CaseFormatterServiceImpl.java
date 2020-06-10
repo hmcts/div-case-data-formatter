@@ -73,7 +73,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     /**
-     * Deprecated. This logic was moved to COS. Please refrain from using this method.
+     * @deprecated This logic was moved to COS. Please refrain from using this method.
      */
     @Override
     @Deprecated

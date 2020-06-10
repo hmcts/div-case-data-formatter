@@ -19,7 +19,7 @@ public interface CaseFormatterService {
     DivorceSession transformToDivorceSession(CoreCaseData coreCaseData);
 
     /**
-     * Deprecated. This logic was moved to COS. Please refrain from using this method.
+     * @deprecated - This logic was moved to COS. Please refrain from using this method.
      */
     @Deprecated
     Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);

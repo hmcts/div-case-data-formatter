@@ -9,7 +9,11 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Collect
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 
+/**
+ * Deprecated. This logic was moved to COS. Please refrain from using this method.
+ */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Deprecated
 public abstract class DocumentCollectionDocumentRequestMapper {
     private static final String HAL_BINARY_RESPONSE_CONTEXT_PATH = "/binary";
     private static final String PDF_FILE_EXTENSION = ".pdf";

@@ -10,6 +10,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Documen
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 
 /**
+ * Maps a <code>GeneratedDocumentInfo</code> to a <code>CollectionMember&lt;Document&gt;</code>.
+ *
  * @deprecated - This logic was moved to COS. Please refrain from using this method.
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)

@@ -19,6 +19,8 @@ public interface CaseFormatterService {
     DivorceSession transformToDivorceSession(CoreCaseData coreCaseData);
 
     /**
+     * Adds new documents to case data.
+     *
      * @deprecated - This logic was moved to COS. Please refrain from using this method.
      */
     @Deprecated

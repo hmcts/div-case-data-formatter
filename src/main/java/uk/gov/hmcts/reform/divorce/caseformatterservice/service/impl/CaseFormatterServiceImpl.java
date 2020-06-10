@@ -73,6 +73,8 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     /**
+     * Adds new documents to case data.
+     *
      * @deprecated This logic was moved to COS. Please refrain from using this method.
      */
     @Override

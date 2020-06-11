@@ -27,6 +27,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterSer
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DocumentType.PETITION;
@@ -86,19 +87,22 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                     .map(documentCollectionDocumentRequestMapper::map)
                     .collect(Collectors.toList());
 
+            Set<String> newDocumentsTypes = generatedDocumentInfos.stream()
+                .map(GeneratedDocumentInfo::getDocumentType)
+                .collect(Collectors.toSet());
+
             List<CollectionMember<Document>> documentsGenerated =
                 objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
-                    new TypeReference<List<CollectionMember<Document>>>() {});
+                    new TypeReference<List<CollectionMember<Document>>>() {
+                    });
 
             if (CollectionUtils.isNotEmpty(documentsGenerated)) {
                 List<CollectionMember<Document>> existingDocuments = documentsGenerated.stream()
-                        .filter(documentCollectionMember ->
-                            GENERIC_DOCUMENT_TYPE.equals(documentCollectionMember.getValue().getDocumentType())
-                            || !generatedDocumentInfos.stream()
-                                .map(GeneratedDocumentInfo::getDocumentType)
-                                .collect(Collectors.toSet())
-                                .contains(documentCollectionMember.getValue().getDocumentType()))
-                        .collect(Collectors.toList());
+                    .filter(documentCollectionMember ->
+                        GENERIC_DOCUMENT_TYPE.equals(documentCollectionMember.getValue().getDocumentType())
+                            || !newDocumentsTypes.contains(documentCollectionMember.getValue().getDocumentType())
+                    )
+                    .collect(Collectors.toList());
 
                 resultDocuments.addAll(existingDocuments);
             }

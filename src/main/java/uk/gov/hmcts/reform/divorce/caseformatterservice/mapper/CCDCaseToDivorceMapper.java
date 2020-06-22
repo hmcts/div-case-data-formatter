@@ -164,6 +164,16 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
+    protected void mapRespContactMethodIsDigital(CoreCaseData caseData,
+                                                 @MappingTarget DivorceSession divorceSession) {
+        boolean respContactMethodIsDigital = Optional.ofNullable(caseData.getRespContactMethodIsDigital())
+            .map(v -> !"No".equalsIgnoreCase(v))
+            .orElse(true);
+
+        divorceSession.setRespContactMethodIsDigital(respContactMethodIsDigital);
+    }
+
+    @AfterMapping
     protected void mapMarriageDate(CoreCaseData caseData,
                                    @MappingTarget DivorceSession divorceSession) {
         if (caseData.getD8MarriageDate() != null) {

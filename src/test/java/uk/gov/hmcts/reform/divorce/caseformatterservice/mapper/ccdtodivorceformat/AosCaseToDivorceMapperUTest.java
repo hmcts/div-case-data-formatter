@@ -14,6 +14,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 
@@ -36,5 +37,34 @@ public class AosCaseToDivorceMapperUTest {
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));
+    }
+
+    @Test
+    public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenValueIsYes() {
+        CoreCaseData coreCaseData = new CoreCaseData();
+        coreCaseData.setRespContactMethodIsDigital("YES");
+
+        DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(divorceSession.isRespContactMethodIsDigital(), is(true));
+    }
+
+    @Test
+    public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenValueIsNo() {
+        CoreCaseData coreCaseData = new CoreCaseData();
+        coreCaseData.setRespContactMethodIsDigital("NO");
+
+        DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(divorceSession.isRespContactMethodIsDigital(), is(false));
+    }
+
+    @Test
+    public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenNotSet() {
+        CoreCaseData coreCaseData = new CoreCaseData();
+
+        DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(divorceSession.isRespContactMethodIsDigital(), is(true));
     }
 }

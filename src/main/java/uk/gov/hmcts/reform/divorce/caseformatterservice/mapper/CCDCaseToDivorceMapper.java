@@ -41,7 +41,7 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.YE
 @Slf4j
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
-@SuppressWarnings( {"PMD.GodClass", "common-java:DuplicatedBlocks"})
+@SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
 public abstract class CCDCaseToDivorceMapper {
 
     private static final String LINE_BREAK = "\n";

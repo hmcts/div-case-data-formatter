@@ -8,6 +8,10 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderSe
 import java.util.Locale;
 import java.util.Map;
 
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.NO_VALUE;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.YES_VALUE;
+
+
 @Component
 public class InferredGenderServiceImpl implements InferredGenderService {
     private final Map<String, Gender> genderMap = ImmutableMap.of("husband", Gender.FEMALE, "wife", Gender.MALE);
@@ -20,9 +24,9 @@ public class InferredGenderServiceImpl implements InferredGenderService {
 
     @Override
     public Gender getPetitionerGender(String isSameSexMarriage, String respondentRole) {
-        if ("yes".equalsIgnoreCase(isSameSexMarriage)) {
+        if (YES_VALUE.equalsIgnoreCase(isSameSexMarriage)) {
             return roleGender.get(respondentRole.toLowerCase(Locale.ENGLISH));
-        } else if ("no".equalsIgnoreCase(isSameSexMarriage)) {
+        } else if (NO_VALUE.equalsIgnoreCase(isSameSexMarriage)) {
             return genderMap.get(respondentRole.toLowerCase(Locale.ENGLISH));
         }
         return null;

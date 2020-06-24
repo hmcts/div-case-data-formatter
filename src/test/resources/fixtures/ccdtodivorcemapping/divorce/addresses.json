@@ -243,5 +243,5 @@
     "petitionerConsent": "Yes",
     "dateRespondentEligibleForDA": "2019-01-11",
     "dateCaseNoLongerEligibleForDA": "2020-01-12",
-    "respContactMethodIsDigital": true
+    "respContactMethodIsDigital": false
 }

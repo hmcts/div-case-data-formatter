@@ -541,7 +541,7 @@ public class DivorceSession {
     private String clarificationDigital;
 
     @ApiModelProperty(value = "Indicates if the respondent's contact method is digital")
-    private boolean respContactMethodIsDigital;
+    private Boolean respContactMethodIsDigital;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

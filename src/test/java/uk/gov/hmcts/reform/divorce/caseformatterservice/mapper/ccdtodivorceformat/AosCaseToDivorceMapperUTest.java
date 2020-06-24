@@ -15,8 +15,11 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.NO_VALUE;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.YES_VALUE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CaseFormatterServiceApplication.class)
@@ -42,21 +45,21 @@ public class AosCaseToDivorceMapperUTest {
     @Test
     public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenValueIsYes() {
         CoreCaseData coreCaseData = new CoreCaseData();
-        coreCaseData.setRespContactMethodIsDigital("YES");
+        coreCaseData.setRespContactMethodIsDigital(YES_VALUE);
 
         DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 
-        assertThat(divorceSession.isRespContactMethodIsDigital(), is(true));
+        assertThat(divorceSession.getRespContactMethodIsDigital(), is(true));
     }
 
     @Test
     public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenValueIsNo() {
         CoreCaseData coreCaseData = new CoreCaseData();
-        coreCaseData.setRespContactMethodIsDigital("NO");
+        coreCaseData.setRespContactMethodIsDigital(NO_VALUE);
 
         DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 
-        assertThat(divorceSession.isRespContactMethodIsDigital(), is(false));
+        assertThat(divorceSession.getRespContactMethodIsDigital(), is(false));
     }
 
     @Test
@@ -65,6 +68,6 @@ public class AosCaseToDivorceMapperUTest {
 
         DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 
-        assertThat(divorceSession.isRespContactMethodIsDigital(), is(true));
+        assertThat(divorceSession.getRespContactMethodIsDigital(), is(nullValue()));
     }
 }

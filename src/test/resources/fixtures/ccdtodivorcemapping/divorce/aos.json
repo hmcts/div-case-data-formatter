@@ -243,5 +243,6 @@
     "respHardshipDefenseResponse" : "NO",
     "respHardshipDescription" : "Some Hardship Description goes here",
     "petitionerConsent" : "Yes",
-    "permittedDecreeNisiReason" : "0"
+    "permittedDecreeNisiReason" : "0",
+    "respContactMethodIsDigital" : true
 }

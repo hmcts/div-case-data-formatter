@@ -611,6 +611,9 @@ public class DivorceSession {
     @ApiModelProperty(value = "Indicates if petitioner is sending the clarification as upload or in post")
     private String clarificationDigital;
 
+    @ApiModelProperty(value = "Indicates if the respondent's contact method is digital")
+    private Boolean respContactMethodIsDigital;
+
     @ApiModelProperty(value = "Is the language preference Welsh?", allowableValues = "Yes, No")
     private String languagePreferenceWelsh;
 

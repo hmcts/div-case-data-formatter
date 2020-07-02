@@ -134,6 +134,8 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(ignore = true, target = "dnOutcomeCase")
     @Mapping(source = "refusalRejectionReason", target = "previousRefusalRejectionReason")
     @Mapping(source = "refusalRejectionAdditionalInfo", target = "previousRefusalRejectionAdditionalInfo")
+    @Mapping(source = "petitionerPcqId", target = "petitionerPcqId")
+    @Mapping(source = "respondantPcqId", target = "respondantPcqId")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping

@@ -155,6 +155,8 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "refusalRejectionAdditionalInfo", target = "refusalRejectionAdditionalInfo")
     @Mapping(source = "refusalAdminErrorInfo", target = "refusalAdminErrorInfo")
     @Mapping(source = "dnOutcomeCase", target = "dnOutcomeCase")
+    @Mapping(source = "petitionerPcqId", target = "petitionerPcqId")
+    @Mapping(source = "respondantPcqId", target = "respondantPcqId")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {

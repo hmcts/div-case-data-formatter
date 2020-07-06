@@ -365,7 +365,7 @@ public class DivorceSession {
         + " for the entire time since separated?", allowableValues = "Yes, No")
     private String livedApartEntireTime;
 
-    @ApiModelProperty(value = "Petitioner Protected Characteristics Questions Indentifier")
+    @ApiModelProperty(value = "Petitioner Protected Characteristics Questions Identifier")
     @JsonProperty("petitionerPcqId")
     private String petitionerPcqId;
 
@@ -413,9 +413,13 @@ public class DivorceSession {
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
 
-    @ApiModelProperty(value = "Respondant Protected Characteristics Questions Indentifier")
+    @ApiModelProperty(value = "Respondant Protected Characteristics Questions Identifier")
     @JsonProperty("respondantPcqId")
     private String respondantPcqId;
+
+    @ApiModelProperty(value = "Co-Respondant Protected Characteristics Questions Identifier")
+    @JsonProperty("coRespondantPcqId")
+    private String coRespondantPcqId;
 
     @ApiModelProperty(value = "Answers from co respondent")
     private CoRespondentAnswers coRespondentAnswers;

@@ -366,7 +366,6 @@ public class DivorceSession {
     private String livedApartEntireTime;
 
     @ApiModelProperty(value = "Petitioner Protected Characteristics Questions Identifier")
-    @JsonProperty("petitionerPcqId")
     private String petitionerPcqId;
 
     //Aos Fields Mappings Start
@@ -413,13 +412,11 @@ public class DivorceSession {
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
 
-    @ApiModelProperty(value = "Respondant Protected Characteristics Questions Identifier")
-    @JsonProperty("respondantPcqId")
-    private String respondantPcqId;
+    @ApiModelProperty(value = "Respondent Protected Characteristics Questions Identifier")
+    private String respondentPcqId;
 
-    @ApiModelProperty(value = "Co-Respondant Protected Characteristics Questions Identifier")
-    @JsonProperty("coRespondantPcqId")
-    private String coRespondantPcqId;
+    @ApiModelProperty(value = "Co-Respondent Protected Characteristics Questions Identifier")
+    private String coRespondentPcqId;
 
     @ApiModelProperty(value = "Answers from co respondent")
     private CoRespondentAnswers coRespondentAnswers;

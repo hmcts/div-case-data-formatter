@@ -575,10 +575,4 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("PetitionerPcqId")
     private String petitionerPcqId;
-
-    @JsonProperty("RespondantPcqId")
-    private String respondantPcqId;
-
-    @JsonProperty("CoRespondantPcqId")
-    private String coRespondantPcqId;
 }

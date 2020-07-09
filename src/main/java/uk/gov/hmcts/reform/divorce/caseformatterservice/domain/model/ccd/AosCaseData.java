@@ -77,6 +77,9 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("ReceivedAOSfromResp")
     private String receivedAosFromResp;
 
+    @JsonProperty("RespondentPcqId")
+    private String respondentPcqId;
+
     //Co-respondent answers
 
     @JsonProperty("CoRespConfirmReadPetition")
@@ -157,4 +160,7 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("D8DerivedRespondentSolicitorAddr")
     private String d8DerivedRespondentSolicitorAddr;
+
+    @JsonProperty("CoRespondentPcqId")
+    private String coRespondentPcqId;
 }

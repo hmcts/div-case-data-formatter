@@ -39,6 +39,8 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "respondentSolicitorCompany", target = "d8RespondentSolicitorCompany")
     @Mapping(source = "respondentSolicitorEmail", target = "d8RespondentSolicitorEmail")
     @Mapping(source = "respondentSolicitorPhoneNumber", target = "d8RespondentSolicitorPhone")
+    @Mapping(source = "respondentPcqId", target = "respondentPcqId")
+    @Mapping(source = "coRespondentPcqId", target = "coRespondentPcqId")
     public abstract AosCaseData divorceCaseDataToAosCaseData(DivorceSession divorceSession);
 
     @AfterMapping

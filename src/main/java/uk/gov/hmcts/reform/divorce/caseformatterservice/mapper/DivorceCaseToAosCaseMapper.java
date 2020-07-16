@@ -28,6 +28,8 @@ public abstract class DivorceCaseToAosCaseMapper {
     @Mapping(source = "coRespondentAnswers.contactInfo.contactMethodIsDigital", target = "coRespContactMethodIsDigital")
     @Mapping(source = "coRespondentAnswers.costs.agreeToCosts", target = "coRespAgreeToCosts")
     @Mapping(source = "coRespondentAnswers.costs.reason", target = "coRespCostsReason")
+    @Mapping(source = "coRespondentAnswers.costs.reasonTrans", target = "coRespCostsReasonTrans")
+    @Mapping(source = "coRespondentAnswers.costs.reasonTransLang", target = "coRespCostsReasonTransLang")
     @Mapping(source = "coRespondentAnswers.defendsDivorce", target = "coRespDefendsDivorce")
     @Mapping(source = "coRespondentAnswers.contactInfo.emailAddress", target = "coRespEmailAddress")
     @Mapping(source = "coRespondentAnswers.contactInfo.phoneNumber", target = "coRespPhoneNumber")
@@ -91,5 +93,6 @@ public abstract class DivorceCaseToAosCaseMapper {
                 toYesNoUpperCase(coRespondentAnswers.getContactInfo().getContactMethodIsDigital()));
         }
     }
+
 
 }

@@ -624,6 +624,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("DateCaseNoLongerEligibleForDA")
     private String dateCaseNoLongerEligibleForDA;
 
+    @JsonProperty("PetitionerPcqId")
+    private String petitionerPcqId;
+
     @JsonProperty("LanguagePreferenceWelsh")
     private String languagePreferenceWelsh;
 }

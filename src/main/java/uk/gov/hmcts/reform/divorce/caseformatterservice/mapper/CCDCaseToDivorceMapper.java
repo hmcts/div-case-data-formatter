@@ -173,6 +173,9 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "refusalRejectionAdditionalInfo", target = "refusalRejectionAdditionalInfo")
     @Mapping(source = "refusalAdminErrorInfo", target = "refusalAdminErrorInfo")
     @Mapping(source = "dnOutcomeCase", target = "dnOutcomeCase")
+    @Mapping(source = "petitionerPcqId", target = "petitionerPcqId")
+    @Mapping(source = "respondentPcqId", target = "respondentPcqId")
+    @Mapping(source = "coRespondentPcqId", target = "coRespondentPcqId")
     @Mapping(source = "d8ReasonForDivorceBehaviourDetailsTrans", target = "reasonForDivorceBehaviourDetailsTrans")
     @Mapping(source = "d8ReasonForDivorceBehaviourDetailsTransLang", target = "reasonForDivorceBehaviourDetailsTransLang")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);

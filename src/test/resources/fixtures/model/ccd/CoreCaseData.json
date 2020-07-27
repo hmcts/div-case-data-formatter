@@ -162,5 +162,8 @@
     "CostsClaimGranted": "YES",
     "DNApprovalDate": "2000-01-01",
     "DecreeNisiGrantedDate": "2020-01-01",
-    "DAEligibleFromDate": "2020-02-15"
+    "DAEligibleFromDate": "2020-02-15",
+    "PetitionerPcqId": "34d4eab4-613e-471e-a912-5c09c2a0ca5b",
+    "RespondentPcqId": "2e23d0fa-6b24-47cb-b402-2a7837821d41",
+    "CoRespondentPcqId": "fb4c2b34-7d2a-444e-8667-da59efae8b1a"
 }

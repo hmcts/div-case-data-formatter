@@ -398,6 +398,9 @@ public class DivorceSession {
         + " for the entire time since separated?", allowableValues = "Yes, No")
     private String livedApartEntireTime;
 
+    @ApiModelProperty(value = "Petitioner Protected Characteristics Questions Identifier")
+    private String petitionerPcqId;
+
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
     private String respConfirmReadPetition;
@@ -453,6 +456,12 @@ public class DivorceSession {
     private Date receivedAosFromRespDate;
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
+
+    @ApiModelProperty(value = "Respondent Protected Characteristics Questions Identifier")
+    private String respondentPcqId;
+
+    @ApiModelProperty(value = "Co-Respondent Protected Characteristics Questions Identifier")
+    private String coRespondentPcqId;
 
     @ApiModelProperty(value = "Answers from co respondent")
     private CoRespondentAnswers coRespondentAnswers;

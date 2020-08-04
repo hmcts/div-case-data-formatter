@@ -119,7 +119,7 @@ def versions = [
     jsonAssert                   : '1.2.3',
     jsonPathAssert               : '2.2.0',
     junit                        : '4.13',
-    lombok                       : '1.16.16',
+    lombok                       : '1.18.12',
     mapstruct                    : '1.2.0.Final',
     orgSpringframework           : '5.2.3.RELEASE',
     pitest                       : '1.3.2',

@@ -277,5 +277,7 @@
             "status" : "OK"
         }
     ],
-    "uploadAnyOtherDocuments" : "Yes"
+    "uploadAnyOtherDocuments" : "Yes",
+    "serviceApplicationType": "deemed",
+    "serviceApplicationGranted": "Yes"
 }

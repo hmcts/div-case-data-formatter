@@ -456,6 +456,10 @@ public class DivorceSession {
     private Date receivedAosFromRespDate;
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
+    @ApiModelProperty(value = "Service application type")
+    private String serviceApplicationType;
+    @ApiModelProperty(value = "Service Application Granted")
+    private String serviceApplicationGranted;
 
     @ApiModelProperty(value = "Respondent Protected Characteristics Questions Identifier")
     private String respondentPcqId;

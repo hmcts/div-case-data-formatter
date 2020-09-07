@@ -48,5 +48,12 @@
     "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-ccd-format_POST": "ignore",
     "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-da-submit-format_POST": "ignore",
     "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-aos-submit-format_POST": "ignore",
-    "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/v2/api-docs_GET": "ignore"
+    "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/v2/api-docs_GET": "ignore",
+    "10054_Cookie Without SameSite Attribute_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-divorce-format_POST",
+    "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-divorce-format_POST": "ignore",
+    "90033_Loosely Scoped Cookie_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/remove-all-petition-documents_POST": "ignore",
+    "10010_Cookie No HttpOnly Flag_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/remove-all-petition-documents_POST": "ignore",
+    "10010_Cookie No HttpOnly Flag_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-divorce-format_POST": "ignore",
+    "10054_Cookie Without SameSite Attribute_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/remove-all-petition-documents_POST": "ignore",
+    "10054_Cookie Without SameSite Attribute_http://div-cfs-aat.service.core-compute-aat.internal/caseformatter/version/1/to-divorce-format_POST": "ignore"
 }

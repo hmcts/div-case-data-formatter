@@ -14,7 +14,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -123,6 +122,10 @@ public class DivorceSession {
     private List<String> petitionerNameChangedHow;
     @ApiModelProperty(value = "What other details does the petitioner have of the name change?")
     private String petitionerNameChangedHowOtherDetails;
+    @ApiModelProperty(value = "What other details does the petitioner have of the name change? (translated)")
+    private String petitionerNameChangedHowOtherDetailsTrans;
+    @ApiModelProperty(value = "What other details does the petitioner have of the name change? (translated language)")
+    private String petitionerNameChangedHowOtherDetailsTransLang;
     @ApiModelProperty(value = "Petitioner's email address?")
     private String petitionerEmail;
     @ApiModelProperty(value = "Petitioner's phone number?")
@@ -170,6 +173,11 @@ public class DivorceSession {
     private String reasonForDivorceEnableAdultery;
     @ApiModelProperty(value = "Behaviour details")
     private List<String> reasonForDivorceBehaviourDetails;
+    @ApiModelProperty(value = "Behaviour details (translated)")
+    private String reasonForDivorceBehaviourDetailsTrans;
+    @ApiModelProperty(value = "Behaviour details (translated language)")
+    private String reasonForDivorceBehaviourDetailsTransLang;
+
     @ApiModelProperty(value = "Does petitioner want to name co-respondent?", allowableValues = "Yes, No")
     private String reasonForDivorceAdulteryWishToName;
     @ApiModelProperty(value = "First name of adultery co-respondent.")
@@ -184,15 +192,31 @@ public class DivorceSession {
     private String reasonForDivorceAdulteryKnowWhen;
     @ApiModelProperty(value = "Adultery details.")
     private String reasonForDivorceAdulteryDetails;
+    @ApiModelProperty(value = "Adultery details. (translated)")
+    private String reasonForDivorceAdulteryDetailsTrans;
+    @ApiModelProperty(value = "Adultery details. (translated language)")
+    private String reasonForDivorceAdulteryDetailsTransLang;
     @ApiModelProperty(value = "When did adultery take place?")
     private String reasonForDivorceAdulteryWhenDetails;
+    @ApiModelProperty(value = "When did adultery take place? (translated)")
+    private String reasonForDivorceAdulteryWhenDetailsTrans;
+    @ApiModelProperty(value = "When did adultery take place? (translated language)")
+    private String reasonForDivorceAdulteryWhenDetailsTransLang;
     @ApiModelProperty(value = "Where did adultery take place?")
     private String reasonForDivorceAdulteryWhereDetails;
+    @ApiModelProperty(value = "Where did adultery take place? (translated)")
+    private String reasonForDivorceAdulteryWhereDetailsTrans;
+    @ApiModelProperty(value = "Where did adultery take place? (translated language)")
+    private String reasonForDivorceAdulteryWhereDetailsTransLang;
     @ApiModelProperty(value = "Did any of the information about adultery come from another person?",
         allowableValues = "Yes, No")
     private String reasonForDivorceAdulterySecondHandInfo;
     @ApiModelProperty(value = "Details of the information about adultery that has come from another person")
     private String reasonForDivorceAdulterySecondHandInfoDetails;
+    @ApiModelProperty(value = "Details of the information about adultery that has come from another person (translated)")
+    private String reasonForDivorceAdulterySecondHandInfoDetailsTrans;
+    @ApiModelProperty(value = "Details of the information about adultery that has come from another person (translated language)")
+    private String reasonForDivorceAdulterySecondHandInfoDetailsTransLang;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String reasonForDivorceDesertionAlright;
     @ApiModelProperty(
@@ -203,6 +227,10 @@ public class DivorceSession {
     private List<String> legalProceedingsRelated;
     @ApiModelProperty(value = "Legal proceeding details")
     private String legalProceedingsDetails;
+    @ApiModelProperty(value = "Legal proceeding details (translated)")
+    private String legalProceedingsDetailsTrans;
+    @ApiModelProperty(value = "Legal proceeding details (translated language)")
+    private String legalProceedingsDetailsTransLang;
     @ApiModelProperty(value = "Petitioner want a financial order?", allowableValues = "Yes, No")
     private String financialOrder;
     @ApiModelProperty(value = "Who is financial order for?", allowableValues = "petitioner, children")
@@ -255,6 +283,10 @@ public class DivorceSession {
     private String reasonForDivorceDesertionAgreed;
     @ApiModelProperty(value = "Desertion details.")
     private String reasonForDivorceDesertionDetails;
+    @ApiModelProperty(value = "Desertion details. (translated)")
+    private String reasonForDivorceDesertionDetailsTrans;
+    @ApiModelProperty(value = "Desertion details. (translated language)")
+    private String reasonForDivorceDesertionDetailsTransLang;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String marriageIsFuture;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
@@ -366,6 +398,9 @@ public class DivorceSession {
         + " for the entire time since separated?", allowableValues = "Yes, No")
     private String livedApartEntireTime;
 
+    @ApiModelProperty(value = "Petitioner Protected Characteristics Questions Identifier")
+    private String petitionerPcqId;
+
     //Aos Fields Mappings Start
     @ApiModelProperty(value = "Respondent confirmed petition read.")
     private String respConfirmReadPetition;
@@ -377,18 +412,30 @@ public class DivorceSession {
     private String respWillDefendDivorce;
     @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction")
     private String respJurisdictionDisagreeReason;
+    @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction (translated)")
+    private String respJurisdictionDisagreeReasonTrans;
+    @ApiModelProperty(value = "Reason respondent disagreed to claimed jurisdiction (translated language)")
+    private String respJurisdictionDisagreeReasonTransLang;
     @ApiModelProperty(value = "Respondent country of residence")
     private String respJurisdictionRespCountryOfResidence;
     @ApiModelProperty(value = "Do legal proceedings exist (respondent)?")
     private String respLegalProceedingsExist;
     @ApiModelProperty(value = "Legal proceedings details (respondent)")
     private String respLegalProceedingsDescription;
+    @ApiModelProperty(value = "Legal proceedings details (respondent translated)")
+    private String respLegalProceedingsDescriptionTrans;
+    @ApiModelProperty(value = "Legal proceedings details (respondent translated language)")
+    private String respLegalProceedingsDescriptionTransLang;
     @ApiModelProperty(value = "Does respondent agree to costs?")
     private String respAgreeToCosts;
     @ApiModelProperty(value = "Respondent's costs amount")
     private String respCostsAmount;
     @ApiModelProperty(value = "Respondent's costs reason")
     private String respCostsReason;
+    @ApiModelProperty(value = "Respondent's costs reason (translated)")
+    private String respCostsReasonTrans;
+    @ApiModelProperty(value = "Respondent's costs reason (translated language)")
+    private String respCostsReasonTransLang;
     @ApiModelProperty(value = "Respondent's email address")
     private String respEmailAddress;
     @ApiModelProperty(value = "Respondent's telephone number")
@@ -409,6 +456,16 @@ public class DivorceSession {
     private Date receivedAosFromRespDate;
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
+    @ApiModelProperty(value = "Service application type")
+    private String serviceApplicationType;
+    @ApiModelProperty(value = "Service Application Granted")
+    private String serviceApplicationGranted;
+
+    @ApiModelProperty(value = "Respondent Protected Characteristics Questions Identifier")
+    private String respondentPcqId;
+
+    @ApiModelProperty(value = "Co-Respondent Protected Characteristics Questions Identifier")
+    private String coRespondentPcqId;
 
     @ApiModelProperty(value = "Answers from co respondent")
     private CoRespondentAnswers coRespondentAnswers;
@@ -419,6 +476,10 @@ public class DivorceSession {
     private String hasBeenChanges;
     @ApiModelProperty(value = "Dn Petition Change details")
     private String changesDetails;
+    @ApiModelProperty(value = "Dn Petition Change details (translated)")
+    private String changesDetailsTrans;
+    @ApiModelProperty(value = "Dn Petition Change details (translated language)")
+    private String changesDetailsTransLang;
     @ApiModelProperty(value = "Dn Change Confirmation Petition Yes")
     private String statementOfTruthChanges;
     @ApiModelProperty(value = "Dn Change Confirmation Petition No")
@@ -427,6 +488,10 @@ public class DivorceSession {
     private String claimCosts;
     @ApiModelProperty(value = "Details when Divorce Cost Option is differentAmount")
     private String costsDifferentDetails;
+    @ApiModelProperty(value = "Details when Divorce Cost Option is differentAmount (translated)")
+    private String costsDifferentDetailsTrans;
+    @ApiModelProperty(value = "Details when Divorce Cost Option is differentAmount (translated language)")
+    private String costsDifferentDetailsTransLang;
     @ApiModelProperty(value = "Dn Statement of Truth")
     private String statementOfTruth;
     @ApiModelProperty(value = "Dn Adultery life is Intolerable")
@@ -440,6 +505,10 @@ public class DivorceSession {
     private String livedApartSinceAdultery;
     @ApiModelProperty(value = "Dn Adultery time lived together")
     private String datesLivedTogether;
+    @ApiModelProperty(value = "Dn Adultery time lived together (translated)")
+    private String datesLivedTogetherTrans;
+    @ApiModelProperty(value = "Dn Adultery time lived together (translated language)")
+    private String datesLivedTogetherTransLang;
     @ApiModelProperty(value = "Dn Behaviour still happening")
     private String behaviourContinuedSinceApplication;
     @ApiModelProperty(
@@ -451,6 +520,10 @@ public class DivorceSession {
     private String livedApartSinceLastIncidentDate;
     @ApiModelProperty(value = "Dn Behaviour time lived together details")
     private String approximateDatesOfLivingTogetherField;
+    @ApiModelProperty(value = "Dn Behaviour time lived together details (translated)")
+    private String approximateDatesOfLivingTogetherFieldTrans;
+    @ApiModelProperty(value = "Dn Behaviour time lived together details (translated language)")
+    private String approximateDatesOfLivingTogetherFieldTransLang;
     @ApiModelProperty(value = "Dn Desertion - Respondent asked petitioner to resume living together")
     private String desertionAskedToResumeDN;
     @ApiModelProperty(value = "Dn Desertion - Did the petitioner refuse to  resume living together")
@@ -459,6 +532,10 @@ public class DivorceSession {
     private String desertionAskedToResumeDNDetails;
     @ApiModelProperty(value = "Dn Desertion live apart since event")
     private String livedApartSinceDesertion;
+    @ApiModelProperty(value = "Dn Desertion live apart since event (translated)")
+    private String livedApartSinceDesertionTrans;
+    @ApiModelProperty(value = "Dn Desertion live apart since event(translated language)")
+    private String livedApartSinceDesertionTransLang;
     @ApiModelProperty(value = "Dn Separation time lived together")
     private String livedApartSinceSeparation;
     @ApiModelProperty(value = "Dn uploaded documents URL details.")
@@ -520,11 +597,17 @@ public class DivorceSession {
     @ApiModelProperty("Any additional input by the legal advisor for clarification.")
     private String refusalClarificationAdditionalInfo;
 
+    @ApiModelProperty("Any additional input by the legal advisor for clarification. (Welsh)")
+    private String refusalClarificationAdditionalInfoWelsh;
+
     @ApiModelProperty("Reason for why refusal rejection is needed.")
     private List<String> refusalRejectionReason;
 
     @ApiModelProperty("Any additional input by the legal advisor for refusal rejection.")
     private String refusalRejectionAdditionalInfo;
+
+    @ApiModelProperty("Any additional input by the legal advisor for refusal rejection. (Welsh)")
+    private String refusalRejectionAdditionalInfoWelsh;
 
     @ApiModelProperty("Any additional input by the legal advisor for admin error.")
     private String refusalAdminErrorInfo;
@@ -540,6 +623,12 @@ public class DivorceSession {
 
     @ApiModelProperty(value = "Indicates if petitioner is sending the clarification as upload or in post")
     private String clarificationDigital;
+
+    @ApiModelProperty(value = "Indicates if the respondent's contact method is digital")
+    private Boolean respContactMethodIsDigital;
+
+    @ApiModelProperty(value = "Is the language preference Welsh?", allowableValues = "Yes, No")
+    private String languagePreferenceWelsh;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

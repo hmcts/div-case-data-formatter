@@ -14,8 +14,12 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.NO_VALUE;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.YES_VALUE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CaseFormatterServiceApplication.class)
@@ -36,5 +40,34 @@ public class AosCaseToDivorceMapperUTest {
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));
+    }
+
+    @Test
+    public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenValueIsYes() {
+        CoreCaseData coreCaseData = new CoreCaseData();
+        coreCaseData.setRespContactMethodIsDigital(YES_VALUE);
+
+        DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(divorceSession.getRespContactMethodIsDigital(), is(true));
+    }
+
+    @Test
+    public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenValueIsNo() {
+        CoreCaseData coreCaseData = new CoreCaseData();
+        coreCaseData.setRespContactMethodIsDigital(NO_VALUE);
+
+        DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(divorceSession.getRespContactMethodIsDigital(), is(false));
+    }
+
+    @Test
+    public void shouldTransformRespondentDigitalToDivorceSessionAsBoolean_whenNotSet() {
+        CoreCaseData coreCaseData = new CoreCaseData();
+
+        DivorceSession divorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
+
+        assertThat(divorceSession.getRespContactMethodIsDigital(), is(nullValue()));
     }
 }

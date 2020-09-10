@@ -87,6 +87,12 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8PetitionerNameChangedHowOtherDetails")
     private String d8PetitionerNameChangedHowOtherDetails;
 
+    @JsonProperty("D8PetitionerNameChangedHowOtherDetailsTrans")
+    private String d8PetitionerNameChangedHowOtherDetailsTrans;
+
+    @JsonProperty("D8PetitionerNameChangedHowOtherDetailsTransLang")
+    private String d8PetitionerNameChangedHowOtherDetailsTransLang;
+
     @JsonProperty("D8PetitionerContactDetailsConfidential")
     private String d8PetitionerContactDetailsConfidential;
 
@@ -165,6 +171,12 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8LegalProceedingsDetails")
     private String d8LegalProceedingsDetails;
 
+    @JsonProperty("D8LegalProceedingsDetailsTrans")
+    private String d8LegalProceedingsDetailsTrans;
+
+    @JsonProperty("D8LegalProceedingsDetailsTransLang")
+    private String d8LegalProceedingsDetailsTransLang;
+
     @JsonProperty("D8ReasonForDivorce")
     private String d8ReasonForDivorce;
 
@@ -177,6 +189,12 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ReasonForDivorceBehaviourDetails")
     private String d8ReasonForDivorceBehaviourDetails;
 
+    @JsonProperty("D8ReasonForDivorceBehaviourDetailsTrans")
+    private String d8ReasonForDivorceBehaviourDetailsTrans;
+
+    @JsonProperty("D8ReasonForDivorceBehaviourDetailsTransLang")
+    private String d8ReasonForDivorceBehaviourDetailsTransLang;
+
     @JsonProperty("D8ReasonForDivorceDesertionDate")
     private String d8ReasonForDivorceDesertionDate;
 
@@ -185,6 +203,12 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8ReasonForDivorceDesertionDetails")
     private String d8ReasonForDivorceDesertionDetails;
+
+    @JsonProperty("D8ReasonForDivorceDesertionDetailsTrans")
+    private String d8ReasonForDivorceDesertionDetailsTrans;
+
+    @JsonProperty("D8ReasonForDivorceDesertionDetailsTransLang")
+    private String d8ReasonForDivorceDesertionDetailsTransLang;
 
     @JsonProperty("D8ReasonForDivorceSeperationDate")
     private String d8ReasonForDivorceSeperationDate;
@@ -198,6 +222,12 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ReasonForDivorceAdulteryDetails")
     private String d8ReasonForDivorceAdulteryDetails;
 
+    @JsonProperty("D8ReasonForDivorceAdulteryDetailsTrans")
+    private String d8ReasonForDivorceAdulteryDetailsTrans;
+
+    @JsonProperty("D8ReasonForDivorceAdulteryDetailsTransLang")
+    private String d8ReasonForDivorceAdulteryDetailsTransLang;
+
     @JsonProperty("D8ReasonForDivorceAdulteryKnowWhen")
     private String d8ReasonForDivorceAdulteryKnowWhen;
 
@@ -210,8 +240,20 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8ReasonForDivorceAdulteryWhereDetails")
     private String d8ReasonForDivorceAdulteryWhereDetails;
 
+    @JsonProperty("D8ReasonForDivorceAdulteryWhereDetailsTrans")
+    private String d8ReasonForDivorceAdulteryWhereDetailsTrans;
+
+    @JsonProperty("D8ReasonForDivorceAdulteryWhereDetailsTransLang")
+    private String d8ReasonForDivorceAdulteryWhereDetailsTransLang;
+
     @JsonProperty("D8ReasonForDivorceAdulteryWhenDetails")
     private String d8ReasonForDivorceAdulteryWhenDetails;
+
+    @JsonProperty("D8ReasonForDivorceAdulteryWhenDetailsTrans")
+    private String d8ReasonForDivorceAdulteryWhenDetailsTrans;
+
+    @JsonProperty("D8ReasonForDivorceAdulteryWhenDetailsTransLang")
+    private String d8ReasonForDivorceAdulteryWhenDetailsTransLang;
 
     @JsonProperty("D8ReasonForDivorceAdulteryIsNamed")
     private String d8ReasonForDivorceAdulteryIsNamed;
@@ -326,6 +368,12 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8ReasonForDivorceAdultery2ndHandDetails")
     private String d8ReasonForDivorceAdultery2ndHandDetails;
+
+    @JsonProperty("D8ReasonForDivorceAdultery2ndHandDetailsTrans")
+    private String d8ReasonForDivorceAdultery2ndHandDetailsTrans;
+
+    @JsonProperty("D8ReasonForDivorceAdultery2ndHandDetailsTransLang")
+    private String d8ReasonForDivorceAdultery2ndHandDetailsTransLang;
 
     @JsonProperty("D8ReasonForDivorceSeperationIsSameOrAftr")
     private String d8ReasonForDivorceSeperationIsSameOrAftr;
@@ -555,6 +603,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("CostsOrderAdditionalInfo")
     private String costsOrderAdditionalInfo;
 
+    @JsonProperty("CostsOrderAdditionalInfoWelsh")
+    private String costsOrderAdditionalInfoWelsh;
+
     @JsonProperty("DecreeNisiGrantedDate")
     private String decreeNisiGrantedDate;
 
@@ -573,4 +624,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("DateCaseNoLongerEligibleForDA")
     private String dateCaseNoLongerEligibleForDA;
 
+    @JsonProperty("PetitionerPcqId")
+    private String petitionerPcqId;
+
+    @JsonProperty("LanguagePreferenceWelsh")
+    private String languagePreferenceWelsh;
 }

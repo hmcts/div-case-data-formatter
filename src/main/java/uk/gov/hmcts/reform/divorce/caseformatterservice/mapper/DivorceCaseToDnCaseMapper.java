@@ -7,7 +7,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
-
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;

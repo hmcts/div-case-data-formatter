@@ -1,6 +1,6 @@
 {
     "D8legalProcess" : null,
-    "D8caseReference" : "caseReference",
+    "D8caseReference" : null,
     "createdDate" : null,
     "D8ScreenHasMarriageBroken" : "YES",
     "D8ScreenHasRespondentAddress" : "YES",
@@ -20,7 +20,7 @@
     "D8PetitionerPhoneNumber" : "01234567890",
     "D8PetitionerFirstName" : "John",
     "D8PetitionerLastName" : "Smith",
-    "D8DerivedPetitionerCurrentFullName" :  "John Smith",
+    "D8DerivedPetitionerCurrentFullName" : "John Smith",
     "D8PetitionerNameChangedHow" : [ "marriageCertificate" ],
     "D8PetitionerNameChangedHowOtherDetails" : null,
     "D8PetitionerContactDetailsConfidential" : "share",
@@ -31,56 +31,37 @@
     "D8DerivedPetitionerHomeAddress" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8PetitionerCorrespondenceAddress" : {
       "County" : null,
-      "PostCode" : "AB24 232"
+      "PostCode" : "SW9 9PE"
     },
-    "D8DerivedPetitionerCorrespondenceAddr" : "84 Landor Road\nLondon\nSW9 9PE",
-    "D8PetitionerCorrespondenceUseHomeAddress" : "NO",
+    "D8DerivedPetitionerCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
+    "D8PetitionerCorrespondenceUseHomeAddress" : "YES",
     "D8RespondentNameAsOnMarriageCertificate" : null,
     "D8RespondentFirstName" : "Jane",
     "D8RespondentLastName" : "Jamed",
     "D8DerivedRespondentCurrentName" : "Jane Jamed",
-    "D8DerivedRespondentSolicitorDetails" : "Justin\nCase\n90 Landor Road\nLondon\nSW9 9PE",
+    "D8DerivedRespondentSolicitorDetails" : null,
     "D8RespondentHomeAddress" : {
       "County" : null,
-      "PostCode" : "SS SSS"
+      "PostCode" : "SW9 9PE"
     },
-    "D8DerivedRespondentHomeAddress" : "88 Landor Road\nLondon\nSW9 9PE",
+    "D8DerivedRespondentHomeAddress" : "82 Landor Road\nLondon\nSW9 9PE",
     "D8RespondentCorrespondenceAddress" : {
       "County" : null,
       "PostCode" : "SW9 9PE"
     },
     "D8DerivedRespondentCorrespondenceAddr" : "82 Landor Road\nLondon\nSW9 9PE",
-    "D8RespondentSolicitorName": "Justin",
-    "D8RespondentSolicitorCompany": "Awesome Solicitors LLP",
-    "respondentSolicitorRepresented": "Yes",
-    "D8RespondentSolicitorAddress" : {
-        "AddressLine1":null,
-        "AddressLine2":null,
-        "AddressLine3":null,
-        "PostTown":null,
-        "PostCode":"SW9 9PE",
-        "County":null,
-        "Country":null
-    },
-    "D8RespondentSolicitorEmail": "solicitor@localhost.local",
-    "D8RespondentSolicitorPhone": "2222222222",
-    "respondentSolicitorReference": "1234",
-    "D8RespondentCorrespondenceUseHomeAddress" : "Solicitor",
+    "D8RespondentSolicitorName" : null,
+    "D8RespondentSolicitorCompany" : null,
+    "respondentSolicitorRepresented" : null,
+    "D8RespondentSolicitorAddress" : null,
+    "D8RespondentCorrespondenceUseHomeAddress" : "No",
     "D8RespondentKnowsHomeAddress" : null,
-    "D8RespondentLivesAtLastAddress" : "NO",
+    "D8RespondentLivesAtLastAddress" : null,
     "D8RejectRespondentAddress" : null,
     "D8LivingArrangementsTogetherSeparated" : null,
-    "D8LivingArrangementsLastLivedTogether" : "NO",
-    "D8LivingArrangementsLiveTogether" : "NO",
-    "D8LivingArrangementsLastLivedTogethAddr": {
-        "AddressLine1":null,
-        "AddressLine2":null,
-        "AddressLine3":null,
-        "PostTown":null,
-        "PostCode":"AB22 222",
-        "County":null,
-        "Country":null
-    },
+    "D8LivingArrangementsLastLivedTogether" : null,
+    "D8LivingArrangementsLiveTogether" : "YES",
+    "D8LivingArrangementsLastLivedTogethAddr" : null,
     "D8LegalProceedings" : "YES",
     "D8LegalProceedingsRelated" : [ "children" ],
     "D8LegalProceedingsDetails" : "The legal proceeding details",
@@ -127,7 +108,7 @@
         "value" : {
           "DocumentType" : "other",
           "DocumentLink" : {
-            "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
+            "document_url" : "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
             "document_binary_url" : null,
             "document_filename" : "govuklogo.png"
           },
@@ -142,7 +123,7 @@
         "value" : {
           "DocumentType": "other",
           "DocumentLink" : {
-            "document_url" : "https://api-gateway.test.dm.reform.hmcts.net/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+            "document_url" : "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
             "document_binary_url" : null,
             "document_filename" : "d8-eng.pdf"
           },
@@ -182,8 +163,8 @@
     "D8ReasonForDivorceSeperationMonth" : null,
     "D8ReasonForDivorceSeperationYear" : null,
     "D8DerivedReasonForDivorceAdultery3dPtyNm" : null,
-    "D8DerivedRespondentSolicitorAddr" : "90 Landor Road\nLondon\nSW9 9PE",
-    "D8DerivedLivingArrangementsLastLivedAddr" : "Flat A-B\n86 Landor Road\nLondon\nSW9 9PE",
+    "D8DerivedRespondentSolicitorAddr" : null,
+    "D8DerivedLivingArrangementsLastLivedAddr" : null,
     "D8Connections" : {
       "A" : "The Petitioner and the Respondent are habitually resident in England and Wales",
       "B" : null,
@@ -205,31 +186,6 @@
     "D8Cohort" : "onlineSubmissionPrivateBeta",
     "D8InferredPetitionerGender" : "female",
     "D8InferredRespondentGender" : "male",
-    "RespConfirmReadPetition" : "YES",
-    "RespAdmitOrConsentToFact" : "YES",
-    "RespWillDefendDivorce" : "YES",
-    "RespJurisdictionAgree" : "NO",
-    "RespJurisdictionDisagreeReason" : "Some Jurisdiction disagree reason",
-    "RespJurisdictionRespCountryOfResidence" : "UK",
-    "RespLegalProceedingsExist" : "YES",
-    "RespLegalProceedingsDescription" : "Some Description",
-    "RespAgreeToCosts" : "NO",
-    "RespCostsAmount" : "1232321",
-    "RespCostsReason" : "Some Reason",
-    "ReceivedAOSfromResp" : "YES",
-    "ReceivedAOSfromRespDate" : "2001-02-03",
-    "RespEmailAddress" : "est@somemail.com",
-    "RespPhoneNumber" : "12344555",
-    "RespStatementOfTruth" : "YES",
-    "RespConsentToEmail" : "NO",
-    "RespConsiderFinancialSituation" : "YES",
-    "RespHardshipDefenseResponse" : "NO",
-    "RespHardshipDescription" : "Some Hardship Description goes here",
-    "RespContactMethodIsDigital" : "YES",
     "D8PetitionerConsent" : "YES",
-    "PermittedDecreeNisiReason" : "0",
-    "RespondentPcqId": "2e23d0fa-6b24-47cb-b402-2a7837821d41",
-    "CoRespondentPcqId": "fb4c2b34-7d2a-444e-8667-da59efae8b1a",
-    "ServiceApplicationType": "deemed",
-    "ServiceApplicationGranted": "Yes"
-}
+    "LanguagePreferenceWelsh": "YES"
+  }

@@ -75,6 +75,8 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "respondentFirstName", target = "d8RespondentFirstName")
     @Mapping(source = "respondentLastName", target = "d8RespondentLastName")
     @Mapping(source = "petitionerNameChangedHowOtherDetails", target = "d8PetitionerNameChangedHowOtherDetails")
+    @Mapping(source = "petitionerNameChangedHowOtherDetailsTrans", target = "d8PetitionerNameChangedHowOtherDetailsTrans")
+    @Mapping(source = "petitionerNameChangedHowOtherDetailsTransLang", target = "d8PetitionerNameChangedHowOtherDetailsTransLang")
     @Mapping(source = "petitionerEmail", target = "d8PetitionerEmail")
     @Mapping(source = "petitionerPhoneNumber", target = "d8PetitionerPhoneNumber")
     @Mapping(source = "livingArrangementsLiveTogether", target = "d8LivingArrangementsLiveTogether")
@@ -84,15 +86,29 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceAdultery3rdPartyFirstName", target = "d8ReasonForDivorceAdultery3rdPartyFName")
     @Mapping(source = "reasonForDivorceAdultery3rdPartyLastName", target = "d8ReasonForDivorceAdultery3rdPartyLName")
     @Mapping(source = "reasonForDivorceAdulteryDetails", target = "d8ReasonForDivorceAdulteryDetails")
+    @Mapping(source = "reasonForDivorceAdulteryDetailsTrans", target = "d8ReasonForDivorceAdulteryDetailsTrans")
+    @Mapping(source = "reasonForDivorceAdulteryDetailsTransLang", target = "d8ReasonForDivorceAdulteryDetailsTransLang")
     @Mapping(source = "reasonForDivorceAdulteryWhenDetails", target = "d8ReasonForDivorceAdulteryWhenDetails")
+    @Mapping(source = "reasonForDivorceAdulteryWhenDetailsTrans", target = "d8ReasonForDivorceAdulteryWhenDetailsTrans")
+    @Mapping(source = "reasonForDivorceAdulteryWhenDetailsTransLang", target = "d8ReasonForDivorceAdulteryWhenDetailsTransLang")
     @Mapping(source = "reasonForDivorceAdulteryWhereDetails", target = "d8ReasonForDivorceAdulteryWhereDetails")
+    @Mapping(source = "reasonForDivorceAdulteryWhereDetailsTrans", target = "d8ReasonForDivorceAdulteryWhereDetailsTrans")
+    @Mapping(source = "reasonForDivorceAdulteryWhereDetailsTransLang", target = "d8ReasonForDivorceAdulteryWhereDetailsTransLang")
     @Mapping(source = "reasonForDivorceAdultery3rdAddress.postcode",
         target = "d8ReasonForDivorceAdultery3rdAddress.postCode")
     @Mapping(source = "reasonForDivorceAdulterySecondHandInfoDetails",
         target = "d8ReasonForDivorceAdultery2ndHandDetails")
+    @Mapping(source = "reasonForDivorceAdulterySecondHandInfoDetailsTrans",
+        target = "d8ReasonForDivorceAdultery2ndHandDetailsTrans")
+    @Mapping(source = "reasonForDivorceAdulterySecondHandInfoDetailsTransLang",
+        target = "d8ReasonForDivorceAdultery2ndHandDetailsTransLang")
     @Mapping(source = "legalProceedingsDetails", target = "d8LegalProceedingsDetails")
+    @Mapping(source = "legalProceedingsDetailsTrans", target = "d8LegalProceedingsDetailsTrans")
+    @Mapping(source = "legalProceedingsDetailsTransLang", target = "d8LegalProceedingsDetailsTransLang")
     @Mapping(source = "residualJurisdictionEligible", target = "d8ResidualJurisdictionEligible")
     @Mapping(source = "reasonForDivorceDesertionDetails", target = "d8ReasonForDivorceDesertionDetails")
+    @Mapping(source = "reasonForDivorceDesertionDetailsTrans", target = "d8ReasonForDivorceDesertionDetailsTrans")
+    @Mapping(source = "reasonForDivorceDesertionDetailsTransLang", target = "d8ReasonForDivorceDesertionDetailsTransLang")
     @Mapping(source = "jurisdictionConnection", target = "d8JurisdictionConnection")
     @Mapping(source = "financialOrderFor", target = "d8FinancialOrderFor")
     @Mapping(source = "petitionerNameChangedHow", target = "d8PetitionerNameChangedHow")
@@ -134,6 +150,10 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(ignore = true, target = "dnOutcomeCase")
     @Mapping(source = "refusalRejectionReason", target = "previousRefusalRejectionReason")
     @Mapping(source = "refusalRejectionAdditionalInfo", target = "previousRefusalRejectionAdditionalInfo")
+    @Mapping(source = "petitionerPcqId", target = "petitionerPcqId")
+    @Mapping(source = "respondentPcqId", target = "respondentPcqId")
+    @Mapping(source = "reasonForDivorceBehaviourDetailsTrans", target = "d8ReasonForDivorceBehaviourDetailsTrans")
+    @Mapping(source = "reasonForDivorceBehaviourDetailsTransLang", target = "d8ReasonForDivorceBehaviourDetailsTransLang")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping
@@ -696,6 +716,14 @@ public abstract class DivorceCaseToCCDMapper {
 
         CaseLink caseLink = translateStringToCaseLink(divorceSession.getPreviousCaseId());
         result.setPreviousCaseId(caseLink);
+    }
+
+
+    @AfterMapping
+    protected void mapLanguagePreferenceWelsh(DivorceSession divorceSession,
+                                                             @MappingTarget CoreCaseData result) {
+        result.setLanguagePreferenceWelsh(
+            toYesNoUpperCase(divorceSession.getLanguagePreferenceWelsh()));
     }
 
     private CaseLink translateStringToCaseLink(final String value) {

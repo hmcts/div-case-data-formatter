@@ -51,7 +51,7 @@ public class HealthCheckITest {
 
     @Before
     public void setUp() {
-        healthUrl = "http://localhost:" + String.valueOf(port) + "/health";
+        healthUrl = "http://localhost:" + port + "/health";
 
         originalRequestFactory = restTemplate.getRequestFactory();
         mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
@@ -70,7 +70,7 @@ public class HealthCheckITest {
 
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
         assertThat(JsonPath.read(body, "$.status").toString(), equalTo("UP"));
-        assertThat(JsonPath.read(body, "$.details.diskSpace.status").toString(), equalTo("UP"));
+        assertThat(JsonPath.read(body, "$.components.diskSpace.status").toString(), equalTo("UP"));
 
         mockRestServiceServer.verify();
     }

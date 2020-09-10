@@ -14,9 +14,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestU
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -45,7 +43,7 @@ public class DocumentsMappingUTest {
 
     @Test
     public void shouldHandleDocumentDateBeingEmptyString()
-        throws URISyntaxException, IOException, ParseException {
+        throws URISyntaxException, IOException {
 
         CoreCaseData coreCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/document-dates-empty.json",

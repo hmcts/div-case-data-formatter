@@ -6,10 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
-
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -89,10 +87,9 @@ public abstract class DivorceCaseToDnClarificationMapper {
         // New documents are already added to the result from the @Mapping annotation on the constructor
         // This can then be used in the AfterMapping
         if (result.getDocumentsUploadedDnClarification() != null) {
-            result.getDocumentsUploadedDnClarification().stream().forEach(document -> {
+            result.getDocumentsUploadedDnClarification().forEach(document ->
                 document.getValue().setDocumentComment(String.format(CLARIFICATION_STRING,
-                    clarificationNumber, DOCUMENT_COMMENT));
-            });
+                    clarificationNumber, DOCUMENT_COMMENT)));
             clarificationDocuments.addAll(result.getDocumentsUploadedDnClarification());
 
             result.setDocumentsUploadedDnClarification(clarificationDocuments);
@@ -110,6 +107,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
         if (Objects.isNull(value)) {
             return null;
         }
+
         return BooleanUtils.toStringYesNo(BooleanUtils.toBoolean(value)).toUpperCase(Locale.ENGLISH);
     }
 }

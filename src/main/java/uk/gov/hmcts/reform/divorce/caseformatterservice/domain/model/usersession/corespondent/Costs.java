@@ -9,5 +9,6 @@ public class Costs {
 
     private String agreeToCosts;
     private String reason;
-
+    private String reasonTrans;
+    private String reasonTransLang;
 }

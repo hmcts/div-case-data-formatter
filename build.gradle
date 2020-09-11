@@ -34,8 +34,8 @@ apply plugin: 'net.serenity-bdd.aggregator'
 
 group = 'uk.gov.hmcts.reform.divorce'
 version = '1.0.0'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 bootJar {
     archiveFileName = 'div-case-formatter-service.jar'
@@ -119,7 +119,7 @@ def versions = [
     jsonAssert                   : '1.2.3',
     jsonPathAssert               : '2.2.0',
     junit                        : '4.13',
-    lombok                       : '1.16.16',
+    lombok                       : '1.18.12',
     mapstruct                    : '1.2.0.Final',
     orgSpringframework           : '5.2.3.RELEASE',
     pitest                       : '1.3.2',
@@ -127,7 +127,6 @@ def versions = [
     reformHealth                 : '0.0.5',
     reformPropertiesVolume       : '0.0.4',
     reformsJavaLogging           : '5.1.1',
-    reformSpringBootAutoConfigure: '2.0.0',
     restAssured                  : '3.0.3',
     serenity                     : '2.1.2',
     serenityCucumber             : '1.9.51',
@@ -142,24 +141,24 @@ def versions = [
 ]
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
 
-    compile group: 'org.springframework', name: 'spring-context-support', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-webmvc', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-web', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-aop', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-beans', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-expression', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-core', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-jcl', version: versions.orgSpringframework
-    compile group: 'org.springframework', name: 'spring-context', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-context-support', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-web', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-aop', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-beans', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-expression', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-core', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-jcl', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-context', version: versions.orgSpringframework
 
-    compile(group: 'com.google.guava', name: 'guava', version: versions.guava) {
+    implementation(group: 'com.google.guava', name: 'guava', version: versions.guava) {
         force = true
     }
 
-    compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: versions.springOpenFeign)
+    implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: versions.springOpenFeign)
         {
             exclude group: 'io.reactivex', module: 'io.reactivex'
             exclude group: 'io.reactivex', module: 'rxnetty'
@@ -167,53 +166,52 @@ dependencies {
             exclude group: 'io.reactivex', module: 'rxnetty-servo'
         }
 
-    compile(group: 'org.springframework.security', name: 'spring-security-rsa', version: versions.spring_security_rsa) {
+    implementation(group: 'org.springframework.security', name: 'spring-security-rsa', version: versions.spring_security_rsa) {
         force = true
     }
 
-    compile(group: 'org.springframework.security', name: 'spring-security-crypto', version: versions.springSecurityCrypto) {
+    implementation(group: 'org.springframework.security', name: 'spring-security-crypto', version: versions.springSecurityCrypto) {
         force = true
     }
 
-    compile(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcatEmbed) {
+    implementation(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcatEmbed) {
         force = true
     }
-    compile(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcatEmbed) {
+    implementation(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcatEmbed) {
         force = true
     }
-    compile(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: versions.tomcatEmbed) {
-        force = true
-    }
-
-    compile group: 'io.github.openfeign', name: 'feign-httpclient', version: versions.feignHttpClient
-    compile group: 'uk.gov.hmcts.reform', name: 'http-proxy-spring-boot-autoconfigure', version: versions.reformSpringBootAutoConfigure
-    compile(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jacksonDatabind) {
+    implementation(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: versions.tomcatEmbed) {
         force = true
     }
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-json'
-    compile group: 'com.puppycrawl.tools', name: 'checkstyle', version: versions.puppyCrawl
-    compile group: 'commons-io', name: 'commons-io', version: versions.commonsIo
-    compile(group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger)
+    implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: versions.feignHttpClient
+    implementation(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jacksonDatabind) {
+        force = true
+    }
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+    implementation group: 'com.puppycrawl.tools', name: 'checkstyle', version: versions.puppyCrawl
+    implementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
+    implementation(group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger)
         {
             exclude(module: 'mapstruct')
         }
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
     annotationProcessor("org.mapstruct:mapstruct-processor:${versions.mapstruct}")
-    compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: versions.mapstruct
+    implementation group: 'org.mapstruct', name: 'mapstruct-jdk8', version: versions.mapstruct
 
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: versions.commonsCollections4
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: versions.commonsCollections4
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
 
-    compile group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: versions.reformPropertiesVolume
-    compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth
-    compile group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformsJavaLogging
-    compile group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformsJavaLogging
+    implementation group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: versions.reformPropertiesVolume
+    implementation group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth
+    implementation group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformsJavaLogging
+    implementation group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformsJavaLogging
 
-    compile group: 'org.pitest', name: 'pitest', version: versions.pitest
-    compile group: 'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest
-    compile group: 'org.codehaus.sonar-plugins', name: 'sonar-pitest-plugin', version: versions.sonarPitest
+    implementation group: 'org.pitest', name: 'pitest', version: versions.pitest
+    implementation group: 'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest
+    implementation group: 'org.codehaus.sonar-plugins', name: 'sonar-pitest-plugin', version: versions.sonarPitest
 
     annotationProcessor("org.projectlombok:lombok:${versions.lombok}")
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
@@ -270,6 +268,10 @@ task bootRunAat(type: BootRun, description: 'Runs the app using AAT config', dep
         main = bootJar.mainClassName
         classpath = sourceSets.main.runtimeClasspath
         systemProperty 'spring.profiles.active', 'aat'
+        systemProperty 'http.proxyHost', 'proxyout.reform.hmcts.net'
+        systemProperty 'http.proxyPort', '8080'
+        systemProperty 'https.proxyHost', 'proxyout.reform.hmcts.net'
+        systemProperty 'https.proxyPort', '8080'
     }
 }
 

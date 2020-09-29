@@ -16,6 +16,8 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,6 +32,7 @@ public class TransformToDivorceFormatITest {
     private static final String API_URL = "/caseformatter/version/1/to-divorce-format";
     private static final String PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/addresscase.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/divorce/addresses.json";
+    private static final String SERVICE_APPLICATION_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/service-application-documents-case.json";
 
     @Autowired
     private MockMvc webClient;
@@ -59,5 +62,23 @@ public class TransformToDivorceFormatITest {
                 DivorceSession.class);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));
+    }
+
+    @Test
+    public void givenValidDetailsWithServiceApplicationDocuments_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
+
+        MvcResult result = webClient.perform(post(API_URL)
+            .content(retrieveFileContents(SERVICE_APPLICATION_PAYLOAD_PATH))
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+
+        final DivorceSession actualDivorceSession =
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
+                DivorceSession.class);
+
+        assertThat(actualDivorceSession.getServiceApplicationDocuments(), nullValue());
+        assertThat(actualDivorceSession.getD8Documents(), hasSize(3));
     }
 }

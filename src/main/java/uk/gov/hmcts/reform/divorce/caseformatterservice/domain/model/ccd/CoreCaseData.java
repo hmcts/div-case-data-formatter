@@ -432,6 +432,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8DocumentsGenerated")
     private List<CollectionMember<Document>> d8Documents;
 
+    @JsonProperty("ServiceApplicationDocuments")
+    private List<CollectionMember<Document>> serviceApplicationDocuments;
+
     @JsonProperty("D8ConnectionSummary")
     private String d8ConnectionSummary;
 

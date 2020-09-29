@@ -17,6 +17,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Hearing
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -185,6 +186,22 @@ public abstract class CCDCaseToDivorceMapper {
             return null;
         }
         return String.valueOf(YES_VALUE.equalsIgnoreCase(value));
+    }
+
+    @AfterMapping
+    protected void mapServiceApplicationDocumentsToD8Documents(CoreCaseData caseData,
+                                                               @MappingTarget DivorceSession divorceSession) {
+        Optional.ofNullable(divorceSession.getServiceApplicationDocuments())
+            .ifPresent((serviceApplicationDocuments) -> {
+                List<UploadedFile> d8Documents = Optional.ofNullable(divorceSession.getD8Documents())
+                    .orElseGet(ArrayList::new);
+                if (d8Documents.isEmpty()) {
+                    d8Documents.addAll(serviceApplicationDocuments);
+                    divorceSession.setD8Documents(d8Documents);
+                } else {
+                    d8Documents.addAll(serviceApplicationDocuments);
+                }
+            });
     }
 
     @AfterMapping
@@ -1005,7 +1022,7 @@ public abstract class CCDCaseToDivorceMapper {
 
     @AfterMapping
     protected void mapLanguagePreferenceWelsh(CoreCaseData caseData,
-                                           @MappingTarget DivorceSession divorceSession) {
+                                              @MappingTarget DivorceSession divorceSession) {
         divorceSession.setLanguagePreferenceWelsh(
             toYesNoPascalCase(caseData.getLanguagePreferenceWelsh()));
     }

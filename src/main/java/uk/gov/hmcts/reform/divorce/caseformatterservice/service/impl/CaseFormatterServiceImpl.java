@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
@@ -33,34 +33,20 @@ import java.util.stream.Collectors;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DocumentType.PETITION;
 
 @Service
+@RequiredArgsConstructor
 public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
     private static final String GENERIC_DOCUMENT_TYPE = "other";
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private DivorceCaseToCCDMapper divorceCaseToCCDMapper;
-
-    @Autowired
-    private CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
-
-    @Autowired
-    private DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
-
-    @Autowired
-    private DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
-
-    @Autowired
-    private DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
-
-    @Autowired
-    private DivorceCaseToDnClarificationMapper divorceCaseToDnClarificationMapper;
-
-    @Autowired
-    private DivorceCaseToDaCaseMapper divorceCaseToDaCaseMapper;
+    private final ObjectMapper objectMapper;
+    private final DivorceCaseToCCDMapper divorceCaseToCCDMapper;
+    private final CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
+    private final DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
+    private final DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
+    private final DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
+    private final DivorceCaseToDnClarificationMapper divorceCaseToDnClarificationMapper;
+    private final DivorceCaseToDaCaseMapper divorceCaseToDaCaseMapper;
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {

@@ -195,6 +195,7 @@ public abstract class CCDCaseToDivorceMapper {
             .ifPresent((serviceApplicationDocuments) -> {
                 List<UploadedFile> d8Documents = Optional.ofNullable(divorceSession.getD8Documents())
                     .orElseGet(ArrayList::new);
+
                 if (d8Documents.isEmpty()) {
                     d8Documents.addAll(serviceApplicationDocuments);
                     divorceSession.setD8Documents(d8Documents);

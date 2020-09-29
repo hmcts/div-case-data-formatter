@@ -192,7 +192,7 @@ public abstract class CCDCaseToDivorceMapper {
     protected void mapServiceApplicationDocumentsToD8Documents(CoreCaseData caseData,
                                                                @MappingTarget DivorceSession divorceSession) {
         Optional.ofNullable(divorceSession.getServiceApplicationDocuments())
-            .ifPresent((serviceApplicationDocuments) -> {
+            .ifPresent(serviceApplicationDocuments -> {
                 List<UploadedFile> d8Documents = Optional.ofNullable(divorceSession.getD8Documents())
                     .orElseGet(ArrayList::new);
 

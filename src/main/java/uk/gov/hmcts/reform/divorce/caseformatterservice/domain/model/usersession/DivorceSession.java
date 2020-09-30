@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -456,10 +457,13 @@ public class DivorceSession {
     private Date receivedAosFromRespDate;
     @ApiModelProperty(value = "Respondent has submitted AOS")
     private String receivedAosFromResp;
+
     @ApiModelProperty(value = "Service application type")
     private String serviceApplicationType;
     @ApiModelProperty(value = "Service Application Granted")
     private String serviceApplicationGranted;
+    @JsonIgnore
+    private List<UploadedFile> serviceApplicationDocuments;
 
     @ApiModelProperty(value = "Respondent Protected Characteristics Questions Identifier")
     private String respondentPcqId;

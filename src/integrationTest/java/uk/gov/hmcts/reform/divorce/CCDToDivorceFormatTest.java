@@ -41,7 +41,8 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
             {"reasondesertion.json", "reason-desertion.json"},
             {"reasonseparation.json", "reason-separation.json"},
             {"reasonunreasonablebehaviour.json", "reason-unreasonable-behaviour.json"},
-            {"samesex.json", "same-sex.json"}
+            {"samesex.json", "same-sex.json"},
+            {"serviceapplicationdocumentscase.json", "service-application-documents.json"}
         });
     }
 

@@ -12,14 +12,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication;
+import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.convertObjectToJson;
 import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContents;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil.retrieveFileContentsAsObject;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CaseFormatterServiceApplication.class)
@@ -30,6 +35,7 @@ public class TransformToDivorceFormatITest {
     private static final String API_URL = "/caseformatter/version/1/to-divorce-format";
     private static final String PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/addresscase.json";
     private static final String EXPECTED_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/divorce/addresses.json";
+    private static final String SERVICE_APPLICATION_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/service-application-documents-case.json";
 
     @Autowired
     private MockMvc webClient;
@@ -45,7 +51,7 @@ public class TransformToDivorceFormatITest {
     @Test
     public void givenValidDetails_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
         final DivorceSession expectedDivorceSession =
-            ObjectMapperTestUtil.retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
+            retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
 
         MvcResult result = webClient.perform(post(API_URL)
             .content(retrieveFileContents(PAYLOAD_PATH))
@@ -59,5 +65,43 @@ public class TransformToDivorceFormatITest {
                 DivorceSession.class);
 
         assertThat(actualDivorceSession, samePropertyValuesAs(expectedDivorceSession));
+    }
+
+    @Test
+    public void givenValidDetailsWithServiceApplicationDocuments_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
+
+        MvcResult result = webClient.perform(post(API_URL)
+            .content(retrieveFileContents(SERVICE_APPLICATION_PAYLOAD_PATH))
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+
+        final DivorceSession actualDivorceSession =
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
+                DivorceSession.class);
+
+        assertThat(actualDivorceSession.getServiceApplicationDocuments(), nullValue());
+        assertThat(actualDivorceSession.getD8Documents(), hasSize(3));
+    }
+
+    @Test
+    public void givenValidDetailsWithNoD8Documents_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
+        CoreCaseData coreCaseData = retrieveFileContentsAsObject(SERVICE_APPLICATION_PAYLOAD_PATH, CoreCaseData.class);
+        coreCaseData.setD8Documents(null);
+
+        MvcResult result = webClient.perform(post(API_URL)
+            .content(convertObjectToJson(coreCaseData))
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+
+        final DivorceSession actualDivorceSession =
+            ObjectMapperTestUtil.convertJsonToObject(result.getResponse().getContentAsString(),
+                DivorceSession.class);
+
+        assertThat(actualDivorceSession.getServiceApplicationDocuments(), nullValue());
+        assertThat(actualDivorceSession.getD8Documents(), hasSize(2));
     }
 }

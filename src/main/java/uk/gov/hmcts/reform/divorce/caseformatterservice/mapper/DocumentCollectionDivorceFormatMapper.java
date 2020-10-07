@@ -8,9 +8,9 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Document;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
+import uk.gov.hmcts.reform.divorce.model.ccd.Document;
+import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,4 +56,5 @@ public abstract class DocumentCollectionDivorceFormatMapper {
             throw new RuntimeException("Parse date on documents error", ex);
         }
     }
+
 }

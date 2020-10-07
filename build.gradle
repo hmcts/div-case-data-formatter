@@ -5,10 +5,7 @@ buildscript {
         springBootVersion = '2.2.4.RELEASE'
     }
     repositories {
-        mavenLocal()
-        jcenter()
-
-        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
     }
     dependencies {
         classpath("io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE")
@@ -74,7 +71,9 @@ dependencyManagement {
 }
 
 repositories {
-    mavenLocal()
+    maven { url "https://dl.bintray.com/hmcts/hmcts-maven" }
+    maven { url 'https://repo.spring.io/libs-milestone' }
+    mavenCentral()
     jcenter()
 }
 
@@ -137,7 +136,8 @@ def versions = [
     wiremockVersion              : '2.25.1',
     springSecurityCrypto         : '5.2.4.RELEASE',
     springOpenFeign              : '2.2.1.RELEASE',
-    tomcatEmbed                  : '9.0.37'
+    tomcatEmbed                  : '9.0.37',
+    divCommonLib                 : '1.1.28'
 ]
 
 dependencies {
@@ -212,6 +212,7 @@ dependencies {
     implementation group: 'org.pitest', name: 'pitest', version: versions.pitest
     implementation group: 'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest
     implementation group: 'org.codehaus.sonar-plugins', name: 'sonar-pitest-plugin', version: versions.sonarPitest
+    implementation group: 'uk.gov.hmcts.reform', name: 'div-common-lib', version: versions.divCommonLib
 
     annotationProcessor("org.projectlombok:lombok:${versions.lombok}")
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok

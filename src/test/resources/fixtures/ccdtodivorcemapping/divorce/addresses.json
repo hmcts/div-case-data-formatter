@@ -243,5 +243,37 @@
     "petitionerConsent": "Yes",
     "dateRespondentEligibleForDA": "2019-01-11",
     "dateCaseNoLongerEligibleForDA": "2020-01-12",
-    "respContactMethodIsDigital": false
+    "respContactMethodIsDigital": false,
+    "d8": [
+        {
+            "id": "560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+            "createdOn": "2017-12-11",
+            "fileName": "d8-eng.pdf",
+            "fileUrl": "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
+        },
+        {
+            "id": "04e78b6b-3a6f-4db7-b0c5-f8eeb814a83d",
+            "createdOn": "2017-12-11",
+            "fileName": "deemedServiceRefused2020-09-28.pdf",
+            "fileUrl": "http://localhost:5006/documents/04e78b6b-3a6f-4db7-b0c5-f8eeb814a83d"
+        },
+        {
+            "id": "c4ca7cbc-adb2-4908-b522-ad69961ae9ff",
+            "createdOn": "2017-12-11",
+            "fileName": "deemedServiceRefused2020-08-01.pdf",
+            "fileUrl": "http://localhost:5006/documents/c4ca7cbc-adb2-4908-b522-ad69961ae9ff"
+        },
+        {
+            "id": "9320ad41-4980-47b7-885d-76daae69ff9b",
+            "createdOn": "2020-12-28",
+            "fileName": "generalOrder2020-12-28.pdf",
+            "fileUrl": "http://localhost:5006/documents/9320ad41-4980-47b7-885d-76daae69ff9b"
+        },
+        {
+            "id": "649111b0-1aad-446d-b979-27f5862af583",
+            "createdOn": "2020-12-29",
+            "fileName": "generalOrder2020-12-29.pdf",
+            "fileUrl": "http://localhost:5006/documents/649111b0-1aad-446d-b979-27f5862af583"
+        }
+    ]
 }

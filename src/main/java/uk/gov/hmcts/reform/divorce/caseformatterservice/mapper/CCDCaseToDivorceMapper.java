@@ -17,7 +17,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Hearing
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
@@ -57,8 +56,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8ReasonForDivorceDesertionDay", target = "reasonForDivorceDesertionDay")
     @Mapping(source = "d8ReasonForDivorceDesertionMonth", target = "reasonForDivorceDesertionMonth")
     @Mapping(source = "d8ReasonForDivorceDesertionYear", target = "reasonForDivorceDesertionYear")
-    @Mapping(source = "d8ReasonForDivorceDesertionDate", dateFormat = SIMPLE_DATE_FORMAT,
-        target = "reasonForDivorceDesertionDate")
+    @Mapping(source = "d8ReasonForDivorceDesertionDate", dateFormat = SIMPLE_DATE_FORMAT, target = "reasonForDivorceDesertionDate")
     @Mapping(source = "d8CountryName", target = "countryName")
     @Mapping(source = "d8MarriagePlaceOfMarriage", target = "placeOfMarriage")
     @Mapping(source = "d8PetitionerContactDetailsConfidential", target = "petitionerContactDetailsConfidential")
@@ -189,20 +187,13 @@ public abstract class CCDCaseToDivorceMapper {
     }
 
     @AfterMapping
-    protected void mapServiceApplicationDocumentsToD8Documents(CoreCaseData caseData,
-                                                               @MappingTarget DivorceSession divorceSession) {
+    protected void mapExtraDocumentsToD8Documents(CoreCaseData caseData,
+                                                  @MappingTarget DivorceSession divorceSession) {
         Optional.ofNullable(divorceSession.getServiceApplicationDocuments())
-            .ifPresent(serviceApplicationDocuments -> {
-                List<UploadedFile> d8Documents = Optional.ofNullable(divorceSession.getD8Documents())
-                    .orElseGet(ArrayList::new);
+            .ifPresent(docs -> docs.forEach(divorceSession::addD8Document));
 
-                if (d8Documents.isEmpty()) {
-                    d8Documents.addAll(serviceApplicationDocuments);
-                    divorceSession.setD8Documents(d8Documents);
-                } else {
-                    d8Documents.addAll(serviceApplicationDocuments);
-                }
-            });
+        Optional.ofNullable(divorceSession.getGeneralOrders())
+            .ifPresent(docs -> docs.forEach(divorceSession::addD8Document));
     }
 
     @AfterMapping

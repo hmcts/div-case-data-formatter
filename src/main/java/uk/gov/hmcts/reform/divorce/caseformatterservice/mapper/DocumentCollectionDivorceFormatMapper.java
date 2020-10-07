@@ -9,6 +9,7 @@ import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
+import uk.gov.hmcts.reform.divorce.model.ccd.DivorceGeneralOrder;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;
 
@@ -31,24 +32,41 @@ public abstract class DocumentCollectionDivorceFormatMapper {
     @Mapping(source = "value.documentLink.documentUrl", target = "fileUrl")
     public abstract UploadedFile map(CollectionMember<Document> documentCollectionMember);
 
+    @Mapping(source = "value.document.documentLink.documentFilename", target = "fileName")
+    @Mapping(source = "value.document.documentLink.documentUrl", target = "fileUrl")
+    public abstract UploadedFile mapGeneralOrder(CollectionMember<DivorceGeneralOrder> documentCollectionMember);
 
     @AfterMapping
-    protected void mapDocumentIDToDocumentObject(CollectionMember<Document> document,
-                                                 @MappingTarget  UploadedFile result) {
-
-        Optional.of(document)
-            .map(documentEntry -> document.getValue())
-            .map(Document::getDocumentLink)
-            .map(DocumentLink::getDocumentUrl).flatMap(url -> documentUrlRewrite.getDocumentId(url)).ifPresent(result::setId);
+    protected void mapCollectionMemberDocumentToUploadedFile(CollectionMember<Document> document,
+                                                             @MappingTarget UploadedFile result) {
+        mapDocumentToUploadedFile(result, document.getValue());
     }
 
     @AfterMapping
-    protected void mapCreatedDateCheckEmpty(CollectionMember<Document> document,
-                                            @MappingTarget  UploadedFile result) {
+    protected void mapGeneralOrderToUploadedFile(CollectionMember<DivorceGeneralOrder> generalOrder,
+                                                 @MappingTarget UploadedFile result) {
+        Document document = generalOrder.getValue().getDocument();
+        mapDocumentToUploadedFile(result, document);
+    }
+
+    private void mapDocumentToUploadedFile(@MappingTarget UploadedFile result, Document value) {
+        mapDocumentIDToDocumentObject(result, value);
+        mapCreatedDateCheckEmpty(result, value);
+    }
+
+    private void mapDocumentIDToDocumentObject(UploadedFile result, Document document) {
+        Optional.ofNullable(document)
+            .map(Document::getDocumentLink)
+            .map(DocumentLink::getDocumentUrl)
+            .flatMap(url -> documentUrlRewrite.getDocumentId(url))
+            .ifPresent(result::setId);
+    }
+
+    private void mapCreatedDateCheckEmpty(@MappingTarget UploadedFile result, Document document) {
         try {
-            if (document.getValue().getDocumentDateAdded() != null && !document.getValue().getDocumentDateAdded().isEmpty()) {
+            if (document.getDocumentDateAdded() != null && !document.getDocumentDateAdded().isEmpty()) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(SIMPLE_DATE_FORMAT);
-                Date date = new Date(dateFormat.parse(document.getValue().getDocumentDateAdded()).getTime());
+                Date date = new Date(dateFormat.parse(document.getDocumentDateAdded()).getTime());
                 result.setCreatedOn(date);
             }
         } catch (ParseException ex) {

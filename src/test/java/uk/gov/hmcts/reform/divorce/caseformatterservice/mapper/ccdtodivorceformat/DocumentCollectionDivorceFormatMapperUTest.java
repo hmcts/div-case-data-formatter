@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ccdtodivorceformat;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,91 +10,93 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceAppl
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.UploadedFile;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDivorceFormatMapper;
+import uk.gov.hmcts.reform.divorce.model.ccd.DivorceGeneralOrder;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.helper.DocumentsTestHelper.createDocumentCollectionMember;
+import static uk.gov.hmcts.reform.divorce.caseformatterservice.helper.DocumentsTestHelper.createGeneralOrderCollectionMember;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CaseFormatterServiceApplication.class)
 public class DocumentCollectionDivorceFormatMapperUTest {
-    private static final String FILE_URL =
-        "http://em-api-gateway-web:3404/documents/3627acc4-cb3b-4c95-9588-fea94e6c5855";
+
+    private static final String FILE_URL = "http://em-api-gateway-web:3404/documents/3627acc4-cb3b-4c95-9588-fea94e6c5855";
     private static final String FILE_NAME = "test-file";
 
     @Autowired
     private DocumentCollectionDivorceFormatMapper mapper;
 
-    @Test
-    public void shouldMapUploadedFileToCollectionMember() {
-        final String dateDocumentAdded = "2012-11-11";
+    private String dateDocumentAdded;
+    private Date dateDocumentAddedParsed;
 
-        final Document document = new Document();
-        final DocumentLink documentLink = new DocumentLink();
-        documentLink.setDocumentUrl(FILE_URL);
-        documentLink.setDocumentFilename(FILE_NAME);
-        document.setDocumentLink(documentLink);
-        document.setDocumentFileName(FILE_NAME);
-        document.setDocumentDateAdded(dateDocumentAdded);
-        document.setDocumentDateAdded("");
-
-        final CollectionMember<Document> collectionMember = new CollectionMember<>();
-        collectionMember.setValue(document);
-
-        final UploadedFile uploadedFile = mapper.map(collectionMember);
-
-        assertNull(uploadedFile.getStatus());
-        assertNull(uploadedFile.getMimeType());
-        assertNull(uploadedFile.getModifiedOn());
-        assertNull(uploadedFile.getFileType());
-        assertEquals(0, uploadedFile.getCreatedBy());
-        assertEquals(0, uploadedFile.getLastModifiedBy());
-        assertEquals(FILE_NAME, uploadedFile.getFileName());
-        assertEquals(FILE_URL, uploadedFile.getFileUrl());
-        assertNull(uploadedFile.getCreatedOn());
+    @Before
+    public void setUp() throws ParseException {
+        dateDocumentAdded = "2012-11-11";
+        dateDocumentAddedParsed = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(dateDocumentAdded);
     }
 
     @Test
-    public void shouldMapDateCorrectly() throws ParseException {
-        final String dateDocumentAdded = "2012-11-11";
-        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-
-        final Document document = new Document();
-        final DocumentLink documentLink = new DocumentLink();
-        documentLink.setDocumentUrl(FILE_URL);
-        documentLink.setDocumentFilename(FILE_NAME);
-        document.setDocumentLink(documentLink);
-        document.setDocumentFileName(FILE_NAME);
-        document.setDocumentDateAdded(dateDocumentAdded);
-
-        final CollectionMember<Document> collectionMember = new CollectionMember<>();
-        collectionMember.setValue(document);
+    public void shouldMapUploadedFileToCollectionMember() {
+        final CollectionMember<Document> collectionMember = createDocumentCollectionMember(FILE_URL, FILE_NAME, "");
 
         final UploadedFile uploadedFile = mapper.map(collectionMember);
 
-        assertEquals(dateFormat.parse(dateDocumentAdded), uploadedFile.getCreatedOn());
+        assertThat(uploadedFile, is(notNullValue()));
+        assertThat(uploadedFile.getStatus(), is(nullValue()));
+        assertThat(uploadedFile.getMimeType(), is(nullValue()));
+        assertThat(uploadedFile.getModifiedOn(), is(nullValue()));
+        assertThat(uploadedFile.getFileType(), is(nullValue()));
+        assertThat(uploadedFile.getCreatedBy(), is(0));
+        assertThat(uploadedFile.getLastModifiedBy(), is(0));
+        assertThat(uploadedFile.getFileName(), is(FILE_NAME));
+        assertThat(uploadedFile.getFileUrl(), is(FILE_URL));
+        assertThat(uploadedFile.getCreatedOn(), is(nullValue()));
+    }
+
+    @Test
+    public void shouldMapDateCorrectly() {
+        final CollectionMember<Document> collectionMember = createDocumentCollectionMember(FILE_URL, FILE_NAME, dateDocumentAdded);
+
+        final UploadedFile uploadedFile = mapper.map(collectionMember);
+
+        assertThat(uploadedFile.getCreatedOn(), is(dateDocumentAddedParsed));
+    }
+
+    @Test
+    public void shouldConvertDivorceGeneralOrderToUploadFile() {
+        CollectionMember<DivorceGeneralOrder> generalOrder = createGeneralOrderCollectionMember(FILE_URL, FILE_NAME, dateDocumentAdded);
+
+        UploadedFile uploadedFile = mapper.mapGeneralOrder(generalOrder);
+
+        assertThat(uploadedFile, is(notNullValue()));
+        assertThat(uploadedFile.getStatus(), is(nullValue()));
+        assertThat(uploadedFile.getMimeType(), is(nullValue()));
+        assertThat(uploadedFile.getModifiedOn(), is(nullValue()));
+        assertThat(uploadedFile.getFileType(), is(nullValue()));
+        assertThat(uploadedFile.getCreatedBy(), is(0));
+        assertThat(uploadedFile.getLastModifiedBy(), is(0));
+        assertThat(uploadedFile.getFileName(), is(FILE_NAME));
+        assertThat(uploadedFile.getFileUrl(), is(FILE_URL));
+        assertThat(uploadedFile.getCreatedOn(), is(dateDocumentAddedParsed));
     }
 
     @Test(expected = RuntimeException.class)
     public void shouldThrowRuntimeExceptionOnBadDateFormat() {
         final String dateDocumentAdded = "wrong-format-1234";
 
-        final Document document = new Document();
-        final DocumentLink documentLink = new DocumentLink();
-        documentLink.setDocumentUrl(FILE_URL);
-        documentLink.setDocumentFilename(FILE_NAME);
-        document.setDocumentLink(documentLink);
-        document.setDocumentFileName(FILE_NAME);
-        document.setDocumentDateAdded(dateDocumentAdded);
-
-        final CollectionMember<Document> collectionMember = new CollectionMember<>();
-        collectionMember.setValue(document);
+        final CollectionMember<Document> collectionMember = createDocumentCollectionMember(FILE_URL, FILE_NAME, dateDocumentAdded);
 
         mapper.map(collectionMember);
     }
@@ -110,8 +113,7 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         final CollectionMember<Document> collectionMember = new CollectionMember<>();
         collectionMember.setValue(document);
 
-        assertThatCode(() -> mapper.map(collectionMember))
-            .doesNotThrowAnyException();
+        assertThatCode(() -> mapper.map(collectionMember)).doesNotThrowAnyException();
     }
 
     @Test
@@ -122,7 +124,7 @@ public class DocumentCollectionDivorceFormatMapperUTest {
         final CollectionMember<Document> collectionMember = new CollectionMember<>();
         collectionMember.setValue(document);
 
-        assertThatCode(() -> mapper.map(collectionMember))
-            .doesNotThrowAnyException();
+        assertThatCode(() -> mapper.map(collectionMember)).doesNotThrowAnyException();
     }
+
 }

@@ -13,6 +13,7 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Pay
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -465,6 +466,9 @@ public class DivorceSession {
     @JsonIgnore
     private List<UploadedFile> serviceApplicationDocuments;
 
+    @JsonIgnore
+    private List<UploadedFile> generalOrders;
+
     @ApiModelProperty(value = "Respondent Protected Characteristics Questions Identifier")
     private String respondentPcqId;
 
@@ -639,5 +643,13 @@ public class DivorceSession {
             d8Documents.forEach(doc -> doc.setFileType("petition"));
             this.d8Documents = d8Documents;
         }
+    }
+
+    public void addD8Document(UploadedFile d8Document) {
+        if (d8Documents == null) {
+            d8Documents = new ArrayList<>();
+        }
+
+        this.d8Documents.add(d8Document);
     }
 }

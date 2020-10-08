@@ -646,8 +646,8 @@ public class DivorceSession {
     }
 
     public void addD8Document(UploadedFile d8Document) {
-        if (d8Documents == null) {
-            d8Documents = new ArrayList<>();
+        if (this.d8Documents == null) {
+            this.d8Documents = new ArrayList<>();
         }
 
         this.d8Documents.add(d8Document);

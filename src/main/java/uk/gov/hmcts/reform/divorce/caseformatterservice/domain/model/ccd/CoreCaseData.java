@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
+import uk.gov.hmcts.reform.divorce.model.ccd.DivorceGeneralOrder;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 
 import java.util.List;
@@ -432,6 +433,9 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("D8DocumentsGenerated")
     private List<CollectionMember<Document>> d8Documents;
+
+    @JsonProperty("GeneralOrders")
+    private List<CollectionMember<DivorceGeneralOrder>> generalOrders;
 
     @JsonProperty("ServiceApplicationDocuments")
     private List<CollectionMember<Document>> serviceApplicationDocuments;

@@ -9,9 +9,9 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
+import uk.gov.hmcts.reform.divorce.model.payment.Payment;
+import uk.gov.hmcts.reform.divorce.model.payment.PaymentCollection;
 
 import java.util.ArrayList;
 import java.util.Date;

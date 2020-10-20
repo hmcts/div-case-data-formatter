@@ -17,8 +17,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.CaseFormatterServiceApplication;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.UserDetails;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapperTestUtil;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

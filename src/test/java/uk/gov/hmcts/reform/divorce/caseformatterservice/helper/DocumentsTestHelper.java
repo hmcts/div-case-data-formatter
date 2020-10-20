@@ -1,6 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.helper;
 
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
+import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.DivorceGeneralOrder;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;

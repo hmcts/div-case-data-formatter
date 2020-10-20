@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment;
 
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.Payment;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
+import uk.gov.hmcts.reform.divorce.model.payment.Payment;
+import uk.gov.hmcts.reform.divorce.model.payment.PaymentCollection;
 
 import java.util.List;
 

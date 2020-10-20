@@ -1,8 +1,8 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment;
 
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.model.payment.PaymentCollection;
 
 import java.util.List;
 import java.util.stream.Collectors;

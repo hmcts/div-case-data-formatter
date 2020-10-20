@@ -1,8 +1,8 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 
 import org.junit.Test;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Gender;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderService;
+import uk.gov.hmcts.reform.divorce.model.ccd.Gender;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

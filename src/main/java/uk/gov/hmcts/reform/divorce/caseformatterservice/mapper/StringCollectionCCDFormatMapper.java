@@ -2,7 +2,7 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
+import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 
 import java.util.ArrayList;
 import java.util.List;

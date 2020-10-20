@@ -6,10 +6,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
+import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
+import uk.gov.hmcts.reform.divorce.model.usersession.YesNoNeverAnswer;
 
 import java.util.Objects;
 

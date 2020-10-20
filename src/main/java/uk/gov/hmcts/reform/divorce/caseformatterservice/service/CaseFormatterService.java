@@ -1,13 +1,13 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.service;
 
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.DivorceCaseWrapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.AosCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 
 import java.util.List;
 import java.util.Map;

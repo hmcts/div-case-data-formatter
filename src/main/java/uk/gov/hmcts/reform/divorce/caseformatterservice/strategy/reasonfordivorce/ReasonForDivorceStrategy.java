@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce;
 
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 public interface ReasonForDivorceStrategy {
 

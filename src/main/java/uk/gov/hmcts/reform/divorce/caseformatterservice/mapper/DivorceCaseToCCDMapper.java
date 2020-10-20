@@ -9,13 +9,13 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderService;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.SeparationDateService;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment.PaymentContext;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
+import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivor
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.Arrays;
 import java.util.List;

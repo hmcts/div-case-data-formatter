@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivor
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

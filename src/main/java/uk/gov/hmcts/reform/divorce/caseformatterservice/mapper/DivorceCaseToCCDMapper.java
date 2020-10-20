@@ -9,13 +9,13 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderService;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.service.SeparationDateService;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.payment.PaymentContext;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
+import uk.gov.hmcts.reform.divorce.mapper.strategy.payment.PaymentContext;
+import uk.gov.hmcts.reform.divorce.mapper.strategy.reasonfordivorce.ReasonForDivorceContext;
 import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.service.InferredGenderService;
+import uk.gov.hmcts.reform.divorce.service.SeparationDateService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,9 +24,9 @@ import java.util.Objects;
 
 import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverUpperCase;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoNeverUpperCase;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoUpperCase;
 
 @Mapper(componentModel = "spring", uses = {DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -239,7 +239,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentSolicitorRepresented(DivorceSession divorceSession,
-                                                        @MappingTarget CoreCaseData result) {
+                                                     @MappingTarget CoreCaseData result) {
         result.setRespondentSolicitorRepresented(
             toYesNoUpperCase(divorceSession.getRespondentSolicitorRepresented()));
     }
@@ -317,7 +317,7 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapHelpWithFeesNeedHelp(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8HelpWithFeesNeedHelp(
-                toYesNoUpperCase(divorceSession.getHelpWithFeesNeedHelp()));
+            toYesNoUpperCase(divorceSession.getHelpWithFeesNeedHelp()));
     }
 
     @AfterMapping
@@ -679,7 +679,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentContactDetailsConfidential(DivorceSession divorceSession,
-                                                            @MappingTarget CoreCaseData result) {
+                                                           @MappingTarget CoreCaseData result) {
         if (Objects.isNull(divorceSession.getRespondentContactDetailsConfidential())) {
             result.setRespondentContactDetailsConfidential(SHARE_DETAILS);
         }
@@ -687,7 +687,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapReasonForDivorceAdulterySecondHandInfo(DivorceSession divorceSession,
-                                                         @MappingTarget CoreCaseData result) {
+                                                             @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryAnyInfo2ndHand(
             toYesNoUpperCase(divorceSession.getReasonForDivorceAdulterySecondHandInfo())
         );
@@ -695,13 +695,13 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapTimeLivedTogetherFields(DivorceSession divorceSession,
-                                           @MappingTarget CoreCaseData result) {
+                                              @MappingTarget CoreCaseData result) {
         reasonForDivorceContext.setLivedApartFieldsFromDivorceSession(divorceSession, result);
     }
 
     @AfterMapping
     protected void mapSeparationReferenceDate(DivorceSession divorceSession,
-                                           @MappingTarget CoreCaseData result) {
+                                              @MappingTarget CoreCaseData result) {
         if (divorceSession.getLivingTogetherMonths() != null) {
             if (divorceSession.getLivingTogetherMonths() >= 6) {
                 result.setReferenceDate(divorceSession.getReferenceDate());
@@ -721,7 +721,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapLanguagePreferenceWelsh(DivorceSession divorceSession,
-                                                             @MappingTarget CoreCaseData result) {
+                                              @MappingTarget CoreCaseData result) {
         result.setLanguagePreferenceWelsh(
             toYesNoUpperCase(divorceSession.getLanguagePreferenceWelsh()));
     }

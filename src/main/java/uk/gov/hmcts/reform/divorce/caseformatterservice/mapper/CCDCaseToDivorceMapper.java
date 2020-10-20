@@ -10,19 +10,19 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.AOS;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Answer;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.ContactInfo;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Costs;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
+import uk.gov.hmcts.reform.divorce.mapper.strategy.reasonfordivorce.ReasonForDivorceContext;
 import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.HearingDateTime;
+import uk.gov.hmcts.reform.divorce.model.usersession.Address;
+import uk.gov.hmcts.reform.divorce.model.usersession.AddressType;
+import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.AOS;
+import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.Answer;
+import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.CoRespondentAnswers;
+import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.ContactInfo;
+import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.Costs;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -33,10 +33,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoNeverPascalCase;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoPascalCase;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.util.Constants.YES_VALUE;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoNeverPascalCase;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoPascalCase;
+import static uk.gov.hmcts.reform.divorce.utils.Constants.YES_VALUE;
 
 @Slf4j
 @Mapper(componentModel = "spring", uses = {DocumentCollectionDivorceFormatMapper.class},

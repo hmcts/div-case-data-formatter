@@ -43,7 +43,6 @@ public class CaseFormatterController {
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into CCD format", response = CoreCaseData.class),
     })
-    @Deprecated//Use CFS as library instead
     public ResponseEntity<CoreCaseData> transformToCCDFormat(
         @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession data,
         @RequestHeader("Authorization")

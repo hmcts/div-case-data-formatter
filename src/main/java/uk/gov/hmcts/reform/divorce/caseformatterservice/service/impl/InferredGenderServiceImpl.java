@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 
 import com.google.common.collect.ImmutableMap;
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Gender;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.InferredGenderService;
+import uk.gov.hmcts.reform.divorce.model.ccd.Gender;
 
 import java.util.Locale;
 import java.util.Map;

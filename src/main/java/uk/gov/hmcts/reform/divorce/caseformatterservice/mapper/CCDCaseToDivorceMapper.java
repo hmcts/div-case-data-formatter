@@ -10,10 +10,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CaseLink;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CollectionMember;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.HearingDateTime;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
@@ -23,6 +19,10 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.ContactInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.Costs;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.strategy.reasonfordivorce.ReasonForDivorceContext;
+import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
+import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.HearingDateTime;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

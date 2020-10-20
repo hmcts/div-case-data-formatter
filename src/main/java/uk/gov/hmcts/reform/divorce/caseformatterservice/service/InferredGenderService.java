@@ -1,6 +1,6 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.service;
 
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.Gender;
+import uk.gov.hmcts.reform.divorce.model.ccd.Gender;
 
 public interface InferredGenderService {
     Gender getRespondentGender(String respondentRole);

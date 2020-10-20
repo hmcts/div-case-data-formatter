@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.mapper;
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Strings;
 import org.apache.commons.lang3.BooleanUtils;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.YesNoNeverAnswer;
+import uk.gov.hmcts.reform.divorce.model.usersession.YesNoNeverAnswer;
 
 import java.util.Locale;
 import java.util.Objects;

@@ -6,16 +6,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.DivorceSession;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.usersession.corespondent.CoRespondentAnswers;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
+import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.model.usersession.YesNoNeverAnswer;
+import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.CoRespondentAnswers;
 
 import java.util.Objects;
 
 import static java.lang.String.join;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
-import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.MappingCommons.toYesNoUpperCase;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
+import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoUpperCase;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToAosCaseMapper {

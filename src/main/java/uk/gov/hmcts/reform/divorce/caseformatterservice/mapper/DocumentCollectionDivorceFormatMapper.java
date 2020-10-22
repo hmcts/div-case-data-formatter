@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
+import uk.gov.hmcts.reform.divorce.mapper.DocumentUrlRewriter;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.DivorceGeneralOrder;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
@@ -26,7 +27,7 @@ import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORM
 public abstract class DocumentCollectionDivorceFormatMapper {
 
     @Autowired
-    private DocumentUrlRewrite documentUrlRewrite;
+    private DocumentUrlRewriter documentUrlRewriter;
 
     @Mapping(source = "value.documentLink.documentFilename", target = "fileName")
     @Mapping(source = "value.documentLink.documentUrl", target = "fileUrl")
@@ -58,7 +59,7 @@ public abstract class DocumentCollectionDivorceFormatMapper {
         Optional.ofNullable(document)
             .map(Document::getDocumentLink)
             .map(DocumentLink::getDocumentUrl)
-            .flatMap(url -> documentUrlRewrite.getDocumentId(url))
+            .flatMap(url -> documentUrlRewriter.getDocumentId(url))
             .ifPresent(result::setId);
     }
 

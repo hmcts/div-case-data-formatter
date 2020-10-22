@@ -13,10 +13,10 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupd
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
+import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;

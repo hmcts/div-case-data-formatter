@@ -38,9 +38,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class TransformToCCDFormatITest {
+
     private static final String API_URL = "/caseformatter/version/1/to-ccd-format";
-    private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/addresses.json";
-    private static final String EXPECTED_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/ccd/addresscase.json";
+    private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/case-data.json";
+    private static final String EXPECTED_PAYLOAD_PATH = "fixtures/divorcetoccdmapping/ccd/case-data.json";
     private static final String EMAIL_ADDRESS = "caseformatterservicetest@notifications.service.gov.uk";
 
     private static final String USER_TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwOTg3NjU0M"

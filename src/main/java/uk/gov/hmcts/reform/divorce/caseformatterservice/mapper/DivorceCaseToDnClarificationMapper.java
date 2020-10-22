@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
+import uk.gov.hmcts.reform.divorce.mapper.DocumentCollectionCCDFormatMapper;
 import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;

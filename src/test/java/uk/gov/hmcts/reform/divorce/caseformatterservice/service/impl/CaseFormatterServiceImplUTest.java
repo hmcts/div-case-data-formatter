@@ -16,7 +16,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosC
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
-import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
@@ -24,6 +23,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.service.DataTransformer;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,19 +40,20 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.Docu
 
 @RunWith(MockitoJUnitRunner.class)
 public class CaseFormatterServiceImplUTest {
+
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
     private static final String HAL_BINARY_RESPONSE_CONTEXT_PATH =
-        (String)ReflectionTestUtils.getField(
+        (String) ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "HAL_BINARY_RESPONSE_CONTEXT_PATH");
     private static final String PDF_FILE_EXTENSION =
-        (String)ReflectionTestUtils.getField(
+        (String) ReflectionTestUtils.getField(
             DocumentCollectionDocumentRequestMapper.class, "PDF_FILE_EXTENSION");
 
     @Spy
     private ObjectMapper objectMapper;
 
     @Mock
-    private DivorceCaseToCCDMapper divorceCaseToCCDMapper;
+    private DataTransformer dataTransformer;
 
     @Mock
     private CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
@@ -79,14 +80,13 @@ public class CaseFormatterServiceImplUTest {
 
         final CoreCaseData expectedCaseData = new CoreCaseData();
 
-        when(divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSession))
-            .thenReturn(expectedCaseData);
+        when(dataTransformer.transformDivorceCaseDataToCourtCaseData(divorceSession)).thenReturn(expectedCaseData);
 
         final CoreCaseData actualCaseData = classUnderTest.transformToCCDFormat(divorceSession, userToken);
 
         assertEquals(expectedCaseData, actualCaseData);
 
-        verify(divorceCaseToCCDMapper).divorceCaseDataToCourtCaseData(divorceSession);
+        verify(dataTransformer).transformDivorceCaseDataToCourtCaseData(divorceSession);
     }
 
     @Test
@@ -375,7 +375,7 @@ public class CaseFormatterServiceImplUTest {
     }
 
     private void assertDocumentsCollectionSize(int expected, Map caseData) {
-        List<CollectionMember<Document>> documents = ((List)caseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD));
+        List<CollectionMember<Document>> documents = ((List) caseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD));
 
         assertEquals(expected, documents.size());
     }

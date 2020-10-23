@@ -14,7 +14,6 @@ import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCa
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnClarificationMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
-import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
@@ -23,6 +22,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.service.DataTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     private static final String GENERIC_DOCUMENT_TYPE = "other";
 
     private final ObjectMapper objectMapper;
-    private final DivorceCaseToCCDMapper divorceCaseToCCDMapper;
+    private final DataTransformer dataTransformer;
     private final CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
     private final DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
     private final DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
@@ -50,7 +50,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public CoreCaseData transformToCCDFormat(DivorceSession divorceSession, String authorisation) {
-        return divorceCaseToCCDMapper.divorceCaseDataToCourtCaseData(divorceSession);
+        return dataTransformer.transformDivorceCaseDataToCourtCaseData(divorceSession);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
             List<CollectionMember<Document>> documentsGenerated =
                 objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
-                    new TypeReference<List<CollectionMember<Document>>>() {
+                    new TypeReference<>() {
                     });
 
             if (CollectionUtils.isNotEmpty(documentsGenerated)) {
@@ -113,7 +113,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
         List<CollectionMember<Document>> allDocuments =
             objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
-                new TypeReference<List<CollectionMember<Document>>>() {
+                new TypeReference<>() {
                 });
 
         if (CollectionUtils.isNotEmpty(allDocuments)) {

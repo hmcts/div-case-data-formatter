@@ -30,7 +30,7 @@ plugins {
 apply plugin: 'net.serenity-bdd.aggregator'
 
 group = 'uk.gov.hmcts.reform.divorce'
-version = '1.0.0'
+version = '1.0.1'
 sourceCompatibility = 11
 targetCompatibility = 11
 
@@ -137,7 +137,7 @@ def versions = [
     springSecurityCrypto         : '5.2.4.RELEASE',
     springOpenFeign              : '2.2.1.RELEASE',
     tomcatEmbed                  : '9.0.37',
-    divCommonLib                 : '1.1.34'
+    divCommonLib                 : '1.1.35'
 ]
 
 dependencies {
@@ -265,9 +265,10 @@ task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verificatio
 
 task bootRunAat(type: BootRun, description: 'Runs the app using AAT config', dependsOn: 'classes', group: 'Application') {
     environment "http_proxy", "http://proxyout.reform.hmcts.net:8080"
+    main = bootJar.mainClassName
     doFirst() {
-        main = bootJar.mainClassName
         classpath = sourceSets.main.runtimeClasspath
+        systemProperties = System.properties
         systemProperty 'spring.profiles.active', 'aat'
         systemProperty 'http.proxyHost', 'proxyout.reform.hmcts.net'
         systemProperty 'http.proxyPort', '8080'

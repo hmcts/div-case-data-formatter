@@ -38,11 +38,16 @@ public class CaseFormatterController {
     @Autowired
     private CaseFormatterService caseFormatterService;
 
+    /**
+     * Given a case in Divorce format, will transform it into CCD format.
+     * @deprecated Please use the div-commons-lib directly.
+     */
     @PostMapping(path = "/to-ccd-format")
     @ApiOperation(value = "Given a case in Divorce format, will transform it into CCD format")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into CCD format", response = CoreCaseData.class),
     })
+    @Deprecated(forRemoval = true)
     public ResponseEntity<CoreCaseData> transformToCCDFormat(
         @RequestBody @ApiParam(value = "Divorce Session Data", required = true) DivorceSession data,
         @RequestHeader("Authorization")
@@ -72,7 +77,7 @@ public class CaseFormatterController {
         @ApiResponse(code = 200, message = "D8DocumentsGenerated values after CCD update",
             response = Map.class),
     })
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public ResponseEntity<Map<String, Object>> addDocuments(
         @RequestBody @ApiParam(value = "CCD Data", required = true) DocumentUpdateRequest documentUpdateRequest) {
 

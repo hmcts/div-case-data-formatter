@@ -11,7 +11,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
@@ -56,9 +55,6 @@ public class CaseFormatterServiceImplUTest {
     private DataTransformer dataTransformer;
 
     @Mock
-    private CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
-
-    @Mock
     private DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
 
     @Mock
@@ -94,13 +90,13 @@ public class CaseFormatterServiceImplUTest {
         final CoreCaseData coreCaseData = new CoreCaseData();
         final DivorceSession expectedDivorceSession = new DivorceSession();
 
-        when(ccdCaseToDivorceMapper.courtCaseDataToDivorceCaseData(coreCaseData)).thenReturn(expectedDivorceSession);
+        when(dataTransformer.transformCoreCaseDataToDivorceCaseData(coreCaseData)).thenReturn(expectedDivorceSession);
 
         final DivorceSession actualDivorceSession = classUnderTest.transformToDivorceSession(coreCaseData);
 
         assertEquals(expectedDivorceSession, actualDivorceSession);
 
-        verify(ccdCaseToDivorceMapper).courtCaseDataToDivorceCaseData(coreCaseData);
+        verify(dataTransformer).transformCoreCaseDataToDivorceCaseData(coreCaseData);
     }
 
     @Test(expected = IllegalArgumentException.class)

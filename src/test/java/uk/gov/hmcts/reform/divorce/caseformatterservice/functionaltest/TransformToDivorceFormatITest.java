@@ -30,8 +30,8 @@ import static uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.ObjectMapp
 public class TransformToDivorceFormatITest {
 
     private static final String API_URL = "/caseformatter/version/1/to-divorce-format";
-    private static final String PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/addresscase.json";
-    private static final String EXPECTED_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/divorce/addresses.json";
+    private static final String PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/ccd/case-data.json";
+    private static final String EXPECTED_PAYLOAD_PATH = "fixtures/ccdtodivorcemapping/divorce/case-data.json";
 
     @Autowired
     private MockMvc webClient;

@@ -7,7 +7,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
@@ -41,7 +40,6 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     private final ObjectMapper objectMapper;
     private final DataTransformer dataTransformer;
-    private final CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
     private final DocumentCollectionDocumentRequestMapper documentCollectionDocumentRequestMapper;
     private final DivorceCaseToAosCaseMapper divorceCaseToAosCaseMapper;
     private final DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
@@ -55,7 +53,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Override
     public DivorceSession transformToDivorceSession(CoreCaseData coreCaseData) {
-        return ccdCaseToDivorceMapper.courtCaseDataToDivorceCaseData(coreCaseData);
+        return dataTransformer.transformCoreCaseDataToDivorceCaseData(coreCaseData);
     }
 
     @Override

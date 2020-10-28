@@ -55,12 +55,17 @@ public class CaseFormatterController {
         return ResponseEntity.ok(caseFormatterService.transformToCCDFormat(data, jwt));
     }
 
+    /**
+     * Given a case in CCD format, will transform it into Divorce format.
+     * @deprecated Please use the div-commons-lib directly.
+     */
     @PostMapping(path = "/to-divorce-format")
     @ApiOperation(value = "Given a case in CCD format, will transform it into Divorce session format")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Case transformed into Divorce Session format",
             response = DivorceSession.class),
     })
+    @Deprecated(forRemoval = true)
     public ResponseEntity<DivorceSession> transformToDivorceFormat(
         @RequestBody @ApiParam(value = "CCD Data", required = true) CoreCaseData data) {
         return ResponseEntity.ok(caseFormatterService.transformToDivorceSession(data));

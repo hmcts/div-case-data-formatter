@@ -119,7 +119,6 @@ def versions = [
     jsonPathAssert               : '2.2.0',
     junit                        : '4.13',
     lombok                       : '1.18.12',
-    mapstruct                    : '1.2.0.Final',
     orgSpringframework           : '5.2.3.RELEASE',
     pitest                       : '1.3.2',
     puppyCrawl                   : '8.29',
@@ -137,7 +136,7 @@ def versions = [
     springSecurityCrypto         : '5.2.4.RELEASE',
     springOpenFeign              : '2.2.1.RELEASE',
     tomcatEmbed                  : '9.0.39',
-    divCommonLib                 : '1.1.36'
+    divCommonLib                 : '1.2.0'
 ]
 
 dependencies {
@@ -193,13 +192,7 @@ dependencies {
     implementation group: 'com.puppycrawl.tools', name: 'checkstyle', version: versions.puppyCrawl
     implementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     implementation(group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger)
-        {
-            exclude(module: 'mapstruct')
-        }
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
-
-    annotationProcessor("org.mapstruct:mapstruct-processor:${versions.mapstruct}")
-    implementation group: 'org.mapstruct', name: 'mapstruct-jdk8', version: versions.mapstruct
 
     implementation group: 'org.apache.commons', name: 'commons-collections4', version: versions.commonsCollections4
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
@@ -217,7 +210,6 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:${versions.lombok}")
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 
-    compileOnly group: 'org.mapstruct', name: 'mapstruct-processor', version: versions.mapstruct
     testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: versions.wiremockVersion
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: versions.jsonPathAssert

@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
+import uk.gov.hmcts.reform.divorce.model.documentupdate.DocumentUpdateRequest;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 
 import java.util.Map;

@@ -5,21 +5,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.ccd.DaCaseData;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.domain.model.documentupdate.GeneratedDocumentInfo;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToAosCaseMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDaCaseMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnCaseMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DivorceCaseToDnClarificationMapper;
-import uk.gov.hmcts.reform.divorce.caseformatterservice.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
+import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToAosCaseMapper;
+import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToDaCaseMapper;
+import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToDnCaseMapper;
+import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToDnClarificationMapper;
+import uk.gov.hmcts.reform.divorce.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
+import uk.gov.hmcts.reform.divorce.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.service.DataTransformer;
 
@@ -141,7 +141,6 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     public DaCaseData getDaCaseData(DivorceSession divorceSession) {
         return divorceCaseToDaCaseMapper.divorceCaseDataToDaCaseData(divorceSession);
     }
-
 
     private boolean isDocumentType(CollectionMember<Document> document, String documentType) {
         return document.getValue().getDocumentType().equalsIgnoreCase(documentType);

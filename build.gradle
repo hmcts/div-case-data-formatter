@@ -136,7 +136,7 @@ def versions = [
     springSecurityCrypto         : '5.2.4.RELEASE',
     springOpenFeign              : '2.2.1.RELEASE',
     tomcatEmbed                  : '9.0.39',
-    divCommonLib                 : '1.2.0'
+    divCommonLib                 : '1.2.1'
 ]
 
 dependencies {

@@ -241,7 +241,5 @@
     "respConsiderFinancialSituation" : "YES",
     "respHardshipDefenseResponse" : "NO",
     "respHardshipDescription" : "Some Hardship Description goes here",
-    "permittedDecreeNisiReason" : "0",
-    "serviceApplicationType": "deemed",
-    "serviceApplicationGranted": "Yes"
+    "permittedDecreeNisiReason" : "0"
 }

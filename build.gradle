@@ -124,7 +124,7 @@ def versions = [
     puppyCrawl                   : '8.29',
     reformHealth                 : '0.0.5',
     reformPropertiesVolume       : '0.0.4',
-    reformsJavaLogging           : '5.1.1',
+    reformsJavaLogging           : '5.1.7',
     restAssured                  : '3.0.3',
     serenity                     : '2.1.2',
     serenityCucumber             : '1.9.51',
@@ -136,7 +136,8 @@ def versions = [
     springSecurityCrypto         : '5.2.4.RELEASE',
     springOpenFeign              : '2.2.1.RELEASE',
     tomcatEmbed                  : '9.0.39',
-    divCommonLib                 : '1.2.3'
+    divCommonLib                 : '1.2.4',
+    httpComponents               : '4.5.13'
 ]
 
 dependencies {
@@ -198,8 +199,12 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
 
     implementation group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: versions.reformPropertiesVolume
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: versions.httpComponents
+    implementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: versions.httpComponents
     implementation group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth
-    implementation group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformsJavaLogging
+    implementation (group: 'uk.gov.hmcts.reform', name: 'logging-httpcomponents', version: versions.reformsJavaLogging){
+        exclude group: 'org.apache.httpcomponents', 'module': 'httpclient'
+    }
     implementation group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformsJavaLogging
 
     implementation group: 'org.pitest', name: 'pitest', version: versions.pitest

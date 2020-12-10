@@ -62,7 +62,7 @@ dependencyManagement {
 repositories {
     mavenCentral()
     jcenter()
-    maven { url "https://dl.bintray.com/hmcts/hmcts-maven" }
+    maven { url 'https://dl.bintray.com/hmcts/hmcts-maven' }
     maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
@@ -97,36 +97,36 @@ dependencyCheck {
 }
 
 def versions = [
-    commonsCollections4                 : '4.4',
-    commonsIo                           : '2.6',
-    commonsLang3                        : '3.9',
-    feignHttpClient                     : '10.7.4',
-    gradlePitest                        : '1.4.6',
-    guava                               : '28.2-jre',
-    jsonAssert                          : '1.2.3',
-    jsonPathAssert                      : '2.2.0',
-    junit                               : '4.13',
-    lombok                              : '1.18.12',
-    orgSpringframework                  : '5.2.3.RELEASE',
-    pitest                              : '1.3.2',
-    puppyCrawl                          : '8.29',
-    reformHealth                        : '0.0.5',
-    reformPropertiesVolume              : '0.0.4',
-    reformsJavaLogging                  : '5.1.7',
-    restAssured                         : '3.0.3',
-    serenity                            : '2.1.2',
-    serenityCucumber                    : '1.9.51',
-    sonarPitest                         : '0.5',
-    spring_security_rsa                 : '1.0.8.RELEASE',
-    springfoxSwagger                    : '2.9.2',
-    unirest                             : '1.4.9',
-    wiremockVersion                     : '2.27.2',
-    springSecurityCrypto                : '5.2.4.RELEASE',
-    springOpenFeign                     : '2.2.6.RELEASE',
-    springBoot                          : '2.3.5.RELEASE',
-    tomcatEmbed                         : '9.0.40',
-    divCommonLib                        : '1.2.4',
-    httpComponents                      : '4.5.13'
+    commonsCollections4   : '4.4',
+    commonsIo             : '2.6',
+    commonsLang3          : '3.9',
+    feignHttpClient       : '10.7.4',
+    gradlePitest          : '1.4.6',
+    guava                 : '28.2-jre',
+    jsonAssert            : '1.2.3',
+    jsonPathAssert        : '2.2.0',
+    junit                 : '4.13',
+    lombok                : '1.18.12',
+    orgSpringframework    : '5.2.3.RELEASE',
+    pitest                : '1.3.2',
+    puppyCrawl            : '8.29',
+    reformHealth          : '0.0.5',
+    reformPropertiesVolume: '0.0.4',
+    reformsJavaLogging    : '5.1.7',
+    restAssured           : '3.0.3',
+    serenity              : '2.1.2',
+    serenityCucumber      : '1.9.51',
+    sonarPitest           : '0.5',
+    spring_security_rsa   : '1.0.8.RELEASE',
+    springfoxSwagger      : '2.9.2',
+    unirest               : '1.4.9',
+    wiremockVersion       : '2.27.2',
+    springSecurityCrypto  : '5.2.4.RELEASE',
+    springOpenFeign       : '2.2.6.RELEASE',
+    springBoot            : '2.3.5.RELEASE',
+    tomcatEmbed           : '9.0.40',
+    divCommonLib          : '1.2.4',
+    httpComponents        : '4.5.13'
 ]
 
 dependencies {

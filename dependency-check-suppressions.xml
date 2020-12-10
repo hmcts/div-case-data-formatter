@@ -46,25 +46,17 @@
         </notes>
         <cve>CVE-2020-5421</cve>
     </suppress>
-    <suppress until="2020-11-30Z">
-        <notes>
-            <![CDATA[file name: tomcat-embed-core-9.0.39.jar]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
-        <cve>CVE-2020-13943</cve>
-    </suppress>
-    <suppress until="2020-11-30Z">
-        <notes>
-            <![CDATA[file name: tomcat-embed-websocket-9.0.39.jar]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
-        <cve>CVE-2020-13943</cve>
-    </suppress>
     <suppress>
         <notes>
             <![CDATA[file name: junit-4.12.jar]]>
         </notes>
         <packageUrl regex="true">^pkg:maven/junit/junit@.*$</packageUrl>
         <vulnerabilityName>CVE-2020-15250</vulnerabilityName>
+    </suppress>
+    <suppress until="2021-01-31">
+        <notes>
+            This is being temporarily suppressed until we can implement a solution that fixes the issues that arise from upgrading to a safe version.
+        </notes>
+        <vulnerabilityName>CVE-2020-25649</vulnerabilityName>
     </suppress>
 </suppressions>

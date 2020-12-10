@@ -85,8 +85,21 @@ checkstyle {
     configDir = new File(rootDir, 'config/checkstyle')
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir('src/integrationTest/java')
+        }
+        resources {
+            srcDir('src/integrationTest/resources')
+        }
+    }
+}
+
 configurations {
-    integrationTestCompile.extendsFrom testCompile
+    integrationTestImplementation.extendsFrom testImplementation
     integrationTestRuntime.extendsFrom testRuntime
 }
 
@@ -202,17 +215,17 @@ dependencies {
     runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version: versions.springBoot
 
     //integration test
-    integrationTestCompile group: 'com.mashape.unirest', name: 'unirest-java', version: versions.unirest
-    integrationTestCompile group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
-    integrationTestCompile group: 'junit', name: 'junit', version: versions.junit
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: versions.serenityCucumber
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
-    integrationTestCompile group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
-    integrationTestCompile group: 'org.skyscreamer', name: 'jsonassert', version: versions.jsonAssert
-    integrationTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+    integrationTestImplementation group: 'com.mashape.unirest', name: 'unirest-java', version: versions.unirest
+    integrationTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
+    integrationTestImplementation group: 'junit', name: 'junit', version: versions.junit
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: versions.serenityCucumber
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
+    integrationTestImplementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
+    integrationTestImplementation group: 'org.skyscreamer', name: 'jsonassert', version: versions.jsonAssert
+    integrationTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 }
 
 sourceSets {
@@ -229,7 +242,7 @@ sourceSets {
 }
 
 dependencies {
-    integrationTestCompile(sourceSets.test.output)
+    integrationTestImplementation(sourceSets.test.output)
     integrationTestAnnotationProcessor("org.projectlombok:lombok:${versions.lombok}")
     integrationTestImplementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 }

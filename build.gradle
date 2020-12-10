@@ -1,15 +1,10 @@
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 buildscript {
-    ext {
-        springBootVersion = '2.2.4.RELEASE'
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE")
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("net.serenity-bdd:serenity-gradle-plugin:2.1.6")
     }
 }
@@ -53,11 +48,7 @@ compileTestJava {
 }
 
 dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-openfeign:2.2.1.RELEASE'
-    }
     dependencies {
-        dependency group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
         //CVE-2017-18640
         dependency group: 'org.yaml', name: 'snakeyaml', version: '1.26'
         dependencySet(
@@ -71,10 +62,10 @@ dependencyManagement {
 }
 
 repositories {
-    maven { url "https://dl.bintray.com/hmcts/hmcts-maven" }
-    maven { url 'https://repo.spring.io/libs-milestone' }
     mavenCentral()
     jcenter()
+    maven { url 'https://dl.bintray.com/hmcts/hmcts-maven' }
+    maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
 distributions {
@@ -94,8 +85,21 @@ checkstyle {
     configDir = new File(rootDir, 'config/checkstyle')
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir('src/integrationTest/java')
+        }
+        resources {
+            srcDir('src/integrationTest/resources')
+        }
+    }
+}
+
 configurations {
-    integrationTestCompile.extendsFrom testCompile
+    integrationTestImplementation.extendsFrom testImplementation
     integrationTestRuntime.extendsFrom testRuntime
 }
 
@@ -108,41 +112,41 @@ dependencyCheck {
 }
 
 def versions = [
-    commonsCollections4          : '4.4',
-    commonsIo                    : '2.6',
-    commonsLang3                 : '3.9',
-    feignHttpClient              : '10.7.4',
-    gradlePitest                 : '1.4.6',
-    guava                        : '28.2-jre',
-    jacksonDatabind              : '2.10.2',
-    jsonAssert                   : '1.2.3',
-    jsonPathAssert               : '2.2.0',
-    junit                        : '4.13',
-    lombok                       : '1.18.12',
-    orgSpringframework           : '5.2.3.RELEASE',
-    pitest                       : '1.3.2',
-    puppyCrawl                   : '8.29',
-    reformHealth                 : '0.0.5',
-    reformPropertiesVolume       : '0.0.4',
-    reformsJavaLogging           : '5.1.7',
-    restAssured                  : '3.0.3',
-    serenity                     : '2.1.2',
-    serenityCucumber             : '1.9.51',
-    sonarPitest                  : '0.5',
-    spring_security_rsa          : '1.0.8.RELEASE',
-    springfoxSwagger             : '2.9.2',
-    unirest                      : '1.4.9',
-    wiremockVersion              : '2.25.1',
-    springSecurityCrypto         : '5.2.4.RELEASE',
-    springOpenFeign              : '2.2.1.RELEASE',
-    tomcatEmbed                  : '9.0.39',
-    divCommonLib                 : '1.2.4',
-    httpComponents               : '4.5.13'
+    commonsCollections4   : '4.4',
+    commonsIo             : '2.6',
+    commonsLang3          : '3.9',
+    feignHttpClient       : '10.7.4',
+    gradlePitest          : '1.4.6',
+    guava                 : '28.2-jre',
+    jsonAssert            : '1.2.3',
+    jsonPathAssert        : '2.2.0',
+    junit                 : '4.13',
+    lombok                : '1.18.12',
+    orgSpringframework    : '5.2.3.RELEASE',
+    pitest                : '1.3.2',
+    puppyCrawl            : '8.29',
+    reformHealth          : '0.0.5',
+    reformPropertiesVolume: '0.0.4',
+    reformsJavaLogging    : '5.1.7',
+    restAssured           : '3.0.3',
+    serenity              : '2.1.2',
+    serenityCucumber      : '1.9.51',
+    sonarPitest           : '0.5',
+    spring_security_rsa   : '1.0.8.RELEASE',
+    springfoxSwagger      : '2.9.2',
+    unirest               : '1.4.9',
+    wiremockVersion       : '2.27.2',
+    springSecurityCrypto  : '5.2.4.RELEASE',
+    springOpenFeign       : '2.2.6.RELEASE',
+    springBoot            : '2.3.5.RELEASE',
+    tomcatEmbed           : '9.0.40',
+    divCommonLib          : '1.2.4',
+    httpComponents        : '4.5.13'
 ]
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-web')
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
 
     implementation group: 'org.springframework', name: 'spring-context-support', version: versions.orgSpringframework
     implementation group: 'org.springframework', name: 'spring-webmvc', version: versions.orgSpringframework
@@ -174,22 +178,13 @@ dependencies {
         force = true
     }
 
-    implementation(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcatEmbed) {
-        force = true
-    }
-    implementation(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcatEmbed) {
-        force = true
-    }
-    implementation(group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: versions.tomcatEmbed) {
-        force = true
-    }
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcatEmbed
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcatEmbed
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: versions.tomcatEmbed
 
     implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: versions.feignHttpClient
-    implementation(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jacksonDatabind) {
-        force = true
-    }
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: versions.springBoot
     implementation group: 'com.puppycrawl.tools', name: 'checkstyle', version: versions.puppyCrawl
     implementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     implementation(group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger)
@@ -202,9 +197,7 @@ dependencies {
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: versions.httpComponents
     implementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: versions.httpComponents
     implementation group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: versions.reformHealth
-    implementation (group: 'uk.gov.hmcts.reform', name: 'logging-httpcomponents', version: versions.reformsJavaLogging){
-        exclude group: 'org.apache.httpcomponents', 'module': 'httpclient'
-    }
+    implementation group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformsJavaLogging
     implementation group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformsJavaLogging
 
     implementation group: 'org.pitest', name: 'pitest', version: versions.pitest
@@ -216,23 +209,23 @@ dependencies {
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 
     testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: versions.wiremockVersion
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: versions.jsonPathAssert
 
-    runtime('org.springframework.boot:spring-boot-devtools')
+    runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version: versions.springBoot
 
     //integration test
-    integrationTestCompile group: 'com.mashape.unirest', name: 'unirest-java', version: versions.unirest
-    integrationTestCompile group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
-    integrationTestCompile group: 'junit', name: 'junit', version: versions.junit
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: versions.serenityCucumber
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
-    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
-    integrationTestCompile group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
-    integrationTestCompile group: 'org.skyscreamer', name: 'jsonassert', version: versions.jsonAssert
-    integrationTestCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    integrationTestImplementation group: 'com.mashape.unirest', name: 'unirest-java', version: versions.unirest
+    integrationTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
+    integrationTestImplementation group: 'junit', name: 'junit', version: versions.junit
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: versions.serenityCucumber
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
+    integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
+    integrationTestImplementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
+    integrationTestImplementation group: 'org.skyscreamer', name: 'jsonassert', version: versions.jsonAssert
+    integrationTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 }
 
 sourceSets {
@@ -249,7 +242,7 @@ sourceSets {
 }
 
 dependencies {
-    integrationTestCompile(sourceSets.test.output)
+    integrationTestImplementation(sourceSets.test.output)
     integrationTestAnnotationProcessor("org.projectlombok:lombok:${versions.lombok}")
     integrationTestImplementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 }

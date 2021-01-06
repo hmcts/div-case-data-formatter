@@ -238,7 +238,7 @@ sourceSets {
             srcDir('src/integrationTest/java')
         }
         resources {
-            srcDir('src/integratioxinput -set-prop "DualPoint Stick" "Device Enabled" 0nTest/resources')
+            srcDir('src/integrationTest/resources')
         }
     }
 }

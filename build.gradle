@@ -55,7 +55,7 @@ dependencyManagement {
         dependency group: 'org.bouncycastle',name : 'bcprov-jdk15on', version: '1.61'
         dependencySet(
             group: 'com.fasterxml.jackson.core',
-            version: '2.10.0'
+            version: '2.11.1'
         ) {
             entry 'jackson-core'
             entry 'jackson-databind'

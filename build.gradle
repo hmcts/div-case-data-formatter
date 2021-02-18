@@ -124,7 +124,6 @@ def versions = [
     jsonPathAssert        : '2.2.0',
     junit                 : '4.13',
     lombok                : '1.18.12',
-    orgSpringframework    : '5.2.3.RELEASE',
     pitest                : '1.3.2',
     puppyCrawl            : '8.29',
     reformPropertiesVolume: '0.0.4',
@@ -150,15 +149,15 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: versions.springBoot
 
-    implementation group: 'org.springframework', name: 'spring-context-support', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-webmvc', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-web', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-aop', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-beans', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-expression', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-core', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-jcl', version: versions.orgSpringframework
-    implementation group: 'org.springframework', name: 'spring-context', version: versions.orgSpringframework
+    implementation group: 'org.springframework', name: 'spring-context-support'
+    implementation group: 'org.springframework', name: 'spring-webmvc'
+    implementation group: 'org.springframework', name: 'spring-web'
+    implementation group: 'org.springframework', name: 'spring-aop'
+    implementation group: 'org.springframework', name: 'spring-beans'
+    implementation group: 'org.springframework', name: 'spring-expression'
+    implementation group: 'org.springframework', name: 'spring-core'
+    implementation group: 'org.springframework', name: 'spring-jcl'
+    implementation group: 'org.springframework', name: 'spring-context'
 
     implementation(group: 'com.google.guava', name: 'guava', version: versions.guava) {
         force = true

@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.caseformatterservice.functionaltest;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -46,7 +45,6 @@ public class TransformToDivorceFormatITest {
     }
 
     @Test
-    @Ignore("I will fix it soon. I am testing something else now")
     public void givenValidDetails_whenTransformToDivorceFormat_thenReturnExpected() throws Exception {
         MvcResult result = webClient.perform(post(API_URL)
             .content(retrieveFileContents(PAYLOAD_PATH))

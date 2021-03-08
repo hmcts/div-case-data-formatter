@@ -9,16 +9,6 @@
         <cve>CVE-2018-1258</cve>
     </suppress>
     <suppress>
-        <notes><![CDATA[
-        It looks like there is no fix for the issue
-        tomcat-embed-core-9.0.40.jar (pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@9.0.40, cpe:2.3:a:apache:tomcat:9.0.40:*:*:*:*:*:*:*, cpe:2.3:a:apache_software_foundation:tomcat:9.0.40:*:*:*:*:*:*:*, cpe:2.3:a:apache_tomcat:apache_tomcat:9.0.40:*:*:*:*:*:*:*)
-             ]]>
-        </notes>
-        <gav regex="true">.*</gav>
-        <cve>CVE-2021-25122</cve>
-        <cve>CVE-2021-25329</cve>
-    </suppress>
-    <suppress>
         <notes>
             <![CDATA[CVE is a browser vulnerability]]>
         </notes>

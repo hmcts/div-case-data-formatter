@@ -10,19 +10,6 @@
     </suppress>
     <suppress>
         <notes>
-            <![CDATA[CVE is a browser vulnerability]]>
-        </notes>
-        <cve>CVE-2020-5421</cve>
-    </suppress>
-    <suppress>
-        <notes>
-            <![CDATA[file name: junit-4.12.jar]]>
-        </notes>
-        <packageUrl regex="true">^pkg:maven/junit/junit@.*$</packageUrl>
-        <vulnerabilityName>CVE-2020-15250</vulnerabilityName>
-    </suppress>
-    <suppress>
-        <notes>
             This is being temporarily suppressed until we can implement a solution that fixes the issues that arise from upgrading to a safe version.
         </notes>
         <vulnerabilityName>CVE-2020-25649</vulnerabilityName>

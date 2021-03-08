@@ -139,7 +139,7 @@ def versions = [
     springSecurityCrypto  : '5.4.5',
     springOpenFeign       : '2.2.6.RELEASE',
     springBoot            : '2.3.5.RELEASE',
-    tomcatEmbed           : '9.0.40',
+    tomcatEmbed           : '9.0.41',
     divCommonLib          : '1.2.4',
     httpComponents        : '4.5.13'
 ]

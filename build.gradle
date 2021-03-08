@@ -12,7 +12,7 @@ buildscript {
 plugins {
     id 'application'
     id 'checkstyle'
-    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'com.github.ben-manes.versions' version '0.36.0'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'com.jfrog.bintray' version '1.8.4'
     id 'jacoco'
@@ -124,14 +124,14 @@ def versions = [
     httpComponents        : '4.5.13',
     jsonAssert            : '1.2.3',
     jsonPathAssert        : '2.2.0',
-    junit                 : '4.13',
+    junit                 : '4.13.1',
     lombok                : '1.18.12',
     pitest                : '1.3.2',
     puppyCrawl            : '8.29',
     reformPropertiesVolume: '0.0.4',
     reformsJavaLogging    : '5.1.7',
     restAssured           : '3.0.3',
-    serenity              : '2.1.2',
+    serenity              : '2.2.13',
     serenityCucumber      : '1.9.51',
     sonarPitest           : '0.5',
     springBoot            : '2.3.5.RELEASE',

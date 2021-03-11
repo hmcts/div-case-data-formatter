@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
     <suppress>
-        <notes><![CDATA[
-            This appears to be a false-positive as this is only exploitable in
-            Spring Framework 5.0.5.RELEASE which we don't use ]]>
-        </notes>
-        <gav regex="true">.*</gav>
-        <cve>CVE-2018-1258</cve>
-    </suppress>
-    <suppress>
         <notes>
-            This is being temporarily suppressed until we can implement a solution that fixes the issues that arise from upgrading to a safe version.
+            <![CDATA[
+                file name: spring-security-crypto-5.4.5.jar
+                notes: false positive affecting entire HMCTS organisation
+            ]]>
         </notes>
-        <vulnerabilityName>CVE-2020-25649</vulnerabilityName>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.*$</packageUrl>
+        <cve>CVE-2018-1258</cve>
     </suppress>
 </suppressions>

@@ -28,7 +28,9 @@
         "D": "The Petitioner is habitually resident in England and Wales and has resided there for at least a year immediately prior to the presentation of the petition",
         "E": "The Petitioner is domiciled and habitually resident in England and Wales and has resided there for at least six months immediately prior to the petition",
         "F": "The Petitioner and Respondent are both domiciled in England and Wales",
-        "G": "The courts of England and Wales have residual jurisdiction, meaning either: no other court in any EU Member State has jurisdiction and either the Petitioner or the Respondent is domiciled in England and Wales; or (for same sex couples only) the Petitioner or the Respondent married each other in England and Wales, no other court in any EU Member State has jurisdiction, and it would be in the interests of justice for the court to assume jurisdiction in this case"
+        "G": "The courts of England and Wales have residual jurisdiction, meaning either: no other court in any EU Member State has jurisdiction and either the Petitioner or the Respondent is domiciled in England and Wales; or (for same sex couples only) the Petitioner or the Respondent married each other in England and Wales, no other court in any EU Member State has jurisdiction, and it would be in the interests of justice for the court to assume jurisdiction in this case",
+        "H": "The Petitioner is domiciled in England and Wales",
+        "I": "The Respondent is domiciled in England and Wales"
     },
     "jurisdictionPetitionerResidence": "No",
     "jurisdictionRespondentResidence": "No",

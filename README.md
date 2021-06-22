@@ -18,7 +18,7 @@ The project uses [Gradle](https://gradle.org) as a build tool but you don't have
 To build project please execute the following command:
 
 ```bash
-    ./gradlew build
+./gradlew build
 ```
 
 **Running**
@@ -26,14 +26,14 @@ To build project please execute the following command:
 First you need to create distribution by executing following command:
 
 ```bash
-    ./gradlew installDist
+./gradlew installDist
 ```
 
 When the distribution has been created in `build/install/div-case-formatter-service` directory,
 you can run the application by executing following command:
 
 ```bash
-    docker-compose up
+docker-compose up
 ```
 
 As a result the following container(s) will get created and started:
@@ -44,7 +44,7 @@ As a result the following container(s) will get created and started:
 To run all unit tests please execute following command:
 
 ```bash
-    ./gradlew test
+./gradlew test
 ```
 
 
@@ -52,9 +52,8 @@ To run all unit tests please execute following command:
 
 To run all mutation tests execute the following command:
 
-```
+```bash
 ./gradlew pitest
-
 ```
 
 **Integration tests**
@@ -76,7 +75,7 @@ To run all integration tests locally:
 To run all checks (including unit tests) please execute following command:
 
 ```bash
-    ./gradlew check
+./gradlew check
 ```
 
 **Versioning**
@@ -96,4 +95,3 @@ API documentation is provided with Swagger:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-

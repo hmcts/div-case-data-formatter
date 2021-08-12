@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:2.4.24")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.5.7")
     }
 }
 
@@ -20,6 +20,7 @@ plugins {
     id 'org.springframework.boot' version '2.3.11.RELEASE'
     id 'info.solidsoft.pitest' version '1.5.2'
 }
+
 
 jacoco {
     toolVersion = "0.8.7"
@@ -137,8 +138,8 @@ def versions = [
     puppyCrawl            : '8.29',
     reformPropertiesVolume: '0.0.4',
     reformsJavaLogging    : '5.1.7',
-    restAssured           : '3.0.3',
-    serenity              : '2.4.24',
+    restAssured           : '4.2.1',
+    serenity              : '2.5.8',
     serenityCucumber      : '1.9.51',
     sonarPitest           : '0.5',
     springBoot            : '2.3.11.RELEASE',
@@ -146,12 +147,14 @@ def versions = [
     springOpenFeign       : '2.2.6.RELEASE',
     spring_security_rsa   : '1.0.9.RELEASE',
     springSecurityCrypto  : '5.4.5',
-    tomcatEmbed           : '9.0.48',
+    tomcatEmbed           : '9.0.50',
     unirest               : '1.4.9',
     wiremockVersion       : '2.27.2'
 ]
 
 dependencies {
+    implementation "org.codehaus.groovy:groovy-all:3.0.4"
+
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: versions.springBoot
@@ -219,11 +222,13 @@ dependencies {
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: versions.jsonPathAssert
 
+
     runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version: versions.springBoot
 
     //integration test
     integrationTestImplementation group: 'com.mashape.unirest', name: 'unirest-java', version: versions.unirest
     integrationTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
+    integrationTestCompile group: 'io.rest-assured', name: 'rest-assured-all', version: versions.restAssured
     integrationTestImplementation group: 'junit', name: 'junit', version: versions.junit
     integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
     integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: versions.serenityCucumber

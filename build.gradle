@@ -220,6 +220,7 @@ dependencies {
     testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: versions.wiremockVersion
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: versions.jsonPathAssert
+    testCompile('com.github.hmcts:fortify-client:1.2.0:all')
 
     runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version: versions.springBoot
 
@@ -351,4 +352,10 @@ run {
     if (debug == 'true') {
         jvmArgs = ['-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5010']
     }
+}
+
+task fortifyScan(type: JavaExec)  {
+    main = "uk.gov.hmcts.fortifyclient.FortifyClientMainApp"
+    classpath += sourceSets.test.runtimeClasspath
+    jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }

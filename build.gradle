@@ -63,6 +63,7 @@ dependencyManagement {
             entry 'jackson-core'
             entry 'jackson-databind'
         }
+        dependency group: 'org.glassfish', name: 'jakarta.el', version: '3.0.4'
     }
 }
 

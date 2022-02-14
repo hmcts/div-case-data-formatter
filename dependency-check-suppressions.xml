@@ -32,4 +32,10 @@
                 ]]></notes>
         <cve>CVE-2021-22096</cve>
     </suppress>
+    <suppress>
+        <notes><![CDATA[No fix available]]></notes>
+        <gav regex="true">^org\.apache\.sling:org\.apache\.sling\.javax\.activation:0\.1\.0$</gav>
+        <cve>CVE-2016-5394</cve>
+        <cve>CVE-2016-6798</cve>
+    </suppress>
 </suppressions>

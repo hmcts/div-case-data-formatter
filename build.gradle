@@ -64,6 +64,29 @@ dependencyManagement {
             entry 'jackson-databind'
         }
         dependency group: 'org.glassfish', name: 'jakarta.el', version: '3.0.4'
+
+        // CVE-2018-10237 - Unbounded memory allocation
+        dependencySet(group: 'com.google.guava', version: '31.0.1-jre') {
+            entry 'guava'
+        }
+
+        //CVE-2021-44228, CVE-2021-44832, CVE-2021-45046, CVE-2021-45105
+        dependencySet(group: 'org.apache.logging.log4j', version: '2.17.1') {
+            entry 'log4j-api'
+            entry 'log4j-to-slf4j'
+        }
+
+        dependencySet(group: 'org.springframework', version: '5.3.15') {
+            entry 'spring-aop'
+            entry 'spring-beans'
+            entry 'spring-context'
+            entry 'spring-context-support'
+            entry 'spring-core'
+            entry 'spring-expression'
+            entry 'spring-jcl'
+            entry 'spring-web'
+            entry 'spring-webmvc'
+        }
     }
 }
 
@@ -148,9 +171,10 @@ def versions = [
     springOpenFeign       : '2.2.6.RELEASE',
     spring_security_rsa   : '1.0.9.RELEASE',
     springSecurityCrypto  : '5.4.5',
-    tomcatEmbed           : '9.0.50',
+    tomcatEmbed           : '9.0.58',
     unirest               : '1.4.9',
-    wiremockVersion       : '2.27.2'
+    wiremockVersion       : '2.27.2',
+    logbackVersion        : '1.2.10'
 ]
 
 dependencies {
@@ -159,19 +183,10 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: versions.springBoot
 
-    implementation group: 'org.springframework', name: 'spring-context-support'
-    implementation group: 'org.springframework', name: 'spring-webmvc'
-    implementation group: 'org.springframework', name: 'spring-web'
-    implementation group: 'org.springframework', name: 'spring-aop'
-    implementation group: 'org.springframework', name: 'spring-beans'
-    implementation group: 'org.springframework', name: 'spring-expression'
-    implementation group: 'org.springframework', name: 'spring-core'
-    implementation group: 'org.springframework', name: 'spring-jcl'
-    implementation group: 'org.springframework', name: 'spring-context'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: versions.logbackVersion
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: versions.logbackVersion
 
-    implementation(group: 'com.google.guava', name: 'guava', version: versions.guava) {
-        force = true
-    }
+    implementation group: 'com.google.guava', name: 'guava', version: versions.guava
 
     implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: versions.springOpenFeign)
         {

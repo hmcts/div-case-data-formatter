@@ -255,6 +255,9 @@ dependencies {
     integrationTestImplementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.commonsLang3
     integrationTestImplementation group: 'org.skyscreamer', name: 'jsonassert', version: versions.jsonAssert
     integrationTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+
+    integrationTestImplementation group: 'com.fasterxml.jackson.core', name:'jackson-databind', version: versions.jackson
+    integrationTestImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: versions.jackson
 }
 
 sourceSets {

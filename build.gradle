@@ -52,48 +52,16 @@ compileTestJava {
     options.compilerArgs << '-Xlint:deprecation'
 }
 
-def versions = [
-    commonsCollections4   : '4.4',
-    commonsIo             : '2.7',
-    commonsLang3          : '3.9',
-    divCommonLib          : '1.2.16',
-    feignHttpClient       : '10.7.4',
-    gradlePitest          : '1.4.6',
-    guava                 : '30.1-jre',
-    httpComponents        : '4.5.13',
-    jsonAssert            : '1.2.3',
-    jsonPathAssert        : '2.2.0',
-    junit                 : '4.13.1',
-    lombok                : '1.18.14',
-    pitest                : '1.3.2',
-    puppyCrawl            : '8.29',
-    reformPropertiesVolume: '0.0.4',
-    reformsJavaLogging    : '5.1.7',
-    restAssured           : '4.2.1',
-    serenity              : '2.5.8',
-    serenityCucumber      : '1.9.51',
-    sonarPitest           : '0.5',
-    springBoot            : '2.3.11.RELEASE',
-    springfoxSwagger      : '2.9.2',
-    springOpenFeign       : '2.2.6.RELEASE',
-    spring_security_rsa   : '1.0.9.RELEASE',
-    springSecurityCrypto  : '5.4.5',
-    tomcatEmbed           : '9.0.58',
-    unirest               : '1.4.9',
-    wiremockVersion       : '2.27.2',
-    logbackVersion        : '1.2.10',
-    jackson               : '2.13.2'
-]
-
 dependencyManagement {
     dependencies {
         dependency group: 'org.yaml', name: 'snakeyaml', version: '1.29'
         dependency group: 'org.bouncycastle',name : 'bcprov-jdk15on', version: '1.61'
-        //CVE-2020-36518
-        dependencySet(group: 'com.fasterxml.jackson.core', version: versions.jackson) {
-            entry 'jackson-databind'
+        dependencySet(
+            group: 'com.fasterxml.jackson.core',
+            version: '2.10.0'
+        ) {
             entry 'jackson-core'
-            entry 'jackson-annotations'
+            entry 'jackson-databind'
         }
         dependency group: 'org.glassfish', name: 'jakarta.el', version: '3.0.4'
 
@@ -176,6 +144,38 @@ dependencyCheck {
         assemblyEnabled = false
     }
 }
+
+def versions = [
+    commonsCollections4   : '4.4',
+    commonsIo             : '2.7',
+    commonsLang3          : '3.9',
+    divCommonLib          : '1.2.16',
+    feignHttpClient       : '10.7.4',
+    gradlePitest          : '1.4.6',
+    guava                 : '30.1-jre',
+    httpComponents        : '4.5.13',
+    jsonAssert            : '1.2.3',
+    jsonPathAssert        : '2.2.0',
+    junit                 : '4.13.1',
+    lombok                : '1.18.14',
+    pitest                : '1.3.2',
+    puppyCrawl            : '8.29',
+    reformPropertiesVolume: '0.0.4',
+    reformsJavaLogging    : '5.1.7',
+    restAssured           : '4.2.1',
+    serenity              : '2.5.8',
+    serenityCucumber      : '1.9.51',
+    sonarPitest           : '0.5',
+    springBoot            : '2.3.11.RELEASE',
+    springfoxSwagger      : '2.9.2',
+    springOpenFeign       : '2.2.6.RELEASE',
+    spring_security_rsa   : '1.0.9.RELEASE',
+    springSecurityCrypto  : '5.4.5',
+    tomcatEmbed           : '9.0.58',
+    unirest               : '1.4.9',
+    wiremockVersion       : '2.27.2',
+    logbackVersion        : '1.2.10'
+]
 
 dependencies {
 

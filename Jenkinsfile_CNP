@@ -11,7 +11,7 @@ properties([
     ])
 ])
 
-@Library("Infrastructure")
+@Library("Infrastructure@DTSPO-6559/kv-secret-find")
 
 def type = "java"
 def product = "div"

@@ -19,7 +19,7 @@ module "div-cfs" {
     env                             = var.env
     ilbIp                           = var.ilbIp
     subscription                    = var.subscription
-    appinsights_instrumentation_key = var.appinsights_instrumentation_key
+    appinsights_instrumentation_key = data.azurerm_key_vault_secret.appinsights_secret.value
     is_frontend                     = false
     capacity                        = var.capacity
     common_tags                     = var.common_tags
@@ -35,4 +35,9 @@ module "div-cfs" {
         DOCUMENT_MANAGEMENT_STORE_URL                         = local.dm_store_url
         MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE           = var.health_check_ttl
     }
+}
+
+data "azurerm_key_vault_secret" "appinsights_secret" {
+  name = "AppInsightsInstrumentationKey"
+  key_vault_id = data.azurerm_key_vault.div_key_vault.id
 }

@@ -6,6 +6,10 @@ locals {
     ase_name                  = "core-compute-${var.env}"
     local_env                 = (var.env == "preview" || var.env == "spreview") ? (var.env == "preview" ) ? "aat" : "saat" : var.env
 
+    previewVaultName = "${var.raw_product}-aat"
+    nonPreviewVaultName = "${var.raw_product}-${var.env}"
+    vaultName = (var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName
+
     dm_store_url              = "http://dm-store-${local.local_env}.service.core-compute-${local.local_env}.internal"
 
     asp_name = var.env == "prod" ? "div-cfs-prod" : "${var.raw_product}-${var.env}"

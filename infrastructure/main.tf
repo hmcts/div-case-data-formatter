@@ -6,6 +6,10 @@ locals {
     ase_name                  = "core-compute-${var.env}"
     local_env                 = (var.env == "preview" || var.env == "spreview") ? (var.env == "preview" ) ? "aat" : "saat" : var.env
 
+    previewVaultName = "${var.raw_product}-aat"
+    nonPreviewVaultName = "${var.raw_product}-${var.env}"
+    vaultName = (var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName
+
     dm_store_url              = "http://dm-store-${local.local_env}.service.core-compute-${local.local_env}.internal"
 
     asp_name = var.env == "prod" ? "div-cfs-prod" : "${var.raw_product}-${var.env}"
@@ -19,7 +23,7 @@ module "div-cfs" {
     env                             = var.env
     ilbIp                           = var.ilbIp
     subscription                    = var.subscription
-    appinsights_instrumentation_key = var.appinsights_instrumentation_key
+    appinsights_instrumentation_key = data.azurerm_key_vault_secret.appinsights_secret.value
     is_frontend                     = false
     capacity                        = var.capacity
     common_tags                     = var.common_tags
@@ -35,4 +39,14 @@ module "div-cfs" {
         DOCUMENT_MANAGEMENT_STORE_URL                         = local.dm_store_url
         MANAGEMENT_ENDPOINT_HEALTH_CACHE_TIMETOLIVE           = var.health_check_ttl
     }
+}
+
+data "azurerm_key_vault" "div_key_vault" {
+    name                = local.vaultName
+    resource_group_name = local.vaultName
+}
+
+data "azurerm_key_vault_secret" "appinsights_secret" {
+  name = "AppInsightsInstrumentationKey"
+  key_vault_id = data.azurerm_key_vault.div_key_vault.id
 }

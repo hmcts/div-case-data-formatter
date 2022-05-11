@@ -3,6 +3,10 @@ java:
   aadIdentityName: divorce
   image: hmctspublic.azurecr.io/div/cfs:latest
   ingressHost: "div-cfs-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  autoscaling:
+    enabled: true
+    maxReplicas: 4
+    targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
   environment:
     DOCUMENT_MANAGEMENT_STORE_URL: "http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   keyVaults:

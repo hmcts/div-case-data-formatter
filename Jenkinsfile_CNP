@@ -1,4 +1,5 @@
 #!groovy
+load 'check_additional_test_labels'
 
 properties([
     [
@@ -22,7 +23,7 @@ def channel = '#div-dev'
 def labels = [
     "enable_fortify_scan",
 ]
-def ATLabels = load 'check_additional_test_labels' labels
+def ATLabels = new AdditionalTestLabels(labels)
 
 withPipeline(type , product, component) {
 

@@ -22,7 +22,8 @@ def channel = '#div-dev'
 def labels = [
     "enable_fortify_scan",
 ]
-def ATLabels = load 'check_additional_test_labels' labels
+def ATLabels = load 'check_additional_test_labels'
+ATLabels.checkLabels(labels)
 
 withPipeline(type , product, component) {
 

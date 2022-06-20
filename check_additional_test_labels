@@ -1,0 +1,44 @@
+#!groovy
+import uk.gov.hmcts.contino.GithubAPI
+
+class AdditionalTestLabels {
+    private Labels = []
+    private LabelStates = [:]
+
+    private void setLabelStates() {
+        def states = [:]
+        // Get labels from GitHub repo
+        def repoLabels = new GithubAPI(this).getLabelsbyPattern(env.BRANCH_NAME, "enable_")
+
+        // Check existence of provided label, and store in states map
+        def getLabelState = { label ->
+            if (label == "atLeastOneEnabled") {
+                return
+            }
+            def labelExists = repoLabels.contains(label) ? true : false
+            states.put(label, labelExists)
+        }
+
+        // Iterate over labels List to build LabelStates map
+        this.Labels.each { label -> getLabelState(label) }
+
+        // Hardcode enable_all_tests_and_scans label
+        if (!states.containsKey("enable_all_tests_and_scans")) {
+            getLabelState("enable_all_tests_and_scans")
+        }
+
+        // Check if at least one label is true
+        states.put("atLeastOneEnabled", states.any {key, value -> value == true })
+
+        this.LabelStates = states
+    }
+
+    Boolean getLabelState(label) {
+        return (this.LabelStates.enable_all_tests_and_scans || this.LabelStates.get(label))
+    }
+
+    AdditionalTestLabels(final ArrayList labels) {
+        this.Labels = labels
+        this.setLabelStates()
+    }
+}

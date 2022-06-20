@@ -48,3 +48,5 @@ class AdditionalTestLabels {
         this.AtLeastOneEnabled = this.LabelStates.any {key, value -> value == true }
     }
 }
+
+return new AdditionalTestLabels(labels)

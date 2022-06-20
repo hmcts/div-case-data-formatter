@@ -1,5 +1,5 @@
 #!groovy
-import check_additional_test_labels
+load 'check_additional_test_labels'
 
 properties([
     [

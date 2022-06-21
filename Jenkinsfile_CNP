@@ -1,6 +1,4 @@
 #!groovy
-def catl = load 'check_additional_test_labels.groovy'
-
 properties([
     [
         $class: 'GithubProjectProperty',
@@ -23,6 +21,7 @@ def channel = '#div-dev'
 def labels = [
     "enable_fortify_scan",
 ]
+def catl = load 'check_additional_test_labels.groovy'
 def ATLabels = new catl.AdditionalTestLabels(labels)
 
 withPipeline(type , product, component) {

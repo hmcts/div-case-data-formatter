@@ -6,7 +6,6 @@ class AdditionalTestLabels {
     private LabelStates = [:]
     private AtLeastOneEnabled = false
 
-    @NonCPS
     private void setLabelStates() {
         def states = [:]
         // Get labels from GitHub repo

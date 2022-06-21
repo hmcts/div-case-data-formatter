@@ -1,5 +1,5 @@
 #!groovy
-def catl = fileLoader.fromGit('check_additional_test_labels.groovy', 'https://github.com/hmcts/div-case-data-formatter/div-case-data-formatter.git', 'test_groovy_import', null, '')
+def catl = load 'check_additional_test_labels.groovy'
 
 properties([
     [

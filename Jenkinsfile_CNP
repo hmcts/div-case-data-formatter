@@ -23,7 +23,7 @@ def labels = [
     "enable_fortify_scan",
 ]
 def ATLabels
-node('slave') {
+node() {
     ATLabels = load 'check_additional_test_labels.groovy'
     ATLabels.checkLabels(labels)
 }

@@ -39,7 +39,7 @@ class AdditionalTestLabels {
         return this.AtLeastOneEnabled
     }
 
-    AdditionalTestLabels(final ArrayList labels) {
+    void checkLabels(ArrayList labels) {
         // Define labels
         this.Labels = labels
         // Define label states
@@ -48,3 +48,5 @@ class AdditionalTestLabels {
         this.AtLeastOneEnabled = this.LabelStates.any {key, value -> value == true }
     }
 }
+
+return new AdditionalTestLabels()

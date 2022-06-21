@@ -24,7 +24,7 @@ def labels = [
 ]
 def ATLabels
 node() {
-    ATLabels = load 'check_additional_test_labels.groovy'
+    ATLabels = load '${jenkins_home}/workspace/${job_name}@script/check_additional_test_labels.groovy'
     ATLabels.checkLabels(labels)
 }
 

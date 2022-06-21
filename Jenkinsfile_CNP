@@ -22,7 +22,7 @@ def labels = [
     "enable_fortify_scan",
 ]
 def catl = load 'check_additional_test_labels.groovy'
-def ATLabels = new catl.AdditionalTestLabels(labels)
+def ATLabels = new catl.LabelStates(labels)
 
 withPipeline(type , product, component) {
 

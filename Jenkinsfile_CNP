@@ -71,7 +71,7 @@ def channel = '#div-dev'
 def labels = [
     "enable_fortify_scan",
 ]
-def ATLabels = new catl.AdditionalTestLabels(labels)
+def ATLabels = new AdditionalTestLabels(labels)
 
 withPipeline(type , product, component) {
 

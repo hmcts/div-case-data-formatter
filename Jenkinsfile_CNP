@@ -94,7 +94,7 @@ if (checkLabel("atLeastOneEnabled")) {
     ])
 
     withNightlyPipeline(type, product, component) {
-        onPPR() {
+        onPR() {
             env.TEST_URL = params.URL_TO_TEST
             env.Rules = params.SecurityRules
 

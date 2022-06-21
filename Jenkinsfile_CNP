@@ -1,5 +1,5 @@
 #!groovy
-load 'check_additional_test_labels.groovy'
+def catl = fileLoader.fromGit('check_additional_test_labels.groovy', 'https://github.com/hmcts/div-case-data-formatter/div-case-data-formatter.git', 'test_groovy_import', null, '')
 
 properties([
     [
@@ -23,7 +23,7 @@ def channel = '#div-dev'
 def labels = [
     "enable_fortify_scan",
 ]
-def ATLabels = new AdditionalTestLabels(labels)
+def ATLabels = new catl.AdditionalTestLabels(labels)
 
 withPipeline(type , product, component) {
 

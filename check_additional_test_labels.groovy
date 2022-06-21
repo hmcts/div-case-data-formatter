@@ -25,7 +25,7 @@ class LabelStates {
         // Iterate over labels List to build LabelStates map
         this.Labels.each { label -> getState(label) }
 
-        // Set state of EnableAll label )If a label matching this string exists, all label tests will return True)
+        // Set state of EnableAll label (If a label matching this string exists, all label tests will return True)
         if (!states.containsKey(this.EnableAll)) {
             getState(this.EnableAll)
         }
@@ -36,7 +36,7 @@ class LabelStates {
     Boolean isAllEnabled() {
         return (this.LabelStates[this.EnableAll])
     }
-    
+
     Boolean getLabelState(label) {
         return (this.isAllEnabled() || this.LabelStates.get(label))
     }

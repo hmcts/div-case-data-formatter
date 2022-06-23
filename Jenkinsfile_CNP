@@ -12,7 +12,8 @@ properties([
     ])
 ])
 
-@Library("Infrastructure")
+// @Library("Infrastructure")
+@Library('Infrastructure@<Refactor-GitHubAPI-To-Reduce-API-Calls')
 
 def type = "java"
 def product = "div"
@@ -24,10 +25,11 @@ def labels = [
     "enable_fortify_scan",
 ]
 
-def populateLabelStates(labels) {
+def gitHubAPI = new GithubAPI(this)
+def repoLabels = gitHubAPI.getLabelsbyPattern(env.BRANCH_NAME, "enable_")
+
+def populateLabelStates(repoLabels, labels) {
     def states = [:]
-    // Get labels from GitHub repo
-    def repoLabels = new GithubAPI(this).getLabelsbyPattern(env.BRANCH_NAME, "enable_")
 
     // Check existence of provided label, and store in states map
     def getLabelState = { label ->
@@ -51,10 +53,14 @@ def populateLabelStates(labels) {
 
     return states
 }
-labelStates = populateLabelStates(labels)
+labelStates = populateLabelStates(repoLabels, labels)
 
 def checkLabel(label) {
     return (labelStates.enable_all_tests_and_scans || labelStates.get(label))
+}
+
+def checkLabel2(gitHubAPI, label) {
+    return gitHubAPI.getLabelsbyPattern(env.BRANCH_NAME, "enable_").contains(label)
 }
 
 withPipeline(type , product, component) {
@@ -86,7 +92,7 @@ withPipeline(type , product, component) {
     enableSlackNotifications(channel)
 }
 
-if (checkLabel("atLeastOneEnabled")) {
+if (checkLabel2(gitHubAPI, "atLeastOneEnabled")) {
     properties([
         parameters([
             string(name: 'URL_TO_TEST', defaultValue: 'http://div-cfs-aat.service.core-compute-aat.internal', description: 'The URL you want to run these tests against')
@@ -98,7 +104,7 @@ if (checkLabel("atLeastOneEnabled")) {
             env.TEST_URL = params.URL_TO_TEST
             env.Rules = params.SecurityRules
 
-            if (checkLabel("enable_fortify_scan")) {
+            if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
                 enableFortifyScan()
 
                 after('fortify-scan') {

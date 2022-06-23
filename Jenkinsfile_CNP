@@ -60,7 +60,12 @@ def checkLabel(label) {
 }
 
 def checkLabel2(gitHubAPI, label) {
-    return gitHubAPI.getLabelsbyPattern(env.BRANCH_NAME, "enable_").contains(label)
+    def labels = gitHubAPI.getLabelsbyPattern(env.BRANCH_NAME, "enable_")
+    echo "Calling getLabelsbyPattern returned: ${labels}"
+    echo "Checking labels for: ${label}"
+    def labelExists = labels.contains(label)
+    echo "Label Exists?: ${labelExists}"
+    return labelExists
 }
 
 withPipeline(type , product, component) {

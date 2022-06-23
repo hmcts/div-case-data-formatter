@@ -13,7 +13,7 @@ properties([
 ])
 
 // @Library("Infrastructure")
-@Library('Infrastructure@<Refactor-GitHubAPI-To-Reduce-API-Calls')
+@Library('Infrastructure@Refactor-GitHubAPI-To-Reduce-API-Calls')
 
 def type = "java"
 def product = "div"

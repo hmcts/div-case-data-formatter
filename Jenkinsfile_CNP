@@ -116,6 +116,20 @@ if (checkLabel("atLeastOneEnabled")) {
                     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
                 }
             }
+
+            echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
+            echo "Test 1"
+            if (checkLabel2(gitHubAPI, "enable_test_1")) {
+                echo "Test 1 Label Found"
+            } else {
+                echo "Test 1 Label Not Found"
+            }
+            echo "Test 2"
+            if (checkLabel2(gitHubAPI, "enable_test_2")) {
+                echo "Test 2 Label Found"
+            } else {
+                echo "Test 2 Label Not Found"
+            }
         }
     }
 }

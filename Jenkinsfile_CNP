@@ -95,6 +95,24 @@ withPipeline(type , product, component) {
     }
 
     enableSlackNotifications(channel)
+
+    steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
+    if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
+        steps.echo "Run Fortify Scan Here"
+    }
+
+    steps.echo "Test 1"
+    if (checkLabel2(gitHubAPI, "enable_test_1")) {
+        steps.echo "Test 1 Label Found"
+    } else {
+        steps.echo "Test 1 Label Not Found"
+    }
+    steps.echo "Test 2"
+    if (checkLabel2(gitHubAPI, "enable_test_2")) {
+        steps.echo "Test 2 Label Found"
+    } else {
+        steps.echo "Test 2 Label Not Found"
+    }
 }
 
 if (checkLabel("atLeastOneEnabled")) {
@@ -118,7 +136,7 @@ if (checkLabel("atLeastOneEnabled")) {
 //                }
             }
 
-            steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
+            steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage in Sequential Pipeline"
             steps.echo "Test 1"
             if (checkLabel2(gitHubAPI, "enable_test_1")) {
                 steps.echo "Test 1 Label Found"

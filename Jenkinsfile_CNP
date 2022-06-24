@@ -110,11 +110,12 @@ if (checkLabel("atLeastOneEnabled")) {
             env.Rules = params.SecurityRules
 
             if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
-                enableFortifyScan()
-
-                after('fortify-scan') {
-                    steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
-                }
+                steps.echo "Run Fortify Scan Here"
+//                enableFortifyScan()
+//
+//                after('fortify-scan') {
+//                    steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
+//                }
             }
 
             steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"

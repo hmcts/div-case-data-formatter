@@ -59,12 +59,10 @@ def gitHubAPI = new GithubAPI(this)
 //    return (labelStates.enable_all_tests_and_scans || labelStates.get(label))
 //}
 
-def checkLabel2(gitHubAPI, label) {
-    def labels = gitHubAPI.getLabelsbyPattern(env.BRANCH_NAME, "enable_")
+def checkLabel2(label) {
+    def labelExists = gitHubAPI.checkForLabel(env.BRANCH_NAME, label)
     echo "Branch Name: ${env.BRANCH_NAME}"
-    echo "Calling getLabelsbyPattern returned: ${labels}"
     echo "Checking labels for: ${label}"
-    def labelExists = labels.contains(label)
     echo "Label Exists?: ${labelExists}"
     return labelExists
 }

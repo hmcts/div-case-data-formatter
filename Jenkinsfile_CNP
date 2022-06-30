@@ -98,18 +98,18 @@ withPipeline(type , product, component) {
     steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
 
     steps.echo "Test Fortify Label Check"
-    if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
+    if (checkLabel2("enable_fortify_scan")) {
         steps.echo "Run Fortify Scan Here"
     }
 
     steps.echo "Test 1"
-    if (checkLabel2(gitHubAPI, "enable_test_1")) {
+    if (checkLabel2("enable_test_1")) {
         steps.echo "Test 1 Label Found"
     } else {
         steps.echo "Test 1 Label Not Found"
     }
     steps.echo "Test 2"
-    if (checkLabel2(gitHubAPI, "enable_test_2")) {
+    if (checkLabel2("enable_test_2")) {
         steps.echo "Test 2 Label Found"
     } else {
         steps.echo "Test 2 Label Not Found"
@@ -130,7 +130,7 @@ steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage in Seq
             env.Rules = params.SecurityRules
 
             steps.echo "Test Fortify Label Check (nightly)"
-            if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
+            if (checkLabel2("enable_fortify_scan")) {
                 steps.echo "Run Fortify Scan Here"
 //                enableFortifyScan()
 //
@@ -140,13 +140,13 @@ steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage in Seq
             }
 
             steps.echo "Test 1 (nightly)"
-            if (checkLabel2(gitHubAPI, "enable_test_1")) {
+            if (checkLabel2("enable_test_1")) {
                 steps.echo "Test 1 Label Found"
             } else {
                 steps.echo "Test 1 Label Not Found"
             }
             steps.echo "Test 2 (nightly)"
-            if (checkLabel2(gitHubAPI, "enable_test_2")) {
+            if (checkLabel2("enable_test_2")) {
                 steps.echo "Test 2 Label Found"
             } else {
                 steps.echo "Test 2 Label Not Found"

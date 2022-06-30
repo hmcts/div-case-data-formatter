@@ -38,4 +38,10 @@
         <cve>CVE-2016-1000027</cve>
         <cve>CVE-2022-22968</cve>
     </suppress>
+    <suppress>
+        <notes>
+            Temp suppression for this PR only (used to test changes to github API and Master Pipeline - should not be merged)
+        </notes>
+        <vulnerabilityName>CVE-2022-34305</vulnerabilityName>
+    </suppress>
 </suppressions>

@@ -97,8 +97,8 @@ withPipeline(type , product, component) {
 
     steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
 
-    steps.echo "Test Fortify Label Check"
-    if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
+    steps.echo "Test All Tests and Scans Label Check"
+    if (checkLabel2(gitHubAPI, "enable_all_tests_and_scans")) {
         steps.echo "Run Fortify Scan Here"
     }
 
@@ -129,9 +129,9 @@ withNightlyPipeline(type, product, component) {
         env.TEST_URL = params.URL_TO_TEST
         env.Rules = params.SecurityRules
 
-        steps.echo "Test Fortify Label Check (nightly)"
-        if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
-            steps.echo "Run Fortify Scan Here"
+        steps.echo "Test All Tests and Scans Label Check (nightly)"
+        if (checkLabel2(gitHubAPI, "enable_all_tests_and_scans")) {
+            steps.echo "Run Scans Here"
 //                enableFortifyScan()
 //
 //                after('fortify-scan') {

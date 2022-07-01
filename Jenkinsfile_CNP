@@ -63,8 +63,13 @@ withPipeline(type , product, component) {
 
     steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
 
-//    steps.echo "Test Fortify Label Check"
-//    if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
-//        steps.echo "Run Fortify Scan Here"
-//    }
+    steps.echo "Test Fortify Label Check"
+    if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
+        steps.echo "Run Fortify Scan Here"
+        enableFortifyScan()
+
+        after('fortify-scan') {
+            steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
+        }
+    }
 }

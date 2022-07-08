@@ -21,18 +21,6 @@ def component = "cfs"
 
 def channel = '#div-dev'
 
-def gitHubAPI = new GithubAPI(this)
-
-def checkLabel2(gitHubAPI, label) {
-    def labels = gitHubAPI.getLabelsbyPattern(env.BRANCH_NAME, "enable_")
-    echo "Branch Name: ${env.BRANCH_NAME}"
-    echo "Calling getLabelsbyPattern returned: ${labels}"
-    echo "Checking labels for: ${label}"
-    def labelExists = labels.contains(label)
-    echo "Label Exists?: ${labelExists}"
-    return labelExists
-}
-
 withPipeline(type , product, component) {
 
     enableAksStagingDeployment()
@@ -60,16 +48,4 @@ withPipeline(type , product, component) {
     }
 
     enableSlackNotifications(channel)
-
-    steps.echo "Add Checks For Extra Labels To Validate GitHubAPI Cache Usage"
-
-    steps.echo "Test Fortify Label Check"
-    if (checkLabel2(gitHubAPI, "enable_fortify_scan")) {
-        steps.echo "Run Fortify Scan Here"
-        enableFortifyScan()
-
-        after('fortify-scan') {
-            steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
-        }
-    }
 }

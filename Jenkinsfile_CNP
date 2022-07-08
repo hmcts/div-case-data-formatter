@@ -21,6 +21,8 @@ def component = "cfs"
 
 def channel = '#div-dev'
 
+steps.echo "ChangeMe To Trigger Builds"
+
 withPipeline(type , product, component) {
 
     enableAksStagingDeployment()

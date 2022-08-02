@@ -47,7 +47,6 @@ To run all unit tests please execute following command:
 ./gradlew test
 ```
 
-
 **Mutation tests**
 
 To run all mutation tests execute the following command:
@@ -68,6 +67,16 @@ To run all integration tests locally:
   * Using Intellij: edit Run Configuration and set Environment variables to `http_proxy=http://proxyout.reform.hmcts.net:8080;SPRING_PROFILES_ACTIVE=aat`
 * Run the tests with AAT config using `./gradlew clean functional`
 
+###Running additional tests in the Jenkins PR Pipeline
+
+1. Add one or more appropriate labels to your PR in GitHub. Valid labels are:
+
+- ```enable_fortify_scan```
+
+2. Trigger a build of your PR in Jenkins.  Fortify scans will take place asynchronously as part of the Static Checks/Container Build step.
+- Check the Blue Ocean view for live monitoring, and review the logs once complete for any issues.
+- As Fortify scans execute during the Static Checks/Container Build step, you will need to ensure this is triggered by making a minor change to the PR, such as bumping the chart version.
+
 ## Developing
 
 **Coding style tests**
@@ -77,7 +86,6 @@ To run all checks (including unit tests) please execute following command:
 ```bash
 ./gradlew check
 ```
-
 **Versioning**
 
 We use [SemVer](http://semver.org/) for versioning.

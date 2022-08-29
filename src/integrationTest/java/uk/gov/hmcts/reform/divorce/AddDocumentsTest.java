@@ -13,11 +13,11 @@ public class AddDocumentsTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.adddocuments.context-path}")
     private String contextPath;
 
-//    @Test
-//    public void givenDataIsNull_whenAddDocuments_thenReturnBadRequest() {
-//        Assert.assertEquals(HttpStatus.BAD_REQUEST.value(),
-//            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
-//    }
+    //    @Test
+    //    public void givenDataIsNull_whenAddDocuments_thenReturnBadRequest() {
+    //        Assert.assertEquals(HttpStatus.BAD_REQUEST.value(),
+    //            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
+    //    }
 
     @Test
     public void whenAddDocuments_thenReturnExpected() throws Exception {

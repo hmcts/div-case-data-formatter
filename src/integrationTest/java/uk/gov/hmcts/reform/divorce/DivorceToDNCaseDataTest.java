@@ -16,11 +16,11 @@ public class DivorceToDNCaseDataTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.getdncasedata.context-path}")
     private String contextPath;
 
-//    @Test
-//    public void givenDataIsNull_whenGetAosCaseData_thenReturnBadRequest() {
-//        assertEquals(HttpStatus.BAD_REQUEST.value(),
-//            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
-//    }
+    //    @Test
+    //    public void givenDataIsNull_whenGetAosCaseData_thenReturnBadRequest() {
+    //        assertEquals(HttpStatus.BAD_REQUEST.value(),
+    //            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
+    //    }
 
     @Test
     public void whenGetDnCaseData_thenReturnExpected() throws Exception {

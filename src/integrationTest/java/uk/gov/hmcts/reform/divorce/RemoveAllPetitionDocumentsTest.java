@@ -13,13 +13,13 @@ public class RemoveAllPetitionDocumentsTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.removeallpetitiondocuments.context-path}")
     private String contextPath;
 
-//    @Test
-//    public void givenDataIsNull_whenRemoveAllPetitions_thenReturnBadRequest() {
-//        Assert.assertEquals(
-//            HttpStatus.BAD_REQUEST.value(),
-//            RestUtil.postToRestService(getAPIPath(), getHeaders(),null).getStatusCode()
-//        );
-//    }
+    //    @Test
+    //    public void givenDataIsNull_whenRemoveAllPetitions_thenReturnBadRequest() {
+    //        Assert.assertEquals(
+    //            HttpStatus.BAD_REQUEST.value(),
+    //            RestUtil.postToRestService(getAPIPath(), getHeaders(),null).getStatusCode()
+    //        );
+    //    }
 
     @Test
     public void whenRemoveAllPetitions_thenReturnExpected() throws Exception {

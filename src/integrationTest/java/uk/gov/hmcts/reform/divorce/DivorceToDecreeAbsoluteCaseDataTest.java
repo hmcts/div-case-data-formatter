@@ -11,11 +11,11 @@ public class DivorceToDecreeAbsoluteCaseDataTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.getdacasedata.context-path}")
     private String contextPath;
 
-//    @Test
-//    public void givenDataIsNull_whenGetDaCaseData_thenReturnBadRequest() {
-//        assertEquals(HttpStatus.BAD_REQUEST.value(),
-//            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
-//    }
+    //    @Test
+    //    public void givenDataIsNull_whenGetDaCaseData_thenReturnBadRequest() {
+    //        assertEquals(HttpStatus.BAD_REQUEST.value(),
+    //            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
+    //    }
 
     @Test
     public void whenGetDaCaseData_thenReturnExpected() throws Exception {

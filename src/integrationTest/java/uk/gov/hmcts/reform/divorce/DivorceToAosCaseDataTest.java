@@ -11,11 +11,11 @@ public class DivorceToAosCaseDataTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.getaoscasedata.context-path}")
     private String contextPath;
 
-//    @Test
-//    public void givenDataIsNull_whenGetAosCaseData_thenReturnBadRequest() {
-//        assertEquals(HttpStatus.BAD_REQUEST.value(),
-//            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
-//    }
+    //    @Test
+    //    public void givenDataIsNull_whenGetAosCaseData_thenReturnBadRequest() {
+    //        assertEquals(HttpStatus.BAD_REQUEST.value(),
+    //            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
+    //    }
 
     @Test
     public void whenGetAosCaseData_thenReturnExpected() throws Exception {

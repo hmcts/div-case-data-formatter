@@ -31,9 +31,9 @@ public class DivorceToDNCaseDataTest extends IntegrationTest {
         final Map<String, Object> expectedOutput = getExpected("dn.json");
 
         expectedOutput.put(DN_APPLICATION_SUBMITTED_DATE, new LocalDate().toString(SIMPLE_DATE_FORMAT));
+        System.out.println(response);
+        //final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
-        final Map<String, Object> actualOutput = getActual(response.getBody().asString());
-        System.out.println(actualOutput);
         //assertThat(actualOutput, samePropertyValuesAs(expectedOutput));
     }
 

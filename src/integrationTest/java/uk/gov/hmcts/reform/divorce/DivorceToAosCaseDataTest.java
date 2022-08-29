@@ -23,12 +23,11 @@ public class DivorceToAosCaseDataTest extends IntegrationTest {
             getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_PATH));
 
-        String expectedOutput = ResourceLoader.loadJson(getExpectedContextPath() + "aos.json");
+        //String expectedOutput = ResourceLoader.loadJson(getExpectedContextPath() + "aos.json");
 
-        String actualOutput = response.getBody().asString();
+        //String actualOutput = response.getBody().asString();
 
-        System.out.println(expectedOutput);
-        System.out.println(actualOutput);
+        System.out.println(response);
 
         //JSONAssert.assertEquals(expectedOutput, actualOutput, true);
     }

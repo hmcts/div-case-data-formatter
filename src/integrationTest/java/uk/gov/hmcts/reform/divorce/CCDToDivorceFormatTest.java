@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map;
 
 @RunWith(SerenityParameterizedRunner.class)
 public class CCDToDivorceFormatTest extends IntegrationTest {
@@ -51,12 +50,11 @@ public class CCDToDivorceFormatTest extends IntegrationTest {
             getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_CONTEXT_PATH + input));
 
-        final Map<String, Object> expectedOutput = getExpected(expected);
+        //final Map<String, Object> expectedOutput = getExpected(expected);
 
-        final Map<String, Object> actualOutput = getActual(response.getBody().asString());
+        //final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
-        System.out.println(expectedOutput);
-        System.out.println(actualOutput);
+        System.out.println(response);
 
         //Assert.assertEquals(expectedOutput, actualOutput);
     }

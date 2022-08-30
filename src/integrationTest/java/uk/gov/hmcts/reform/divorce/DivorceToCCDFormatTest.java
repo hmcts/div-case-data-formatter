@@ -76,7 +76,6 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
         updateDocumentsInOutput(DOCUMENTS_GENERATED_JSON_KEY, expectedOutput);
 
         final Map<String, Object> actualOutput = getActual(response.getBody().asString());
-
         Assert.assertEquals(actualOutput, expectedOutput);
     }
 

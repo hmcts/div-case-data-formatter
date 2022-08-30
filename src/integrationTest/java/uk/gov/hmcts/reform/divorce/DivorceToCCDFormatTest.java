@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.junit.annotations.TestData;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -74,9 +75,8 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
         updateDocumentsInOutput(DOCUMENTS_UPLOADED_JSON_KEY, expectedOutput);
         updateDocumentsInOutput(DOCUMENTS_GENERATED_JSON_KEY, expectedOutput);
 
-        //final Map<String, Object> actualOutput = getActual(response.getBody().asString());
-        System.out.println(response);
-        //Assert.assertEquals(actualOutput, expectedOutput);
+        final Map<String, Object> actualOutput = getActual(response.getBody().asString());
+        Assert.assertEquals(actualOutput, expectedOutput);
     }
 
     @Override

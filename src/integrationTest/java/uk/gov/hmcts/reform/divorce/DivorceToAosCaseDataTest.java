@@ -2,7 +2,11 @@ package uk.gov.hmcts.reform.divorce;
 
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+
+import static org.junit.Assert.assertEquals;
 
 public class DivorceToAosCaseDataTest extends IntegrationTest {
     private static final String PAYLOAD_PATH = "fixtures/divorcetoccdmapping/divorce/aos.json";
@@ -11,11 +15,11 @@ public class DivorceToAosCaseDataTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.getaoscasedata.context-path}")
     private String contextPath;
 
-    //    @Test
-    //    public void givenDataIsNull_whenGetAosCaseData_thenReturnBadRequest() {
-    //        assertEquals(HttpStatus.BAD_REQUEST.value(),
-    //            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
-    //    }
+    @Test
+    public void givenDataIsNull_whenGetAosCaseData_thenReturnBadRequest() {
+        assertEquals(HttpStatus.BAD_REQUEST.value(),
+            RestUtil.postToRestService(getAPIPath(), getHeaders(), null).getStatusCode());
+    }
 
     @Test
     public void whenGetAosCaseData_thenReturnExpected() throws Exception {
@@ -23,13 +27,11 @@ public class DivorceToAosCaseDataTest extends IntegrationTest {
             getHeaders(),
             ResourceLoader.loadJson(PAYLOAD_PATH));
 
-        //String expectedOutput = ResourceLoader.loadJson(getExpectedContextPath() + "aos.json");
+        String expectedOutput = ResourceLoader.loadJson(getExpectedContextPath() + "aos.json");
 
-        //String actualOutput = response.getBody().asString();
+        String actualOutput = response.getBody().asString();
 
-        System.out.println(response);
-
-        //JSONAssert.assertEquals(expectedOutput, actualOutput, true);
+        JSONAssert.assertEquals(expectedOutput, actualOutput, true);
     }
 
     @Override

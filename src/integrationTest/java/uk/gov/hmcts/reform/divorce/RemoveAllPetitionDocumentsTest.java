@@ -1,8 +1,12 @@
 package uk.gov.hmcts.reform.divorce;
 
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+
+import java.util.Map;
 
 public class RemoveAllPetitionDocumentsTest extends IntegrationTest {
     private static final String PAYLOAD_PATH = "fixtures/model/ccd/removeAllPetitionDocumentsInput.json";
@@ -11,13 +15,13 @@ public class RemoveAllPetitionDocumentsTest extends IntegrationTest {
     @Value("${case.formatter.service.transform.removeallpetitiondocuments.context-path}")
     private String contextPath;
 
-    //    @Test
-    //    public void givenDataIsNull_whenRemoveAllPetitions_thenReturnBadRequest() {
-    //        Assert.assertEquals(
-    //            HttpStatus.BAD_REQUEST.value(),
-    //            RestUtil.postToRestService(getAPIPath(), getHeaders(),null).getStatusCode()
-    //        );
-    //    }
+    @Test
+    public void givenDataIsNull_whenRemoveAllPetitions_thenReturnBadRequest() {
+        Assert.assertEquals(
+            HttpStatus.BAD_REQUEST.value(),
+            RestUtil.postToRestService(getAPIPath(), getHeaders(),null).getStatusCode()
+        );
+    }
 
     @Test
     public void whenRemoveAllPetitions_thenReturnExpected() throws Exception {
@@ -27,12 +31,11 @@ public class RemoveAllPetitionDocumentsTest extends IntegrationTest {
             ResourceLoader.loadJson(PAYLOAD_PATH)
         );
 
-        //final Map<String, Object> expectedOutput = getExpected("removeAllPetitionDocumentsOutput.json");
+        final Map<String, Object> expectedOutput = getExpected("removeAllPetitionDocumentsOutput.json");
 
-        //final Map<String, Object> actualOutput = getActual(response.getBody().asString());
+        final Map<String, Object> actualOutput = getActual(response.getBody().asString());
 
-        System.out.println(response);
-        //Assert.assertEquals(expectedOutput, actualOutput);
+        Assert.assertEquals(expectedOutput, actualOutput);
     }
 
     @Override

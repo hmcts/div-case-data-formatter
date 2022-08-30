@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce;
 
+import io.restassured.RestAssured;
 import lombok.extern.slf4j.Slf4j;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit.spring.integration.SpringIntegrationMethodRule;
@@ -38,6 +39,8 @@ public abstract class IntegrationTest {
 
     @PostConstruct
     public void init() {
+        RestAssured.useRelaxedHTTPSValidation();
+        
         if (!Strings.isNullOrEmpty(httpProxy)) {
             try {
                 URL proxy = new URL(httpProxy);

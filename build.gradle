@@ -88,6 +88,10 @@ dependencyManagement {
             entry 'spring-web'
             entry 'spring-webmvc'
         }
+
+        dependencySet(group: 'org.yaml', version: '1.31') {
+            entry 'snakeyaml'
+        }
     }
 }
 

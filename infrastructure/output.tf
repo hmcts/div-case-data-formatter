@@ -1,7 +1,7 @@
 output "test_environment" {
-    value = local.local_env
+    value = "${var.env}"
 }
 
 output "document_management_store_url" {
-    value = local.dm_store_url
+    value = "http://dm-store-${var.env}.service.core-compute-${var.env}.internal"
 }

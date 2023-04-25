@@ -165,6 +165,7 @@
         <notes><![CDATA[file name: spring-context-5.2.22.RELEASE.jar]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-context@.*$</packageUrl>
         <cve>CVE-2023-20861</cve>
+        <cve>CVE-2023-20863</cve>
      </suppress>
      <suppress>
         <notes><![CDATA[file name: spring-core-5.2.22.RELEASE.jar]]></notes>

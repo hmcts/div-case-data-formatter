@@ -3,4 +3,4 @@
 document:
     management:
         store:
-            url: ${DOCUMENT_MANAGEMENT_STORE_URL:http://dm-store-aat.aat.platform.hmcts.net}
+            url: ${DOCUMENT_MANAGEMENT_STORE_URL:http://dm-store-aat.service.core-compute-aat.internal}

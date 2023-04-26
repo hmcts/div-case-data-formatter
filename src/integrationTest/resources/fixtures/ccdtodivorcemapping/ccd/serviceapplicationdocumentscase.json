@@ -181,9 +181,9 @@
             "id": "186c518a-dcd3-4ecb-8062-24a2fbe36ca2",
             "value": {
                 "DocumentLink": {
-                    "document_url": "http://dm-store-aat.service.core-compute-aat.internal/documents/8e1dbf06-6d2f-4ca7-9361-c84c02765e60",
+                    "document_url": "http://dm-store-aat.aat.platform.hmcts.net/documents/8e1dbf06-6d2f-4ca7-9361-c84c02765e60",
                     "document_filename": "d8petition1557498821211845.pdf",
-                    "document_binary_url": "http://dm-store-aat.service.core-compute-aat.internal/documents/8e1dbf06-6d2f-4ca7-9361-c84c02765e60/binary"
+                    "document_binary_url": "http://dm-store-aat.aat.platform.hmcts.net/documents/8e1dbf06-6d2f-4ca7-9361-c84c02765e60/binary"
                 },
                 "DocumentType": "petition",
                 "DocumentComment": null,

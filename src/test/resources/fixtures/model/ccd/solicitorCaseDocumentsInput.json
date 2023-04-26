@@ -73,9 +73,9 @@
                 "id": "40610c8b-4c9d-4b8d-b047-719631ba38b2",
                 "value": {
                     "DocumentLink": {
-                        "document_url": "http://dm-store-aat.service.core-compute-aat.internal:443/documents/bba741e7-cec8-42c2-bc69-465a01da3689",
+                        "document_url": "http://dm-store-aat.aat.platform.hmcts.net:443/documents/bba741e7-cec8-42c2-bc69-465a01da3689",
                         "document_filename": "PBAOrderSummary.png",
-                        "document_binary_url": "http://dm-store-aat.service.core-compute-aat.internal:443/documents/bba741e7-cec8-42c2-bc69-465a01da3689/binary"
+                        "document_binary_url": "http://dm-store-aat.aat.platform.hmcts.net:443/documents/bba741e7-cec8-42c2-bc69-465a01da3689/binary"
                     },
                     "DocumentType": "marriageCert",
                     "DocumentComment": "Some comment",

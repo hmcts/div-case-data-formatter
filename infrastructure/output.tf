@@ -3,5 +3,5 @@ output "test_environment" {
 }
 
 output "document_management_store_url" {
-    value = "http://dm-store-${var.env}.service.core-compute-${var.env}.internal"
+    value = "http://dm-store-${var.env}.${var.env}.platform.hmcts.net"
 }

@@ -31,6 +31,7 @@
         <notes><![CDATA[file name: jackson-databind-2.10.0.jar]]></notes>
         <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-databind@.*$</packageUrl>
         <cve>CVE-2020-36518</cve>
+        <cve>CVE-2021-46877</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[file name: jackson-databind-2.13.3.jar]]></notes>

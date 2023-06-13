@@ -13,11 +13,11 @@ plugins {
     id 'application'
     id 'checkstyle'
     id 'com.github.ben-manes.versions' version '0.36.0'
-    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'jacoco'
     id 'org.owasp.dependencycheck' version '8.0.2'
     id 'org.sonarqube' version '3.3'
-    id 'org.springframework.boot' version '2.3.11.RELEASE'
+    id 'org.springframework.boot' version '2.7.12'
     id 'info.solidsoft.pitest' version '1.5.2'
 }
 
@@ -76,7 +76,7 @@ dependencyManagement {
         }
 
         //CVE-2022-22965, CVE-2022-22971
-        dependencySet(group: 'org.springframework', version: '5.2.22.RELEASE') {
+        dependencySet(group: 'org.springframework', version: '5.3.27') {
             entry 'spring-aop'
             entry 'spring-beans'
             entry 'spring-context'
@@ -112,13 +112,6 @@ distributions {
     }
 }
 
-checkstyle {
-    maxWarnings = 0
-    toolVersion = '8.29'
-    // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
-    configDir = new File(rootDir, 'config/checkstyle')
-}
-
 sourceSets {
     integrationTest {
         java {
@@ -135,6 +128,10 @@ sourceSets {
 configurations {
     integrationTestImplementation.extendsFrom testImplementation
     integrationTestRuntime.extendsFrom testRuntime
+}
+
+processTestResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
@@ -170,7 +167,7 @@ def versions = [
     serenity              : '2.5.8',
     serenityCucumber      : '1.9.51',
     sonarPitest           : '0.5',
-    springBoot            : '2.3.11.RELEASE',
+    springBoot            : '2.7.12',
     springfoxSwagger      : '2.9.2',
     springOpenFeign       : '2.2.6.RELEASE',
     spring_security_rsa   : '1.0.9.RELEASE',
@@ -215,7 +212,6 @@ dependencies {
     implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: versions.feignHttpClient
 
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: versions.springBoot
-    implementation group: 'com.puppycrawl.tools', name: 'checkstyle', version: versions.puppyCrawl
     implementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     implementation(group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger)
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
@@ -237,17 +233,17 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:${versions.lombok}")
     implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 
-    testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: versions.wiremockVersion
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
-    testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: versions.jsonPathAssert
-    testCompile('com.github.hmcts:fortify-client:1.2.0:all')
+    testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: versions.wiremockVersion
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+    testImplementation group: 'com.jayway.jsonpath', name: 'json-path-assert', version: versions.jsonPathAssert
+    testImplementation('com.github.hmcts:fortify-client:1.2.0:all')
 
-    runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version: versions.springBoot
+    runtimeOnly group: 'org.springframework.boot', name: 'spring-boot-devtools', version: versions.springBoot
 
     //integration test
     integrationTestImplementation group: 'com.mashape.unirest', name: 'unirest-java', version: versions.unirest
     integrationTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
-    integrationTestCompile group: 'io.rest-assured', name: 'rest-assured-all', version: versions.restAssured
+    integrationTestImplementation group: 'io.rest-assured', name: 'rest-assured-all', version: versions.restAssured
     integrationTestImplementation group: 'junit', name: 'junit', version: versions.junit
     integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
     integrationTestImplementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: versions.serenityCucumber
@@ -286,7 +282,6 @@ task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verificatio
 
 task bootRunAat(type: BootRun, description: 'Runs the app using AAT config', dependsOn: 'classes', group: 'Application') {
     environment "http_proxy", "http://proxyout.reform.hmcts.net:8080"
-    main = bootJar.mainClassName
     doFirst() {
         classpath = sourceSets.main.runtimeClasspath
         systemProperties = System.properties
@@ -378,4 +373,16 @@ task fortifyScan(type: JavaExec)  {
     main = "uk.gov.hmcts.fortifyclient.FortifyClientMainApp"
     classpath += sourceSets.test.runtimeClasspath
     jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+}
+
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.withType(Tar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.withType(Zip) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

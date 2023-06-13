@@ -3,7 +3,8 @@ package uk.gov.hmcts.reform.divorce.caseformatterservice.service.impl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.collections.CollectionUtils;
+//import org.apache.commons.collections.CollectionUtils;
+import org.springframework.util.CollectionUtils;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.caseformatterservice.service.CaseFormatterService;
 import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToAosCaseMapper;
@@ -63,7 +64,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
             throw new IllegalArgumentException("Existing case data must not be null.");
         }
 
-        if (CollectionUtils.isNotEmpty(generatedDocumentInfos)) {
+        if (!CollectionUtils.isEmpty(generatedDocumentInfos)) {
             List<CollectionMember<Document>> resultDocuments = new ArrayList<>();
 
             List<CollectionMember<Document>> newDocuments =
@@ -80,7 +81,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                     new TypeReference<>() {
                     });
 
-            if (CollectionUtils.isNotEmpty(documentsGenerated)) {
+            if (!CollectionUtils.isEmpty(documentsGenerated)) {
                 List<CollectionMember<Document>> existingDocuments = documentsGenerated.stream()
                     .filter(documentCollectionMember ->
                         GENERIC_DOCUMENT_TYPE.equals(documentCollectionMember.getValue().getDocumentType())
@@ -114,7 +115,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                 new TypeReference<>() {
                 });
 
-        if (CollectionUtils.isNotEmpty(allDocuments)) {
+        if (!CollectionUtils.isEmpty(allDocuments)) {
             allDocuments.removeIf(documents -> isDocumentType(documents, documentType));
             coreCaseData.replace(D8_DOCUMENTS_GENERATED_CCD_FIELD, allDocuments);
         }

@@ -53,10 +53,13 @@ public class TransformToDivorceFormatITest {
             .andExpect(status().isOk())
             .andReturn();
 
-        final DivorceSession actualDivorceSession = convertJsonToObject(result.getResponse().getContentAsString(), DivorceSession.class);
+        final DivorceSession actualDivorceSession =
+            convertJsonToObject(result.getResponse().getContentAsString(), DivorceSession.class);
 
-        final DivorceSession expectedDivorceSession = retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
-        JSONAssert.assertEquals(convertObjectToJson(expectedDivorceSession), convertObjectToJson(actualDivorceSession), true);
+        final DivorceSession expectedDivorceSession =
+            retrieveFileContentsAsObject(EXPECTED_PAYLOAD_PATH, DivorceSession.class);
+        JSONAssert.assertEquals(convertObjectToJson(expectedDivorceSession),
+            convertObjectToJson(actualDivorceSession), true);
     }
 
 }

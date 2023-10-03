@@ -57,7 +57,8 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
-    public Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos) {
+    public Map<String, Object> addDocuments(Map<String, Object> coreCaseData,
+                                            List<GeneratedDocumentInfo> generatedDocumentInfos) {
 
         if (coreCaseData == null) {
             throw new IllegalArgumentException("Existing case data must not be null.");

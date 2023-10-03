@@ -19,8 +19,24 @@ def component = "cfs"
 
 def channel = '#div-dev'
 
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+    [$class     : 'AzureKeyVaultSecret',
+     secretType : 'Secret',
+     name       : secretName,
+     version    : '',
+     envVariable: envVar
+    ]
+}
+
+def secrets = [
+    'div-${env}': [
+        secret("AppInsightsInstrumentationKey", "azure.application-insights.instrumentation-key")
+    ]
+]
+
 withPipeline(type , product, component) {
 
+    loadVaultSecrets(secrets)
     enableAksStagingDeployment()
     disableLegacyDeployment()
 

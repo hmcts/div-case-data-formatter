@@ -9,6 +9,8 @@ spring:
     static-locations:
   main:
     allow-bean-definition-overriding: true
+  config:
+    import: optional:configtree:/mnt/secrets/div/
 
 server:
   port: 4011

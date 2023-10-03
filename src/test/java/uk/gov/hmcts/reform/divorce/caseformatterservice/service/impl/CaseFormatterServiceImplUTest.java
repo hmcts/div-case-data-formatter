@@ -234,13 +234,15 @@ public class CaseFormatterServiceImplUTest {
         when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo3)).thenReturn(document3);
 
         final Map<String, Object> expected =
-            Collections.singletonMap(D8_DOCUMENTS_GENERATED_CCD_FIELD, Arrays.asList(document5, document1, document2, document3));
+            Collections.singletonMap(D8_DOCUMENTS_GENERATED_CCD_FIELD,
+                Arrays.asList(document5, document1, document2, document3));
 
         final Map<String, Object> input = new HashMap<>();
         input.put(D8_DOCUMENTS_GENERATED_CCD_FIELD, Arrays.asList(document4, document5));
 
         DocumentUpdateRequest documentUpdateRequest = new DocumentUpdateRequest();
-        documentUpdateRequest.setDocuments(Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2, generatedDocumentInfo3));
+        documentUpdateRequest.setDocuments(
+            Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2, generatedDocumentInfo3));
         documentUpdateRequest.setCaseData(input);
 
         Map<String, Object> actual = classUnderTest.addDocuments(input,

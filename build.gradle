@@ -309,12 +309,15 @@ dependencies {
     integrationTestImplementation group: 'org.skyscreamer', name: 'jsonassert', version: versions.jsonAssert
     integrationTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 
-    testCompileOnly "junit:junit:4.12"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${versions.junit}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${versions.junit}"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:${versions.junit}"
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit
+
+    integrationTestImplementation(sourceSets.test.output)
+    integrationTestAnnotationProcessor("org.projectlombok:lombok:${versions.lombok}")
+    integrationTestImplementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 }
 
 sourceSets {
@@ -328,12 +331,6 @@ sourceSets {
             srcDir('src/integrationTest/resources')
         }
     }
-}
-
-dependencies {
-    integrationTestImplementation(sourceSets.test.output)
-    integrationTestAnnotationProcessor("org.projectlombok:lombok:${versions.lombok}")
-    integrationTestImplementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 }
 
 task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verification') {

@@ -203,4 +203,9 @@
         <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-core@.*$</packageUrl>
         <cve>CVE-2022-45688</cve>
     </suppress>
+    <suppress>
+        <notes><![CDATA[Defunct service]]></notes>
+        <cve>CVE-2023-34047</cve>
+        <cve>CVE-2023-35116</cve>
+    </suppress>
 </suppressions>

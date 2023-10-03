@@ -6,6 +6,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -16,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Stream;
 
 @ExtendWith(SpringExtension.class)
 public class DivorceToCCDFormatTest extends IntegrationTest {
@@ -32,36 +36,28 @@ public class DivorceToCCDFormatTest extends IntegrationTest {
     @Value("${document.management.store.url}")
     private String documentManagementStoreUrl;
 
-    private final String input;
-    private final String expected;
-
-    public DivorceToCCDFormatTest(String input, String expected) {
-        this.input = input;
-        this.expected = expected;
+    public static Stream<Arguments> testData() {
+        return Stream.of(
+            Arguments.of("additional-payment.json", "additionalpayment.json"),
+            Arguments.of("addresses.json", "addresscase.json"),
+            Arguments.of("d8-document.json", "d8document.json"),
+            Arguments.of("how-name-changed.json", "hownamechanged.json"),
+            Arguments.of("jurisdiction-6-12.json", "jurisdiction612.json"),
+            Arguments.of("jurisdiction-all.json", "jurisdictionall.json"),
+            Arguments.of("overwrite-payment.json", "overwritepayment.json"),
+            Arguments.of("payment-id-only.json", "paymentidonly.json"),
+            Arguments.of("payment.json", "paymentcase.json"),
+            Arguments.of("reason-adultery.json", "reasonadultery.json"),
+            Arguments.of("reason-desertion.json", "reasondesertion.json"),
+            Arguments.of("reason-separation.json", "reasonseparation.json"),
+            Arguments.of("reason-unreasonable-behaviour.json", "reasonunreasonablebehaviour.json"),
+            Arguments.of("same-sex.json", "samesex.json")
+        );
     }
 
-    @TestData
-    public static Collection<Object[]> testData() {
-        return Arrays.asList(new Object[][]{
-            {"additional-payment.json", "additionalpayment.json"},
-            {"addresses.json", "addresscase.json"},
-            {"d8-document.json", "d8document.json"},
-            {"how-name-changed.json", "hownamechanged.json"},
-            {"jurisdiction-6-12.json", "jurisdiction612.json"},
-            {"jurisdiction-all.json", "jurisdictionall.json"},
-            {"overwrite-payment.json", "overwritepayment.json"},
-            {"payment-id-only.json", "paymentidonly.json"},
-            {"payment.json", "paymentcase.json"},
-            {"reason-adultery.json", "reasonadultery.json"},
-            {"reason-desertion.json", "reasondesertion.json"},
-            {"reason-separation.json", "reasonseparation.json"},
-            {"reason-unreasonable-behaviour.json", "reasonunreasonablebehaviour.json"},
-            {"same-sex.json", "samesex.json"}
-        });
-    }
-
-    @Test
-    public void whenTransformToCCDFormat_thenReturnExpected() throws Exception {
+    @ParameterizedTest
+    @MethodSource("testData")
+    public void whenTransformToCCDFormat_thenReturnExpected(String input, String expected) throws Exception {
         final Response response = RestUtil.postToRestService(getAPIPath(),
             getHeaders("remove_me"),
             ResourceLoader.loadJson(PAYLOAD_CONTEXT_PATH + input));

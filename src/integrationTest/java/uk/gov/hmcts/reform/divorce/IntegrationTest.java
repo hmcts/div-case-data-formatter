@@ -2,15 +2,15 @@ package uk.gov.hmcts.reform.divorce;
 
 import io.restassured.RestAssured;
 import lombok.extern.slf4j.Slf4j;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.junit.spring.integration.SpringIntegrationMethodRule;
 import org.assertj.core.util.Strings;
 import org.junit.Rule;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -20,7 +20,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 @Slf4j
-@RunWith(SerenityRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {ServiceContextConfiguration.class})
 public abstract class IntegrationTest {
 
@@ -40,7 +40,7 @@ public abstract class IntegrationTest {
     @PostConstruct
     public void init() {
         RestAssured.useRelaxedHTTPSValidation();
-        
+
         if (!Strings.isNullOrEmpty(httpProxy)) {
             try {
                 URL proxy = new URL(httpProxy);

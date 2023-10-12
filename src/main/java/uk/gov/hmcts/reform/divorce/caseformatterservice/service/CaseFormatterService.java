@@ -18,7 +18,8 @@ public interface CaseFormatterService {
 
     DivorceSession transformToDivorceSession(CoreCaseData coreCaseData);
 
-    Map<String, Object> addDocuments(Map<String, Object> coreCaseData, List<GeneratedDocumentInfo> generatedDocumentInfos);
+    Map<String, Object> addDocuments(Map<String, Object> coreCaseData,
+                                     List<GeneratedDocumentInfo> generatedDocumentInfos);
 
     Map<String, Object> removeAllPetitionDocuments(Map<String, Object> coreCaseData);
 

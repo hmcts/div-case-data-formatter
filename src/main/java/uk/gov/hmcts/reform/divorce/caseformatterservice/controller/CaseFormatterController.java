@@ -97,7 +97,8 @@ public class CaseFormatterController {
     }
 
     @PostMapping(path = "/remove/documents/{documentType}")
-    @ApiOperation(value = "Given a case in CCD format removes all document of indicated type from generated documents collection")
+    @ApiOperation(value = "Given a case in CCD format removes all document"
+        + " of indicated type from generated documents collection")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "D8DocumentsGenerated values after CCD update", response = Map.class)})
     public ResponseEntity<Map<String, Object>> removeDocumentByType(
@@ -127,12 +128,15 @@ public class CaseFormatterController {
     }
 
     @PostMapping(path = "/to-dn-clarification-format")
-    @ApiOperation(value = "Given a case in Divorce format, will extract the DN Clarification data and convert it to CCD format")
+    @ApiOperation(value = "Given a case in Divorce format, will extract the"
+        + " DN Clarification data and convert it to CCD format")
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "Case transformed into DN Clarification format", response = DnCaseData.class),
+        @ApiResponse(code = 200, message = "Case transformed into DN Clarification format",
+            response = DnCaseData.class),
     })
     public ResponseEntity<DnRefusalCaseData> getDnClarificationCaseData(
-        @RequestBody @ApiParam(value = "Divorce CCD and Session data", required = true) DivorceCaseWrapper divorceCaseWrapper) {
+        @RequestBody @ApiParam(value = "Divorce CCD and Session data", required = true)
+        DivorceCaseWrapper divorceCaseWrapper) {
         return ResponseEntity.ok(caseFormatterService.getDnClarificationCaseData(divorceCaseWrapper));
     }
 

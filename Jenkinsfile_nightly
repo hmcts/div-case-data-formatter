@@ -15,10 +15,18 @@ def type = "java"
 def product = "div"
 def component = "cfs"
 
+def secrets = [
+    'div-${env}': [
+        secret("AppInsightsInstrumentationKey", "azure.application-insights.instrumentation-key")
+    ]
+]
+
 withNightlyPipeline(type, product, component) {
     env.TEST_URL = params.URL_TO_TEST
 
     env.Rules = params.SecurityRules
+
+    loadVaultSecrets(secrets)
     enableMutationTest()
     enableFortifyScan()
 

@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    propertiesvolume:
-      enabled: true
-      prefixed: false
-      paths: /mnt/secrets/div
-      aliases:
-        AppInsightsInstrumentationKey: azure.application-insights.instrumentation-key

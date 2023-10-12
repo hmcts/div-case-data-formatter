@@ -7,7 +7,7 @@ For example this will convert the Front End Session Data to CCD data format and 
 
 **Prerequisites**
 
-- [JDK 11](https://openjdk.java.net)
+- [JDK 17](https://openjdk.java.net)
 - [Docker](https://www.docker.com)
 
 **Building**

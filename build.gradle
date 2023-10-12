@@ -187,7 +187,7 @@ def versions = [
     commonsCollections4   : '4.4',
     commonsIo             : '2.7',
     commonsLang3          : '3.9',
-    divCommonLib          : '1.2.16',
+    divCommonLib          : '1.2.21_DFR-829',
     feignHttpClient       : '10.7.4',
     gradlePitest          : '1.4.6',
     guava                 : '32.1.2-jre',

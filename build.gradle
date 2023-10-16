@@ -191,7 +191,7 @@ def versions = [
     feignHttpClient       : '10.7.4',
     gradlePitest          : '1.4.6',
     guava                 : '32.1.3-jre',
-    httpComponents        : '4.5.13',
+    httpComponents        : '4.5.14',
     jsonAssert            : '1.2.3',
     jsonPathAssert        : '2.2.0',
     junit                 : '5.9.3',

@@ -185,7 +185,7 @@ dependencyCheck {
 
 def versions = [
     commonsCollections4   : '4.4',
-    commonsIo             : '2.7',
+    commonsIo             : '2.14.0',
     commonsLang3          : '3.9',
     divCommonLib          : '1.2.21_DFR-829',
     feignHttpClient       : '10.7.4',

@@ -194,7 +194,7 @@ def versions = [
     httpComponents        : '4.5.14',
     jsonAssert            : '1.5.1',
     jsonPathAssert        : '2.8.0',
-    junit                 : '5.9.3',
+    junit                 : '5.10.0',
     lombok                : '1.18.30',
     pitest                : '1.15.2',
     puppyCrawl            : '8.45.1',

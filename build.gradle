@@ -200,7 +200,7 @@ def versions = [
     puppyCrawl            : '8.45.1',
     reformPropertiesVolume: '0.1.0',
     reformsJavaLogging    : '5.1.7',
-    restAssured           : '4.2.1',
+    restAssured           : '4.5.1',
     serenity              : '2.5.8',
     serenityCucumber      : '1.9.51',
     sonarPitest           : '0.5',

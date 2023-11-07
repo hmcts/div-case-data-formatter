@@ -211,7 +211,7 @@ def versions = [
     springSecurityCrypto  : '5.8.8',
     tomcatEmbed           : '9.0.82',
     unirest               : '1.4.9',
-    wiremockVersion       : '2.27.2',
+    wiremockVersion       : '3.0.1',
     logbackVersion        : '1.2.10'
 ]
 

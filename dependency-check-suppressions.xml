@@ -221,7 +221,7 @@
     <suppress>
         <notes><![CDATA[file name: spring-boot-2.7.17.jar]]></notes>
         <packageUrl regex="true">^pkg:maven/org.springframework.boot/spring-boot@1.2.10@.*$</packageUrl>
-        <cve> CVE-2023-34055</cve>
+        <cve>CVE-2023-34055</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[file name: spring-boot-actuator-2.7.17.jar]]></notes>

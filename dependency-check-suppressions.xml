@@ -305,4 +305,9 @@
         <packageUrl regex="true">^pkg:maven/org.springframework.boot/spring-boot-autoconfigure@.*$</packageUrl>
         <cve>CVE-2023-34055</cve>
     </suppress>
+    <suppress>
+        <notes><![CDATA[file name:  spring-boot-2.7.17.jar]]></notes>
+        <packageUrl regex="true">^pkg:maven/org.springframework.boot/spring-boot@.*$</packageUrl>
+        <cve>CVE-2023-34055</cve>
+    </suppress>
 </suppressions>

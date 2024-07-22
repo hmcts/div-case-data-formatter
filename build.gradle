@@ -87,7 +87,7 @@ dependencyManagement {
             entry 'jackson-core'
             entry 'jackson-databind'
         }
-        dependency group: 'org.glassfish', name: 'jakarta.el', version: '3.0.4'
+        dependency group: 'org.glassfish', name: 'jakarta.el', version: '4.0.2'
 
         // CVE-2018-10237 - Unbounded memory allocation
         dependencySet(group: 'com.google.guava', version: '31.1-jre') {

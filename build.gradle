@@ -6,7 +6,6 @@ buildscript {
         springCloudBomVersion = "2021.0.8"
     }
     repositories {
-        mavenLocal()
         mavenCentral()
         maven { url "https://jitpack.io" }
     }
@@ -26,7 +25,7 @@ plugins {
     id 'org.sonarqube' version '3.5.0.2730'
     id 'org.springframework.boot' version '2.7.17'
     id 'info.solidsoft.pitest' version '1.15.0'
-    id 'uk.gov.hmcts.java' version '0.12.47'
+    id 'uk.gov.hmcts.java' version '0.12.63'
 }
 
 apply plugin: 'checkstyle'
@@ -121,9 +120,6 @@ dependencyManagement {
 
 repositories {
     mavenCentral()
-    jcenter()
-    maven { url 'https://repo.spring.io/libs-milestone' }
-    maven { url "https://repo.maven.apache.org/maven2" }
     maven { url "https://jitpack.io" }
 }
 
@@ -199,7 +195,7 @@ def versions = [
     pitest                : '1.15.3',
     puppyCrawl            : '8.45.1',
     reformPropertiesVolume: '0.1.0',
-    reformsJavaLogging    : '5.1.7',
+    reformsJavaLogging    : '6.1.6',
     restAssured           : '4.5.1',
     serenity              : '2.6.0',
     serenityCucumber      : '1.9.51',
@@ -404,9 +400,9 @@ jacocoTestReport {
     executionData(test)
 
     reports {
-        xml.enabled = true
-        html.enabled = true
-        xml.destination file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+        xml.required = true
+        html.required = true
+        xml.outputLocation = file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
 

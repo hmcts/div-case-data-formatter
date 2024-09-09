@@ -255,8 +255,6 @@ dependencies {
     implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformsJavaLogging
     implementation group: 'com.github.hmcts.java-logging', name: 'logging-httpcomponents', version: versions.reformsJavaLogging
     implementation group: 'com.github.hmcts.java-logging', name: 'logging-spring', version: versions.reformsJavaLogging
-//    implementation group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformsJavaLogging
-//    implementation group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformsJavaLogging
 
     implementation group: 'org.pitest', name: 'pitest', version: versions.pitest
     implementation group: 'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest

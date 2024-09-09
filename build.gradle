@@ -141,7 +141,7 @@ checkstyle.maxWarnings(0)
 tasks.withType(Checkstyle).each { checkstyleTask ->
     checkstyleTask.doLast {
         reports.all { report ->
-            def outputFile = report.destination
+            def outputFile = report.outputLocation.asFile.get()
             if (outputFile.exists() && outputFile.text.contains("<error ")) {
                 throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
             }

@@ -119,6 +119,13 @@ dependencyManagement {
             entry 'logback-core'
             entry 'logback-classic'
         }
+
+        //CVE-2023-33202
+        dependencySet(group: 'org.bouncycastle', version: '1.78.1') {
+            entry 'bcprov-jdk18on'
+            entry 'bcpkix-jdk18on'
+            entry 'bcpg-jdk18on'
+        }
     }
 }
 

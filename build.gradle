@@ -6,6 +6,7 @@ buildscript {
         springCloudBomVersion = "2021.0.8"
     }
     repositories {
+        mavenLocal()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -76,6 +77,7 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudBomVersion}"
     }
     dependencies {
+        dependency group: 'org.bouncycastle',name : 'bcprov-jdk15on', version: '1.70'
         dependencySet(
             group: 'com.fasterxml.jackson.core',
             version: '2.10.0'
@@ -111,19 +113,6 @@ dependencyManagement {
 
         dependencySet(group: 'org.yaml', version: '1.33') {
             entry 'snakeyaml'
-        }
-
-        //CVE-2023-6378, CVE-2023-6481
-        dependencySet(group: 'ch.qos.logback', version: '1.2.13') {
-            entry 'logback-core'
-            entry 'logback-classic'
-        }
-
-        //CVE-2023-33202
-        dependencySet(group: 'org.bouncycastle', version: '1.78.1') {
-            entry 'bcprov-jdk18on'
-            entry 'bcpkix-jdk18on'
-            entry 'bcpg-jdk18on'
         }
     }
 }

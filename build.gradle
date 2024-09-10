@@ -6,9 +6,6 @@ buildscript {
         springCloudBomVersion = "2021.0.8"
     }
     repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -121,17 +118,6 @@ dependencyManagement {
         dependencySet(group: 'ch.qos.logback', version: '1.2.13') {
             entry 'logback-core'
             entry 'logback-classic'
-        }
-
-        //CVE-2023-33202
-        dependencySet(group: 'org.bouncycastle', version: '1.77') {
-            entry 'bcprov-jdk15on'
-            entry 'bouncy-castle-crypto-package'
-            entry 'bouncy_castle_crypto_package'
-            entry 'bouncy_castle_for_java'
-            entry 'legion-of-the-bouncy-castle'
-            entry 'legion-of-the-bouncy-castle-java-crytography-api'
-            entry 'the_bouncy_castle_crypto_package_for_java'
         }
     }
 }

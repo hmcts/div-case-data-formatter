@@ -113,11 +113,11 @@
         <cve>CVE-2023-28708</cve>
     </suppress>
     <suppress>
-   <notes><![CDATA[file name: tomcat-embed-websocket-9.0.68.jar]]></notes>
-   <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
-   <cve>CVE-2022-45143</cve>
-   <cve>CVE-2023-28708</cve>
-</suppress>
+       <notes><![CDATA[file name: tomcat-embed-websocket-9.0.68.jar]]></notes>
+       <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
+       <cve>CVE-2022-45143</cve>
+       <cve>CVE-2023-28708</cve>
+    </suppress>
     <suppress>
         <notes><![CDATA[file name: bcprov-jdk15on-1.61.jar]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.bouncycastle/bcprov\-jdk15on@.*$</packageUrl>
@@ -309,5 +309,8 @@
         <notes><![CDATA[file name:  spring-boot-2.7.17.jar]]></notes>
         <packageUrl regex="true">^pkg:maven/org.springframework.boot/spring-boot@.*$</packageUrl>
         <cve>CVE-2023-34055</cve>
+    </suppress>
+    <suppress>
+        <cve>CVE-2023-6481</cve>
     </suppress>
 </suppressions>

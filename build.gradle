@@ -133,7 +133,7 @@ distributions {
 }
 
 checkstyle {
-    maxWarnings = 6
+    maxWarnings = 0
     toolVersion = '10.14.0'
     getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }

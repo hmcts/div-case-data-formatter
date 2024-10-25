@@ -212,7 +212,7 @@ def versions = [
     tomcatEmbed           : '9.0.82',
     unirest               : '1.4.9',
     wiremockVersion       : '2.27.2',
-    logbackVersion        : '1.2.10'
+    logbackVersion        : '1.5.12'
 ]
 
 tasks.withType(JavaExec).configureEach {

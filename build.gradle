@@ -42,10 +42,8 @@ jacoco {
     toolVersion = "0.8.11"
 }
 
-def buildNumber = System.getenv("RELEASE_VERSION")?: "DEV-SNAPSHOT"
-
-group = 'com.github.hmcts.divorce'
-version buildNumber
+group = 'uk.gov.hmcts.reform.divorce'
+version = '1.0.1'
 
 java {
     toolchain {
@@ -415,17 +413,4 @@ processTestResources {
 
 processIntegrationTestResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
-}
-
-publishing {
-  repositories {
-    maven {
-      name = "AzureArtifacts"
-      url = uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
-      credentials {
-        username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
-        password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
-      }
-    }
-  }
 }

@@ -208,7 +208,7 @@ def versions = [
     springDoc             : '1.7.0',
     springOpenFeign       : '2.2.7.RELEASE',
     spring_security_rsa   : '1.1.1',
-    springSecurityCrypto  : '5.8.8',
+    springSecurityCrypto  : '6.5.0',
     tomcatEmbed           : '9.0.82',
     unirest               : '1.4.9',
     wiremockVersion       : '2.27.2',

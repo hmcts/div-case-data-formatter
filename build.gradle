@@ -92,12 +92,6 @@ dependencyManagement {
             entry 'guava'
         }
 
-        //CVE-2021-44228, CVE-2021-44832, CVE-2021-45046, CVE-2021-45105
-        dependencySet(group: 'org.apache.logging.log4j', version: '2.21.1') {
-            entry 'log4j-api'
-            entry 'log4j-to-slf4j'
-        }
-
         //CVE-2022-22965, CVE-2022-22971
         dependencySet(group: 'org.springframework', version: '5.3.30') {
             entry 'spring-aop'
@@ -120,16 +114,6 @@ dependencyManagement {
 repositories {
     mavenCentral()
     maven { url 'https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1' }
-}
-
-distributions {
-    main {
-        contents {
-            from(file("$projectDir/lib/AI-Agent.xml")) {
-                into "lib"
-            }
-        }
-    }
 }
 
 checkstyle {
@@ -184,7 +168,8 @@ def versions = [
     pitest                : '1.15.3',
     puppyCrawl            : '8.45.1',
     reformPropertiesVolume: '0.1.0',
-    reformsJavaLogging    : '6.1.6',
+    reformLogging         : '6.1.9',
+    apacheLogging         : '2.24.3',
     restAssured           : '4.5.1',
     serenity              : '2.6.0',
     serenityCucumber      : '1.9.51',
@@ -235,6 +220,10 @@ dependencies {
     implementation group: 'org.springframework.security', name: 'spring-security-rsa', version: versions.springSecurityRsa
     implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: versions.springSecurityCrypto
 
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: versions.apacheLogging
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: versions.apacheLogging
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: versions.apacheLogging
+
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: versions.tomcatEmbed
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: versions.tomcatEmbed
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: versions.tomcatEmbed
@@ -252,7 +241,7 @@ dependencies {
 
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: versions.httpComponents
     implementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: versions.httpComponents
-    implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformsJavaLogging
+    implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformLogging
 
     implementation group: 'org.pitest', name: 'pitest', version: versions.pitest
     implementation group: 'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: versions.gradlePitest

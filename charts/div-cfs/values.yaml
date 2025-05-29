@@ -12,5 +12,7 @@ java:
   keyVaults:
     div:
       secrets:
+        - name: AppInsightsInstrumentationKey
+          alias: azure.application-insights.instrumentation-key
         - name: app-insights-connection-string
           alias: app-insights-connection-string

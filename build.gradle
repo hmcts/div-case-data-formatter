@@ -197,7 +197,7 @@ def versions = [
     junit                 : '5.10.1',
     lombok                : '1.18.30',
     pitest                : '1.15.3',
-    puppyCrawl            : '8.45.1',
+    puppyCrawl            : '10.25.0',
     reformPropertiesVolume: '0.1.0',
     reformsJavaLogging    : '5.1.7',
     restAssured           : '4.5.1',

@@ -202,7 +202,7 @@ def versions = [
     reformsJavaLogging    : '5.1.7',
     restAssured           : '4.5.1',
     serenity              : '2.6.0',
-    serenityCucumber      : '1.9.51',
+    serenityCucumber      : '4.2.34',
     sonarPitest           : '0.5',
     springBoot            : '2.7.17',
     springDoc             : '1.7.0',

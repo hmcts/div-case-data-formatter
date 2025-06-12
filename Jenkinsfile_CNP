@@ -30,7 +30,6 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 def secrets = [
     'div-${env}': [
-        secret("AppInsightsInstrumentationKey", "azure.application-insights.instrumentation-key")
     ]
 ]
 

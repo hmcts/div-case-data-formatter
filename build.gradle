@@ -165,7 +165,7 @@ def versions = [
     jsonAssert            : '1.5.1',
     jsonPathAssert        : '2.8.0',
     junit                 : '5.10.1',
-    lombok                : '1.18.30',
+    lombok                : '1.18.38',
     pitest                : '1.15.3',
     puppyCrawl            : '8.45.1',
     reformPropertiesVolume: '0.1.0',

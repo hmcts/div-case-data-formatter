@@ -162,7 +162,7 @@ def versions = [
     gradlePitest          : '1.15.0',
     guava                 : '32.1.3-jre',
     httpComponents        : '4.5.14',
-    jsonAssert            : '1.5.1',
+    jsonAssert            : '1.5.3',
     jsonPathAssert        : '2.8.0',
     junit                 : '5.10.1',
     lombok                : '1.18.30',
